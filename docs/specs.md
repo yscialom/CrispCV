@@ -39,13 +39,13 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : Initialize the Angular application and create the foundational documentation structure. This includes setting up the core project files (`angular.json`, `package.json`, etc.), configuring Docker for a consistent development and build environment (`Dockerfile`, `Makefile`), and creating the initial set of markdown documents (`GEMINI.md`, `docs/style.md`, `docs/technical.md`, `docs/specs.md`) to guide development. The goal is to establish the standards and architecture for the "Showcase Quality Code" principle from the outset.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/1-initial-setup`
 
 **PR**
-: 
+: #1
 
 **Release**
 : 

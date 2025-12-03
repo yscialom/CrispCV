@@ -15,10 +15,10 @@ RUN npm run build
 
 
 # Stage 2: Serve the application from a lightweight server
-FROM lighttpd/lighttpd:latest
+FROM jitesoft/lighttpd:latest
 
 # Copy the built application from the 'builder' stage
-COPY --from=builder /app/dist/boat-app/browser /var/www/localhost/htdocs
+COPY --from=builder /app/dist/resume-app/browser /var/www/localhost/htdocs
 
 # Copy the custom lighttpd configuration
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf

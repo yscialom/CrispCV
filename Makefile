@@ -5,13 +5,21 @@ APP_NAME := angular-resume
 DEV_CONTAINER_NAME := $(APP_NAME)-dev
 PROD_IMAGE_NAME := $(APP_NAME)-prod
 PROD_CONTAINER_NAME := $(PROD_IMAGE_NAME)
+CURRENT_UID := $(shell id -u)
+CURRENT_GID := $(shell id -g)
 
 # --- Phony Targets ---
-.PHONY: help all build build-app start stop clean dist-clean build-prod-image start-prod stop-prod lint format
+.PHONY: all help usage build build-app start stop clean dist-clean build-prod-image start-prod stop-prod lint format
+
+all: build
+	@echo "Application built. The 'dist' directory is ready."
+	@echo "Run 'make start' to start the development server."
+
+help: usage
 
 # --- User-facing Targets ---
 
-help:
+usage:
 	@echo "Makefile for Dockerized Angular App"
 	@echo ""
 	@echo "Usage:"
@@ -33,19 +41,17 @@ help:
 	@echo "  make stop-prod           Stop the production container."
 	@echo ""
 
-all: build
-	@echo "Application built. The 'dist' directory is ready."
-	@echo "Run 'make start' to start the development server."
+
 
 # Build the application artifacts on the host by running a temporary container
 build:
 	@echo "Building application artifacts in ./dist ..."
-	@docker run --rm -v $(CURDIR):/app -w /app node:20-alpine sh -c "npm install && npm run build"
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run build"
 
 # Start the Angular development server (ng serve)
 start:
 	@echo "Starting development container '$(DEV_CONTAINER_NAME)' on http://localhost:4200 ..."
-	@docker run --rm -it -p 4200:4200 --name $(DEV_CONTAINER_NAME) -v $(CURDIR):/app -w /app node:20-alpine sh -c "npm install && ng serve --host 0.0.0.0"
+	@docker run --rm -d -p 4200:4200 --name $(DEV_CONTAINER_NAME) -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng serve --host 0.0.0.0"
 
 # Stop the development server
 stop:
@@ -58,11 +64,11 @@ stop:
 
 lint:
 	@echo "Running ESLint (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app node:20-alpine npm run lint
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine npm run lint
 
 format:
 	@echo "Running Prettier (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app node:20-alpine npm run format
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine npm run format
 
 
 # Clean intermediary build files
