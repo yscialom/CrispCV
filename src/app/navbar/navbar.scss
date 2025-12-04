@@ -19,19 +19,19 @@
 }
 
 .profile-picture img {
-  border-radius: 50%;
+  /* border-radius: 50%; */
   width: auto; /* Allow width to adjust proportionally */
   height: 100%; /* Take full height of the parent .profile-picture */
   max-width: 150px; /* Limit max width to keep it reasonable */
   object-fit: cover;
-  border: 3px solid #0D6EFD; /* Vibrant Blue border */
+  border: 3px solid #0d6efd; /* Vibrant Blue border */
 }
 
 .profile-content {
   display: flex;
   flex-direction: column; /* Stack content vertically */
   justify-content: flex-start; /* Align content to the top */
-  gap: 0.5rem; /* Add vertical space between elements */
+  gap: 1rem; /* Increased vertical space between elements */
   flex-grow: 1; /* Allow content to grow and fill available space */
   padding-left: 1rem; /* Add some padding between image and content */
 }
@@ -39,7 +39,10 @@
 .profile-details {
   display: flex;
   align-items: center;
-  /* margin-bottom: 0.5rem; */ /* Removed, now handled by gap */
+
+  /* margin-bottom: 0.5rem; */
+
+  /* Removed, now handled by gap */
 }
 
 .profile-info h2 {
