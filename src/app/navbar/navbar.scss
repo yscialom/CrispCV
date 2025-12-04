@@ -4,7 +4,7 @@
   padding: 1rem;
   background-color: #212529; /* Dark Grey */
   color: #f8f9fa; /* Whit-ish / Light Grey */
-  height: 150px; /* Set a fixed height for the navbar for demonstration, or use min-height */
+  min-height: 150px; /* Set a fixed height for the navbar for demonstration, or use min-height */
 }
 
 .profile-picture {
@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
-  height: 100%; /* Ensure profile-picture takes full height of navbar */
 
   /* flex-shrink: 0; */
 
@@ -22,7 +21,7 @@
 .profile-picture img {
   /* border-radius: 50%; */
   width: auto; /* Allow width to adjust proportionally */
-  height: 100%; /* Take full height of the parent .profile-picture */
+  height: calc(100% - 2rem); /* Take full height of navbar minus its top/bottom padding */
   max-width: 150px; /* Limit max width to keep it reasonable */
   object-fit: cover;
   border: 3px solid #0d6efd; /* Vibrant Blue border */
