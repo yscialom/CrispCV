@@ -73,6 +73,54 @@ Detailed coding standards, formatting rules, and best practices are outlined in 
   - `npm run lint`: To manually run the linter.
   - `npm run format`: To manually format the entire codebase.
 
+### 5.2 Pre-commit Hook (Manual Setup)
+
+To automate code quality checks, you can use a pre-commit hook to run linting and formatting before each commit. This ensures that no code that violates the project's style guidelines is committed.
+
+**Manual Installation:**
+
+Because the `.git/hooks` directory is not tracked by Git, you need to create the pre-commit hook manually.
+
+1.  Create a file named `pre-commit` inside the `.git/hooks` directory:
+
+    ```bash
+    touch .git/hooks/pre-commit
+    ```
+
+2.  Make the script executable:
+
+    ```bash
+    chmod +x .git/hooks/pre-commit
+    ```
+
+3.  Add the following content to the `.git/hooks/pre-commit` file:
+
+    ```sh
+    #!/bin/sh
+    echo "Running pre-commit hook..."
+
+    # Run lint
+    echo "Running make lint..."
+    make lint
+    if [ $? -ne 0 ]; then
+        echo "Linting failed. Commit aborted."
+        exit 1
+    fi
+
+    # Run format
+    echo "Running make format..."
+    make format
+    if [ $? -ne 0 ]; then
+        echo "Formatting failed. Commit aborted."
+        exit 1
+    fi
+
+    echo "Pre-commit hook passed."
+    exit 0
+    ```
+
+This hook will now run automatically before each `git commit`. If a hook fails, the commit will be aborted. You must fix the issues and stage the changes before re-attempting the commit.
+
 ## 6. TypeScript Guidelines
 
 We adhere to the strictest TypeScript settings to ensure maximum type safety and code quality.
