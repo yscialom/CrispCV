@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
+  height: 100%; /* Ensure profile-picture takes full height of navbar */
 
   /* flex-shrink: 0; */
 
@@ -31,7 +32,7 @@
   display: flex;
   flex-direction: column; /* Stack content vertically */
   justify-content: flex-start; /* Align content to the top */
-  gap: 1rem; /* Increased vertical space between elements */
+  gap: 1.5rem; /* Increased vertical space between elements */
   flex-grow: 1; /* Allow content to grow and fill available space */
   padding-left: 1rem; /* Add some padding between image and content */
 }
