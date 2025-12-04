@@ -1,16 +1,39 @@
 .navbar {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center;
+  display: flex; /* Make navbar a flex container */
+  align-items: stretch; /* Stretch items to fill the height */
   padding: 1rem;
   background-color: #212529; /* Dark Grey */
   color: #F8F9FA; /* Whit-ish / Light Grey */
+  height: 150px; /* Set a fixed height for the navbar for demonstration, or use min-height */
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  /* flex-shrink: 0; */ /* Prevent shrinking */
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: auto; /* Allow width to adjust proportionally */
+  height: 100%; /* Take full height of the parent .profile-picture */
+  max-width: 150px; /* Limit max width to keep it reasonable */
+  object-fit: cover;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Distribute space between name, details, and nav */
+  flex-grow: 1; /* Allow content to grow and fill available space */
+  padding-left: 1rem; /* Add some padding between image and content */
 }
 
 .profile-name {
   width: 100%; /* Take full width to allow text-align */
   text-align: left;
-  margin-bottom: 1rem;
 }
 
 .profile-name h1 {
@@ -22,18 +45,7 @@
 .profile-details {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem; /* Space between profile details and nav */
-}
-
-.profile-picture {
-  margin-right: 1rem;
-}
-
-.profile-picture img {
-  border-radius: 50%;
-  width: 100px; /* Adjust size as needed */
-  height: 100px; /* Adjust size as needed */
-  object-fit: cover;
+  margin-bottom: 0.5rem; /* Reduced margin, now handled by space-between */
 }
 
 .profile-info h2 {
