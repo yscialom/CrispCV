@@ -18,7 +18,7 @@ export interface Profile {
 export interface Experience {
   title: string;
   company: string;
-  location:string;
+  location: string;
   startDate: string;
   endDate: string;
   description: string[];

@@ -1,14 +1,11 @@
-Résumé
-======
+# Résumé
 
-Project description
--------------------
+## Project description
 
 This project is a simple single page application displaying a developpers résumé. It present in a simple
 and nice looking page the professional experience, the education and miscalenous information about the profile.
 
-Style guidelines
-----------------
+## Style guidelines
 
 The application is simple and flat, smoothe and elegant. It respects a three-color palette for light and dark theme.
 It respect all accessibility and responsible guidelines. Usage is intuitive; no information is deeper than two
@@ -16,8 +13,7 @@ clicks away from the land page.
 
 See docs/style.md for more information.
 
-Technical guidelines
---------------------
+## Technical guidelines
 
 ### Source code
 
@@ -35,8 +31,6 @@ Neither node nor npm is installed on the developpent building system, docker mus
 
 See docs/docker.md for more information.
 
-
-Features
---------
+## Features
 
 Features are specified and managed into docs/specs.md.

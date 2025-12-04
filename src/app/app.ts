@@ -6,7 +6,7 @@ import { ResumeDataService } from '../../resume-data.service';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly profile = inject(ResumeDataService).profile;

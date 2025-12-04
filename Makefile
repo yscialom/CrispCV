@@ -64,11 +64,11 @@ stop:
 
 lint:
 	@echo "Running ESLint (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine npm run lint
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run lint"
 
 format:
 	@echo "Running Prettier (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine npm run format
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run format"
 
 
 # Clean intermediary build files
