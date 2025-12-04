@@ -51,8 +51,6 @@ Each feature is documented in its own section. A feature section is a level-2 he
 **Release**
 :
 
----
-
 ## Linting and Formatting Make Targets
 
 **ID**
@@ -69,6 +67,28 @@ Each feature is documented in its own section. A feature section is a level-2 he
 
 **PR**
 : #2
+
+**Release**
+:
+
+---
+
+## Top Navbar
+
+**ID**
+: `3`
+
+**Description**
+: This feature consists in creating a top navigation bar that will be displayed on top of the resume. It will prominently display the profile name, followed by a profile picture, a short professional objective, and a brief description of the profile. A navigation menu with disabled links for "Experience", "Education", and "About" will be placed beneath this profile information.
+
+**Status**
+: `todo (priority: 1)`
+
+**Branch**
+: `feature/3-navbar`
+
+**PR**
+:
 
 **Release**
 :
