@@ -1,3 +1,10 @@
+.profile-content h1,
+.profile-content h2,
+.profile-content p {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
   display: flex; /* Make navbar a flex container */
   align-items: stretch; /* Stretch items to fill the height */
