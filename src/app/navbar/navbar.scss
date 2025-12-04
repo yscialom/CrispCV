@@ -6,9 +6,15 @@
   background-color: #f8f9fa;
 }
 
+.profile-name {
+  width: 100%; /* Take full width to allow text-align */
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
 .profile-name h1 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .profile-details {
