@@ -79,7 +79,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `3`
 
 **Description**
-: This feature implements a prominent top navigation bar for the resume. The layout ensures the profile's full name is prominently displayed and left-aligned at the top, followed by a profile picture, a concise professional objective, and a brief profile summary. Beneath this information, a navigation menu is presented with its items left-aligned, styled to resemble buttons, and appropriately spaced. These tabs, currently disabled, are for "Experience", "Education", and "About". The entire navbar is designed to respect the project's dark theme style guidelines, ensuring a consistent and aesthetically pleasing user experience.
+: This feature implements a prominent top navigation bar for the resume. The layout ensures the profile's full name is prominently displayed and left-aligned at the top, followed by a profile picture, a concise professional objective, and a brief profile summary. Beneath this information, a navigation menu is presented with its items left-aligned, styled distinctly to resemble interactive buttons or tabs, and appropriately spaced. These tabs, currently disabled, are for "Experience", "Education", and "About". The entire navbar is designed to respect the project's dark theme style guidelines, ensuring a consistent and aesthetically pleasing user experience.
 
 **Status**
 : `todo (priority: 1)`
