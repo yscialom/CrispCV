@@ -19,11 +19,11 @@ body {
     @include define-theme-colors(colors.$palette-light);
   }
 
-  &.theme-dark {
-    // @include define-theme-colors(colors.$palette-dark); // Comment this out
-    --primary-bg: fuchsia; // Extreme visual check for background
-    --accent: lime;        // Extreme visual check for accent
-  }
+    &.theme-dark {
+
+      @include define-theme-colors(colors.$palette-dark);
+
+    }
 }
 
 // Global styles (example)
