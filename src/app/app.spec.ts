@@ -1,10 +1,32 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { ResumeDataService } from '../../resume-data.service'; // Adjust path
+import { signal, computed } from '@angular/core';
 
 describe('App', () => {
+  // Mock ResumeDataService
+  const mockProfile = signal({
+    name: 'Mock John Doe',
+    title: 'Mock Senior Software Engineer',
+    summary: 'Mock A passionate and experienced software engineer.',
+    profilePicturePath: 'mock/path/to/image.jpg',
+    email: 'mock@example.com',
+    phone: 'mock-123-456-7890',
+    website: 'http://mock.com',
+    location: 'Mock City',
+  });
+
+  const mockResumeDataService = {
+    profile: computed(() => mockProfile()),
+    // Add other mocked properties if App directly uses them
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [
+        { provide: ResumeDataService, useValue: mockResumeDataService },
+      ],
     }).compileComponents();
   });
 
@@ -18,6 +40,6 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('John Doe');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Mock John Doe');
   });
 });
