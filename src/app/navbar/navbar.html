@@ -1,6 +1,6 @@
 <header class="navbar">
   <div class="profile-picture">
-    <img src="https://via.placeholder.com/100" alt="Profile picture" />
+    <img [src]="profile().profilePicturePath" alt="Profile picture" />
   </div>
   <div class="profile-content">
     <h1>{{ profile().name }}</h1>
