@@ -1,108 +1,101 @@
-.profile-content h1,
-.profile-content h2,
-.profile-content p {
-  margin: 0;
-  padding: 0;
-}
+/* SCSS Variables based on docs/style.md for Dark Theme */
+$primary-dark-bg: #212529; // Dark Grey
+$secondary-dark-bg: #343a40; // Slightly Lighter Grey
+$accent-dark: #0D6EFD; // Vibrant Blue
+$text-light: #F8F9FA; // Whit-ish / Light Grey
+$text-disabled: #999; // Placeholder for disabled text color
+
+/* Spacing Variables based on docs/style.md */
+$spacing-xx-small: 4px;
+$spacing-x-small: 8px;
+$spacing-medium: 16px; // 1rem
+$spacing-large: 24px; // 1.5rem
+
+$border-radius-standard: 8px; // Standard Radius from docs/style.md
 
 .navbar {
-  display: flex; /* Make navbar a flex container */
-  align-items: stretch; /* Stretch items to fill the height */
-  padding: 1rem;
-  background-color: #212529; /* Dark Grey */
-  color: #f8f9fa; /* Whit-ish / Light Grey */
-  min-height: 150px; /* Allow navbar to grow, but ensure minimum height */
-}
-
-.profile-picture {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1rem;
+  align-items: stretch;
+  padding: $spacing-medium;
+  background-color: $primary-dark-bg;
+  color: $text-light;
+  min-height: 150px;
 
-  /* flex-shrink: 0; */
+  .profile-picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: $spacing-medium;
+    flex-shrink: 0;
 
-  /* Prevent shrinking */
-}
+    img {
+      width: auto;
+      height: calc(100% - (#{$spacing-medium} * 2));
+      max-width: 150px;
+      object-fit: cover;
+      border: 3px solid $accent-dark;
+      // border-radius: 50%; // Uncomment if a circular avatar is desired
+    }
+  }
 
-.profile-picture img {
-  /* border-radius: 50%; */
-  width: auto; /* Allow width to adjust proportionally */
-  height: calc(100% - 2rem); /* Take full height of navbar minus its top/bottom padding */
-  max-width: 150px; /* Limit max width to keep it reasonable */
-  object-fit: cover;
-  border: 3px solid #0d6efd; /* Vibrant Blue border */
-}
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: $spacing-medium;
+    flex-grow: 1;
+    padding-left: $spacing-medium;
 
-.profile-content {
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: flex-start; /* Align content to the top */
-  gap: 1rem; /* Consistent vertical space between elements */
-  flex-grow: 1; /* Allow content to grow and fill available space */
-  padding-left: 1rem; /* Add some padding between image and content */
-}
+    h1,
+    h2,
+    p {
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
 
-.profile-name {
-  width: 100%; /* Take full width to allow text-align */
-  text-align: left;
-  margin-bottom: 0.5rem; /* Specific spacing below name */
-}
+    h1 {
+      margin-bottom: $spacing-x-small;
+    }
 
-.profile-details {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem; /* Specific spacing below details */
-}
+    h2 {
+      font-size: $spacing-large; // Use spacing var for font size as per typography
+      color: $text-light;
+    }
 
-.profile-info h2 {
-  font-size: 1.5rem;
+    p {
+      color: $text-light;
+      margin-bottom: $spacing-x-small;
+    }
 
-  /* margin: 0; */
+    nav {
+      width: 100%;
 
- /* Handled by reset at the top */
-  color: #f8f9fa; /* Whit-ish / Light Grey */
-}
+      ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-start;
+        gap: $spacing-medium;
+      }
 
-.profile-info p {
-  /* margin: 0; */
+      a {
+        text-decoration: none;
+        color: $text-light;
+        padding: $spacing-x-small $spacing-medium;
+        background-color: $secondary-dark-bg;
+        border: 1px solid $accent-dark;
+        border-radius: $border-radius-standard;
+        transition: all 300ms ease-in-out; // Standard Transition from docs/style.md
 
- /* Handled by reset at the top */
-  color: #f8f9fa; /* Whit-ish / Light Grey */
-}
-
-nav {
-  width: 100%;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: flex-start; /* Left-align the tabs */
-  gap: 1rem; /* Space between tabs */
-}
-
-nav li {
-  margin-left: 0; /* Reset previous margin */
-}
-
-nav a {
-  text-decoration: none;
-  color: #f8f9fa; /* Whit-ish / Light Grey */
-  padding: 0.5rem 1rem; /* Padding for button-like appearance */
-  background-color: #343a40; /* Slightly Lighter Grey */
-  border: 1px solid #0d6efd; /* Vibrant Blue */
-  border-radius: 8px; /* Rounded corners - updated to 8px standard */
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease; /* Smooth transition for hover effects */
-}
-
-nav a.disabled {
-  color: #999;
-  pointer-events: none;
-  background-color: #212529; /* Dark Grey */
-  border-color: #343a40; /* Slightly Lighter Grey */
+        &.disabled {
+          color: $text-disabled;
+          pointer-events: none;
+          background-color: $primary-dark-bg;
+          border-color: $secondary-dark-bg;
+        }
+      }
+    }
+  }
 }
