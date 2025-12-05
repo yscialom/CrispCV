@@ -48,8 +48,8 @@ src/app/
 - **Data Source:** All résumé data is sourced from a single TypeScript file: `src/app/data/resume.data.ts`. This file exports the data structure as a constant, ensuring it's loaded at runtime.
 - **State Service:** A singleton service, `ResumeDataService`, is the single source of truth for application state. It imports the data from `resume.data.ts` and stores it in **Signals**.
 - **Data Flow:** Components access data exclusively through one of two mechanisms:
-  1.  **`inject()`:** For direct access to the `ResumeDataService` within a component's constructor context.
-  2.  **`input()`:** For parent components to pass slices of data down to child components using Angular's new input signal function.
+  1.  `inject()`: For direct access to the `ResumeDataService` within a component's constructor context.
+  2.  `input()`: For parent components to pass slices of data down to child components using Angular's new input signal function.
 
 ## 4. Unit Testing
 
@@ -154,5 +154,12 @@ All styling is written in SCSS to leverage its advanced features and promote mai
 - **Scoped Styles:** Always use Angular's built-in style encapsulation. Global styles should be avoided and reserved only for foundational theme setup (e.g., fonts, theme colors).
 - **BEM Naming Convention:** Adhere to the Block, Element, Modifier (BEM) methodology for naming CSS classes (e.g., `.resume-card__title--highlighted`). This creates a clear, hierarchical, and conflict-free styling system.
 - **SCSS Features:** Leverage SCSS variables, nesting, and mixins to write DRY (Don't Repeat Yourself) code.
-- **Units:** Use `rem` for scalable properties like `font-size`, `margin`, and `padding`. Use `px` only for properties that must remain fixed, such as `border-width`.
+- **Units:** Use `rem` for scalable properties like `font-size`, `margin`, and `padding`. Use `px` only for properties that must remain fixed, suchs as `border-width`.
 - **No Magic Numbers:** All colors, font families, font sizes, and spacing units must be sourced from a central SCSS variables file that reflects the design tokens in `docs/style.md`.
+
+## 9. Configuration Files
+
+To promote consistency and allow for user-specific customization, global configuration variables are stored in dedicated SCSS files.
+
+-   **Color Palettes (`_colors.scss`):** Global color definitions for both light and dark themes are located at the root of the Git repository in `config/_colors.scss`. This allows developers to easily adjust core theme colors without modifying the application's source code.
+-   **Spacing and Layout Variables (`_spacing.scss`):** Variables related to spacing, font sizes, and common layout values are located within the application's source code at `src/app/config/_spacing.scss`. These are application-specific design tokens.
