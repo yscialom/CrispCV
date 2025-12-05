@@ -31,6 +31,11 @@ Neither node nor npm is installed on the developpent building system, docker mus
 
 See docs/docker.md for more information.
 
+## Configuration
+
+This project allows for easy customization through configuration files.
+See docs/config.md for more information.
+
 ## Features
 
 Features are specified and managed into docs/specs.md.
