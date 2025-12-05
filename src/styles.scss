@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@use '../../config/_colors.scss' as colors;
+
+// Mixin to define CSS custom properties from a color palette map
+@mixin define-theme-colors($palette) {
+  --primary-bg: map.get($palette, primary-bg);
+  --secondary-bg: map.get($palette, secondary-bg);
+  --accent: map.get($palette, accent);
+  --text: map.get($palette, text);
+  --text-disabled: map.get($palette, text-disabled);
+}
+
+// Apply themes based on body class
+body {
+  // Default (e.g., light theme) or fallback
+  @include define-theme-colors(colors.$palette-light);
+
+  &.theme-light {
+    @include define-theme-colors(colors.$palette-light);
+  }
+
+  &.theme-dark {
+    @include define-theme-colors(colors.$palette-dark);
+  }
+}
+
+// Global styles (example)
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text);
+}
+
+// Basic element styling to use theme variables
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+}

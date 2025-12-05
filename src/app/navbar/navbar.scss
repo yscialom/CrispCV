@@ -1,13 +1,11 @@
-@use 'sass:map';
-@use '../../../config/colors' as colors; // Import color palette variables
 @use '../config/spacing' as spacing; // Import spacing and border-radius variables
 
 .navbar {
   display: flex;
   align-items: stretch;
   padding: spacing.$spacing-medium;
-  background-color: map.get(colors.$palette-dark, primary-bg);
-  color: map.get(colors.$palette-dark, text);
+  background-color: var(--primary-bg);
+  color: var(--text);
   min-height: 150px;
 
   .profile-picture {
@@ -22,7 +20,7 @@
       height: calc(100% - (#{spacing.$spacing-medium} * 2));
       max-width: 150px;
       object-fit: cover;
-      border: 3px solid map.get(colors.$palette-dark, accent);
+      border: 3px solid var(--accent);
 
       // border-radius: 50%; // Uncomment if a circular avatar is desired
     }
@@ -50,12 +48,12 @@
 
     h2 {
       font-size: spacing.$spacing-large; // Use spacing var for font size as per typography
-      color: map.get(colors.$palette-dark, text);
+      color: var(--text);
     }
 
     p {
-      color: map.get(colors.$palette-dark, text);
-      margin-bottom: spacing.$spacing-x-small;
+      color: var(--text);
+      margin-bottom: spacing.$spacing-x-x-small;
     }
 
     nav {
@@ -72,18 +70,18 @@
 
       a {
         text-decoration: none;
-        color: map.get(colors.$palette-dark, text);
+        color: var(--text);
         padding: spacing.$spacing-x-small spacing.$spacing-medium;
-        background-color: map.get(colors.$palette-dark, secondary-bg);
-        border: 1px solid map.get(colors.$palette-dark, accent);
+        background-color: var(--secondary-bg);
+        border: 1px solid var(--accent);
         border-radius: spacing.$border-radius-standard;
         transition: all 300ms ease-in-out; // Standard Transition from docs/style.md
 
         &.disabled {
-          color: map.get(colors.$palette-dark, text-disabled);
+          color: var(--text-disabled);
           pointer-events: none;
-          background-color: map.get(colors.$palette-dark, primary-bg);
-          border-color: map.get(colors.$palette-dark, secondary-bg);
+          background-color: var(--primary-bg);
+          border-color: var(--secondary-bg);
         }
       }
     }
