@@ -21,7 +21,7 @@ body {
   &.theme-dark {
     --primary-bg: #212529; // From $palette-dark
     --secondary-bg: #343a40; // From $palette-dark
-    --accent: #ffffff; // Changed to white for visibility
+    --accent: #fff; // Changed to white for visibility
     --text: #f8f9fa; // From $palette-dark
     --text-disabled: #999; // From $palette-dark
   }
