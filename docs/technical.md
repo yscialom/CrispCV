@@ -136,7 +136,10 @@ We adhere to the strictest TypeScript settings to ensure maximum type safety and
 
 ## 7. HTML & Template Guidelines
 
-HTML templates must be clean, semantic, and highly accessible.
+HTML templates must be clean, semantic, highly accessible, and as simple as possible in their structure, minimizing unnecessary nesting to enhance readability and maintainability.
+
+- **Minimal Nesting:** Strive for the simplest possible HTML structure. Avoid excessive `div` nesting where a more semantic tag or direct placement of content would suffice. This improves readability and simplifies CSS targeting.
+
 
 - **Semantic HTML:** Always use appropriate HTML5 elements (`<nav>`, `<main>`, `<section>`, `<article>`, etc.) to accurately represent the structure and meaning of the content.
 - **Accessibility (A11y):** All templates must be fully accessible. This includes providing `alt` attributes for images, using ARIA attributes where semantic HTML is insufficient, and ensuring form controls are properly labeled.
