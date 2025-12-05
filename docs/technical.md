@@ -140,7 +140,6 @@ HTML templates must be clean, semantic, highly accessible, and as simple as poss
 
 - **Minimal Nesting:** Strive for the simplest possible HTML structure. Avoid excessive `div` nesting where a more semantic tag or direct placement of content would suffice. This improves readability and simplifies CSS targeting.
 
-
 - **Semantic HTML:** Always use appropriate HTML5 elements (`<nav>`, `<main>`, `<section>`, `<article>`, etc.) to accurately represent the structure and meaning of the content.
 - **Accessibility (A11y):** All templates must be fully accessible. This includes providing `alt` attributes for images, using ARIA attributes where semantic HTML is insufficient, and ensuring form controls are properly labeled.
 - **Test Hooks:** Use `id` attributes for selecting elements in unit tests. For more complex applications or to clearly distinguish from styling hooks, `data-testid` is a preferred alternative.
@@ -148,7 +147,9 @@ HTML templates must be clean, semantic, highly accessible, and as simple as poss
 
 ## 8. CSS (SCSS) Guidelines
 
-All styling is written in SCSS to leverage its advanced features and promote maintainable, scalable CSS.
+All styling is written in SCSS to leverage its advanced features and promote maintainable, scalable, simple, and readable CSS.
+
+- **Readability & Simplicity:** Prioritize clear, straightforward selectors. While SCSS nesting is powerful, avoid overly deep or complex nesting that can hinder readability and lead to specificity issues. Aim for a flat structure where appropriate, leveraging variables and mixins for efficiency rather than complex selectors.
 
 - **Scoped Styles:** Always use Angular's built-in style encapsulation. Global styles should be avoided and reserved only for foundational theme setup (e.g., fonts, theme colors).
 - **BEM Naming Convention:** Adhere to the Block, Element, Modifier (BEM) methodology for naming CSS classes (e.g., `.resume-card__title--highlighted`). This creates a clear, hierarchical, and conflict-free styling system.
