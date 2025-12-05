@@ -1,22 +1,28 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { Resume } from '../../core/models/resume.models';
-import { PROFILE_CONFIG } from '../../../../config/profile'; // Corrected path
-import { RESUME_DATA } from '../../data/resume.data';
+import { Resume, Profile } from '../../core/models/resume.models';
+import { PROFILE_CONFIG } from '../../../../config/profile';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResumeDataService {
-  private readonly resume = signal<Resume>(RESUME_DATA);
+  private readonly resumeConfig = signal<Resume>(PROFILE_CONFIG as Resume);
 
-  public readonly profile = computed(() => ({
-    profilePicturePath: PROFILE_CONFIG.profilePicturePath,
-    name: PROFILE_CONFIG.name,
-    title: PROFILE_CONFIG.title,
-    summary: PROFILE_CONFIG.summary,
-    ...this.resume().profile,
-  }));
-  public readonly experiences = computed(() => this.resume().experiences);
-  public readonly educations = computed(() => this.resume().educations);
-  public readonly skills = computed(() => this.resume().skills);
+  // Directly expose parts of PROFILE_CONFIG via resumeConfig signal
+  public readonly profile = computed<Profile>(() => {
+    const config = this.resumeConfig();
+    return {
+      name: config.name,
+      title: config.title,
+      summary: config.summary,
+      email: config.email,
+      phone: config.phone,
+      website: config.website,
+      location: config.location,
+      profilePicturePath: config.profilePicturePath,
+    };
+  });
+  public readonly experiences = computed(() => this.resumeConfig().experiences);
+  public readonly educations = computed(() => this.resumeConfig().educations);
+  public readonly skills = computed(() => this.resumeConfig().skills);
 }
