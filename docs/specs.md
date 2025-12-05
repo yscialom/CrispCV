@@ -46,7 +46,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `feature/1-initial-setup`
 
 **PR**
-: #1
+: none
 
 **Release**
 :
@@ -60,13 +60,13 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : Implement `make lint` and `make format` commands to enforce code style and catch potential errors. The `make lint` command will run ESLint for TypeScript and `stylelint` for SCSS files, ensuring adherence to coding standards. The `make format` command will use Prettier to automatically reformat code, maintaining consistent style across the project. Both commands will operate within the Dockerized development environment, making them accessible and consistent for all developers. This feature enhances code quality, reduces merge conflicts, and improves developer experience.
 
 **Status**
-: `todo (priority: 1)`
+: `done`
 
 **Branch**
 : `feature/2-make-lint-format`
 
 **PR**
-: #2
+: none
 
 **Release**
 :
@@ -79,16 +79,16 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `3`
 
 **Description**
-: This feature implements a prominent top navigation bar for the resume. The layout ensures the profile picture, now a distinct rectangular shape with a border, takes the full available height of the navbar on the left side. Immediately to the right of the profile picture, the profile's full name is prominently displayed and left-aligned at the top, followed by a concise professional objective, and a brief profile summary. Increased vertical spacing is applied consistently between all textual elements (name, objective, summary) and the navigation menu for enhanced visual separation. The navigation menu is presented with its items left-aligned, styled distinctly to resemble interactive buttons or tabs, and appropriately spaced. These tabs, currently disabled, are for "Experience", "Education", and "About". The entire navbar is designed to respect the project's **dark theme style guidelines**, ensuring a consistent and aesthetically pleasing user experience.
+: This feature implements a prominent top navigation bar for the resume. The layout ensures the profile picture, now a distinct rectangular shape with a border, takes the full available height of the navbar on the left side. Immediately to the right of the profile picture, the profile's full name is prominently displayed and left-aligned at the top, followed by a concise professional objective, and a brief profile summary. Increased vertical spacing is applied consistently between all textual elements (name, objective, summary) and the navigation menu for enhanced visual separation. The navigation menu is presented with its items left-aligned, styled distinctly to resemble interactive buttons or tabs, and appropriately spaced. These tabs, currently disabled, are for "Experience", "Education", and "About". The entire navbar is designed to respect the project's dark theme style guidelines, ensuring a consistent and aesthetically pleasing user experience. Finally, the data displayed is pulled from a configuration file in <root>/config via an injected service.
 
 **Status**
-: `todo (priority: 1)`
+: `done`
 
 **Branch**
 : `feature/3-navbar`
 
 **PR**
-:
+: #1
 
 **Release**
 :
