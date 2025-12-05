@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-// @use '../config/_colors.scss' as colors; // Commented out to avoid Sass map issues
+// @use '../config/_colors.scss' as colors; // Commented out due to build issue
+// @use 'sass:map'; // Commented out due to build issue
 
 // Apply themes based on body class
 body {
-  // Default (light theme hardcoded) or fallback
+  // Default (light theme hardcoded)
   --primary-bg: #fff;
   --secondary-bg: #f8f9fa;
   --accent: #ffc107;
@@ -19,11 +20,11 @@ body {
   }
 
   &.theme-dark {
-    --primary-bg: #212529; // From $palette-dark
-    --secondary-bg: #343a40; // From $palette-dark
-    --accent: #fff; // Changed to white for visibility
-    --text: #f8f9fa; // From $palette-dark
-    --text-disabled: #999; // From $palette-dark
+    --primary-bg: #212529;
+    --secondary-bg: #343a40;
+    --accent: #ffffff; // Using white for visibility
+    --text: #f8f9fa;
+    --text-disabled: #999;
   }
 }
 
