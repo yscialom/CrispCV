@@ -6,7 +6,6 @@ export const RESUME_DATA: Resume = {
     phone: '+1 123-456-7890',
     website: 'https://johndoe.dev',
     location: 'San Francisco, CA',
-
   },
   experiences: [
     {
