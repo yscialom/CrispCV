@@ -1,26 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-@use '../config/_colors.scss' as colors;
-
-// Mixin to define CSS custom properties from a color palette map
-@mixin define-theme-colors($palette) {
-  --primary-bg: map.get($palette, primary-bg);
-  --secondary-bg: map.get($palette, secondary-bg);
-  --accent: map.get($palette, accent);
-  --text: map.get($palette, text);
-  --text-disabled: map.get($palette, text-disabled);
-}
+// @use '../config/_colors.scss' as colors; // Commented out to avoid Sass map issues
 
 // Apply themes based on body class
 body {
-  // Default (e.g., light theme) or fallback
-  @include define-theme-colors(colors.$palette-light);
+  // Default (light theme hardcoded) or fallback
+  --primary-bg: #fff;
+  --secondary-bg: #f8f9fa;
+  --accent: #ffc107;
+  --text: #212529;
+  --text-disabled: #ccc;
 
   &.theme-light {
-    @include define-theme-colors(colors.$palette-light);
+    --primary-bg: #fff;
+    --secondary-bg: #f8f9fa;
+    --accent: #ffc107;
+    --text: #212529;
+    --text-disabled: #ccc;
   }
 
   &.theme-dark {
-    @include define-theme-colors(colors.$palette-dark);
+    --primary-bg: #212529; // From $palette-dark
+    --secondary-bg: #343a40; // From $palette-dark
+    --accent: #ffffff; // Changed to white for visibility
+    --text: #f8f9fa; // From $palette-dark
+    --text-disabled: #999; // From $palette-dark
   }
 }
 
