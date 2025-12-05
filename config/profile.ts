@@ -1,5 +1,7 @@
 // config/profile.ts
-export const PROFILE_CONFIG = {
+import { Resume } from '../src/app/core/models/resume.models';
+
+export const PROFILE_CONFIG: Resume = {
   profilePicturePath: 'profile-picture.jpg', // Path relative to the build output
   name: 'Yankel Scialom',
   title: 'Senior Software Engineer',

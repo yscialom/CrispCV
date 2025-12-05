@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { ResumeDataService } from './core/services/resume-data.service';
+import { Profile } from './core/models/resume.models';
 import { signal, computed } from '@angular/core';
 
 describe('App', () => {
   // Mock ResumeDataService
-  const mockProfile = signal({
+  const mockProfile = signal<Profile>({
     name: 'Mock John Doe',
     title: 'Mock Senior Software Engineer',
     summary: 'Mock A passionate and experienced software engineer.',
