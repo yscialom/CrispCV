@@ -19,12 +19,11 @@ body {
     @include define-theme-colors(colors.$palette-light);
   }
 
-  &.theme-dark {
-    @include define-theme-colors(colors.$palette-dark);
-    // DEBUGGING STYLES
-    background-color: fuchsia !important; // Should make background unmistakably pink
-    border: 10px dashed yellow !important; // Should add a prominent yellow border to body
-  }
+    &.theme-dark {
+
+      @include define-theme-colors(colors.$palette-dark);
+
+    }
 }
 
 // Global styles (example)
