@@ -1,24 +1,11 @@
-/* SCSS Variables based on docs/style.md for Dark Theme */
-$primary-dark-bg: #212529; // Dark Grey
-$secondary-dark-bg: #343a40; // Slightly Lighter Grey
-$accent-dark: #0D6EFD; // Vibrant Blue
-$text-light: #F8F9FA; // Whit-ish / Light Grey
-$text-disabled: #999; // Placeholder for disabled text color
-
-/* Spacing Variables based on docs/style.md */
-$spacing-xx-small: 4px;
-$spacing-x-small: 8px;
-$spacing-medium: 16px; // 1rem
-$spacing-large: 24px; // 1.5rem
-
-$border-radius-standard: 8px; // Standard Radius from docs/style.md
+@import '../config/colors'; // Import color palette and spacing variables
 
 .navbar {
   display: flex;
   align-items: stretch;
   padding: $spacing-medium;
-  background-color: $primary-dark-bg;
-  color: $text-light;
+  background-color: map.get($palette-dark, primary-bg);
+  color: map.get($palette-dark, text);
   min-height: 150px;
 
   .profile-picture {
@@ -33,7 +20,8 @@ $border-radius-standard: 8px; // Standard Radius from docs/style.md
       height: calc(100% - (#{$spacing-medium} * 2));
       max-width: 150px;
       object-fit: cover;
-      border: 3px solid $accent-dark;
+      border: 3px solid map.get($palette-dark, accent);
+
       // border-radius: 50%; // Uncomment if a circular avatar is desired
     }
   }
@@ -60,11 +48,11 @@ $border-radius-standard: 8px; // Standard Radius from docs/style.md
 
     h2 {
       font-size: $spacing-large; // Use spacing var for font size as per typography
-      color: $text-light;
+      color: map.get($palette-dark, text);
     }
 
     p {
-      color: $text-light;
+      color: map.get($palette-dark, text);
       margin-bottom: $spacing-x-small;
     }
 
@@ -82,18 +70,18 @@ $border-radius-standard: 8px; // Standard Radius from docs/style.md
 
       a {
         text-decoration: none;
-        color: $text-light;
+        color: map.get($palette-dark, text);
         padding: $spacing-x-small $spacing-medium;
-        background-color: $secondary-dark-bg;
-        border: 1px solid $accent-dark;
+        background-color: map.get($palette-dark, secondary-bg);
+        border: 1px solid map.get($palette-dark, accent);
         border-radius: $border-radius-standard;
         transition: all 300ms ease-in-out; // Standard Transition from docs/style.md
 
         &.disabled {
-          color: $text-disabled;
+          color: map.get($palette-dark, text-disabled);
           pointer-events: none;
-          background-color: $primary-dark-bg;
-          border-color: $secondary-dark-bg;
+          background-color: map.get($palette-dark, primary-bg);
+          border-color: map.get($palette-dark, secondary-bg);
         }
       }
     }
