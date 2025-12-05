@@ -1,5 +1,4 @@
-export interface Resume {
-  profile: Profile;
+export interface Resume extends Profile {
   experiences: Experience[];
   educations: Education[];
   skills: Skill[];
