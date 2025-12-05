@@ -19,10 +19,8 @@
       width: auto;
       height: calc(100% - (#{spacing.$spacing-medium} * 2));
       max-width: 150px;
-      object-fit: cover;
-      border: 1px solid var(--accent);
-
-      // border-radius: 50%; // Uncomment if a circular avatar is desired
+      border: 1px solid var(--secondary-bg);
+      border-radius: 5%;
     }
   }
 
