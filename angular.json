@@ -30,9 +30,9 @@
                 "input": "public"
               },
               {
-                "glob": "favicon.ico",
+                "glob": "**/*",
                 "input": "src/assets",
-                "output": "/"
+                "output": "assets"
               }
             ],
             "styles": ["src/styles.scss"]

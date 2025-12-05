@@ -1,7 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { Resume } from '../../core/models/resume.models';
-import { PROFILE_CONFIG } from '../../../config/profile'; // Corrected path
-import { RESUME_DATA } from '../../data/resume.data';
+import { Resume } from './resume.models';
+import { PROFILE_CONFIG } from './config/profile'; // Corrected path
+import { RESUME_DATA } from './resume.data';
 
 @Injectable({
   providedIn: 'root',

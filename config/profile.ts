@@ -1,6 +1,6 @@
 // config/profile.ts
 export const PROFILE_CONFIG = {
-  profilePicturePath: 'profile-picture.jpg', // Path relative to the build output
+  profilePicturePath: 'assets/profile-picture.jpg', // Path relative to the build output
   name: 'John Doe',
   title: 'Senior Software Engineer',
   summary:
