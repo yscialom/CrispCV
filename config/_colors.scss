@@ -1,0 +1,21 @@
+// src/app/config/_colors.scss
+
+// Color Palettes based on docs/style.md
+
+// Dark Theme Palette
+$palette-dark: (
+  primary-bg: #212529,
+  secondary-bg: #343a40,
+  accent: #0d6efd,
+  text: #f8f9fa,
+  text-disabled: #999,
+);
+
+// Light Theme Palette
+$palette-light: (
+  primary-bg: #fff,
+  secondary-bg: #f8f9fa,
+  accent: #ffc107,
+  text: #212529,
+  text-disabled: #ccc,
+);

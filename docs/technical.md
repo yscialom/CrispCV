@@ -161,5 +161,5 @@ All styling is written in SCSS to leverage its advanced features and promote mai
 
 To promote consistency and allow for user-specific customization, global configuration variables are stored in dedicated SCSS files.
 
--   **Color Palettes (`_colors.scss`):** Global color definitions for both light and dark themes are located at the root of the Git repository in `config/_colors.scss`. This allows developers to easily adjust core theme colors without modifying the application's source code.
--   **Spacing and Layout Variables (`_spacing.scss`):** Variables related to spacing, font sizes, and common layout values are located within the application's source code at `src/app/config/_spacing.scss`. These are application-specific design tokens.
+- **Color Palettes (`_colors.scss`):** Global color definitions for both light and dark themes are located at the root of the Git repository in `config/_colors.scss`. This allows developers to easily adjust core theme colors without modifying the application's source code.
+- **Spacing and Layout Variables (`_spacing.scss`):** Variables related to spacing, font sizes, and common layout values are located within the application's source code at `src/app/config/_spacing.scss`. These are application-specific design tokens.
