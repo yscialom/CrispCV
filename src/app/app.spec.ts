@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-import { ResumeDataService } from '../../resume-data.service'; // Adjust path
+import { ResumeDataService } from './core/services/resume-data.service';
 import { signal, computed } from '@angular/core';
 
 describe('App', () => {
@@ -24,9 +24,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [
-        { provide: ResumeDataService, useValue: mockResumeDataService },
-      ],
+      providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
     }).compileComponents();
   });
 
