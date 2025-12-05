@@ -6,9 +6,9 @@ export interface Resume {
 }
 
 export interface Profile {
-  name: string;
-  title: string;
-  summary: string;
+  name?: string;
+  title?: string;
+  summary?: string;
   email: string;
   phone: string;
   website: string;
