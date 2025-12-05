@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@use '../../config/_colors.scss' as colors;
+@use '../config/_colors.scss' as colors;
 
 // Mixin to define CSS custom properties from a color palette map
 @mixin define-theme-colors($palette) {
@@ -25,7 +25,8 @@ body {
 }
 
 // Global styles (example)
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -34,7 +35,12 @@ html, body {
 }
 
 // Basic element styling to use theme variables
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text);
 }
 
