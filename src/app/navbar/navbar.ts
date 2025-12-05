@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ResumeDataService } from '../../core/services/resume-data.service';
+import { ResumeDataService } from '../core/services/resume-data.service';
 
 @Component({
   selector: 'app-navbar',

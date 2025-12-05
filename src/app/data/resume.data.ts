@@ -1,4 +1,4 @@
-import { Resume } from './resume.models';
+import { Resume } from '../core/models/resume.models';
 
 export const RESUME_DATA: Resume = {
   profile: {
