@@ -13,7 +13,7 @@ export interface Profile {
   phone: string;
   website: string;
   location: string;
-  profilePicturePath: string;
+  profilePicturePath?: string;
 }
 
 export interface Experience {
