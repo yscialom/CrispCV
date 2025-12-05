@@ -1,27 +1,28 @@
-@import '../config/colors'; // Import color palette variables
-@import '../config/spacing'; // Import spacing and border-radius variables
+@use "sass:map";
+@use '../../../config/colors' as colors; // Import color palette variables
+@use '../config/spacing' as spacing; // Import spacing and border-radius variables
 
 .navbar {
   display: flex;
   align-items: stretch;
-  padding: $spacing-medium;
-  background-color: map.get($palette-dark, primary-bg);
-  color: map.get($palette-dark, text);
+  padding: spacing.$spacing-medium;
+  background-color: map.get(colors.$palette-dark, primary-bg);
+  color: map.get(colors.$palette-dark, text);
   min-height: 150px;
 
   .profile-picture {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: $spacing-medium;
+    margin-right: spacing.$spacing-medium;
     flex-shrink: 0;
 
     img {
       width: auto;
-      height: calc(100% - (#{$spacing-medium} * 2));
+      height: calc(100% - (#{spacing.$spacing-medium} * 2));
       max-width: 150px;
       object-fit: cover;
-      border: 3px solid map.get($palette-dark, accent);
+      border: 3px solid map.get(colors.$palette-dark, accent);
 
       // border-radius: 50%; // Uncomment if a circular avatar is desired
     }
@@ -31,9 +32,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: $spacing-medium;
+    gap: spacing.$spacing-medium;
     flex-grow: 1;
-    padding-left: $spacing-medium;
+    padding-left: spacing.$spacing-medium;
 
     h1,
     h2,
@@ -44,17 +45,17 @@
     }
 
     h1 {
-      margin-bottom: $spacing-x-small;
+      margin-bottom: spacing.$spacing-x-small;
     }
 
     h2 {
-      font-size: $spacing-large; // Use spacing var for font size as per typography
-      color: map.get($palette-dark, text);
+      font-size: spacing.$spacing-large; // Use spacing var for font size as per typography
+      color: map.get(colors.$palette-dark, text);
     }
 
     p {
-      color: map.get($palette-dark, text);
-      margin-bottom: $spacing-x-small;
+      color: map.get(colors.$palette-dark, text);
+      margin-bottom: spacing.$spacing-x-small;
     }
 
     nav {
@@ -66,23 +67,23 @@
         margin: 0;
         padding: 0;
         justify-content: flex-start;
-        gap: $spacing-medium;
+        gap: spacing.$spacing-medium;
       }
 
       a {
         text-decoration: none;
-        color: map.get($palette-dark, text);
-        padding: $spacing-x-small $spacing-medium;
-        background-color: map.get($palette-dark, secondary-bg);
-        border: 1px solid map.get($palette-dark, accent);
-        border-radius: $border-radius-standard;
+        color: map.get(colors.$palette-dark, text);
+        padding: spacing.$spacing-x-small spacing.$spacing-medium;
+        background-color: map.get(colors.$palette-dark, secondary-bg);
+        border: 1px solid map.get(colors.$palette-dark, accent);
+        border-radius: spacing.$border-radius-standard;
         transition: all 300ms ease-in-out; // Standard Transition from docs/style.md
 
         &.disabled {
-          color: map.get($palette-dark, text-disabled);
+          color: map.get(colors.$palette-dark, text-disabled);
           pointer-events: none;
-          background-color: map.get($palette-dark, primary-bg);
-          border-color: map.get($palette-dark, secondary-bg);
+          background-color: map.get(colors.$palette-dark, primary-bg);
+          border-color: map.get(colors.$palette-dark, secondary-bg);
         }
       }
     }
