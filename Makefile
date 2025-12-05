@@ -8,12 +8,7 @@ PROD_CONTAINER_NAME := $(PROD_IMAGE_NAME)
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
 
-# --- Phony Targets ---
-.PHONY: all help usage build build-app start stop clean dist-clean build-prod-image start-prod stop-prod lint format
-
-all: build
-	@echo "Application built. The 'dist' directory is ready."
-	@echo "Run 'make start' to start the development server."
+.PHONY: all help usage build build-app start stop test clean dist-clean build-prod-image start-prod stop-prod lint format
 
 help: usage
 
@@ -28,6 +23,7 @@ usage:
 	@echo "  make build               Builds the application, creating a 'dist/' directory on the host."
 	@echo "  make start               Start the development server with live-reload on http://localhost:4200."
 	@echo "  make stop                Stop the development server."
+	@echo "  make test                Run unit tests."
 	@echo "  make clean               Remove intermediary build files (node_modules, .angular)."
 	@echo "  make dist-clean          Remove all produced files (dist) and intermediary files."
 	@echo ""
@@ -40,6 +36,12 @@ usage:
 	@echo "  make start-prod          Run the production container on http://localhost:8080."
 	@echo "  make stop-prod           Stop the production container."
 	@echo ""
+
+
+# Run unit tests
+test:
+	@echo "Running unit tests (via Docker)..."
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng test"
 
 
 
