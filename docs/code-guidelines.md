@@ -51,6 +51,8 @@ ESLint is configured via `.eslintrc.json`, extending recommended rules from `@an
 
 TypeScript type checking is an integral part of the build process and is configured in `tsconfig.json` and `tsconfig.app.json`. Ensure that your code compiles without type errors.
 
+**Explicit Typing**: Prioritize explicit type annotations for variables, function arguments, and return values. While TypeScript's type inference is powerful, explicitly declared types enhance readability, prevent subtle errors, and ensure stricter adherence to design intentions. Only omit explicit types where inference leads to a more generic or equally clear type, or when dealing with complex object literals where inference is precise and exhaustive.
+
 ## 4. Naming Conventions
 
 - **Variables and Functions**: `camelCase` (e.g., `myVariable`, `calculateTotal`).

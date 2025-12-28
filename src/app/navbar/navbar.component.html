@@ -1,0 +1,17 @@
+<header class="navbar">
+  <div class="profile-picture">
+    <img [src]="profile().profilePicturePath" alt="Profile picture" />
+  </div>
+  <div class="profile-content">
+    <h1>{{ profile().name }}</h1>
+    <h2>{{ profile().title }}</h2>
+    <p>{{ profile().summary }}</p>
+    <nav>
+      <ul>
+        <li><a href="#" class="disabled">Experience</a></li>
+        <li><a href="#" class="disabled">Education</a></li>
+        <li><a href="#" class="disabled">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

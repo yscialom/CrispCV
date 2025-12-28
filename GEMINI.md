@@ -31,6 +31,20 @@ Neither node nor npm is installed on the developpent building system, docker mus
 
 See docs/docker.md for more information.
 
+## Configuration
+
+This project allows for easy customization through configuration files.
+See docs/config.md for more information.
+
 ## Features
 
 Features are specified and managed into docs/specs.md.
+
+## Development Process
+
+All new features and bug fixes must follow this process:
+
+1.  **Document the User Story:** A clear and concise User Story must be added to `docs/specs.md`.
+2.  **Create a Feature Branch:** A dedicated Git branch must be created for the new feature or bug fix. The branch name should be looked up in `docs/specs.md`.
+3.  **Implement the Feature/Bugfix:** Write the code, including unit tests.
+4.  **Create a Pull Request:** Once the implementation is complete, a Pull Request should be created to merge the changes into the `main` branch.

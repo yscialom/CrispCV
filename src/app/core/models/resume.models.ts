@@ -1,18 +1,18 @@
-export interface Resume {
-  profile: Profile;
+export interface Resume extends Profile {
   experiences: Experience[];
   educations: Education[];
   skills: Skill[];
 }
 
 export interface Profile {
-  name: string;
-  title: string;
-  summary: string;
+  name?: string;
+  title?: string;
+  summary?: string;
   email: string;
   phone: string;
   website: string;
   location: string;
+  profilePicturePath?: string;
 }
 
 export interface Experience {
@@ -34,5 +34,5 @@ export interface Education {
 
 export interface Skill {
   name: string;
-  level: number; // 1-5
+  level: number;
 }

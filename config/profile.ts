@@ -1,16 +1,16 @@
-import { Resume } from './resume.models';
+import { Resume } from '../src/app/core/models/resume.models';
 
-export const RESUME_DATA: Resume = {
-  profile: {
-    name: 'John Doe',
-    title: 'Senior Software Engineer',
-    summary:
-      'A passionate and experienced software engineer with a focus on building high-quality, scalable, and maintainable applications.',
-    email: 'john.doe@example.com',
-    phone: '+1 123-456-7890',
-    website: 'https://johndoe.dev',
-    location: 'San Francisco, CA',
-  },
+export const PROFILE_CONFIG: Resume = {
+  profilePicturePath: 'profile-picture.jpg',
+  name: 'Yankel Scialom',
+  title: 'Senior Software Engineer',
+  summary:
+    'A passionate and experienced software engineer with a focus on building high-quality, scalable, and maintainable applications.',
+  email: 'john.doe@example.com',
+  phone: '+1 123-456-7890',
+  website: 'https://johndoe.dev',
+  location: 'San Francisco, CA',
+
   experiences: [
     {
       title: 'Senior Software Engineer',

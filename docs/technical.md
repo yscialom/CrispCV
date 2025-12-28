@@ -48,8 +48,8 @@ src/app/
 - **Data Source:** All résumé data is sourced from a single TypeScript file: `src/app/data/resume.data.ts`. This file exports the data structure as a constant, ensuring it's loaded at runtime.
 - **State Service:** A singleton service, `ResumeDataService`, is the single source of truth for application state. It imports the data from `resume.data.ts` and stores it in **Signals**.
 - **Data Flow:** Components access data exclusively through one of two mechanisms:
-  1.  **`inject()`:** For direct access to the `ResumeDataService` within a component's constructor context.
-  2.  **`input()`:** For parent components to pass slices of data down to child components using Angular's new input signal function.
+  1.  `inject()`: For direct access to the `ResumeDataService` within a component's constructor context.
+  2.  `input()`: For parent components to pass slices of data down to child components using Angular's new input signal function.
 
 ## 4. Unit Testing
 
@@ -133,10 +133,14 @@ We adhere to the strictest TypeScript settings to ensure maximum type safety and
   - `PascalCase` for types, interfaces, classes, and enums.
   - `camelCase` for functions and variables.
   - Private properties must use the `private` keyword and should not be prefixed with an underscore.
+- **Explicit Generics:** Always provide an explicit generic type for functions and classes that accept them (e.g., `signal<string>('val')`, `computed<number>(...)`) unless silencing the explicit type intentionally provides a desired level of genericity.
+- **Explicit Function Types:** All function and method arguments and return values must be explicitly typed, even if the type can be inferred. The only exception is when implicit typing is required for genericity or creates a more precise inferred type (e.g., in some complex RxJS operators or functional composition).
 
 ## 7. HTML & Template Guidelines
 
-HTML templates must be clean, semantic, and highly accessible.
+HTML templates must be clean, semantic, highly accessible, and as simple as possible in their structure, minimizing unnecessary nesting to enhance readability and maintainability.
+
+- **Minimal Nesting:** Strive for the simplest possible HTML structure. Avoid excessive `div` nesting where a more semantic tag or direct placement of content would suffice. This improves readability and simplifies CSS targeting.
 
 - **Semantic HTML:** Always use appropriate HTML5 elements (`<nav>`, `<main>`, `<section>`, `<article>`, etc.) to accurately represent the structure and meaning of the content.
 - **Accessibility (A11y):** All templates must be fully accessible. This includes providing `alt` attributes for images, using ARIA attributes where semantic HTML is insufficient, and ensuring form controls are properly labeled.
@@ -145,10 +149,19 @@ HTML templates must be clean, semantic, and highly accessible.
 
 ## 8. CSS (SCSS) Guidelines
 
-All styling is written in SCSS to leverage its advanced features and promote maintainable, scalable CSS.
+All styling is written in SCSS to leverage its advanced features and promote maintainable, scalable, simple, and readable CSS.
+
+- **Readability & Simplicity:** Prioritize clear, straightforward selectors. While SCSS nesting is powerful, avoid overly deep or complex nesting that can hinder readability and lead to specificity issues. Aim for a flat structure where appropriate, leveraging variables and mixins for efficiency rather than complex selectors.
 
 - **Scoped Styles:** Always use Angular's built-in style encapsulation. Global styles should be avoided and reserved only for foundational theme setup (e.g., fonts, theme colors).
 - **BEM Naming Convention:** Adhere to the Block, Element, Modifier (BEM) methodology for naming CSS classes (e.g., `.resume-card__title--highlighted`). This creates a clear, hierarchical, and conflict-free styling system.
 - **SCSS Features:** Leverage SCSS variables, nesting, and mixins to write DRY (Don't Repeat Yourself) code.
-- **Units:** Use `rem` for scalable properties like `font-size`, `margin`, and `padding`. Use `px` only for properties that must remain fixed, such as `border-width`.
+- **Units:** Use `rem` for scalable properties like `font-size`, `margin`, and `padding`. Use `px` only for properties that must remain fixed, suchs as `border-width`.
 - **No Magic Numbers:** All colors, font families, font sizes, and spacing units must be sourced from a central SCSS variables file that reflects the design tokens in `docs/style.md`.
+
+## 9. Configuration Files
+
+To promote consistency and allow for user-specific customization, global configuration variables are stored in dedicated SCSS files.
+
+- **Color Palettes (`_colors.scss`):** Global color definitions for both light and dark themes are located at the root of the Git repository in `config/_colors.scss`. This allows developers to easily adjust core theme colors without modifying the application's source code.
+- **Spacing and Layout Variables (`_spacing.scss`):** Variables related to spacing, font sizes, and common layout values are located within the application's source code at `src/app/config/_spacing.scss`. These are application-specific design tokens.
