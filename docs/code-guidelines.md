@@ -68,11 +68,19 @@ TypeScript type checking is an integral part of the build process and is configu
 
 ## 6. Angular Specific Guidelines
 
-- **Components**: Keep components focused on a single responsibility.
+- **Components**:
+  - Keep components focused on a single responsibility.
+  - Use **Standalone Components** for all new development.
+  - Apply `changeDetection: ChangeDetectionStrategy.OnPush` to all components for optimal performance.
+  - Prioritize "dumb" (presentation) vs "smart" (container) component architecture.
+- **Signals & Inputs**:
+  - **Signals**: Embrace Angular Signals for all local state and reactivity.
+  - **Inputs**: Use **Signal Inputs** (`input()`, `input.required()`) instead of the `@Input()` decorator.
+  - **Outputs**: Use `output()` instead of `@Output()` where applicable.
+- **Control Flow**:
+  - Use the new built-in control flow syntax (`@if`, `@for`, `@switch`) instead of structural directives (`*ngIf`, `*ngFor`, `*ngSwitch`).
 - **Services**: Use services for shared logic, data retrieval, and business rules.
-- **Modules**: Keep modules small and feature-oriented.
-- **Signals**: Embrace Angular Signals for reactivity.
-- **Zoneless**: Develop with zoneless change detection in mind for optimal performance.
+- **Zoneless**: Develop with zoneless change detection in mind.
 
 ## 7. Git Commit Messages
 
