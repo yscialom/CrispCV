@@ -1,0 +1,77 @@
+@use '../../../config/spacing' as spacing;
+
+.experience-section {
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: spacing.$spacing-x-large;
+    margin-bottom: spacing.$spacing-large;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacing-x-large;
+  }
+
+  .experience-item {
+    padding: spacing.$spacing-medium;
+    background-color: var(--secondary-bg);
+    border-radius: spacing.$border-radius-standard;
+    transition: all 300ms ease-in-out;
+    border-left: 4px solid var(--accent);
+
+    &:hover {
+      box-shadow: spacing.$shadow-standard;
+      transform: translateY(-2px);
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: spacing.$spacing-medium;
+      flex-wrap: wrap;
+      gap: spacing.$spacing-small;
+
+      .title-company {
+        h3 {
+          margin: 0;
+          font-size: spacing.$spacing-large;
+          color: var(--text);
+        }
+
+        .company {
+          font-weight: bold;
+          color: var(--accent);
+        }
+      }
+
+      .location-date {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 0.875rem;
+        color: var(--text);
+
+        @media (width <= 600px) {
+          align-items: flex-start;
+        }
+      }
+    }
+
+    .description {
+      margin: 0;
+      padding-left: spacing.$spacing-large;
+      list-style-type: square;
+
+      li {
+        margin-bottom: spacing.$spacing-x-small;
+        line-height: 1.5;
+      }
+    }
+  }
+}

@@ -8,7 +8,15 @@
     <p>{{ profile().summary }}</p>
     <nav>
       <ul>
-        <li><a href="#" class="disabled">Experience</a></li>
+        <li>
+          <a
+            routerLink="/experience"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Experience
+          </a>
+        </li>
         <li><a href="#" class="disabled">Education</a></li>
         <li><a href="#" class="disabled">About</a></li>
       </ul>

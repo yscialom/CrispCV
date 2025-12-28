@@ -1,0 +1,24 @@
+<section class="experience-section">
+  <h2>Professional Experience</h2>
+  <div class="experience-list">
+    @for (exp of experiences(); track exp.title) {
+      <article class="experience-item">
+        <header class="experience-header">
+          <div class="title-company">
+            <h3>{{ exp.title }}</h3>
+            <span class="company">{{ exp.company }}</span>
+          </div>
+          <div class="location-date">
+            <span class="location">{{ exp.location }}</span>
+            <span class="dates">{{ exp.startDate }} - {{ exp.endDate }}</span>
+          </div>
+        </header>
+        <ul class="description">
+          @for (line of exp.description; track line) {
+            <li>{{ line }}</li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+</section>
