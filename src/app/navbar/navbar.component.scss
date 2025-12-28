@@ -1,4 +1,4 @@
-@use '../config/spacing' as spacing; // Import spacing and border-radius variables
+@use '../../../config/spacing' as spacing;
 
 .navbar {
   display: flex;
@@ -19,7 +19,7 @@
       width: auto;
       height: calc(100% - (#{spacing.$spacing-medium} * 2));
       max-width: 150px;
-      border: 1px solid var(--secondary-bg);
+      border: 1px solid var(--accent);
       border-radius: 5%;
     }
   }
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: spacing.$spacing-medium;
+    gap: spacing.$spacing-large;
     flex-grow: 1;
     padding-left: spacing.$spacing-medium;
 
@@ -40,18 +40,13 @@
       text-align: left;
     }
 
-    h1 {
-      margin-bottom: spacing.$spacing-x-small;
-    }
-
     h2 {
-      font-size: spacing.$spacing-large; // Use spacing var for font size as per typography
+      font-size: spacing.$spacing-large;
       color: var(--text);
     }
 
     p {
       color: var(--text);
-      margin-bottom: spacing.$spacing-x-small;
     }
 
     nav {
@@ -73,7 +68,7 @@
         background-color: var(--secondary-bg);
         border: 1px solid var(--accent);
         border-radius: spacing.$border-radius-standard;
-        transition: all 300ms ease-in-out; // Standard Transition from docs/style.md
+        transition: all 300ms ease-in-out;
 
         &.disabled {
           color: var(--text-disabled);

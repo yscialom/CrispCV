@@ -1,19 +1,16 @@
-// config/profile.ts
 import { Resume } from '../src/app/core/models/resume.models';
 
 export const PROFILE_CONFIG: Resume = {
-  profilePicturePath: 'profile-picture.jpg', // Path relative to the build output
+  profilePicturePath: 'profile-picture.jpg',
   name: 'Yankel Scialom',
   title: 'Senior Software Engineer',
   summary:
     'A passionate and experienced software engineer with a focus on building high-quality, scalable, and maintainable applications.',
-  // Additional profile fields from resume.data.ts
   email: 'john.doe@example.com',
   phone: '+1 123-456-7890',
   website: 'https://johndoe.dev',
   location: 'San Francisco, CA',
 
-  // Resume content sections from resume.data.ts
   experiences: [
     {
       title: 'Senior Software Engineer',

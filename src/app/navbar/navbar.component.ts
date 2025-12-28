@@ -3,8 +3,8 @@ import { ResumeDataService } from '../core/services/resume-data.service';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.html',
-  styleUrls: ['./navbar.scss'],
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 
   standalone: true,
 })

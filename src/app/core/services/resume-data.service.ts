@@ -8,7 +8,6 @@ import { PROFILE_CONFIG } from '../../../../config/profile';
 export class ResumeDataService {
   private readonly resumeConfig = signal<Resume>(PROFILE_CONFIG as Resume);
 
-  // Directly expose parts of PROFILE_CONFIG via resumeConfig signal
   public readonly profile = computed<Profile>(() => this.resumeConfig() as Profile);
   public readonly experiences = computed(() => this.resumeConfig().experiences);
   public readonly educations = computed(() => this.resumeConfig().educations);

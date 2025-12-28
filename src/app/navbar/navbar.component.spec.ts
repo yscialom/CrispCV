@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavbarComponent } from './navbar';
+import { NavbarComponent } from './navbar.component';
 import { Profile } from '../core/models/resume.models';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { signal, computed } from '@angular/core';
