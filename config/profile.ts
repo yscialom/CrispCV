@@ -31,9 +31,9 @@ export const PROFILE_CONFIG: Resume = {
       startDate: '2023-06',
       endDate: '2025-03',
       description: [
-        'Release Manager d\'Orchestrade pour CACIB ainsi que des ses logiciels et services annexes.',
+        "Release Manager d'Orchestrade pour CACIB ainsi que des ses logiciels et services annexes.",
         'Stratégie de release : objectif qualité maximale & time-to-market minimal.',
-        'Culture : promotion de la responsabilisation par l\'implication de tous aux prises de décisions.',
+        "Culture : promotion de la responsabilisation par l'implication de tous aux prises de décisions.",
         'Processus : du développement au déploiement en accord avec notre stratégie et notre culture.',
         'Animation : synchronisation et accompagnement des 15 équipes de développement.',
         'Priorisation : stabilité vs urgence vs cas et projets particuliers.',
@@ -47,11 +47,11 @@ export const PROFILE_CONFIG: Resume = {
       endDate: '2023-05',
       description: [
         'Project Manager des projets issues de la redéfinition de la stratégie SOC de la Société Générale.',
-        'Études d\'opportunités.',
+        "Études d'opportunités.",
         'Cadrage, lancement, suivi et clôture des projets de transformation.',
-        'Appels d\'offre.',
-        'Management transverse d\'équipes.',
-        'Gestion des budgets (millions d\'euros pour 2023).',
+        "Appels d'offre.",
+        "Management transverse d'équipes.",
+        "Gestion des budgets (millions d'euros pour 2023).",
       ],
     },
     {
@@ -63,8 +63,8 @@ export const PROFILE_CONFIG: Resume = {
       description: [
         'Chef de projets techniques.',
         'Release Management : planification, suivi, communication.',
-        'Création et évolutions d\'infrastructures : priorisation, planification & suivi des développements.',
-        'Mise en place d\'une nouvelle technologie de grille de calcul distribué chez Natixis : GridGain.',
+        "Création et évolutions d'infrastructures : priorisation, planification & suivi des développements.",
+        "Mise en place d'une nouvelle technologie de grille de calcul distribué chez Natixis : GridGain.",
         'Scrum Master : Respect de SAFe et Scrum (PI, Sprint planning, rétro...).',
         'Stack: Scala/Java, C++, Python, Kafka, Jenkins, XL Deploy, GridGain, PostgreSQL.',
       ],
@@ -76,9 +76,9 @@ export const PROFILE_CONFIG: Resume = {
       startDate: '2018-03',
       endDate: '2019-05',
       description: [
-        'Scrum Master : Kickoff Scrum de l\'équipe, Sensibilisation et suivi des membres de l\'équipe, Accompagnement du PO.',
+        "Scrum Master : Kickoff Scrum de l'équipe, Sensibilisation et suivi des membres de l'équipe, Accompagnement du PO.",
         'Tech lead : Modernisation des outils de développement (svn -> git, C++98 -> C++14, Redhat 5 -> 7).',
-        'Mise en place de l\'intégration continue (Jenkins, GitLab CI) et Docker.',
+        "Mise en place de l'intégration continue (Jenkins, GitLab CI) et Docker.",
         'Stack: RedHat, C++14, PostgreSQL, Docker.',
       ],
     },
@@ -89,8 +89,8 @@ export const PROFILE_CONFIG: Resume = {
       startDate: '2015-01',
       endDate: '2018-02',
       description: [
-        'Conception et développement d\'applications bancaires temps-réel à haute disponibilité : Apple Pay & Paylib.',
-        'Intégration d\'Apple Pay dans le réseau d\'autorisation bancaire français.',
+        "Conception et développement d'applications bancaires temps-réel à haute disponibilité : Apple Pay & Paylib.",
+        "Intégration d'Apple Pay dans le réseau d'autorisation bancaire français.",
         'Développement C++98 du TSP. Secure Coding.',
         'Profiling des applications : performance, memory leaks.',
         'Stack: C++98, Redhat Linux, Multithreading, TCP.',
@@ -123,7 +123,7 @@ export const PROFILE_CONFIG: Resume = {
   ],
   educations: [
     {
-      degree: 'Diplôme d\'ingénieur, Technologies mobiles et systèmes embarqués',
+      degree: "Diplôme d'ingénieur, Technologies mobiles et systèmes embarqués",
       institution: 'Université de Technologie de Troyes',
       location: 'Troyes, France',
       startDate: '2006',

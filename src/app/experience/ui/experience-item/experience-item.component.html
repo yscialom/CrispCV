@@ -1,0 +1,17 @@
+<article class="experience-item">
+  <header class="experience-header">
+    <div class="title-company">
+      <h3>{{ experience().title }}</h3>
+      <span class="company">{{ experience().company }}</span>
+    </div>
+    <div class="location-date">
+      <span class="location">{{ experience().location }}</span>
+      <span class="dates">{{ experience().startDate }} - {{ experience().endDate }}</span>
+    </div>
+  </header>
+  <ul class="description">
+    @for (line of experience().description; track line) {
+      <li>{{ line }}</li>
+    }
+  </ul>
+</article>
