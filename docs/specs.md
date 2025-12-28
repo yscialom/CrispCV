@@ -87,8 +87,27 @@ Each feature is documented in its own section. A feature section is a level-2 he
 **Branch**
 : `feature/3-navbar`
 
+**Release**
+:
+
+---
+
+## Experience Page
+
+**ID**
+: `4`
+
+**Description**
+: Implement the "Experience" page, accessible via the "Experience" link in the top navbar. This page displays the professional experiences from the configuration file, including job title, company, location, dates, and description responsibilities. The layout adheres to the application's style guidelines (flat, clean, accessible) and responsive design.
+
+**Status**
+: `wip`
+
+**Branch**
+: `feature/4-experience-page`
+
 **PR**
-: #1
+:
 
 **Release**
 :
