@@ -21,7 +21,7 @@ describe('NavbarComponent', () => {
   });
 
   const mockResumeDataService = {
-    profile: computed(() => mockProfile()),
+    profile: computed<Profile>(() => mockProfile()),
     // Other properties of ResumeDataService if needed by NavbarComponent
   };
 

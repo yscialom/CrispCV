@@ -133,6 +133,8 @@ We adhere to the strictest TypeScript settings to ensure maximum type safety and
   - `PascalCase` for types, interfaces, classes, and enums.
   - `camelCase` for functions and variables.
   - Private properties must use the `private` keyword and should not be prefixed with an underscore.
+- **Explicit Generics:** Always provide an explicit generic type for functions and classes that accept them (e.g., `signal<string>('val')`, `computed<number>(...)`) unless silencing the explicit type intentionally provides a desired level of genericity.
+- **Explicit Function Types:** All function and method arguments and return values must be explicitly typed, even if the type can be inferred. The only exception is when implicit typing is required for genericity or creates a more precise inferred type (e.g., in some complex RxJS operators or functional composition).
 
 ## 7. HTML & Template Guidelines
 

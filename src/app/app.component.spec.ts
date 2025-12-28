@@ -18,7 +18,7 @@ describe('AppComponent', () => {
   });
 
   const mockResumeDataService = {
-    profile: computed(() => mockProfile()),
+    profile: computed<Profile>(() => mockProfile()),
     // Add other mocked properties if App directly uses them
   };
 
