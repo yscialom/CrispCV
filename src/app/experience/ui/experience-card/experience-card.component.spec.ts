@@ -93,8 +93,12 @@ describe('ExperienceCardComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const missionElements = compiled.querySelectorAll('.experience-card__mission');
     expect(missionElements.length).toBe(1);
-    expect(missionElements[0].querySelector('.experience-card__mission-title')?.textContent).toContain('Mission 1');
-    expect(missionElements[0].querySelector('.experience-card__mission-description')?.textContent).toContain('Desc 1');
+    expect(
+      missionElements[0].querySelector('.experience-card__mission-title')?.textContent,
+    ).toContain('Mission 1');
+    expect(
+      missionElements[0].querySelector('.experience-card__mission-description')?.textContent,
+    ).toContain('Desc 1');
   });
 
   it('should render keywords correctly', () => {
