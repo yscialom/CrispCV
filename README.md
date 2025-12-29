@@ -4,15 +4,15 @@ A professional, customizable, and high-performance single-page application (SPA)
 
 ## 🚀 Features
 
--   **Modern Stack**: Angular 21+, Standalone Components, Signals for state management.
--   **Clean Design**: "Showcase Quality Code" philosophy, responsive layout, dark/light theme support.
--   **Configurable**: Easily customize colors, content, and layout without touching core logic.
--   **Dockerized**: Zero-dependency development environment – just bring Docker and Make.
+- **Modern Stack**: Angular 21+, Standalone Components, Signals for state management.
+- **Clean Design**: "Showcase Quality Code" philosophy, responsive layout, dark/light theme support.
+- **Configurable**: Easily customize colors, content, and layout without touching core logic.
+- **Dockerized**: Zero-dependency development environment – just bring Docker and Make.
 
 ## 🛠 Prerequisites
 
--   **Docker**: For running the development environment and building the application.
--   **Make**: For executing project commands.
+- **Docker**: For running the development environment and building the application.
+- **Make**: For executing project commands.
 
 ## 🏃 Quick Start (Local Development)
 
@@ -71,7 +71,7 @@ If you have an existing web server (Nginx, Apache, AWS S3, GitHub Pages, etc.):
 
 ## 📚 Documentation
 
--   [Features & Specs](docs/specs.md)
--   [Technical Guidelines](docs/technical.md)
--   [Style Guide](docs/style.md)
--   [Docker Setup](docs/docker.md)
+- [Features & Specs](docs/specs.md)
+- [Technical Guidelines](docs/technical.md)
+- [Style Guide](docs/style.md)
+- [Docker Setup](docs/docker.md)
