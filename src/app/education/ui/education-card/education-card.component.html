@@ -1,0 +1,24 @@
+<article class="education-card">
+  <header class="education-card__header">
+    <div class="education-card__row">
+      <h3 class="education-card__degree">{{ education().degree }}</h3>
+      <span class="education-card__location">{{ education().location }}</span>
+    </div>
+
+    <div class="education-card__row">
+      <span class="education-card__institution">{{ education().institution }}</span>
+      <span class="education-card__dates">
+        {{ education().startDate }} - {{ education().endDate }}
+      </span>
+    </div>
+  </header>
+
+  @if (education().description) {
+    <hr class="education-card__separator" />
+
+    <div
+      class="education-card__description"
+      [innerHTML]="education().description | markdown"
+    ></div>
+  }
+</article>
