@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { ResumeDataService } from './core/services/resume-data.service';
 import { Profile } from './core/models/resume.models';
 import { signal, computed } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
   // Mock ResumeDataService
@@ -25,7 +26,10 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
+      providers: [
+        { provide: ResumeDataService, useValue: mockResumeDataService },
+        provideRouter([]),
+      ],
     }).compileComponents();
   });
 

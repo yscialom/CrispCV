@@ -1,0 +1,133 @@
+@use '../../../../../config/spacing' as spacing;
+
+.experience-card {
+  padding: spacing.$spacing-medium;
+  background-color: var(--secondary-bg);
+  border-radius: spacing.$border-radius-standard;
+  transition: all 300ms ease-in-out;
+  margin-bottom: spacing.$spacing-medium;
+  border-left: 4px solid var(--accent);
+
+  &:hover {
+    box-shadow: spacing.$shadow-standard;
+    transform: translateY(-2px);
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacing-xx-small;
+    margin-bottom: spacing.$spacing-small;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: spacing.$spacing-small;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  &__location {
+    font-size: 0.875rem;
+    color: var(--text);
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  &__company {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  &__dates {
+    font-size: 0.875rem;
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  &__keywords-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: spacing.$spacing-small;
+  }
+
+  &__keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: spacing.$spacing-x-small;
+    justify-content: flex-end;
+  }
+
+  &__keyword {
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 12px;
+    white-space: nowrap;
+    transition: all 200ms ease;
+    cursor: default;
+
+    &:hover {
+      background-color: var(--accent);
+      color: var(--primary-bg);
+    }
+  }
+
+  &__separator {
+    border: 0;
+    height: 1px;
+    background-color: var(--text);
+    opacity: 0.1;
+    margin: 0 0 spacing.$spacing-medium 0;
+  }
+
+  &__content {
+    margin-bottom: 0;
+  }
+
+  &__mission {
+    margin-bottom: spacing.$spacing-medium;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__mission-title {
+    margin: 0 0 spacing.$spacing-xx-small 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  &__mission-description {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+
+    ::ng-deep p {
+      margin: 0;
+    }
+
+    ::ng-deep ul {
+      margin: spacing.$spacing-xx-small 0;
+      padding-left: spacing.$spacing-large;
+    }
+
+    ::ng-deep li {
+      margin-bottom: spacing.$spacing-xx-small;
+    }
+  }
+}

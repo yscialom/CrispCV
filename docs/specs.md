@@ -17,7 +17,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
   - `idea`: A feature that has been proposed but not yet planned.
   - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented).
   - `wip`: The feature is currently in progress.
-  - `done`: The feature has been completed, tested, and merged.
+  - `done`: The feature has been completed, tested, and merged. **Note: A feature can only be set to `done` if explicitly asked by the user.**
 
 - **Branch**
   : The name of the git feature branch, formatted as `feature/<ID>-<short-description>` (e.g., `feature/42-make-coffee`).
@@ -87,8 +87,90 @@ Each feature is documented in its own section. A feature section is a level-2 he
 **Branch**
 : `feature/3-navbar`
 
+**Release**
+:
+
+---
+
+## Experience Page
+
+**ID**
+: `4`
+
+**Description**
+: Implement the "Experience" page, accessible via the "Experience" link in the top navbar. This page displays the professional experiences from the configuration file as a list of "Experience Cards".
+
+_Layout_:
+
+```text
++-----------------------------------------------------------------------+
+|  [Job Title]                                             [Location]   |
+|  [Company Name]                            [Date Range] ([Duration])  |
+|                                        (Keyword) (Keyword) (Keyword)  |
+|                     -------------------------                         |
+|  [Mission Title]                                                      |
+|  [Mission Description Paragraph...]                                   |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
+
+_Key Features_:
+
+- **Experience Card:** one card per job, one job having possibly multiple missions
+- **Duration Logic:**
+  - `> 10 years`: Round to full years (e.g., "12 years").
+  - `> 1 year`: Round to half years (e.g., "1.5 years").
+  - Otherwise: Full months (e.g., "8 months").
+- **Alignment:** Company name and Date/Duration share the same baseline.
+- **Keywords:** displayed as round-boxed items, right-justified.
+- **Description:** Structured into "Mission Title" and "Mission Description".
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/4-experience-page`
+
+---
+
+## Keyword-based Filtering and Statistics
+
+**ID**
+: `5`
+
+**Description**
+: Enhance keyword interactivity. Clicking a keyword highlights all experience cards sharing that keyword. Hovering over a keyword reveals a tooltip showing the total accumulated duration of experience for that specific skill across all positions.
+
+**Status**
+: `todo`
+
+**Branch**
+:
+
 **PR**
-: #1
+:
+
+**Release**
+:
+
+---
+
+## Experience Card Permalinks and Sharing
+
+**ID**
+: `6`
+
+**Description**
+: Implement deep-linking for experiences. Clicking an experience card updates the URL with a unique permalink and automatically copies the full link to the clipboard. The application should handle these permalinks on load by scrolling to the relevant card.
+
+**Status**
+: `todo`
+
+**Branch**
+:
+
+**PR**
+:
 
 **Release**
 :

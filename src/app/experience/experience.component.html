@@ -1,0 +1,8 @@
+<section class="experience-section">
+  <h2>Professional Experience</h2>
+  <div class="experience-list">
+    @for (exp of experiences(); track exp.title) {
+      <app-experience-card [experience]="exp" />
+    }
+  </div>
+</section>

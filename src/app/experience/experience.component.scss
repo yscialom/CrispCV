@@ -1,0 +1,19 @@
+@use '../../../config/spacing' as spacing;
+
+.experience-section {
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: spacing.$spacing-x-large;
+    margin-bottom: spacing.$spacing-large;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacing-x-large;
+  }
+}

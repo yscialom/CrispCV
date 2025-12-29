@@ -3,6 +3,7 @@ import { NavbarComponent } from './navbar.component';
 import { Profile } from '../core/models/resume.models';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { signal, computed } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
 describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
@@ -28,7 +29,10 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NavbarComponent], // Import standalone component
-      providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
+      providers: [
+        { provide: ResumeDataService, useValue: mockResumeDataService },
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarComponent);
