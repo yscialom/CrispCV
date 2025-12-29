@@ -14,11 +14,6 @@
   </header>
 
   @if (education().description) {
-    <hr class="education-card__separator" />
-
-    <div
-      class="education-card__description"
-      [innerHTML]="education().description | markdown"
-    ></div>
+    <div class="education-card__description" [innerHTML]="education().description | markdown"></div>
   }
 </article>

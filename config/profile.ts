@@ -277,6 +277,15 @@ export const PROFILE_CONFIG: Resume = {
       location: 'Troyes, France',
       startDate: '2006',
       endDate: '2012',
+      description: "_mineur en création d'entreprise et droit administratif_",
+    },
+    {
+      degree: 'Baccalauréat Scientifique, option Mathématique',
+      institution: 'Lycée Blaise Cendrars',
+      location: 'Sevran, Seine-Saint-Denis, France',
+      startDate: '2005',
+      endDate: '2005',
+      description: '_mention Bien_',
     },
     {
       degree: 'Physics (Continuing Studies)',
