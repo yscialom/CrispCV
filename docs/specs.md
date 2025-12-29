@@ -131,6 +131,12 @@ _Key Features_:
 **Branch**
 : `feature/4-experience-page`
 
+**PR**
+: `https://github.com/yscialom/vibed-resume/pull/2`
+
+**Release**
+:
+
 ---
 
 ## Keyword-based Filtering and Statistics
@@ -162,6 +168,28 @@ _Key Features_:
 
 **Description**
 : Implement deep-linking for experiences. Clicking an experience card updates the URL with a unique permalink and automatically copies the full link to the clipboard. The application should handle these permalinks on load by scrolling to the relevant card.
+
+**Status**
+: `todo`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## Sticky Navbar
+
+**ID**
+: `7`
+
+**Description**
+: Ensure the top navbar remains permanently visible at the top of the viewport even when the user scrolls down the page. This improves navigation accessibility by keeping key links and profile information always within reach. The implementation utilizes CSS sticky positioning.
 
 **Status**
 : `todo`

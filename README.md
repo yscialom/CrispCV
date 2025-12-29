@@ -1,59 +1,77 @@
-# ResumeApp
+# Angular Resume / Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+-   **Modern Stack**: Angular 21+, Standalone Components, Signals for state management.
+-   **Clean Design**: "Showcase Quality Code" philosophy, responsive layout, dark/light theme support.
+-   **Configurable**: Easily customize colors, content, and layout without touching core logic.
+-   **Dockerized**: Zero-dependency development environment – just bring Docker and Make.
 
-```bash
-ng serve
-```
+## 🛠 Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+-   **Docker**: For running the development environment and building the application.
+-   **Make**: For executing project commands.
 
-## Code scaffolding
+## 🏃 Quick Start (Local Development)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To start the development server with live reload:
 
 ```bash
-ng generate --help
+make start
 ```
 
-## Building
+Open your browser and navigate to `http://localhost:4200`.
 
-To build the project run:
+## ⚙️ Configuration
+
+The application is designed to be easily customized.
+
+1.  **Content**: Edit `config/profile.ts` to update your profile, experience, and education.
+2.  **Theme Colors**: Edit `config/_colors.scss` to change the primary, secondary, and accent colors for light and dark modes.
+3.  **Layout/Spacing**: Edit `src/app/config/_spacing.scss` for global spacing adjustments.
+
+For more details, see [docs/config.md](docs/config.md).
+
+## 🏗 Building
+
+To build the application artifacts (HTML, CSS, JS) for production:
 
 ```bash
-ng build
+make build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The output will be generated in the `dist/` directory on your host machine.
 
-## Running unit tests
+## 🚀 Deployment
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Option 1: Docker (Recommended)
 
-```bash
-ng test
-```
+You can build and run a production-ready Docker image that serves the app using a lightweight web server (lighttpd).
 
-## Running end-to-end tests
+1.  **Build the image**:
+    ```bash
+    make build-prod-image
+    ```
+2.  **Run the container**:
+    ```bash
+    make start-prod
+    ```
+    (Or manually: `docker run -d -p 8080:80 angular-resume-prod`)
 
-For end-to-end (e2e) testing, run:
+Access the app at `http://localhost:8080`.
 
-```bash
-ng e2e
-```
+### Option 2: Static Web Server
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+If you have an existing web server (Nginx, Apache, AWS S3, GitHub Pages, etc.):
 
-## Additional Resources
+1.  Run `make build`.
+2.  Copy the contents of the `dist/resume-app/browser/` directory to your web server's root directory.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📚 Documentation
+
+-   [Features & Specs](docs/specs.md)
+-   [Technical Guidelines](docs/technical.md)
+-   [Style Guide](docs/style.md)
+-   [Docker Setup](docs/docker.md)
