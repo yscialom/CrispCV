@@ -21,7 +21,7 @@ FROM jitesoft/lighttpd:latest
 COPY --from=builder /app/dist/resume-app/browser /var/www/localhost/htdocs
 
 # Copy the custom lighttpd configuration
-COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
+COPY build/lighttpd.conf /etc/lighttpd/lighttpd.conf
 
 EXPOSE 80
 
