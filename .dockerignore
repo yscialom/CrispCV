@@ -1,8 +1,0 @@
-# Docker Eslint Ignore
-.dockerignore
-Dockerfile
-node_modules
-npm-debug.log
-README.md
-.git
-.gitignore

@@ -89,7 +89,7 @@ dist-clean: clean
 # Build the production Docker image using the Dockerfile
 build-prod-image: build
 	@echo "Building production Docker image '$(PROD_IMAGE_NAME)'..."
-	@docker build -t $(PROD_IMAGE_NAME) .
+	@docker build -t $(PROD_IMAGE_NAME) -f build/Dockerfile .
 
 # Run the production image as a container
 start-prod:
