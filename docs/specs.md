@@ -131,12 +131,6 @@ _Key Features_:
 **Branch**
 : `feature/4-experience-page`
 
-**PR**
-: `https://github.com/yscialom/vibed-resume/pull/2`
-
-**Release**
-:
-
 ---
 
 ## Keyword-based Filtering and Statistics
@@ -189,13 +183,53 @@ _Key Features_:
 : `7`
 
 **Description**
-: Ensure the top navbar remains permanently visible at the top of the viewport even when the user scrolls down the page. This improves navigation accessibility by keeping key links and profile information always within reach. The implementation utilizes CSS sticky positioning.
-
 **Status**
 : `todo`
 
 **Branch**
 :
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## Education Page
+
+**ID**
+: `8`
+
+**Description**
+: Implement the "Education" page, accessible via the "Education" link in the top navbar. This page displays the academic background from the configuration file as a list of "Education Cards", following the same visual style and layout as the Experience page.
+
+_Layout_:
+
+```text
++-----------------------------------------------------------------------+
+|  [Degree]                                                [Location]   |
+|  [Institution]                                         [Date Range]   |
+|                                                                       |
+|                     -------------------------                         |
+|  [Optional Description Paragraph...]                                  |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
+
+_Key Features_:
+
+- **Education Card:** One card per degree.
+- **Consistency:** Mimics the Experience card's typography, spacing, and interaction patterns.
+- **Optional Content:** Displays a description if provided in the configuration.
+- **Route:** Accessible at `/education`.
+
+**Status**
+: `wip`
+
+**Branch**
+: `feature/8-education-page`
 
 **PR**
 :

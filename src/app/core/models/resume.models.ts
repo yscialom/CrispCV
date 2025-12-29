@@ -36,6 +36,7 @@ export interface Education {
   location: string;
   startDate: string;
   endDate: string;
+  description?: string;
 }
 
 export interface Skill {
