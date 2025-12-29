@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ResumeDataService } from '../core/services/resume-data.service';
-import { ExperienceItemComponent } from './ui/experience-item/experience-item.component';
+import { ExperienceCardComponent } from './ui/experience-card/experience-card.component';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [ExperienceItemComponent],
+  imports: [ExperienceCardComponent],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

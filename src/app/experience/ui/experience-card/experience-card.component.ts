@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { Experience } from '../../../core/models/resume.models';
+import { MarkdownPipe } from '../../../shared/pipes/markdown.pipe';
 
 @Component({
-  selector: 'app-experience-item',
+  selector: 'app-experience-card',
   standalone: true,
-  imports: [],
-  templateUrl: './experience-item.component.html',
-  styleUrl: './experience-item.component.scss',
+  imports: [MarkdownPipe],
+  templateUrl: './experience-card.component.html',
+  styleUrl: './experience-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExperienceItemComponent {
+export class ExperienceCardComponent {
   public readonly experience = input.required<Experience>();
 
   public readonly duration = computed(() => {
@@ -19,29 +20,29 @@ export class ExperienceItemComponent {
 
   private calculateDuration(startDateStr: string, endDateStr: string): string {
     const start = this.parseDate(startDateStr);
-    const end = this.parseDate(endDateStr); // true for isEndDate
+    const end = this.parseDate(endDateStr);
 
-    // Calculate difference in months
     let months =
       (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-
-    // Add 1 month to be inclusive (e.g. Jan to Jan is 1 month)
-    months += 1;
+    months += 1; // Inclusive
 
     if (months < 1) return '';
 
-    const years = Math.floor(months / 12);
-    const remainingMonths = months % 12;
+    const years = months / 12;
+    const numberFormat = new Intl.NumberFormat('fr-FR');
 
-    const parts: string[] = [];
-    if (years > 0) {
-      parts.push(`${years} year${years > 1 ? 's' : ''}`);
-    }
-    if (remainingMonths > 0) {
-      parts.push(`${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`);
+    if (years >= 10) {
+      const roundedYears = Math.round(years);
+      return `${numberFormat.format(roundedYears)} ans`;
     }
 
-    return parts.join(' ');
+    if (years >= 1) {
+      const roundedHalfYears = Math.round(years * 2) / 2;
+      const unit = roundedHalfYears >= 2 ? 'ans' : 'an';
+      return `${numberFormat.format(roundedHalfYears)} ${unit}`;
+    }
+
+    return `${months} mois`;
   }
 
   private parseDate(dateStr: string): Date {

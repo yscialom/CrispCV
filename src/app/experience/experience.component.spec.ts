@@ -15,7 +15,7 @@ describe('ExperienceComponent', () => {
       location: 'City',
       startDate: '2022',
       endDate: '2023',
-      description: ['Work'],
+      missions: [{ title: 'M1', description: 'D1' }],
     },
   ];
 
@@ -38,9 +38,8 @@ describe('ExperienceComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render experience items', () => {
+  it('should render experience cards', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    // Check if the child component is rendered (by checking for its selector or content)
-    expect(compiled.querySelector('app-experience-item')).toBeTruthy();
+    expect(compiled.querySelector('app-experience-card')).toBeTruthy();
   });
 });

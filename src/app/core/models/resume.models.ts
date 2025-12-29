@@ -21,7 +21,13 @@ export interface Experience {
   location: string;
   startDate: string;
   endDate: string;
-  description: string[];
+  missions: Mission[];
+  keywords?: string[];
+}
+
+export interface Mission {
+  title: string;
+  description: string;
 }
 
 export interface Education {

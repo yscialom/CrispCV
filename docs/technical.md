@@ -53,7 +53,7 @@ src/app/
 
 ## 4. Unit Testing
 
-- **Frameworks:** The project uses Angular's default testing stack: **Karma** (test runner) and **Jasmine** (assertion library).
+- **Frameworks:** The project uses **Vitest** as the test runner and assertion library, leveraging the native Angular unit test builder.
 - **Guiding Principles:**
   - **Independence:** Each `it()` block must be fully independent. Use `beforeEach()` to set up a clean state for every test.
   - **Mocking:** Isolate the unit under test. Services and dependencies must be mocked to ensure tests are fast, reliable, and test only one thing.
@@ -120,6 +120,10 @@ Because the `.git/hooks` directory is not tracked by Git, you need to create the
     ```
 
 This hook will now run automatically before each `git commit`. If a hook fails, the commit will be aborted. You must fix the issues and stage the changes before re-attempting the commit.
+
+### 5.3 Git Operations
+
+When moving or renaming files that are tracked by Git, always use the `git mv` command instead of the standard `mv` command. This ensures that Git correctly tracks the file's history and preserves its move information, which is crucial for maintaining a clean and traceable project history.
 
 ## 6. TypeScript Guidelines
 
