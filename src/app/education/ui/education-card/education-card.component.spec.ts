@@ -32,16 +32,16 @@ describe('EducationCardComponent', () => {
 
   it('should display education details correctly', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.education-card__degree')?.textContent).toContain(
+    expect(compiled.querySelector('.resume-entry__title')?.textContent).toContain(
       mockEducation.degree,
     );
-    expect(compiled.querySelector('.education-card__institution')?.textContent).toContain(
+    expect(compiled.querySelector('.resume-entry__subtitle')?.textContent).toContain(
       mockEducation.institution,
     );
-    expect(compiled.querySelector('.education-card__location')?.textContent).toContain(
+    expect(compiled.querySelector('.resume-entry__location')?.textContent).toContain(
       mockEducation.location,
     );
-    expect(compiled.querySelector('.education-card__dates')?.textContent).toContain(
+    expect(compiled.querySelector('.resume-entry__dates')?.textContent).toContain(
       `${mockEducation.startDate} - ${mockEducation.endDate}`,
     );
   });

@@ -1,0 +1,17 @@
+<article class="resume-entry">
+  <header class="resume-entry__header">
+    <div class="resume-entry__row">
+      <h3 class="resume-entry__title">{{ title() }}</h3>
+      <span class="resume-entry__location">{{ location() }}</span>
+    </div>
+
+    <div class="resume-entry__row">
+      <span class="resume-entry__subtitle">{{ subtitle() }}</span>
+      <span class="resume-entry__dates">{{ dateRange() }}</span>
+    </div>
+  </header>
+
+  <ng-content select="[entry-keywords]"></ng-content>
+
+  <ng-content></ng-content>
+</article>

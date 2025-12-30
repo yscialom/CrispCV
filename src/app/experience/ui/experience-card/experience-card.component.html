@@ -1,23 +1,16 @@
-<article class="experience-card">
-  <header class="experience-card__header">
-    <div class="experience-card__row">
-      <h3 class="experience-card__title">{{ experience().title }}</h3>
-      <span class="experience-card__location">{{ experience().location }}</span>
-    </div>
-
-    <div class="experience-card__row">
-      <span class="experience-card__company">{{ experience().company }}</span>
-      <span class="experience-card__dates">
-        {{ experience().startDate }} - {{ experience().endDate }}
-        @if (duration()) {
-          ({{ duration() }})
-        }
-      </span>
-    </div>
-  </header>
-
+<app-resume-entry
+  [title]="experience().title"
+  [subtitle]="experience().company"
+  [location]="experience().location"
+  [dateRange]="
+    experience().startDate +
+    ' - ' +
+    experience().endDate +
+    (duration() ? ' (' + duration() + ')' : '')
+  "
+>
   @if (experience().keywords; as keywords) {
-    <div class="experience-card__keywords-container">
+    <div entry-keywords class="experience-card__keywords-container">
       <div class="experience-card__keywords">
         @for (keyword of keywords; track keyword) {
           <span class="experience-card__keyword">{{ keyword }}</span>
@@ -39,4 +32,4 @@
       </div>
     }
   </div>
-</article>
+</app-resume-entry>

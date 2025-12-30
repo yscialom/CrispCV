@@ -35,7 +35,7 @@ describe('ExperienceCardComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     // 2020-01 to 2021-02 is 14 months inclusive -> 1.166 years -> approx 1 year
     expect(component.duration()).toBe('1 an');
-    expect(compiled.querySelector('.experience-card__dates')?.textContent).toContain('(1 an)');
+    expect(compiled.querySelector('.resume-entry__dates')?.textContent).toContain('(1 an)');
   });
 
   it('should calculate 1.5 years correctly', () => {

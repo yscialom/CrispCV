@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { Experience } from '../../../core/models/resume.models';
 import { MarkdownPipe } from '../../../shared/pipes/markdown.pipe';
+import { ResumeEntryComponent } from '../../../shared/components/resume-entry/resume-entry.component';
 
 @Component({
   selector: 'app-experience-card',
   standalone: true,
-  imports: [MarkdownPipe],
+  imports: [MarkdownPipe, ResumeEntryComponent],
   templateUrl: './experience-card.component.html',
   styleUrl: './experience-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
