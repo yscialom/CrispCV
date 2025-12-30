@@ -131,12 +131,6 @@ _Key Features_:
 **Branch**
 : `feature/4-experience-page`
 
-**PR**
-: `https://github.com/yscialom/vibed-resume/pull/2`
-
-**Release**
-:
-
 ---
 
 ## Keyword-based Filtering and Statistics
@@ -189,10 +183,120 @@ _Key Features_:
 : `7`
 
 **Description**
-: Ensure the top navbar remains permanently visible at the top of the viewport even when the user scrolls down the page. This improves navigation accessibility by keeping key links and profile information always within reach. The implementation utilizes CSS sticky positioning.
-
 **Status**
 : `todo`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## Education Page
+
+**ID**
+: `8`
+
+**Description**
+: Implement the "Education" page, accessible via the "Education" link in the top navbar. This page displays the academic background from the configuration file as a list of "Education Cards", following the same visual style and layout as the Experience page.
+
+_Layout_:
+
+```text
++-----------------------------------------------------------------------+
+|  [Degree]                                                [Location]   |
+|  [Institution]                                         [Date Range]   |
+|                                                                       |
+|                     -------------------------                         |
+|  [Optional Description Paragraph...]                                  |
+|                                                                       |
++-----------------------------------------------------------------------+
+```
+
+_Key Features_:
+
+- **Education Card:** One card per degree.
+- **Consistency:** Mimics the Experience card's typography, spacing, and interaction patterns.
+- **Optional Content:** Displays a description if provided in the configuration.
+- **Route:** Accessible at `/education`.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/8-education-page`
+
+**PR**
+: [https://github.com/yscialom/vibed-resume/pull/4](#4)
+
+**Release**
+:
+
+---
+
+## Multilingual Support
+
+**ID**
+: `9`
+
+**Description**
+: Provide multilingual support with language selection in the top navbar. Switching language should
+switch the application text to the selected lannguage as well as the profile data. This means the switch
+should only list languages for which it has profile data for this language.
+Minor note: date and duration formats/local will be complexified by this multilingual feature, consider
+using a library like date-fns to handle localisation consistently.
+
+**Status**
+: `toto`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## Dark/Light Theme Switch
+
+**ID**
+: `10`
+
+**Description**
+: provide dark/light theme switch in the top navbar
+
+**Status**
+: `toto`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## Publish to GitHub Pages
+
+**ID**
+: `11`
+
+**Description**
+: add a github workflow to publish the app as github pages
+
+**Status**
+: `toto`
 
 **Branch**
 :

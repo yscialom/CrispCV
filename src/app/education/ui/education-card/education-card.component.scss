@@ -1,0 +1,17 @@
+@use '../../../../../config/spacing' as spacing;
+
+// Core styles handled by ResumeEntryComponent
+
+.education-card {
+  &__description {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+
+    ::ng-deep p {
+      margin: 0;
+    }
+  }
+}

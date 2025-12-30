@@ -13,9 +13,9 @@ Global color definitions for both light and dark themes are located in a dedicat
 
 ## 2. Spacing and Layout Variables
 
-Variables for consistent spacing, sizing, and common layout values are defined within the application's source code.
+Variables for consistent spacing, sizing, and common layout values are defined in a dedicated SCSS file.
 
-- **File:** `src/app/config/_spacing.scss`
+- **File:** `config/_spacing.scss`
 - **Purpose:** Centralize values for padding, margins, font sizes, and standard border radii.
 - **Structure:** Variables are defined as standard SCSS variables (e.g., `$spacing-medium`, `$border-radius-standard`).
 - **Usage:** Adjust these values to modify the overall visual density and responsiveness of the application.

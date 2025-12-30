@@ -1,5 +1,7 @@
 # Résumé
 
+If you havn't read all document referenced in this one yet, please do before anything else.
+
 ## Project description
 
 This project is a simple single page application displaying a developpers résumé. It present in a simple
@@ -18,7 +20,7 @@ See docs/style.md for more information.
 ### Source code
 
 The application use angular 21 with the latest guideline in minde: zoneless, signals for everything, simple router,
-all data comes from a simple json static file and the code base must be crisp and comprehensible by a junior
+all data comes from a simple TypeScript configuration file and the code base must be crisp and comprehensible by a junior
 developpeer.
 
 It includes unit tests.

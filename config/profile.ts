@@ -154,7 +154,7 @@ export const PROFILE_CONFIG: Resume = {
 — Adoption de Docker pour faciliter les tests, leur automatisation & leur rejouabilité.`,
         },
       ],
-      keywords: ['Scrum', 'DevOps', 'C++14', 'PostgreSQL', 'Docker'],
+      keywords: ['Scrum', 'DevOps', 'C++', 'PostgreSQL', 'Docker'],
     },
     {
       title: 'Développeur C++ industriel, projet Paylib / Wero',
@@ -179,7 +179,7 @@ export const PROFILE_CONFIG: Resume = {
 - Support et formation.`,
         },
       ],
-      keywords: ['C++98', 'PostgreSQL', 'TCP', 'Multithreading', 'Secure Coding', 'Redhat Linux'],
+      keywords: ['C++', 'PostgreSQL', 'TCP', 'Multithreading', 'Secure Coding', 'Redhat Linux'],
     },
     {
       title: 'Ingénieur logiciel Sophis',
@@ -277,6 +277,15 @@ export const PROFILE_CONFIG: Resume = {
       location: 'Troyes, France',
       startDate: '2006',
       endDate: '2012',
+      description: "_mineur en création d'entreprise et droit administratif_",
+    },
+    {
+      degree: 'Baccalauréat Scientifique, option Mathématique',
+      institution: 'Lycée Blaise Cendrars',
+      location: 'Sevran, Seine-Saint-Denis, France',
+      startDate: '2005',
+      endDate: '2005',
+      description: '_mention Bien_',
     },
     {
       degree: 'Physics (Continuing Studies)',

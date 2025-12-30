@@ -41,7 +41,7 @@ usage:
 # Run unit tests
 test:
 	@echo "Running unit tests (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng test"
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng test --watch=false"
 
 
 
