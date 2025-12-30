@@ -311,13 +311,20 @@ _Key Features_:
 : `12`
 
 **Description**
-: Implement an "About Me" page to display personal details and links. All fields are optional and data is pulled from the configuration file.
+
+: Implement an "About Me" page to display personal details, links, and additional background. All fields are optional and data is pulled from the configuration file.
+
     Fields to display:
+    - Contact Information (Email, Phone)
     - Date of birth
     - Nationality
     - Location (current residence)
     - Car / Driving license status
+    - Languages (Spoken languages and proficiency levels)
+    - Certifications and Awards
     - Social/Professional links (LinkedIn, GitHub, etc.)
+    - Volunteering and Community Service
+    - Personal Projects
     - Hobbies
     - Markdown-formatted description
 
