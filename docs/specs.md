@@ -87,6 +87,9 @@ Each feature is documented in its own section. A feature section is a level-2 he
 **Branch**
 : `feature/3-navbar`
 
+**PR**
+: [#1](https://github.com/yscialom/vibed-resume/pull/1)
+
 **Release**
 :
 
@@ -130,6 +133,9 @@ _Key Features_:
 
 **Branch**
 : `feature/4-experience-page`
+
+**PR**
+: [#2](https://github.com/yscialom/vibed-resume/pull/2)
 
 ---
 
@@ -226,13 +232,13 @@ _Key Features_:
 - **Route:** Accessible at `/education`.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/8-education-page`
 
 **PR**
-:
+: [#4](https://github.com/yscialom/vibed-resume/pull/4)
 
 **Release**
 :
