@@ -226,13 +226,13 @@ _Key Features_:
 - **Route:** Accessible at `/education`.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/8-education-page`
 
 **PR**
-:
+: [https://github.com/yscialom/vibed-resume/pull/4](#4)
 
 **Release**
 :
@@ -245,7 +245,11 @@ _Key Features_:
 : `9`
 
 **Description**
-: provide multilingual support with language selection in the top navbar
+: Provide multilingual support with language selection in the top navbar. Switching language should
+switch the application text to the selected lannguage as well as the profile data. This means the switch
+should only list languages for which it has profile data for this language.
+Minor note: date and duration formats/local will be complexified by this multilingual feature, consider
+using a library like date-fns to handle localisation consistently.
 
 **Status**
 : `toto`
