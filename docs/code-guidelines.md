@@ -51,7 +51,7 @@ ESLint is configured via `.eslintrc.json`, extending recommended rules from `@an
 
 TypeScript type checking is an integral part of the build process and is configured in `tsconfig.json` and `tsconfig.app.json`. Ensure that your code compiles without type errors.
 
-**Explicit Typing**: Prioritize explicit type annotations for variables, function arguments, and return values. While TypeScript's type inference is powerful, explicitly declared types enhance readability, prevent subtle errors, and ensure stricter adherence to design intentions. Only omit explicit types where inference leads to a more generic or equally clear type, or when dealing with complex object literals where inference is precise and exhaustive.
+**Explicit Typing**: Prioritize explicit type annotations for function arguments and return values. For variables, use explicit typing where it enhances readability or prevents subtle errors, but favor inference for local variables when the type is obvious. Only omit explicit types where inference leads to a more generic or equally clear type, or when dealing with complex object literals where inference is precise and exhaustive.
 
 ## 4. Naming Conventions
 
@@ -66,7 +66,14 @@ TypeScript type checking is an integral part of the build process and is configu
 - Explain _why_ a particular piece of code exists, rather than _what_ it does.
 - Use JSDoc for public API functions, classes, and interfaces.
 
-## 6. Angular Specific Guidelines
+## 6. Typescript Specific Guidelines
+
+- Use strict type checking.
+- **Explicit Typing**: All function and method arguments and return values must be explicitly typed, even if the type can be inferred.
+- **Type Inference**: Prefer type inference for local variables when the type is obvious and explicit typing doesn't add clarity.
+- Avoid the `any` type; use `unknown` when type is uncertain.
+
+## 7. Angular Specific Guidelines
 
 - **Components**:
   - Keep components focused on a single responsibility.
@@ -81,8 +88,48 @@ TypeScript type checking is an integral part of the build process and is configu
   - Use the new built-in control flow syntax (`@if`, `@for`, `@switch`) instead of structural directives (`*ngIf`, `*ngFor`, `*ngSwitch`).
 - **Services**: Use services for shared logic, data retrieval, and business rules.
 - **Zoneless**: Develop with zoneless change detection in mind.
+- Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v20+.
+- Use signals for state management
+- Implement lazy loading for feature routes
+- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
+- Use `NgOptimizedImage` for all static images.
+- `NgOptimizedImage` does not work for inline base64 images.
 
-## 7. Git Commit Messages
+## 8. Accessibility Requirements
+
+- It MUST pass all AXE checks.
+- It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
+
+### Components
+- Keep components small and focused on a single responsibility
+- Use `input()` and `output()` functions instead of decorators
+- Use `computed()` for derived state
+- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
+- Prefer inline templates for small components
+- Prefer Reactive forms instead of Template-driven ones
+- Do NOT use `ngClass`, use `class` bindings instead
+- Do NOT use `ngStyle`, use `style` bindings instead
+- When using external templates/styles, use paths relative to the component TS file.
+
+## State Management
+- Use signals for local component state
+- Use `computed()` for derived state
+- Keep state transformations pure and predictable
+- Do NOT use `mutate` on signals, use `update` or `set` instead
+
+## Templates
+- Keep templates simple and avoid complex logic
+- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
+- Use the async pipe to handle observables
+- Do not assume globals like (`new Date()`) are available.
+- Do not write arrow functions in templates (they are not supported).
+
+## Services
+- Design services around a single responsibility
+- Use the `providedIn: 'root'` option for singleton services
+- Use the `inject()` function instead of constructor injection
+
+## 9. Git Commit Messages
 
 Follow the Conventional Commits specification. Each commit message should be structured as follows:
 
@@ -98,4 +145,4 @@ Example: `feat(users): add user profile page`
 
 Common types include: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `build`, `ci`.
 
-**Note on Merge Commits to `develop`:** When merging a feature branch into `develop`, the merge commit message **must** be `[#<PR number>] <type>(<scope>): <description>`. Example: `[#42] feat(users): add user profile page`. This ensures traceability to the Pull Request.
+**Note on Merge Commits to `develop`:** When merging a feature branch into `develop`, the merge commit message **must** be `[<feature id>] <description> (#<PR number>)`. Example: `[42] add user profile page (#56)`. This ensures traceability to the Pull Request.

@@ -24,29 +24,30 @@ A **Hexagonal Architecture (Ports and Adapters)** approach is used to isolate th
 - **Ports:** Abstract interfaces defining how the application interacts with the outside world. In TypeScript, these are represented by `abstract class` or `InjectionToken` constructs.
 - **Adapters (Outside):**
   - **Primary/Driving Adapters:** The Angular components that render the UI. They are the entry point for user interaction.
-  - **Secondary/Driven Adapters:** The mechanism that provides the résumé data. This is currently a TypeScript file (`.ts`) that exports the data, but the hexagonal approach ensures this could be swapped for an HTTP client or any other data source with minimal changes to the core application.
+  - **Secondary/Driven Adapters:** The mechanism that provides the résumé data. This is currently a TypeScript file (`config/profile.ts`) that exports the data, but the hexagonal approach ensures this could be swapped for an HTTP client or any other data source with minimal changes to the core application.
 
 ### Folder Structure
 
 ```
-src/app/
-├── core/
-│   ├── services/       # Core services like ResumeDataService
-│   └── models/         # TypeScript interfaces for data structures
-├── data/
-│   └── resume.data.ts  # The static data source for the application
-├── features/
-│   ├── experience/     # Components related to the Experience section
-│   └── education/      # Components related to the Education section
-├── shared/
-│   └── components/     # Reusable components (e.g., buttons, cards)
-└── ...
+.
+├── config/               # Global configuration (Colors, Spacing, Profile)
+├── docs/                 # Project documentation
+├── public/               # Public assets (images, favicon)
+├── src/                  # Application source code
+│   ├── app/              # Core application logic and components
+│   ├── index.html        # Entry HTML file
+│   ├── main.ts           # Application entry point
+│   └── styles.scss       # Global styles
+├── angular.json          # Angular CLI configuration
+├── Makefile              # Build and automation commands
+├── package.json          # Node.js dependencies and scripts
+└── tsconfig.json         # TypeScript configuration
 ```
 
 ## 3. Data & State Management
 
-- **Data Source:** All résumé data is sourced from a single TypeScript file: `src/app/data/resume.data.ts`. This file exports the data structure as a constant, ensuring it's loaded at runtime.
-- **State Service:** A singleton service, `ResumeDataService`, is the single source of truth for application state. It imports the data from `resume.data.ts` and stores it in **Signals**.
+- **Data Source:** All résumé data is sourced from a single TypeScript file: `config/profile.ts`. This file exports the data structure as a constant, ensuring it's loaded at runtime.
+- **State Service:** A singleton service, `ResumeDataService`, is the single source of truth for application state. It imports the data from `config/profile.ts` and stores it in **Signals**.
 - **Data Flow:** Components access data exclusively through one of two mechanisms:
   1.  `inject()`: For direct access to the `ResumeDataService` within a component's constructor context.
   2.  `input()`: For parent components to pass slices of data down to child components using Angular's new input signal function.
@@ -168,4 +169,4 @@ All styling is written in SCSS to leverage its advanced features and promote mai
 To promote consistency and allow for user-specific customization, global configuration variables are stored in dedicated SCSS files.
 
 - **Color Palettes (`_colors.scss`):** Global color definitions for both light and dark themes are located at the root of the Git repository in `config/_colors.scss`. This allows developers to easily adjust core theme colors without modifying the application's source code.
-- **Spacing and Layout Variables (`_spacing.scss`):** Variables related to spacing, font sizes, and common layout values are located within the application's source code at `src/app/config/_spacing.scss`. These are application-specific design tokens.
+- **Spacing and Layout Variables (`_spacing.scss`):** Variables related to spacing, font sizes, and common layout values are located at `config/_spacing.scss`. These are application-specific design tokens.
