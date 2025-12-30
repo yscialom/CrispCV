@@ -101,6 +101,7 @@ TypeScript type checking is an integral part of the build process and is configu
 - It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
 
 ### Components
+
 - Keep components small and focused on a single responsibility
 - Use `input()` and `output()` functions instead of decorators
 - Use `computed()` for derived state
@@ -112,12 +113,14 @@ TypeScript type checking is an integral part of the build process and is configu
 - When using external templates/styles, use paths relative to the component TS file.
 
 ## State Management
+
 - Use signals for local component state
 - Use `computed()` for derived state
 - Keep state transformations pure and predictable
 - Do NOT use `mutate` on signals, use `update` or `set` instead
 
 ## Templates
+
 - Keep templates simple and avoid complex logic
 - Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
 - Use the async pipe to handle observables
@@ -125,6 +128,7 @@ TypeScript type checking is an integral part of the build process and is configu
 - Do not write arrow functions in templates (they are not supported).
 
 ## Services
+
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
