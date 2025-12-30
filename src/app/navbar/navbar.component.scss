@@ -70,6 +70,28 @@
         border-radius: spacing.$border-radius-standard;
         transition: all 300ms ease-in-out;
 
+        &.active,
+        &.active-filled {
+          background-color: var(--accent);
+          color: var(--primary-bg);
+          border-color: var(--accent);
+        }
+
+        &.active-border {
+          color: var(--accent);
+          border-color: var(--accent);
+          background-color: var(--secondary-bg);
+          font-weight: bold;
+        }
+
+        &.active-underline {
+          background-color: transparent;
+          border: 1px solid transparent;
+          border-bottom: 3px solid var(--accent);
+          border-radius: 0;
+          padding-bottom: calc(#{spacing.$spacing-x-small} - 2px);
+        }
+
         &.disabled {
           color: var(--text-disabled);
           pointer-events: none;
