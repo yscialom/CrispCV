@@ -226,13 +226,13 @@ _Key Features_:
 - **Route:** Accessible at `/education`.
 
 **Status**
-: `done`
+: `wip`
 
 **Branch**
 : `feature/8-education-page`
 
 **PR**
-: [https://github.com/yscialom/vibed-resume/pull/4](#4)
+:
 
 **Release**
 :
@@ -245,11 +245,7 @@ _Key Features_:
 : `9`
 
 **Description**
-: Provide multilingual support with language selection in the top navbar. Switching language should
-switch the application text to the selected lannguage as well as the profile data. This means the switch
-should only list languages for which it has profile data for this language.
-Minor note: date and duration formats/local will be complexified by this multilingual feature, consider
-using a library like date-fns to handle localisation consistently.
+: provide multilingual support with language selection in the top navbar
 
 **Status**
 : `toto`
@@ -300,6 +296,36 @@ using a library like date-fns to handle localisation consistently.
 
 **Branch**
 :
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## 'About Me' Page
+
+**ID**
+: `12`
+
+**Description**
+: Implement an "About Me" page to display personal details and links. All fields are optional and data is pulled from the configuration file.
+    Fields to display:
+    - Date of birth
+    - Nationality
+    - Location (current residence)
+    - Car / Driving license status
+    - Social/Professional links (LinkedIn, GitHub, etc.)
+    - Hobbies
+    - Markdown-formatted description
+
+**Status**
+: `wip`
+
+**Branch**
+: `feature/12-about-me-page`
 
 **PR**
 :
