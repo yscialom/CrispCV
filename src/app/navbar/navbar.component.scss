@@ -70,6 +70,12 @@
         border-radius: spacing.$border-radius-standard;
         transition: all 300ms ease-in-out;
 
+        &.active {
+          background-color: var(--accent);
+          color: var(--primary-bg);
+          border-color: var(--accent);
+        }
+
         &.disabled {
           color: var(--text-disabled);
           pointer-events: none;
