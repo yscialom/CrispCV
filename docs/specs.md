@@ -280,3 +280,25 @@ _Key Features_:
 
 **Release**
 :
+
+---
+
+## Publish to GitHub Pages
+
+**ID**
+: `11`
+
+**Description**
+: add a github workflow to publish the app as github pages
+
+**Status**
+: `toto`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
