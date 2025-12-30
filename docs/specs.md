@@ -236,3 +236,47 @@ _Key Features_:
 
 **Release**
 :
+
+---
+
+## Multilingual Support
+
+**ID**
+: `9`
+
+**Description**
+: provide multilingual support with language selection in the top navbar
+
+**Status**
+: `toto`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
+
+---
+
+## Dark/Light Theme Switch
+
+**ID**
+: `10`
+
+**Description**
+: provide dark/light theme switch in the top navbar
+
+**Status**
+: `toto`
+
+**Branch**
+:
+
+**PR**
+:
+
+**Release**
+:
