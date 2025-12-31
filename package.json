@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write \"./**/*.{js,json,ts,css,scss,less,html,md}\" && stylelint \"./**/*.scss\" --fix"
+    "format": "prettier --write \"./**/*.{js,json,ts,css,scss,less,html,md}\" | grep -v \"(unchanged)\" || true && stylelint \"./**/*.scss\" --fix"
   },
   "prettier": {
     "printWidth": 100,

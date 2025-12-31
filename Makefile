@@ -66,11 +66,11 @@ stop:
 
 lint:
 	@echo "Running ESLint (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run lint"
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run lint --silent"
 
 format:
 	@echo "Running Prettier (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run format"
+	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run format --silent"
 
 
 # Clean intermediary build files
@@ -87,14 +87,14 @@ dist-clean: clean
 # --- Production Simulation Targets ---
 
 # Build the production Docker image using the Dockerfile
-build-prod-image: build
+build-prod-image:
 	@echo "Building production Docker image '$(PROD_IMAGE_NAME)'..."
 	@docker build -t $(PROD_IMAGE_NAME) -f build/Dockerfile .
 
 # Run the production image as a container
 start-prod:
 	@echo "Starting production container '$(PROD_CONTAINER_NAME)' on http://localhost:8080 ..."
-	@docker run --rm -d -p 8080:80 --name $(PROD_CONTAINER_NAME) $(PROD_IMAGE_NAME)
+	docker run --rm -d -p 8080:80 --name $(PROD_CONTAINER_NAME) $(PROD_IMAGE_NAME)
 
 # Stop the production container
 stop-prod:

@@ -1,29 +1,23 @@
 # Stage 1: Build the Angular application
 FROM node:20-alpine AS builder
-
 WORKDIR /app
 
-# Copy package configuration and install dependencies
 COPY package.json package-lock.json* ./
 RUN npm install
 
-# Copy the rest of the application source code
-COPY . .
+COPY angular.json tsconfig.json tsconfig.app.json ./
+COPY src/ ./src/
+COPY public/ ./public/
+COPY config/ ./config/
 
-# Build the application
 RUN npm run build
-
 
 # Stage 2: Serve the application from a lightweight server
 FROM jitesoft/lighttpd:latest
 
-# Copy the built application from the 'builder' stage
 COPY --from=builder /app/dist/resume-app/browser /var/www/localhost/htdocs
 
-# Copy the custom lighttpd configuration
-COPY build/lighttpd.conf /etc/lighttpd/lighttpd.conf
+ENV CONFIG_FILE=/etc/lighttpd/conf.d/10-spa.conf
+COPY build/lighttpd.conf /etc/lighttpd/conf.d/10-spa.conf
 
 EXPOSE 80
-
-# The base image already has a CMD to start lighttpd,
-# so we don't need to specify it again.
