@@ -94,7 +94,7 @@ build-prod-image: build
 # Run the production image as a container
 start-prod:
 	@echo "Starting production container '$(PROD_CONTAINER_NAME)' on http://localhost:8080 ..."
-	@docker run --rm -d -p 8080:80 --name $(PROD_CONTAINER_NAME) $(PROD_IMAGE_NAME)
+	docker run --rm -d -p 8080:80 --name $(PROD_CONTAINER_NAME) $(PROD_IMAGE_NAME)
 
 # Stop the production container
 stop-prod:
