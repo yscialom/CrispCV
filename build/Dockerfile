@@ -3,9 +3,13 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-
 RUN npm install
-COPY . .
+
+COPY angular.json tsconfig.json tsconfig.app.json ./
+COPY src/ ./src/
+COPY public/ ./public/
+COPY config/ ./config/
+
 RUN npm run build
 
 # Stage 2: Serve the application from a lightweight server
