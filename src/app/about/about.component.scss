@@ -1,4 +1,5 @@
 @use '../../../config/spacing' as spacing;
+@use '../../styles/resume-entry' as resume-entry;
 
 .resume-section {
   padding: spacing.$spacing-medium;
@@ -167,6 +168,10 @@
       }
     }
   }
+}
+
+.resume-entry {
+  @include resume-entry.resume-entry-keywords;
 }
 
 // Moved to the end to resolve specificity issues

@@ -1,4 +1,5 @@
 @use '../../../../../config/spacing' as spacing;
+@use '../../../../styles/resume-entry' as resume-entry;
 
 // Note: Core card styles are now in ResumeEntryComponent
 
@@ -50,4 +51,8 @@
       margin-bottom: spacing.$spacing-xx-small;
     }
   }
+}
+
+.resume-entry {
+  @include resume-entry.resume-entry-keywords;
 }

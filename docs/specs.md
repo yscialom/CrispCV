@@ -15,7 +15,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 - **Status**
   : The current state of the feature. Must be one of the following:
   - `idea`: A feature that has been proposed but not yet planned.
-  - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented).
+  - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented) and must always come from the user, do not suggest a value; if none given, only use `todo`.
   - `wip`: The feature is currently in progress.
   - `done`: The feature has been completed, tested, and merged. **Note: A feature can only be set to `done` if explicitly asked by the user.**
 
@@ -251,10 +251,16 @@ _Key Features_:
 : `9`
 
 **Description**
-: provide multilingual support with language selection in the top navbar
+
+: provide multilingual support with language selection in the top navbar.
+
+*Technical considerations:*
+
+- **Date Parsing:** The `DurationPipe` currently has a `parseDate` method that handles English "Present" and French "Présent". This logic will need to be centralized and expanded to support all future languages.
+- **UI Strings:** Hardcoded strings in components (e.g., language level labels like "Débutant", "Intermédiaire" in `AboutComponent`) must be moved to a translation system or configuration map.
 
 **Status**
-: `toto`
+: `todo`
 
 **Branch**
 :

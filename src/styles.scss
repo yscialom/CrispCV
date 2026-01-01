@@ -98,35 +98,3 @@ a {
     gap: spacing.$spacing-x-large;
   }
 }
-
-// Global styles for resume entry keywords (chips) to allow usage in projected content
-.resume-entry {
-  &__keywords-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: spacing.$spacing-small;
-  }
-
-  &__keywords {
-    display: flex;
-    flex-wrap: wrap;
-    gap: spacing.$spacing-x-small;
-    justify-content: flex-end;
-  }
-
-  &__keyword {
-    font-size: 0.75rem;
-    padding: 2px 10px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    border-radius: 12px;
-    white-space: nowrap;
-    transition: all 200ms ease;
-    cursor: default;
-
-    &:hover {
-      background-color: var(--accent);
-      color: var(--primary-bg);
-    }
-  }
-}
