@@ -19,10 +19,22 @@
           <li><strong>Nationalité :</strong> {{ profile().nationality }}</li>
         }
         @if (profile().location) {
-          <li><strong>Localisation :</strong> {{ profile().location }}</li>
+          <li>
+            <strong>Localisation :</strong>
+            <a
+              class="info-link"
+              [href]="'https://www.google.com/maps?q=' + profile().location"
+              target="_blank"
+            >
+              {{ profile().location }}
+            </a>
+          </li>
         }
         @if (profile().phone) {
-          <li><strong>Téléphone :</strong> {{ profile().phone }}</li>
+          <li>
+            <strong>Téléphone :</strong>
+            <a class="info-link" [href]="'tel:' + profile().phone">{{ profile().phone }}</a>
+          </li>
         }
         @if (profile().email) {
           <li>
