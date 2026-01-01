@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
 import { ResumeEntryComponent } from '../shared/components/resume-entry/resume-entry.component';
+import { DurationPipe } from '../shared/pipes/duration.pipe';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, MarkdownPipe, ResumeEntryComponent],
+  imports: [CommonModule, MarkdownPipe, ResumeEntryComponent, DurationPipe],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })

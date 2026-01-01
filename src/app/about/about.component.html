@@ -99,7 +99,13 @@
             [title]="vol.role"
             [subtitle]="vol.organization"
             [location]="''"
-            [dateRange]="vol.startDate + (vol.endDate ? ' - ' + vol.endDate : ' - Présent')"
+            [dateRange]="
+              vol.startDate +
+              (vol.endDate ? ' - ' + vol.endDate : ' - Présent') +
+              ' (' +
+              (vol.startDate | duration: vol.endDate) +
+              ')'
+            "
           >
             @if (vol.description) {
               <p class="card-description">{{ vol.description }}</p>
@@ -120,7 +126,11 @@
             [title]="proj.name"
             [subtitle]="''"
             [location]="''"
-            [dateRange]="(proj.startDate || '') + (proj.endDate ? ' - ' + proj.endDate : '')"
+            [dateRange]="
+              (proj.startDate || '') +
+              (proj.endDate ? ' - ' + proj.endDate : '') +
+              (proj.startDate ? ' (' + (proj.startDate | duration: proj.endDate) + ')' : '')
+            "
           >
             <!-- Keywords/Technologies injected into entry-keywords slot -->
             @if (proj.technologies; as techs) {

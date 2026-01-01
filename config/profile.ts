@@ -16,7 +16,7 @@ export const PROFILE_CONFIG: Resume = {
   languages: [
     { name: 'Français', level: 5 },
     { name: 'Anglais', level: 5 },
-    { name: 'Allemand', level: 2 },
+    { name: 'Allemand', level: 1 },
   ],
   socialLinks: [
     {
@@ -52,11 +52,19 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
 `,
   personalProjects: [
     {
+      name: 'PinaNas',
+      description: 'Cloud services, safely hosted at home.',
+      url: 'https://github.com/yscialom/pinanas',
+      technologies: ['Homelab', 'Ansible', 'Docker'],
+      startDate: '2020-04',
+      endDate: 'Present',
+    },
+    {
       name: 'Vibed Resume',
       description: 'The project you are looking at right now!',
       url: 'https://github.com/yscialom/vibed-resume',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
-      startDate: '2024-01',
+      startDate: '2025-11',
       endDate: 'Present',
     },
   ],

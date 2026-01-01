@@ -4,6 +4,7 @@ import { ResumeDataService } from '../core/services/resume-data.service';
 import { signal } from '@angular/core';
 import { Profile } from '../core/models/resume.models';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
+import { DurationPipe } from '../shared/pipes/duration.pipe';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -31,7 +32,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutComponent, MarkdownPipe],
+      imports: [AboutComponent, MarkdownPipe, DurationPipe],
       providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
     }).compileComponents();
 
