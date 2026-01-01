@@ -10,6 +10,54 @@ export const PROFILE_CONFIG: Resume = {
   phone: '+336 87 63 83 13',
   website: 'scialom.org/cv',
   location: 'Châtillon, Île-de-France, France',
+  birthDate: '1987-09-21',
+  nationality: 'Française',
+  drivingLicense: 'Permis B',
+  languages: [
+    { name: 'Français', level: 5 },
+    { name: 'Anglais', level: 5 },
+    { name: 'Allemand', level: 2 },
+  ],
+  socialLinks: [
+    {
+      platform: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/yankel-scialom/',
+      username: 'yankel-scialom',
+      icon: 'fab fa-linkedin',
+    },
+    {
+      platform: 'GitHub',
+      url: 'https://github.com/yscialom',
+      username: 'yscialom',
+      icon: 'fab fa-github',
+    },
+  ],
+  volunteering: [
+    {
+      organization: 'Example Org',
+      role: 'Volunteer',
+      startDate: '2020',
+      endDate: 'Present',
+      description: 'Helping out with things.',
+    },
+  ],
+  hobbies: ['Coding', 'Reading', 'Running', 'Piano'],
+  aboutDescription: `
+# À propos de moi
+
+Passionné par l'informatique depuis mon plus jeune âge, j'ai toujours cherché à comprendre comment fonctionnent les choses. 
+Mon parcours m'a amené à travailler sur des systèmes critiques et complexes, où la rigueur et la méthode sont primordiales.
+
+Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des processus de développement, tout en gardant un pied dans la technique.
+`,
+  personalProjects: [
+    {
+      name: 'Vibed Resume',
+      description: 'The project you are looking at right now!',
+      url: 'https://github.com/yscialom/vibed-resume',
+      technologies: ['Angular', 'TypeScript', 'SCSS'],
+    },
+  ],
 
   experiences: [
     {

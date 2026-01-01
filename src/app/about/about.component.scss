@@ -1,0 +1,238 @@
+@use '../../../config/spacing' as spacing;
+
+.resume-section {
+  padding: spacing.$spacing-medium;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: spacing.$spacing-x-large;
+    margin-bottom: spacing.$spacing-large;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: spacing.$spacing-x-large;
+
+  @media (width >= 768px) {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.about-info {
+  background-color: var(--secondary-bg);
+  padding: spacing.$spacing-medium;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  height: fit-content;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: spacing.$spacing-medium;
+    border-bottom: 1px solid var(--text-disabled);
+    padding-bottom: spacing.$spacing-xx-small;
+    font-size: 1.1rem;
+  }
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 spacing.$spacing-large 0;
+
+  li {
+    margin-bottom: spacing.$spacing-small;
+    font-size: 0.9rem;
+
+    strong {
+      display: block;
+      color: var(--text-disabled);
+      font-size: 0.8rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 spacing.$spacing-large 0;
+
+  li {
+    margin-bottom: spacing.$spacing-small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .skill-dots {
+    display: flex;
+    gap: 4px;
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--text-disabled);
+      opacity: 0.3;
+
+      &.filled {
+        background-color: var(--accent);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: spacing.$spacing-small;
+
+  .tag {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--text-disabled);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+}
+
+.about-content {
+  .about-description {
+    margin-bottom: spacing.$spacing-x-large;
+    line-height: 1.6;
+
+    ::ng-deep {
+      p {
+        margin-bottom: spacing.$spacing-medium;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: spacing.$spacing-medium;
+      }
+    }
+  }
+}
+
+.social-links {
+  margin-top: spacing.$spacing-large;
+
+  .links-container {
+    display: flex;
+    gap: spacing.$spacing-medium;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: spacing.$spacing-small;
+    padding: spacing.$spacing-small spacing.$spacing-medium;
+    background-color: var(--secondary-bg);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+
+    &:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.resume-section-group {
+  margin-top: spacing.$spacing-x-large;
+
+  .group-title {
+    margin-bottom: spacing.$spacing-medium;
+    border-bottom: 1px solid var(--text-disabled);
+    padding-bottom: spacing.$spacing-xx-small;
+    font-size: 1.1rem;
+  }
+}
+
+.cards-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: spacing.$spacing-medium;
+
+  @media (width >= 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+.card {
+  background-color: var(--secondary-bg);
+  padding: spacing.$spacing-medium;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: spacing.$spacing-xx-small;
+    flex-wrap: wrap;
+
+    h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      margin-right: spacing.$spacing-small;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+
+    .card-date {
+      font-size: 0.8rem;
+      color: var(--text-disabled);
+      white-space: nowrap;
+    }
+  }
+
+  .card-subtitle {
+    font-weight: bold;
+    margin-bottom: spacing.$spacing-small;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+
+  .card-description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .tags-container {
+    margin-top: spacing.$spacing-medium;
+  }
+}

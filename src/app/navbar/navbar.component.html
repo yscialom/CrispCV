@@ -26,7 +26,15 @@
             Études &amp; Diplômes
           </a>
         </li>
-        <li><a href="#" class="disabled">About</a></li>
+        <li>
+          <a
+            routerLink="/about"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            À propos
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
