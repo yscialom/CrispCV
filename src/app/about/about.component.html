@@ -7,25 +7,31 @@
       <h3>Informations Personnelles</h3>
       <ul class="info-list">
         @if (profile().birthDate) {
-          <li><strong>Date de naissance:</strong> {{ profile().birthDate }}</li>
+          <li>
+            <strong>Date de naissance :</strong>
+            {{ profile().birthDate }}
+            @if (age()) {
+              ({{ age() }} ans)
+            }
+          </li>
         }
         @if (profile().nationality) {
-          <li><strong>Nationalité:</strong> {{ profile().nationality }}</li>
+          <li><strong>Nationalité :</strong> {{ profile().nationality }}</li>
         }
         @if (profile().location) {
-          <li><strong>Localisation:</strong> {{ profile().location }}</li>
+          <li><strong>Localisation :</strong> {{ profile().location }}</li>
         }
         @if (profile().phone) {
-          <li><strong>Téléphone:</strong> {{ profile().phone }}</li>
+          <li><strong>Téléphone :</strong> {{ profile().phone }}</li>
         }
         @if (profile().email) {
           <li>
-            <strong>Email:</strong>
-            <a [href]="'mailto:' + profile().email">{{ profile().email }}</a>
+            <strong>Email :</strong>
+            <a class="info-link" [href]="'mailto:' + profile().email">{{ profile().email }}</a>
           </li>
         }
         @if (profile().drivingLicense) {
-          <li><strong>Permis:</strong> {{ profile().drivingLicense }}</li>
+          <li><strong>Permis :</strong> {{ profile().drivingLicense }}</li>
         }
       </ul>
 
@@ -33,7 +39,7 @@
         <h3>Langues</h3>
         <ul class="skills-list">
           @for (lang of languages(); track lang.name) {
-            <li>
+            <li [title]="getLanguageLevelLabel(lang.level)">
               <span class="skill-name">{{ lang.name }}</span>
               <!-- Simple visual representation of level -->
               <span class="skill-dots">
@@ -70,6 +76,9 @@
               <a [href]="link.url" target="_blank" class="social-btn">
                 @if (link.icon) {
                   <i [class]="link.icon"></i>
+                } @else {
+                  <!-- Placeholder for favicon-size logo if no icon class provided, using text for now or generic icon -->
+                  <span class="default-icon">🔗</span>
                 }
                 {{ link.platform }}
               </a>
@@ -86,16 +95,16 @@
       <h3 class="group-title">Bénévolat</h3>
       <div class="cards-list">
         @for (vol of volunteering(); track vol.organization) {
-          <div class="card">
-            <div class="card-header">
-              <h4>{{ vol.role }}</h4>
-              <span class="card-date">{{ vol.startDate }} - {{ vol.endDate || 'Présent' }}</span>
-            </div>
-            <div class="card-subtitle">{{ vol.organization }}</div>
+          <app-resume-entry
+            [title]="vol.role"
+            [subtitle]="vol.organization"
+            [location]="''"
+            [dateRange]="vol.startDate + (vol.endDate ? ' - ' + vol.endDate : ' - Présent')"
+          >
             @if (vol.description) {
               <p class="card-description">{{ vol.description }}</p>
             }
-          </div>
+          </app-resume-entry>
         }
       </div>
     </div>
@@ -104,28 +113,39 @@
   <!-- Full Width: Personal Projects -->
   @if (personalProjects().length > 0) {
     <div class="resume-section-group">
-      <h3 class="group-title">Projets Personnels</h3>
+      <h3 class="group-title">Projets personnels</h3>
       <div class="cards-list">
         @for (proj of personalProjects(); track proj.name) {
-          <div class="card">
-            <div class="card-header">
-              <h4>
-                @if (proj.url) {
-                  <a [href]="proj.url" target="_blank">{{ proj.name }}</a>
-                } @else {
-                  {{ proj.name }}
-                }
-              </h4>
-            </div>
-            <p class="card-description">{{ proj.description }}</p>
-            @if (proj.technologies) {
-              <div class="tags-container">
-                @for (tech of proj.technologies; track tech) {
-                  <span class="tag">{{ tech }}</span>
-                }
+          <app-resume-entry
+            [title]="proj.name"
+            [subtitle]="''"
+            [location]="''"
+            [dateRange]="(proj.startDate || '') + (proj.endDate ? ' - ' + proj.endDate : '')"
+          >
+            <!-- Keywords/Technologies injected into entry-keywords slot -->
+            @if (proj.technologies; as techs) {
+              <div entry-keywords class="resume-entry__keywords-container">
+                <div class="resume-entry__keywords">
+                  @for (tech of techs; track tech) {
+                    <span class="resume-entry__keyword">{{ tech }}</span>
+                  }
+                </div>
               </div>
             }
-          </div>
+
+            <div class="card-content">
+              @if (proj.description) {
+                <p class="card-description">{{ proj.description }}</p>
+              }
+              @if (proj.url) {
+                <p class="project-link">
+                  <a [href]="proj.url" target="_blank"
+                    >Voir le projet <i class="fas fa-external-link-alt"></i
+                  ></a>
+                </p>
+              }
+            </div>
+          </app-resume-entry>
         }
       </div>
     </div>

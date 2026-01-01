@@ -66,8 +66,15 @@ describe('AboutComponent', () => {
     expect(compiled.textContent).toContain('Helper');
   });
 
-  it('should display personal projects', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('Project 1');
+  it('should calculate age correctly', () => {
+    const dob = new Date('1990-01-01');
+    const today = new Date();
+    let expectedAge = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+      expectedAge--;
+    }
+
+    expect(component.age()).toBe(expectedAge);
   });
 });

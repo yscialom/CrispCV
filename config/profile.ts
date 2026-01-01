@@ -56,6 +56,8 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       description: 'The project you are looking at right now!',
       url: 'https://github.com/yscialom/vibed-resume',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
+      startDate: '2024-01',
+      endDate: 'Present',
     },
   ],
 

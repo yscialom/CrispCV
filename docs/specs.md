@@ -320,18 +320,68 @@ _Key Features_:
 
 : Implement an "About Me" ("À propos de moi" in French) page to display personal details, links, and additional background. All fields are optional and data is pulled from the configuration file.
 
-    Fields to display:
-    - Contact Information (Email, Phone)
-    - Date of birth
-    - Nationality
-    - Location (current residence)
-    - Car / Driving license status
-    - Languages (Spoken languages and proficiency levels)
-    - Social/Professional links (LinkedIn, GitHub, etc.)
-    - Volunteering and Community Service
-    - Personal Projects
-    - Hobbies
-    - Markdown-formatted description
+_Layout_:
+
+```text
++-----------------------------------------------------------------------------------------------+
+|  About Me ("À propos de moi")                                                                 |
+|                                                                                               |
+|  +--------------------------------+   +---------------------------------------------------+   |
+|  | [Personal Info]                |   | [Description (Markdown)]                          |   |
+|  |                                |   |                                                   |   |
+|  | Date of birth : [DoB] ([Age])  |   | [Social Links]                                    |   |
+|  | Nationality : [Nationality]    |   | [Icon] [Link Text]  [Icon] [Link Text] ...        |   |
+|  | Location : [Location]          |   |                                                   |   |
+|  | Phone : [Phone]                |   +---------------------------------------------------+   |
+|  | Email : [Email]                |                                                       |
+|  | License : [Driving License]    |                                                       |
+|  |                                |                                                       |
+|  | [Languages]                    |                                                       |
+|  | [Language Name]  [Dots]        |                                                       |
+|  | (Tooltip on hover: Level Text) |                                                       |
+|  |                                |                                                       |
+|  | [Hobbies]                      |                                                       |
+|  | [Tag] [Tag] [Tag] ...          |                                                       |
+|  +--------------------------------+                                                       |
+|                                                                                               |
+|  [Volunteering ("Bénévolat")]                                                                 |
+|  +-----------------------------------------------------------------------+                    |
+|  |  [Role]                                                  [Date Range] |                    |
+|  |  [Organization]                                                       |                    |
+|  |                                                                       |                    |
+|  |  [Description Paragraph...]                                           |                    |
+|  |                                                                       |                    |
+|  +-----------------------------------------------------------------------+                    |
+|                                                                                               |
+|  [Personal Projects ("Projets personnels")]                                                   |
+|  +-----------------------------------------------------------------------+                    |
+|  |  [Project Name] (Link)                                   [Date Range] |                    |
+|  |                                                                       |                    |
+|  |                                        (Technology) (Technology) ...  |                    |
+|  |                     -------------------------                         |                    |
+|  |  [Description Paragraph...]                                           |                    |
+|  |                                                                       |                    |
+|  +-----------------------------------------------------------------------+                    |
+|                                                                                               |
++-----------------------------------------------------------------------------------------------+
+```
+
+_Key Features_:
+
+- **Personal Info:**
+  - **Date of Birth:** Displayed as "YYYY-MM-DD (Age years old)".
+  - **Formatting:** In French, colons are preceded by a non-breaking space (e.g., " : ").
+- **Languages:**
+  - displayed as a list with name and a visual "dots" indicator (1-5).
+  - **Tooltip:** Hovering over the dots displays the text equivalent of the level (e.g., "Native", "Fluent").
+- **Social Links:**
+  - displayed with a favicon-size icon to the left of the text.
+- **Volunteering & Projects:**
+  - **Card Layout:** Use the exact same card layout as the "Experience" page (using `app-resume-entry` or similar structure).
+  - **Projects:**
+    - Title is "Projets personnels" (lowercase 'p').
+    - Include **Start Date** and **End Date**.
+    - **Keywords:** Display technologies using the same round-boxed style as experience/education keywords.
 
 **Status**
 : `wip`
