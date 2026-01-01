@@ -333,16 +333,16 @@ _Layout_:
 |  | Nationality : [Nationality]    |   | [Icon] [Link Text]  [Icon] [Link Text] ...        |   |
 |  | Location : [Location]          |   |                                                   |   |
 |  | Phone : [Phone]                |   +---------------------------------------------------+   |
-|  | Email : [Email]                |                                                       |
-|  | License : [Driving License]    |                                                       |
-|  |                                |                                                       |
-|  | [Languages]                    |                                                       |
-|  | [Language Name]  [Dots]        |                                                       |
-|  | (Tooltip on hover: Level Text) |                                                       |
-|  |                                |                                                       |
-|  | [Hobbies]                      |                                                       |
-|  | [Tag] [Tag] [Tag] ...          |                                                       |
-|  +--------------------------------+                                                       |
+|  | Email : [Email]                |                                                           |
+|  | License : [Driving License]    |                                                           |
+|  |                                |                                                           |
+|  | [Languages]                    |                                                           |
+|  | [Language Name]  [Dots]        |                                                           |
+|  | (Tooltip on hover: Level Text) |                                                           |
+|  |                                |                                                           |
+|  | [Hobbies]                      |                                                           |
+|  | [Tag] [Tag] [Tag] ...          |                                                           |
+|  +--------------------------------+                                                           |
 |                                                                                               |
 |  [Volunteering ("Bénévolat")]                                                                 |
 |  +-----------------------------------------------------------------------+                    |
@@ -390,7 +390,7 @@ _Key Features_:
 : `feature/12-about-me-page`
 
 **PR**
-:
+: [#8](https://github.com/yscialom/vibed-resume/pull/8)
 
 **Release**
 :
