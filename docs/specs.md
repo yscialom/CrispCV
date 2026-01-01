@@ -254,7 +254,7 @@ _Key Features_:
 
 : provide multilingual support with language selection in the top navbar.
 
-*Technical considerations:*
+_Technical considerations:_
 
 - **Date Parsing:** The `DurationPipe` currently has a `parseDate` method that handles English "Present" and French "Présent". This logic will need to be centralized and expanded to support all future languages.
 - **UI Strings:** Hardcoded strings in components (e.g., language level labels like "Débutant", "Intermédiaire" in `AboutComponent`) must be moved to a translation system or configuration map.
@@ -390,7 +390,7 @@ _Key Features_:
     - **Keywords:** Display technologies using the same round-boxed style as experience/education keywords.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/12-about-me-page`
