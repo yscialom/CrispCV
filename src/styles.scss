@@ -30,17 +30,16 @@ body {
   }
 }
 
-// Global styles (example)
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: Lato, Arial, sans-serif;
   background-color: var(--primary-bg);
   color: var(--text);
+  font-size: 1rem;
 }
 
-// Basic element styling to use theme variables
 h1,
 h2,
 h3,
@@ -48,6 +47,34 @@ h4,
 h5,
 h6 {
   color: var(--text);
+  margin-top: spacing.$spacing-medium;
+  margin-bottom: spacing.$spacing-small;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 0.875rem;
+}
+
+h5,
+h6 {
+  font-size: 0.875rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: spacing.$spacing-medium;
 }
 
 a {

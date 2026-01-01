@@ -6,8 +6,6 @@
   margin: 0 auto;
 
   h2 {
-    font-size: spacing.$spacing-x-large;
-    margin-bottom: spacing.$spacing-large;
     border-bottom: 2px solid var(--accent);
     display: inline-block;
   }
@@ -32,10 +30,8 @@
 
   h3 {
     margin-top: 0;
-    margin-bottom: spacing.$spacing-medium;
     border-bottom: 1px solid var(--text-disabled);
     padding-bottom: spacing.$spacing-xx-small;
-    font-size: 1.1rem;
   }
 }
 
@@ -89,18 +85,6 @@
   .about-description {
     margin-bottom: spacing.$spacing-x-large;
     line-height: 1.6;
-
-    ::ng-deep {
-      p {
-        margin-bottom: spacing.$spacing-medium;
-      }
-
-      h1,
-      h2,
-      h3 {
-        margin-top: spacing.$spacing-medium;
-      }
-    }
   }
 }
 
@@ -143,10 +127,8 @@
   margin-top: spacing.$spacing-x-large;
 
   .group-title {
-    margin-bottom: spacing.$spacing-medium;
     border-bottom: 1px solid var(--text-disabled);
     padding-bottom: spacing.$spacing-xx-small;
-    font-size: 1.1rem;
   }
 }
 
