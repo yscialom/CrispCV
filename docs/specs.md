@@ -15,7 +15,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 - **Status**
   : The current state of the feature. Must be one of the following:
   - `idea`: A feature that has been proposed but not yet planned.
-  - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented).
+  - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented) and must always come from the user, do not suggest a value; if none given, only use `todo`.
   - `wip`: The feature is currently in progress.
   - `done`: The feature has been completed, tested, and merged. **Note: A feature can only be set to `done` if explicitly asked by the user.**
 
@@ -87,6 +87,9 @@ Each feature is documented in its own section. A feature section is a level-2 he
 **Branch**
 : `feature/3-navbar`
 
+**PR**
+: [#1](https://github.com/yscialom/vibed-resume/pull/1)
+
 **Release**
 :
 
@@ -130,6 +133,9 @@ _Key Features_:
 
 **Branch**
 : `feature/4-experience-page`
+
+**PR**
+: [#2](https://github.com/yscialom/vibed-resume/pull/2)
 
 ---
 
@@ -232,7 +238,7 @@ _Key Features_:
 : `feature/8-education-page`
 
 **PR**
-: [https://github.com/yscialom/vibed-resume/pull/4](#4)
+: [#4](https://github.com/yscialom/vibed-resume/pull/4)
 
 **Release**
 :
@@ -245,14 +251,16 @@ _Key Features_:
 : `9`
 
 **Description**
-: Provide multilingual support with language selection in the top navbar. Switching language should
-switch the application text to the selected lannguage as well as the profile data. This means the switch
-should only list languages for which it has profile data for this language.
-Minor note: date and duration formats/local will be complexified by this multilingual feature, consider
-using a library like date-fns to handle localisation consistently.
+
+: provide multilingual support with language selection in the top navbar.
+
+*Technical considerations:*
+
+- **Date Parsing:** The `DurationPipe` currently has a `parseDate` method that handles English "Present" and French "Présent". This logic will need to be centralized and expanded to support all future languages.
+- **UI Strings:** Hardcoded strings in components (e.g., language level labels like "Débutant", "Intermédiaire" in `AboutComponent`) must be moved to a translation system or configuration map.
 
 **Status**
-: `toto`
+: `todo`
 
 **Branch**
 :
@@ -303,6 +311,92 @@ using a library like date-fns to handle localisation consistently.
 
 **PR**
 :
+
+**Release**
+:
+
+---
+
+## 'About Me' Page
+
+**ID**
+: `12`
+
+**Description**
+
+: Implement an "About Me" ("À propos de moi" in French) page to display personal details, links, and additional background. All fields are optional and data is pulled from the configuration file.
+
+_Layout_:
+
+```text
++-----------------------------------------------------------------------------------------------+
+|  About Me ("À propos de moi")                                                                 |
+|                                                                                               |
+|  +--------------------------------+   +---------------------------------------------------+   |
+|  | [Personal Info]                |   | [Description (Markdown)]                          |   |
+|  |                                |   |                                                   |   |
+|  | Date of birth : [DoB] ([Age])  |   | [Social Links]                                    |   |
+|  | Nationality : [Nationality]    |   | [Icon] [Link Text]  [Icon] [Link Text] ...        |   |
+|  | Location : [Location]          |   |                                                   |   |
+|  | Phone : [Phone]                |   +---------------------------------------------------+   |
+|  | Email : [Email]                |                                                           |
+|  | License : [Driving License]    |                                                           |
+|  |                                |                                                           |
+|  | [Languages]                    |                                                           |
+|  | [Language Name]  [Dots]        |                                                           |
+|  | (Tooltip on hover: Level Text) |                                                           |
+|  |                                |                                                           |
+|  | [Hobbies]                      |                                                           |
+|  | [Tag] [Tag] [Tag] ...          |                                                           |
+|  +--------------------------------+                                                           |
+|                                                                                               |
+|  [Volunteering ("Bénévolat")]                                                                 |
+|  +-----------------------------------------------------------------------+                    |
+|  |  [Role]                                                  [Date Range] |                    |
+|  |  [Organization]                                                       |                    |
+|  |                                                                       |                    |
+|  |  [Description Paragraph...]                                           |                    |
+|  |                                                                       |                    |
+|  +-----------------------------------------------------------------------+                    |
+|                                                                                               |
+|  [Personal Projects ("Projets personnels")]                                                   |
+|  +-----------------------------------------------------------------------+                    |
+|  |  [Project Name] (Link)                                   [Date Range] |                    |
+|  |                                                                       |                    |
+|  |                                        (Technology) (Technology) ...  |                    |
+|  |                     -------------------------                         |                    |
+|  |  [Description Paragraph...]                                           |                    |
+|  |                                                                       |                    |
+|  +-----------------------------------------------------------------------+                    |
+|                                                                                               |
++-----------------------------------------------------------------------------------------------+
+```
+
+_Key Features_:
+
+- **Personal Info:**
+  - **Date of Birth:** Displayed as "YYYY-MM-DD (Age years old)".
+  - **Formatting:** In French, colons are preceded by a non-breaking space (e.g., " : ").
+- **Languages:**
+  - displayed as a list with name and a visual "dots" indicator (1-5).
+  - **Tooltip:** Hovering over the dots displays the text equivalent of the level (e.g., "Native", "Fluent").
+- **Social Links:**
+  - displayed with a favicon-size icon to the left of the text.
+- **Volunteering & Projects:**
+  - **Card Layout:** Use the exact same card layout as the "Experience" page (using `app-resume-entry` or similar structure).
+  - **Projects:**
+    - Title is "Projets personnels" (lowercase 'p').
+    - Include **Start Date** and **End Date**.
+    - **Keywords:** Display technologies using the same round-boxed style as experience/education keywords.
+
+**Status**
+: `wip`
+
+**Branch**
+: `feature/12-about-me-page`
+
+**PR**
+: [#8](https://github.com/yscialom/vibed-resume/pull/8)
 
 **Release**
 :

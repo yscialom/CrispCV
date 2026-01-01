@@ -103,7 +103,7 @@ describe('ExperienceCardComponent', () => {
 
   it('should render keywords correctly', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const keywordElements = compiled.querySelectorAll('.experience-card__keyword');
+    const keywordElements = compiled.querySelectorAll('.resume-entry__keyword');
     expect(keywordElements.length).toBe(2);
     expect(keywordElements[0].textContent).toContain('Key1');
     expect(keywordElements[1].textContent).toContain('Key2');
@@ -117,7 +117,7 @@ describe('ExperienceCardComponent', () => {
     fixture.componentRef.setInput('experience', exp);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.experience-card__keywords')).toBeFalsy();
+    expect(compiled.querySelector('.resume-entry__keywords')).toBeFalsy();
   });
 
   it('should render markdown in mission description', () => {

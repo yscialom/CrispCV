@@ -13,6 +13,40 @@ export interface Profile {
   website: string;
   location: string;
   profilePicturePath?: string;
+  birthDate?: string;
+  nationality?: string;
+  drivingLicense?: string;
+  languages?: Skill[];
+  socialLinks?: SocialLink[];
+  volunteering?: Volunteering[];
+  hobbies?: string[];
+  aboutDescription?: string;
+  personalProjects?: Project[];
+}
+
+export interface SocialLink {
+  platform: string;
+  url: string;
+  username?: string;
+  icon?: string;
+}
+
+export interface Volunteering {
+  organization: string;
+  role: string;
+  startDate: string;
+  endDate?: string;
+  description?: string;
+  website?: string;
+}
+
+export interface Project {
+  name: string;
+  description: string;
+  url?: string;
+  technologies?: string[];
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface Experience {

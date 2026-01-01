@@ -1,0 +1,175 @@
+<section class="resume-section">
+  <h2>À propos de moi</h2>
+
+  <div class="about-grid">
+    <!-- Left Column: Personal Info -->
+    <div class="about-info">
+      <h3>Informations Personnelles</h3>
+      <ul class="info-list">
+        @if (profile().birthDate) {
+          <li>
+            <strong>Date de naissance :</strong>
+            {{ profile().birthDate }}
+            @if (age()) {
+              ({{ age() }} ans)
+            }
+          </li>
+        }
+        @if (profile().nationality) {
+          <li><strong>Nationalité :</strong> {{ profile().nationality }}</li>
+        }
+        @if (profile().location) {
+          <li>
+            <strong>Localisation :</strong>
+            <a
+              class="info-link"
+              [href]="'https://www.google.com/maps?q=' + profile().location"
+              target="_blank"
+            >
+              {{ profile().location }}
+            </a>
+          </li>
+        }
+        @if (profile().phone) {
+          <li>
+            <strong>Téléphone :</strong>
+            <a class="info-link" [href]="'tel:' + profile().phone">{{ profile().phone }}</a>
+          </li>
+        }
+        @if (profile().email) {
+          <li>
+            <strong>Email :</strong>
+            <a class="info-link" [href]="'mailto:' + profile().email">{{ profile().email }}</a>
+          </li>
+        }
+        @if (profile().drivingLicense) {
+          <li><strong>Permis :</strong> {{ profile().drivingLicense }}</li>
+        }
+      </ul>
+
+      @if (languages().length > 0) {
+        <h3>Langues</h3>
+        <ul class="skills-list">
+          @for (lang of languages(); track lang.name) {
+            <li [title]="getLanguageLevelLabel(lang.level)">
+              <span class="skill-name">{{ lang.name }}</span>
+              <!-- Simple visual representation of level -->
+              <span class="skill-dots">
+                @for (i of [1, 2, 3, 4, 5]; track i) {
+                  <span class="dot" [class.filled]="i <= lang.level"></span>
+                }
+              </span>
+            </li>
+          }
+        </ul>
+      }
+
+      @if (hobbies().length > 0) {
+        <h3>Loisirs</h3>
+        <div class="tags-container">
+          @for (hobby of hobbies(); track hobby) {
+            <span class="tag">{{ hobby }}</span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Right Column: Description & Links -->
+    <div class="about-content">
+      @if (profile().aboutDescription) {
+        <div class="about-description" [innerHTML]="profile().aboutDescription | markdown"></div>
+      }
+
+      @if (socialLinks().length > 0) {
+        <div class="social-links">
+          <h3>Retrouvez-moi sur</h3>
+          <div class="links-container">
+            @for (link of socialLinks(); track link.platform) {
+              <a [href]="link.url" target="_blank" class="social-btn">
+                @if (link.icon) {
+                  <i [class]="link.icon"></i>
+                } @else {
+                  <!-- Placeholder for favicon-size logo if no icon class provided, using text for now or generic icon -->
+                  <span class="default-icon">🔗</span>
+                }
+                {{ link.platform }}
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Full Width: Volunteering -->
+  @if (volunteering().length > 0) {
+    <div class="resume-section-group">
+      <h3 class="group-title">Bénévolat</h3>
+      <div class="cards-list">
+        @for (vol of volunteering(); track vol.organization) {
+          <app-resume-entry
+            [title]="vol.role"
+            [subtitle]="vol.organization"
+            [location]="''"
+            [dateRange]="
+              vol.startDate +
+              (vol.endDate ? ' - ' + vol.endDate : ' - Présent') +
+              ' (' +
+              (vol.startDate | duration: vol.endDate) +
+              ')'
+            "
+          >
+            @if (vol.description) {
+              <p class="card-description">{{ vol.description }}</p>
+            }
+          </app-resume-entry>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Full Width: Personal Projects -->
+  @if (personalProjects().length > 0) {
+    <div class="resume-section-group">
+      <h3 class="group-title">Projets personnels</h3>
+      <div class="cards-list">
+        @for (proj of personalProjects(); track proj.name) {
+          <app-resume-entry
+            [title]="proj.name"
+            [subtitle]="''"
+            [location]="''"
+            [dateRange]="
+              (proj.startDate || '') +
+              (proj.endDate ? ' - ' + proj.endDate : '') +
+              (proj.startDate ? ' (' + (proj.startDate | duration: proj.endDate) + ')' : '')
+            "
+          >
+            <!-- Keywords/Technologies injected into entry-keywords slot -->
+            @if (proj.technologies; as techs) {
+              <div entry-keywords class="resume-entry__keywords-container">
+                <div class="resume-entry__keywords">
+                  @for (tech of techs; track tech) {
+                    <span class="resume-entry__keyword">{{ tech }}</span>
+                  }
+                </div>
+              </div>
+            }
+
+            <div class="card-content">
+              @if (proj.description) {
+                <p class="card-description">{{ proj.description }}</p>
+              }
+              @if (proj.url) {
+                <p class="project-link">
+                  <a [href]="proj.url" target="_blank"
+                    >Voir le projet <i class="fas fa-external-link-alt"></i
+                  ></a>
+                </p>
+              }
+            </div>
+          </app-resume-entry>
+        }
+      </div>
+    </div>
+  }
+</section>

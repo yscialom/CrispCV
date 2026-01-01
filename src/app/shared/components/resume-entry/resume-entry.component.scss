@@ -1,11 +1,17 @@
 @use '../../../../../config/spacing' as spacing;
 
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .resume-entry {
+  flex: 1;
   padding: spacing.$spacing-medium;
   background-color: var(--secondary-bg);
   border-radius: spacing.$border-radius-standard;
   transition: all 300ms ease-in-out;
-  margin-bottom: spacing.$spacing-medium;
   border-left: 4px solid var(--accent);
 
   &:hover {
