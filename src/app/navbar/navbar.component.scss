@@ -102,9 +102,9 @@
   }
 
   &.is-sticky {
-    min-height: 0;
+    min-height: unset;
     padding-top: spacing.$spacing-x-small;
-    padding-bottom: spacing.$spacing-small;
+    padding-bottom: spacing.$spacing-medium;
     box-shadow: spacing.$shadow-standard;
 
     .profile-picture img {
