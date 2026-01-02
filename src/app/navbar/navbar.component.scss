@@ -21,7 +21,7 @@
 
     img {
       width: auto;
-      height: calc(100% - (#{spacing.$spacing-medium} * 2));
+      height: 118px;
       max-width: 150px;
       border: 1px solid var(--accent);
       border-radius: 5%;
@@ -102,7 +102,7 @@
   }
 
   &.is-sticky {
-    min-height: unset;
+    min-height: 0;
     padding-top: spacing.$spacing-x-small;
     padding-bottom: spacing.$spacing-medium;
     box-shadow: spacing.$shadow-standard;
