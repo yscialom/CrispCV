@@ -190,6 +190,7 @@ _Key Features_:
 
 **Description**
 : Ensure the top navigation bar remains visible at the top of the viewport when scrolling.
+
 - **Visual Feedback:** When sticky, the navbar should have a subtle shadow as a visual separator from the content.
 - **Dynamic Shrinking:** As the navbar becomes sticky, the professional summary (description) should disappear, and the navigation tabs should move up, resulting in a reduced navbar height.
 - **Smooth Transitions:** All changes (height, opacity of elements, shadow) must transition smoothly.
@@ -418,7 +419,8 @@ _Key Features_:
 **Description**
 : To ensure privacy, security, and offline availability, all external assets (like Font Awesome) should be bundled locally instead of being loaded via CDN.
 
-*Proposed Solutions:*
+_Proposed Solutions:_
+
 - Install via npm (e.g., @fortawesome/fontawesome-free) and include in the build.
 - Download assets to src/assets and reference them locally.
 
