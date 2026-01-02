@@ -21,8 +21,9 @@ describe('FooterComponent', () => {
 
   it('should render the footer text', () => {
     const compiled = fixture.nativeElement as HTMLElement;
+    // &mdash; is rendered as \u2014 in textContent
     expect(compiled.querySelector('footer p')?.textContent).toContain(
-      'static résumé --- Yankel Scialom ---'
+      'static résumé \u2014 Yankel Scialom \u2014'
     );
   });
 
