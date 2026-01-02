@@ -148,7 +148,7 @@ _Key Features_:
 : Enhance keyword interactivity. Clicking a keyword highlights all experience cards sharing that keyword. Hovering over a keyword reveals a tooltip showing the total accumulated duration of experience for that specific skill across all positions.
 
 **Status**
-: `todo`
+: `todo (priority: 2)`
 
 **Branch**
 :
@@ -170,7 +170,7 @@ _Key Features_:
 : Implement deep-linking for experiences. Clicking an experience card updates the URL with a unique permalink and automatically copies the full link to the clipboard. The application should handle these permalinks on load by scrolling to the relevant card.
 
 **Status**
-: `todo`
+: `todo (priority: 3)`
 
 **Branch**
 :
@@ -189,11 +189,18 @@ _Key Features_:
 : `7`
 
 **Description**
+: Ensure the top navigation bar remains visible at the top of the viewport when scrolling.
+- **Visual Feedback:** When sticky, the navbar should have a subtle shadow as a visual separator from the content.
+- **Dynamic Shrinking:** As the navbar becomes sticky, the professional summary (description) should disappear, and the navigation tabs should move up, resulting in a reduced navbar height.
+- **Smooth Transitions:** All changes (height, opacity of elements, shadow) must transition smoothly.
+- **Layering:** The navbar must always remain on top of the page content.
+- **Mobile:** This behavior applies to both desktop and mobile devices.
+
 **Status**
-: `todo`
+: `wip`
 
 **Branch**
-:
+: `feature/7-sticky-navbar`
 
 **PR**
 :
@@ -260,7 +267,7 @@ _Technical considerations:_
 - **UI Strings:** Hardcoded strings in components (e.g., language level labels like "Débutant", "Intermédiaire" in `AboutComponent`) must be moved to a translation system or configuration map.
 
 **Status**
-: `todo`
+: `todo (priority: 5)`
 
 **Branch**
 :
@@ -282,7 +289,7 @@ _Technical considerations:_
 : provide dark/light theme switch in the top navbar
 
 **Status**
-: `toto`
+: `todo (priority: 4)`
 
 **Branch**
 :
@@ -304,7 +311,7 @@ _Technical considerations:_
 : add a github workflow to publish the app as github pages
 
 **Status**
-: `toto`
+: `todo (priority: 4)`
 
 **Branch**
 :
@@ -397,6 +404,32 @@ _Key Features_:
 
 **PR**
 : [#8](https://github.com/yscialom/vibed-resume/pull/8)
+
+**Release**
+:
+
+---
+
+## Remove External CDN Dependencies
+
+**ID**
+: `13`
+
+**Description**
+: To ensure privacy, security, and offline availability, all external assets (like Font Awesome) should be bundled locally instead of being loaded via CDN.
+
+*Proposed Solutions:*
+- Install via npm (e.g., @fortawesome/fontawesome-free) and include in the build.
+- Download assets to src/assets and reference them locally.
+
+**Status**
+: `todo (priority: 1)`
+
+**Branch**
+:
+
+**PR**
+:
 
 **Release**
 :
