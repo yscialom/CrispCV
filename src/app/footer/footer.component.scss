@@ -32,6 +32,6 @@ footer {
   // and prevent scroll looping on short pages.
   // This keeps the footer at the bottom of the screen while preserving scrollHeight.
   body.sticky-active & {
-    padding-top: calc(spacing.$spacing-x-large + 4.125rem);
+    padding-top: calc(spacing.$spacing-x-large + 10rem);
   }
 }
