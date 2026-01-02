@@ -424,8 +424,27 @@ _Proposed Solutions:_
 - Install via npm (e.g., @fortawesome/fontawesome-free) and include in the build.
 - Download assets to src/assets and reference them locally.
 
+**Release**
+:
+
+---
+
+## Responsive Navbar
+
+**ID**
+: `14`
+
+**Description**
+: Improve the responsiveness of the navbar on small screens (mobile/tablet).
+
+- **Issue:** On narrow viewports, the horizontal list of navigation tabs ("Expériences", "Études", "À propos") may overflow or wrap awkwardly alongside the profile name.
+- **Solution:** Implement a responsive design that likely involves:
+  - Collapsing the navigation links into a "Hamburger Menu" (dropdown) on mobile.
+  - Alternatively, implementing a scrollable horizontal tab bar if the design permits.
+  - Ensuring the sticky behavior and layout adjustments work seamlessly with this new responsive state.
+
 **Status**
-: `todo (priority: 1)`
+: `todo (priority: 2)`
 
 **Branch**
 :
