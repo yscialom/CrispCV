@@ -61,4 +61,27 @@ describe('NavbarComponent', () => {
     expect(imgElement).toBeTruthy();
     expect(imgElement.src).toContain(mockProfile().profilePicturePath);
   });
+
+  it('should update isSticky signal and apply class when scrolling', () => {
+    // Initial state: not sticky
+    expect(component['isSticky']()).toBe(false);
+    const header = fixture.nativeElement.querySelector('header');
+    expect(header.classList.contains('is-sticky')).toBe(false);
+
+    // Simulate scroll down
+    Object.defineProperty(window, 'scrollY', { value: 100, writable: true });
+    window.dispatchEvent(new Event('scroll'));
+    fixture.detectChanges();
+
+    expect(component['isSticky']()).toBe(true);
+    expect(header.classList.contains('is-sticky')).toBe(true);
+
+    // Simulate scroll back to top
+    Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
+    window.dispatchEvent(new Event('scroll'));
+    fixture.detectChanges();
+
+    expect(component['isSticky']()).toBe(false);
+    expect(header.classList.contains('is-sticky')).toBe(false);
+  });
 });
