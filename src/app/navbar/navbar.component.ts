@@ -6,9 +6,12 @@ import {
   ViewChild,
   AfterViewInit,
   OnDestroy,
+  Renderer2,
+  effect,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -20,9 +23,21 @@ import { ResumeDataService } from '../core/services/resume-data.service';
 export class NavbarComponent implements AfterViewInit, OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;
   protected readonly isSticky = signal(false);
+  private readonly document = inject(DOCUMENT);
+  private readonly renderer = inject(Renderer2);
 
   @ViewChild('sentinel') sentinel!: ElementRef<HTMLDivElement>;
   private observer: IntersectionObserver | undefined;
+
+  constructor() {
+    effect(() => {
+      if (this.isSticky()) {
+        this.renderer.addClass(this.document.body, 'sticky-active');
+      } else {
+        this.renderer.removeClass(this.document.body, 'sticky-active');
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     if (typeof IntersectionObserver !== 'undefined') {

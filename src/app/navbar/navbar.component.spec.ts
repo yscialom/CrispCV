@@ -92,15 +92,10 @@ describe('NavbarComponent', () => {
     expect(imgElement.src).toContain(mockProfile().profilePicturePath);
   });
 
-  it('should update isSticky signal via IntersectionObserver', () => {
+  it('should update isSticky signal and body class via IntersectionObserver', () => {
     // Check initial state (default false)
     expect(component['isSticky']()).toBe(false);
-
-    // Simulate intersecting (at top) -> isIntersecting: true
-    const entryTop = { isIntersecting: true } as IntersectionObserverEntry;
-    observerCallback([entryTop], {} as IntersectionObserver);
-    fixture.detectChanges();
-    expect(component['isSticky']()).toBe(false);
+    expect(document.body.classList.contains('sticky-active')).toBe(false);
 
     // Simulate scrolling down (not intersecting) -> isIntersecting: false
     const entryScroll = { isIntersecting: false } as IntersectionObserverEntry;
@@ -110,5 +105,15 @@ describe('NavbarComponent', () => {
     expect(component['isSticky']()).toBe(true);
     const header = fixture.nativeElement.querySelector('header');
     expect(header.classList.contains('is-sticky')).toBe(true);
+    expect(document.body.classList.contains('sticky-active')).toBe(true);
+
+    // Simulate scrolling back up (intersecting) -> isIntersecting: true
+    const entryTop = { isIntersecting: true } as IntersectionObserverEntry;
+    observerCallback([entryTop], {} as IntersectionObserver);
+    fixture.detectChanges();
+
+    expect(component['isSticky']()).toBe(false);
+    expect(header.classList.contains('is-sticky')).toBe(false);
+    expect(document.body.classList.contains('sticky-active')).toBe(false);
   });
 });

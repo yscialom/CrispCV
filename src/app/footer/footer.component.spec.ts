@@ -23,7 +23,7 @@ describe('FooterComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     // &mdash; is rendered as \u2014 in textContent
     expect(compiled.querySelector('footer p')?.textContent).toContain(
-      'static résumé \u2014 Yankel Scialom \u2014'
+      'static résumé \u2014 Yankel Scialom \u2014',
     );
   });
 

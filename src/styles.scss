@@ -46,6 +46,13 @@ app-root {
   min-height: 100vh;
 }
 
+// When navbar is sticky (shrunk), add padding to bottom to compensate for lost height
+// and prevent scroll looping on short pages.
+// Value = Default Height (150px) - Sticky Height (~84px) = ~66px (4.125rem)
+body.sticky-active app-root {
+  padding-bottom: 4.125rem;
+}
+
 h1,
 h2,
 h3,
