@@ -198,7 +198,7 @@ _Key Features_:
 - **Mobile:** This behavior applies to both desktop and mobile devices.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/7-sticky-navbar`
@@ -429,7 +429,7 @@ _Proposed Solutions:_
 
 ---
 
-## Responsive Navbar
+## Responsive Navbar (refine: whole app)
 
 **ID**
 : `14`
