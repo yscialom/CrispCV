@@ -1,0 +1,29 @@
+@use '../../../config/spacing' as spacing;
+
+:host {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: spacing.$spacing-x-large;
+  font-size: 0.875rem;
+  color: var(--text-disabled);
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--text-disabled);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--text-disabled);
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      color: var(--accent);
+      border-bottom-style: solid;
+      border-bottom-color: var(--accent);
+    }
+  }
+}

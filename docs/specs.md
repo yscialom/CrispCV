@@ -429,28 +429,28 @@ _Proposed Solutions:_
 
 ---
 
-## Responsive Navbar (refine: whole app)
+---
+
+## Footer
 
 **ID**
-: `14`
+: `15`
 
 **Description**
-: Improve the responsiveness of the navbar on small screens (mobile/tablet).
+: Add a simple, discreet footer at the bottom of the application.
 
-- **Issue:** On narrow viewports, the horizontal list of navigation tabs ("Expériences", "Études", "À propos") may overflow or wrap awkwardly alongside the profile name.
-- **Solution:** Implement a responsive design that likely involves:
-  - Collapsing the navigation links into a "Hamburger Menu" (dropdown) on mobile.
-  - Alternatively, implementing a scrollable horizontal tab bar if the design permits.
-  - Ensuring the sticky behavior and layout adjustments work seamlessly with this new responsive state.
+- **Content:** "static résumé &mdash; Yankel Scialom &mdash; link 'for us on github'".
+- **Link:** The text "for us on github" should link to `https://github.com/yscialom/vibed-resume` and open in a new tab.
+- **Style:** Discreet, centered, consistent with the app's minimal aesthetic. Implementation ensures it stays at the bottom of the screen on short pages.
 
 **Status**
-: `todo (priority: 2)`
+: `done`
 
 **Branch**
-:
+: `feature/15-footer`
 
 **PR**
-:
+: [#11](https://github.com/yscialom/vibed-resume/pull/11)
 
 **Release**
 :

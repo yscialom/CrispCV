@@ -4,6 +4,7 @@ import { Profile } from '../core/models/resume.models';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { vi } from 'vitest';
 
 describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
@@ -27,14 +28,20 @@ describe('NavbarComponent', () => {
   };
 
   let observerCallback: IntersectionObserverCallback;
+  let resizeCallback: ResizeObserverCallback;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let observeSpy: any;
 
   beforeEach(async () => {
+    observeSpy = vi.fn();
+
     // Mock IntersectionObserver
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     window.IntersectionObserver = class {
       constructor(callback: IntersectionObserverCallback) {
         observerCallback = callback;
       }
-      observe() {}
+      observe = observeSpy;
       unobserve() {}
       disconnect() {}
       takeRecords() {
@@ -44,6 +51,16 @@ describe('NavbarComponent', () => {
       rootMargin = '';
       thresholds = [];
     } as unknown as typeof IntersectionObserver;
+
+    window.ResizeObserver = class {
+      constructor(callback: ResizeObserverCallback) {
+        resizeCallback = callback;
+      }
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    } as unknown as typeof ResizeObserver;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     await TestBed.configureTestingModule({
       imports: [NavbarComponent], // Import standalone component
@@ -55,11 +72,21 @@ describe('NavbarComponent', () => {
 
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
+
+    // Default to tall page
+    vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(2000);
+    vi.spyOn(document.documentElement, 'clientHeight', 'get').mockReturnValue(800);
+
     fixture.detectChanges(); // Detect changes to bind data
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should start observing the sentinel element', () => {
+    const sentinelEl = fixture.nativeElement.querySelector('.sentinel');
+    expect(observeSpy).toHaveBeenCalledWith(sentinelEl);
   });
 
   it('should display profile name, title, summary, and picture from ResumeDataService', () => {
@@ -84,12 +111,6 @@ describe('NavbarComponent', () => {
     // Check initial state (default false)
     expect(component['isSticky']()).toBe(false);
 
-    // Simulate intersecting (at top) -> isIntersecting: true
-    const entryTop = { isIntersecting: true } as IntersectionObserverEntry;
-    observerCallback([entryTop], {} as IntersectionObserver);
-    fixture.detectChanges();
-    expect(component['isSticky']()).toBe(false);
-
     // Simulate scrolling down (not intersecting) -> isIntersecting: false
     const entryScroll = { isIntersecting: false } as IntersectionObserverEntry;
     observerCallback([entryScroll], {} as IntersectionObserver);
@@ -98,5 +119,33 @@ describe('NavbarComponent', () => {
     expect(component['isSticky']()).toBe(true);
     const header = fixture.nativeElement.querySelector('header');
     expect(header.classList.contains('is-sticky')).toBe(true);
+
+    // Simulate scrolling back up (intersecting) -> isIntersecting: true
+    const entryTop = { isIntersecting: true } as IntersectionObserverEntry;
+    observerCallback([entryTop], {} as IntersectionObserver);
+    fixture.detectChanges();
+
+    expect(component['isSticky']()).toBe(false);
+    expect(header.classList.contains('is-sticky')).toBe(false);
+  });
+
+  it('should not be sticky if page is not tall enough', () => {
+    // Mock page height to be short (equal to viewport)
+    vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(800);
+    vi.spyOn(document.documentElement, 'clientHeight', 'get').mockReturnValue(800);
+
+    // Trigger ResizeObserver to update isPageTallEnough
+    resizeCallback([], {} as ResizeObserver);
+    fixture.detectChanges();
+
+    // Trigger scroll (isScrolled = true)
+    const entryScroll = { isIntersecting: false } as IntersectionObserverEntry;
+    observerCallback([entryScroll], {} as IntersectionObserver);
+    fixture.detectChanges();
+
+    // Should NOT be sticky because page is short
+    expect(component['isSticky']()).toBe(false);
+    const header = fixture.nativeElement.querySelector('header');
+    expect(header.classList.contains('is-sticky')).toBe(false);
   });
 });
