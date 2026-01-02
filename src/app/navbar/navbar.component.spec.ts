@@ -4,6 +4,7 @@ import { Profile } from '../core/models/resume.models';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { vi } from 'vitest';
 
 describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
@@ -27,14 +28,19 @@ describe('NavbarComponent', () => {
   };
 
   let observerCallback: IntersectionObserverCallback;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let observeSpy: any;
 
   beforeEach(async () => {
+    observeSpy = vi.fn();
+
     // Mock IntersectionObserver
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     window.IntersectionObserver = class {
       constructor(callback: IntersectionObserverCallback) {
         observerCallback = callback;
       }
-      observe() {}
+      observe = observeSpy;
       unobserve() {}
       disconnect() {}
       takeRecords() {
@@ -44,6 +50,7 @@ describe('NavbarComponent', () => {
       rootMargin = '';
       thresholds = [];
     } as unknown as typeof IntersectionObserver;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     await TestBed.configureTestingModule({
       imports: [NavbarComponent], // Import standalone component
@@ -60,6 +67,11 @@ describe('NavbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should start observing the sentinel element', () => {
+    const sentinelEl = fixture.nativeElement.querySelector('.sentinel');
+    expect(observeSpy).toHaveBeenCalledWith(sentinelEl);
   });
 
   it('should display profile name, title, summary, and picture from ResumeDataService', () => {

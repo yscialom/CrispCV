@@ -8,14 +8,11 @@ $navbar-img-height-sticky: 3.75rem; // 60px
 }
 
 .sentinel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 1px;
+  width: 100%;
+  margin-bottom: -1px;
   opacity: 0;
   pointer-events: none;
-  z-index: -1;
 }
 
 .navbar {
