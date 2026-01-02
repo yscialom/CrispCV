@@ -450,7 +450,7 @@ _Proposed Solutions:_
 : `feature/15-footer`
 
 **PR**
-:
+: [#11](https://github.com/yscialom/vibed-resume/pull/11)
 
 **Release**
 :
