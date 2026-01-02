@@ -1,5 +1,8 @@
 @use '../../../config/spacing' as spacing;
 
+$navbar-height-default: 9.375rem; // 150px
+$navbar-img-height-sticky: 3.75rem; // 60px
+
 .navbar {
   position: sticky;
   top: 0;
@@ -9,7 +12,7 @@
   padding: spacing.$spacing-medium;
   background-color: var(--primary-bg);
   color: var(--text);
-  min-height: 150px;
+  min-height: $navbar-height-default;
   transition: all 500ms ease-in-out;
 
   .profile-picture {
@@ -21,8 +24,8 @@
 
     img {
       width: auto;
-      height: 118px;
-      max-width: 150px;
+      height: calc(#{$navbar-height-default} - (#{spacing.$spacing-medium} * 2));
+      max-width: $navbar-height-default;
       border: 1px solid var(--accent);
       border-radius: 5%;
       transition: all 500ms ease-in-out;
@@ -60,7 +63,7 @@
 
     .profile-summary {
       color: var(--text);
-      max-height: 100px;
+      max-height: 6.25rem; // 100px
       opacity: 1;
     }
 
@@ -108,7 +111,7 @@
     box-shadow: spacing.$shadow-standard;
 
     .profile-picture img {
-      height: 60px;
+      height: $navbar-img-height-sticky;
     }
 
     .profile-content {
