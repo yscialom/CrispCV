@@ -204,7 +204,7 @@ _Key Features_:
 : `feature/7-sticky-navbar`
 
 **PR**
-:
+: [#7](https://github.com/yscialom/vibed-resume/pull/10)
 
 **Release**
 :
