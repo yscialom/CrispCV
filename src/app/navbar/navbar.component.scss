@@ -3,6 +3,10 @@
 $navbar-height-default: 9.375rem; // 150px
 $navbar-img-height-sticky: 3.75rem; // 60px
 
+:host {
+  display: contents;
+}
+
 .sentinel {
   position: absolute;
   top: 0;
