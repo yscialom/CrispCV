@@ -438,6 +438,7 @@ _Proposed Solutions:_
 
 **Description**
 : Add a simple, discreet footer at the bottom of the application.
+
 - **Content:** "static résumé &mdash; Yankel Scialom &mdash; link 'for us on github'".
 - **Link:** The text "for us on github" should link to `https://github.com/yscialom/vibed-resume` and open in a new tab.
 - **Style:** Discreet, centered, consistent with the app's minimal aesthetic. Implementation ensures it stays at the bottom of the screen on short pages.
