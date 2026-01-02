@@ -1,10 +1,15 @@
 @use '../../../config/spacing' as spacing;
 
+:host {
+  display: contents;
+}
+
 footer {
   text-align: center;
   padding: spacing.$spacing-x-large;
   font-size: 0.875rem;
   color: var(--text-disabled);
+  transition: padding-top 500ms ease-in-out;
 
   p {
     margin: 0;
@@ -21,5 +26,12 @@ footer {
       border-bottom-style: solid;
       border-bottom-color: var(--accent);
     }
+  }
+
+  // When navbar is sticky (shrunk), increase top padding to compensate for lost height
+  // and prevent scroll looping on short pages.
+  // This keeps the footer at the bottom of the screen while preserving scrollHeight.
+  body.sticky-active & {
+    padding-top: calc(spacing.$spacing-x-large + 4.125rem);
   }
 }
