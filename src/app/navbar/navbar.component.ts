@@ -2,16 +2,14 @@ import {
   Component,
   inject,
   signal,
+  computed,
   ElementRef,
   ViewChild,
   AfterViewInit,
   OnDestroy,
-  Renderer2,
-  effect,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -22,36 +20,47 @@ import { DOCUMENT } from '@angular/common';
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;
-  protected readonly isSticky = signal(false);
-  private readonly document = inject(DOCUMENT);
-  private readonly renderer = inject(Renderer2);
+
+  private readonly isScrolled = signal(false);
+  private readonly isPageTallEnough = signal(true);
+
+  protected readonly isSticky = computed(() => this.isScrolled() && this.isPageTallEnough());
 
   @ViewChild('sentinel') sentinel!: ElementRef<HTMLDivElement>;
-  private observer: IntersectionObserver | undefined;
-
-  constructor() {
-    effect(() => {
-      if (this.isSticky()) {
-        this.renderer.addClass(this.document.body, 'sticky-active');
-      } else {
-        this.renderer.removeClass(this.document.body, 'sticky-active');
-      }
-    });
-  }
+  private intersectionObserver: IntersectionObserver | undefined;
+  private resizeObserver: ResizeObserver | undefined;
 
   ngAfterViewInit(): void {
     if (typeof IntersectionObserver !== 'undefined') {
-      this.observer = new IntersectionObserver(
+      this.intersectionObserver = new IntersectionObserver(
         ([entry]) => {
-          this.isSticky.set(!entry.isIntersecting);
+          this.isScrolled.set(!entry.isIntersecting);
         },
         { threshold: 0 },
       );
-      this.observer.observe(this.sentinel.nativeElement);
+      this.intersectionObserver.observe(this.sentinel.nativeElement);
+    }
+
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.checkPageHeight();
+      });
+      this.resizeObserver.observe(document.documentElement);
+      // Check initially
+      this.checkPageHeight();
     }
   }
 
+  private checkPageHeight(): void {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    // Threshold to prevent loop: must be > viewport + navbar shrink amount (approx 66px)
+    const threshold = 100;
+    this.isPageTallEnough.set(scrollHeight > clientHeight + threshold);
+  }
+
   ngOnDestroy(): void {
-    this.observer?.disconnect();
+    this.intersectionObserver?.disconnect();
+    this.resizeObserver?.disconnect();
   }
 }

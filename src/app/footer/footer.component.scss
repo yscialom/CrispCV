@@ -4,10 +4,6 @@
   display: block;
 }
 
-:host-context(body.sticky-active) {
-  padding-top: 10rem;
-}
-
 footer {
   text-align: center;
   padding: spacing.$spacing-x-large;

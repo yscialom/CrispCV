@@ -28,6 +28,7 @@ describe('NavbarComponent', () => {
   };
 
   let observerCallback: IntersectionObserverCallback;
+  let resizeCallback: ResizeObserverCallback;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let observeSpy: any;
 
@@ -50,6 +51,15 @@ describe('NavbarComponent', () => {
       rootMargin = '';
       thresholds = [];
     } as unknown as typeof IntersectionObserver;
+
+    window.ResizeObserver = class {
+      constructor(callback: ResizeObserverCallback) {
+        resizeCallback = callback;
+      }
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    } as unknown as typeof ResizeObserver;
     /* eslint-enable @typescript-eslint/no-explicit-any */
 
     await TestBed.configureTestingModule({
@@ -62,6 +72,11 @@ describe('NavbarComponent', () => {
 
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
+
+    // Default to tall page
+    vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(2000);
+    vi.spyOn(document.documentElement, 'clientHeight', 'get').mockReturnValue(800);
+
     fixture.detectChanges(); // Detect changes to bind data
   });
 
@@ -92,10 +107,9 @@ describe('NavbarComponent', () => {
     expect(imgElement.src).toContain(mockProfile().profilePicturePath);
   });
 
-  it('should update isSticky signal and body class via IntersectionObserver', () => {
+  it('should update isSticky signal via IntersectionObserver', () => {
     // Check initial state (default false)
     expect(component['isSticky']()).toBe(false);
-    expect(document.body.classList.contains('sticky-active')).toBe(false);
 
     // Simulate scrolling down (not intersecting) -> isIntersecting: false
     const entryScroll = { isIntersecting: false } as IntersectionObserverEntry;
@@ -105,7 +119,6 @@ describe('NavbarComponent', () => {
     expect(component['isSticky']()).toBe(true);
     const header = fixture.nativeElement.querySelector('header');
     expect(header.classList.contains('is-sticky')).toBe(true);
-    expect(document.body.classList.contains('sticky-active')).toBe(true);
 
     // Simulate scrolling back up (intersecting) -> isIntersecting: true
     const entryTop = { isIntersecting: true } as IntersectionObserverEntry;
@@ -114,6 +127,25 @@ describe('NavbarComponent', () => {
 
     expect(component['isSticky']()).toBe(false);
     expect(header.classList.contains('is-sticky')).toBe(false);
-    expect(document.body.classList.contains('sticky-active')).toBe(false);
+  });
+
+  it('should not be sticky if page is not tall enough', () => {
+    // Mock page height to be short (equal to viewport)
+    vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(800);
+    vi.spyOn(document.documentElement, 'clientHeight', 'get').mockReturnValue(800);
+
+    // Trigger ResizeObserver to update isPageTallEnough
+    resizeCallback([], {} as ResizeObserver);
+    fixture.detectChanges();
+
+    // Trigger scroll (isScrolled = true)
+    const entryScroll = { isIntersecting: false } as IntersectionObserverEntry;
+    observerCallback([entryScroll], {} as IntersectionObserver);
+    fixture.detectChanges();
+
+    // Should NOT be sticky because page is short
+    expect(component['isSticky']()).toBe(false);
+    const header = fixture.nativeElement.querySelector('header');
+    expect(header.classList.contains('is-sticky')).toBe(false);
   });
 });
