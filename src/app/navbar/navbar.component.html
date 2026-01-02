@@ -1,11 +1,12 @@
-<header class="navbar">
+<div #sentinel class="sentinel"></div>
+<header class="navbar" [class.is-sticky]="isSticky()">
   <div class="profile-picture">
     <img [src]="profile().profilePicturePath" alt="Profile picture" />
   </div>
   <div class="profile-content">
     <h1>{{ profile().name }}</h1>
     <h2>{{ profile().title }}</h2>
-    <p>{{ profile().summary }}</p>
+    <p class="profile-summary">{{ profile().summary }}</p>
     <nav>
       <ul>
         <li>

@@ -1,12 +1,30 @@
 @use '../../../config/spacing' as spacing;
 
+$navbar-height-default: 9.375rem; // 150px
+$navbar-img-height-sticky: 3.75rem; // 60px
+
+.sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   align-items: stretch;
   padding: spacing.$spacing-medium;
   background-color: var(--primary-bg);
   color: var(--text);
-  min-height: 150px;
+  min-height: $navbar-height-default;
+  transition: all 500ms ease-in-out;
 
   .profile-picture {
     display: flex;
@@ -17,10 +35,11 @@
 
     img {
       width: auto;
-      height: calc(100% - (#{spacing.$spacing-medium} * 2));
-      max-width: 150px;
+      height: calc(#{$navbar-height-default} - (#{spacing.$spacing-medium} * 2));
+      max-width: $navbar-height-default;
       border: 1px solid var(--accent);
       border-radius: 5%;
+      transition: all 500ms ease-in-out;
     }
   }
 
@@ -31,22 +50,32 @@
     gap: spacing.$spacing-large;
     flex-grow: 1;
     padding-left: spacing.$spacing-medium;
+    transition: all 500ms ease-in-out;
 
     h1,
     h2,
-    p {
+    .profile-summary {
       margin: 0;
       padding: 0;
       text-align: left;
+      transition: all 500ms ease-in-out;
+      overflow: hidden;
+    }
+
+    h1 {
+      line-height: 1.2;
     }
 
     h2 {
       font-size: spacing.$spacing-large;
       color: var(--text);
+      line-height: 1.2;
     }
 
-    p {
+    .profile-summary {
       color: var(--text);
+      max-height: 6.25rem; // 100px
+      opacity: 1;
     }
 
     nav {
@@ -68,7 +97,7 @@
         background-color: var(--secondary-bg);
         border: 1px solid var(--accent);
         border-radius: spacing.$border-radius-standard;
-        transition: all 300ms ease-in-out;
+        transition: all 500ms ease-in-out;
 
         &.active {
           background-color: var(--accent);
@@ -82,6 +111,36 @@
           background-color: var(--primary-bg);
           border-color: var(--secondary-bg);
         }
+      }
+    }
+  }
+
+  &.is-sticky {
+    min-height: 0;
+    padding-top: spacing.$spacing-x-small;
+    padding-bottom: spacing.$spacing-medium;
+    box-shadow: spacing.$shadow-standard;
+
+    .profile-picture img {
+      height: $navbar-img-height-sticky;
+    }
+
+    .profile-content {
+      gap: spacing.$spacing-x-small;
+
+      h1 {
+        font-size: spacing.$spacing-large;
+      }
+
+      h2 {
+        font-size: spacing.$spacing-medium;
+      }
+
+      .profile-summary {
+        max-height: 0;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
       }
     }
   }

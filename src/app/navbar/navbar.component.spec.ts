@@ -26,7 +26,25 @@ describe('NavbarComponent', () => {
     // Other properties of ResumeDataService if needed by NavbarComponent
   };
 
+  let observerCallback: IntersectionObserverCallback;
+
   beforeEach(async () => {
+    // Mock IntersectionObserver
+    window.IntersectionObserver = class {
+      constructor(callback: IntersectionObserverCallback) {
+        observerCallback = callback;
+      }
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+      takeRecords() {
+        return [];
+      }
+      root = null;
+      rootMargin = '';
+      thresholds = [];
+    } as unknown as typeof IntersectionObserver;
+
     await TestBed.configureTestingModule({
       imports: [NavbarComponent], // Import standalone component
       providers: [
@@ -60,5 +78,25 @@ describe('NavbarComponent', () => {
     const imgElement: HTMLImageElement = compiled.querySelector('.profile-picture img');
     expect(imgElement).toBeTruthy();
     expect(imgElement.src).toContain(mockProfile().profilePicturePath);
+  });
+
+  it('should update isSticky signal via IntersectionObserver', () => {
+    // Check initial state (default false)
+    expect(component['isSticky']()).toBe(false);
+
+    // Simulate intersecting (at top) -> isIntersecting: true
+    const entryTop = { isIntersecting: true } as IntersectionObserverEntry;
+    observerCallback([entryTop], {} as IntersectionObserver);
+    fixture.detectChanges();
+    expect(component['isSticky']()).toBe(false);
+
+    // Simulate scrolling down (not intersecting) -> isIntersecting: false
+    const entryScroll = { isIntersecting: false } as IntersectionObserverEntry;
+    observerCallback([entryScroll], {} as IntersectionObserver);
+    fixture.detectChanges();
+
+    expect(component['isSticky']()).toBe(true);
+    const header = fixture.nativeElement.querySelector('header');
+    expect(header.classList.contains('is-sticky')).toBe(true);
   });
 });
