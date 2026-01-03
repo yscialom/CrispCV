@@ -19,12 +19,9 @@ describe('ThemeSwitchComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ThemeSwitchComponent],
-      providers: [
-        { provide: ThemeService, useValue: mockThemeService },
-      ]
-    })
-    .compileComponents();
-    
+      providers: [{ provide: ThemeService, useValue: mockThemeService }],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ThemeSwitchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

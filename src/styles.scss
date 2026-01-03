@@ -1,32 +1,25 @@
+@use 'sass:map';
 @use '../config/spacing' as spacing;
+@use '../config/_colors.scss' as colors;
 
-/* You can add global styles to this file, and also import other style files */
-// @use '../config/_colors.scss' as colors; // Commented out due to build issue
-// @use 'sass:map'; // Commented out due to build issue
+// Helper mixin to generate CSS vars from a map
+@mixin generate-theme-vars($palette) {
+  @each $key, $value in $palette {
+    --#{$key}: #{$value};
+  }
+}
 
 // Apply themes based on body class
 body {
-  // Default (light theme hardcoded)
-  --primary-bg: #fff;
-  --secondary-bg: #f8f9fa;
-  --accent: #ffc107;
-  --text: #212529;
-  --text-disabled: #ccc;
+  // Default (light theme)
+  @include generate-theme-vars(colors.$palette-light);
 
   &.theme-light {
-    --primary-bg: #fff;
-    --secondary-bg: #f8f9fa;
-    --accent: #ffc107;
-    --text: #212529;
-    --text-disabled: #ccc;
+    @include generate-theme-vars(colors.$palette-light);
   }
 
   &.theme-dark {
-    --primary-bg: #212529;
-    --secondary-bg: #343a40;
-    --accent: #0d6efd;
-    --text: #f8f9fa;
-    --text-disabled: #999;
+    @include generate-theme-vars(colors.$palette-dark);
   }
 
   transition:

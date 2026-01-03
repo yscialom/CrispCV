@@ -3,8 +3,6 @@ import {
   inject,
   signal,
   computed,
-  ElementRef,
-  ViewChild,
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
@@ -27,19 +25,22 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
   protected readonly isSticky = computed(() => this.isScrolled() && this.isPageTallEnough());
 
-  @ViewChild('sentinel') sentinel!: ElementRef<HTMLDivElement>;
-  private intersectionObserver: IntersectionObserver | undefined;
   private resizeObserver: ResizeObserver | undefined;
+  private scrollListener: (() => void) | undefined;
+
+  constructor() {
+    // Determine platform if needed, but for now assuming browser or handling safe check
+  }
 
   ngAfterViewInit(): void {
-    if (typeof IntersectionObserver !== 'undefined') {
-      this.intersectionObserver = new IntersectionObserver(
-        ([entry]) => {
-          this.isScrolled.set(!entry.isIntersecting);
-        },
-        { threshold: 0 },
-      );
-      this.intersectionObserver.observe(this.sentinel.nativeElement);
+    if (typeof window !== 'undefined') {
+      this.scrollListener = () => {
+        this.isScrolled.set(window.scrollY > 0);
+      };
+      window.addEventListener('scroll', this.scrollListener, { passive: true });
+      
+      // Initial check
+      this.isScrolled.set(window.scrollY > 0);
     }
 
     if (typeof ResizeObserver !== 'undefined') {
@@ -61,7 +62,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.intersectionObserver?.disconnect();
+    if (this.scrollListener && typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.scrollListener);
+    }
     this.resizeObserver?.disconnect();
   }
 }

@@ -7,14 +7,6 @@ $navbar-img-height-sticky: 3.75rem; // 60px
   display: contents;
 }
 
-.sentinel {
-  height: 1px;
-  width: 100%;
-  margin-bottom: -1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .navbar {
   position: sticky;
   top: 0;
