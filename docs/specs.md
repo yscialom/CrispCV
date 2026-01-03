@@ -308,7 +308,7 @@ _Features_:
 : `feature/10-dark-light-theme`
 
 **PR**
-:
+: [#12](https://github.com/yscialom/vibed-resume/pull/12)
 
 **Release**
 :
