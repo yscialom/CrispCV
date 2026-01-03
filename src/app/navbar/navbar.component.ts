@@ -1,4 +1,13 @@
-import { Component, inject, signal, computed, AfterViewInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  inject,
+  signal,
+  computed,
+  OnDestroy,
+  afterNextRender,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
@@ -10,8 +19,9 @@ import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, ThemeSwitchComponent],
 })
-export class NavbarComponent implements AfterViewInit, OnDestroy {
+export class NavbarComponent implements OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;
+  private readonly platformId = inject(PLATFORM_ID);
 
   private readonly isScrolled = signal(false);
   private readonly isPageTallEnough = signal(true);
@@ -22,11 +32,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   private scrollListener: (() => void) | undefined;
 
   constructor() {
-    // Determine platform if needed, but for now assuming browser or handling safe check
-  }
-
-  ngAfterViewInit(): void {
-    if (typeof window !== 'undefined') {
+    afterNextRender(() => {
       this.scrollListener = () => {
         this.isScrolled.set(window.scrollY > 0);
       };
@@ -34,16 +40,16 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
       // Initial check
       this.isScrolled.set(window.scrollY > 0);
-    }
 
-    if (typeof ResizeObserver !== 'undefined') {
-      this.resizeObserver = new ResizeObserver(() => {
+      if (typeof ResizeObserver !== 'undefined') {
+        this.resizeObserver = new ResizeObserver(() => {
+          this.checkPageHeight();
+        });
+        this.resizeObserver.observe(document.documentElement);
+        // Check initially
         this.checkPageHeight();
-      });
-      this.resizeObserver.observe(document.documentElement);
-      // Check initially
-      this.checkPageHeight();
-    }
+      }
+    });
   }
 
   private checkPageHeight(): void {
@@ -55,7 +61,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.scrollListener && typeof window !== 'undefined') {
+    if (this.scrollListener && isPlatformBrowser(this.platformId)) {
       window.removeEventListener('scroll', this.scrollListener);
     }
     this.resizeObserver?.disconnect();
