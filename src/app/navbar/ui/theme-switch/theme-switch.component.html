@@ -1,0 +1,14 @@
+<div class="theme-switch-wrapper">
+  <label class="theme-switch" for="checkbox" aria-label="Toggle theme">
+    <input
+      type="checkbox"
+      id="checkbox"
+      [checked]="themeService.theme() === 'dark'"
+      (change)="themeService.toggleTheme()"
+    />
+    <div class="slider round">
+      <span class="icon sun">☀</span>
+      <span class="icon moon">☾</span>
+    </div>
+  </label>
+</div>

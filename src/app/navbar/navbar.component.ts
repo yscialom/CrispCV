@@ -3,52 +3,53 @@ import {
   inject,
   signal,
   computed,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
   OnDestroy,
+  afterNextRender,
+  PLATFORM_ID,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
+import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ThemeSwitchComponent],
 })
-export class NavbarComponent implements AfterViewInit, OnDestroy {
+export class NavbarComponent implements OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;
+  private readonly platformId = inject(PLATFORM_ID);
 
   private readonly isScrolled = signal(false);
   private readonly isPageTallEnough = signal(true);
 
   protected readonly isSticky = computed(() => this.isScrolled() && this.isPageTallEnough());
 
-  @ViewChild('sentinel') sentinel!: ElementRef<HTMLDivElement>;
-  private intersectionObserver: IntersectionObserver | undefined;
   private resizeObserver: ResizeObserver | undefined;
+  private scrollListener: (() => void) | undefined;
 
-  ngAfterViewInit(): void {
-    if (typeof IntersectionObserver !== 'undefined') {
-      this.intersectionObserver = new IntersectionObserver(
-        ([entry]) => {
-          this.isScrolled.set(!entry.isIntersecting);
-        },
-        { threshold: 0 },
-      );
-      this.intersectionObserver.observe(this.sentinel.nativeElement);
-    }
+  constructor() {
+    afterNextRender(() => {
+      this.scrollListener = () => {
+        this.isScrolled.set(window.scrollY > 0);
+      };
+      window.addEventListener('scroll', this.scrollListener, { passive: true });
 
-    if (typeof ResizeObserver !== 'undefined') {
-      this.resizeObserver = new ResizeObserver(() => {
+      // Initial check
+      this.isScrolled.set(window.scrollY > 0);
+
+      if (typeof ResizeObserver !== 'undefined') {
+        this.resizeObserver = new ResizeObserver(() => {
+          this.checkPageHeight();
+        });
+        this.resizeObserver.observe(document.documentElement);
+        // Check initially
         this.checkPageHeight();
-      });
-      this.resizeObserver.observe(document.documentElement);
-      // Check initially
-      this.checkPageHeight();
-    }
+      }
+    });
   }
 
   private checkPageHeight(): void {
@@ -60,7 +61,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.intersectionObserver?.disconnect();
+    if (this.scrollListener && isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('scroll', this.scrollListener);
+    }
     this.resizeObserver?.disconnect();
   }
 }

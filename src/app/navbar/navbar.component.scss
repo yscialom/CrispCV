@@ -2,17 +2,11 @@
 
 $navbar-height-default: 9.375rem; // 150px
 $navbar-img-height-sticky: 3.75rem; // 60px
+$transition-layout: 500ms ease-in-out;
+$transition-theme: 0.3s ease;
 
 :host {
   display: contents;
-}
-
-.sentinel {
-  height: 1px;
-  width: 100%;
-  margin-bottom: -1px;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .navbar {
@@ -25,7 +19,12 @@ $navbar-img-height-sticky: 3.75rem; // 60px
   background-color: var(--primary-bg);
   color: var(--text);
   min-height: $navbar-height-default;
-  transition: all 500ms ease-in-out;
+  transition:
+    min-height $transition-layout,
+    padding $transition-layout,
+    box-shadow $transition-layout,
+    background-color $transition-theme,
+    color $transition-theme;
 
   .profile-picture {
     display: flex;
@@ -40,7 +39,9 @@ $navbar-img-height-sticky: 3.75rem; // 60px
       max-width: $navbar-height-default;
       border: 1px solid var(--accent);
       border-radius: 5%;
-      transition: all 500ms ease-in-out;
+      transition:
+        height $transition-layout,
+        border-color $transition-theme;
     }
   }
 
@@ -51,7 +52,9 @@ $navbar-img-height-sticky: 3.75rem; // 60px
     gap: spacing.$spacing-large;
     flex-grow: 1;
     padding-left: spacing.$spacing-medium;
-    transition: all 500ms ease-in-out;
+    transition:
+      gap $transition-layout,
+      padding-left $transition-layout;
 
     h1,
     h2,
@@ -59,7 +62,12 @@ $navbar-img-height-sticky: 3.75rem; // 60px
       margin: 0;
       padding: 0;
       text-align: left;
-      transition: all 500ms ease-in-out;
+      transition:
+        font-size $transition-layout,
+        max-height $transition-layout,
+        opacity $transition-layout,
+        margin $transition-layout,
+        color $transition-theme;
       overflow: hidden;
     }
 
@@ -98,7 +106,10 @@ $navbar-img-height-sticky: 3.75rem; // 60px
         background-color: var(--secondary-bg);
         border: 1px solid var(--accent);
         border-radius: spacing.$border-radius-standard;
-        transition: all 500ms ease-in-out;
+        transition:
+          background-color $transition-theme,
+          color $transition-theme,
+          border-color $transition-theme;
 
         &.active {
           background-color: var(--accent);
@@ -114,6 +125,14 @@ $navbar-img-height-sticky: 3.75rem; // 60px
         }
       }
     }
+  }
+
+  .navbar-controls {
+    display: flex;
+    align-items: flex-start;
+    padding-top: spacing.$spacing-x-small;
+    padding-left: spacing.$spacing-medium;
+    flex-shrink: 0;
   }
 
   &.is-sticky {
