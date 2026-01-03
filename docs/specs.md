@@ -148,7 +148,7 @@ _Key Features_:
 : Enhance keyword interactivity. Clicking a keyword highlights all experience cards sharing that keyword. Hovering over a keyword reveals a tooltip showing the total accumulated duration of experience for that specific skill across all positions.
 
 **Status**
-: `todo (priority: 2)`
+: `todo (priority: 6)`
 
 **Branch**
 :
@@ -204,7 +204,7 @@ _Key Features_:
 : `feature/7-sticky-navbar`
 
 **PR**
-: [#7](https://github.com/yscialom/vibed-resume/pull/10)
+: [#10](https://github.com/yscialom/vibed-resume/pull/10)
 
 **Release**
 :
@@ -287,13 +287,25 @@ _Technical considerations:_
 : `10`
 
 **Description**
-: provide dark/light theme switch in the top navbar
+: Implement a user-controlled dark/light theme switch to enhance accessibility and user preference.
+
+_Features_:
+
+- **UI Placement:** Located in the top-right corner of the navbar (e.g., near the profile name or future language switch).
+- **Iconography:** Use FontAwesome icons (sun/moon) to indicate the current or toggleable state.
+- **Persistence:** Save the user's choice in `localStorage` with a 3-month expiry.
+- **Auto-Detection:**
+  - On first load (if no valid saved preference exists), detect the user's system preference via `prefers-color-scheme`.
+  - Fallback to the application default (`dark`) if no system preference is found.
+- **Styling:**
+  - Define both dark and light color palettes in a single SCSS file (using CSS variables).
+  - Ensure a smooth visual transition (e.g., `transition: background-color 0.3s, color 0.3s`) when switching themes.
 
 **Status**
-: `todo (priority: 4)`
+: `wip`
 
 **Branch**
-:
+: `feature/10-dark-light-theme`
 
 **PR**
 :
