@@ -1,11 +1,4 @@
-import {
-  Component,
-  inject,
-  signal,
-  computed,
-  AfterViewInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, inject, signal, computed, AfterViewInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
@@ -38,7 +31,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         this.isScrolled.set(window.scrollY > 0);
       };
       window.addEventListener('scroll', this.scrollListener, { passive: true });
-      
+
       // Initial check
       this.isScrolled.set(window.scrollY > 0);
     }

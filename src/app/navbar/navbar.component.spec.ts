@@ -62,7 +62,7 @@ describe('NavbarComponent', () => {
     // Default to tall page
     vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(2000);
     vi.spyOn(document.documentElement, 'clientHeight', 'get').mockReturnValue(800);
-    
+
     // Mock window scrollY
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
