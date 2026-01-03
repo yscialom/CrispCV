@@ -1,9 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ResumeDataService } from './core/services/resume-data.service';
+import { ThemeService } from './core/services/theme.service';
 import { Profile } from './core/models/resume.models';
 import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { vi } from 'vitest';
 
 describe('AppComponent', () => {
   // Mock ResumeDataService
@@ -23,11 +25,17 @@ describe('AppComponent', () => {
     // Add other mocked properties if App directly uses them
   };
 
+  const mockThemeService = {
+    theme: signal('dark'),
+    toggleTheme: vi.fn(),
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
+        { provide: ThemeService, useValue: mockThemeService },
         provideRouter([]),
       ],
     }).compileComponents();

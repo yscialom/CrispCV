@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavbarComponent } from './navbar.component';
 import { Profile } from '../core/models/resume.models';
 import { ResumeDataService } from '../core/services/resume-data.service';
+import { ThemeService } from '../core/services/theme.service';
 import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { vi } from 'vitest';
@@ -25,6 +26,11 @@ describe('NavbarComponent', () => {
   const mockResumeDataService = {
     profile: computed<Profile>(() => mockProfile()),
     // Other properties of ResumeDataService if needed by NavbarComponent
+  };
+
+  const mockThemeService = {
+    theme: signal('dark'),
+    toggleTheme: vi.fn(),
   };
 
   let observerCallback: IntersectionObserverCallback;
@@ -66,6 +72,7 @@ describe('NavbarComponent', () => {
       imports: [NavbarComponent], // Import standalone component
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
+        { provide: ThemeService, useValue: mockThemeService },
         provideRouter([]),
       ],
     }).compileComponents();

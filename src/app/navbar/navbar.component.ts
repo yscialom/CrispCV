@@ -10,13 +10,14 @@ import {
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
+import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ThemeSwitchComponent],
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;

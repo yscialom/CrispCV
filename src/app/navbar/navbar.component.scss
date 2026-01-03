@@ -116,6 +116,14 @@ $navbar-img-height-sticky: 3.75rem; // 60px
     }
   }
 
+  .navbar-controls {
+    display: flex;
+    align-items: flex-start;
+    padding-top: spacing.$spacing-x-small;
+    padding-left: spacing.$spacing-medium;
+    flex-shrink: 0;
+  }
+
   &.is-sticky {
     min-height: 0;
     padding-top: spacing.$spacing-x-small;

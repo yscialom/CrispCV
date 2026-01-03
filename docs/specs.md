@@ -302,7 +302,7 @@ _Features_:
   - Ensure a smooth visual transition (e.g., `transition: background-color 0.3s, color 0.3s`) when switching themes.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/10-dark-light-theme`

@@ -1,0 +1,66 @@
+@use 'spacing' as spacing;
+
+:host {
+  display: block;
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 26px;
+  position: relative;
+  width: 50px;
+
+  input {
+    display: none;
+  }
+}
+
+.slider {
+  background-color: var(--secondary-bg);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+  border: 1px solid var(--accent);
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+
+  &:before {
+    background-color: var(--accent);
+    bottom: 3px;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  .icon {
+    font-size: 14px;
+    line-height: 1;
+    z-index: 1;
+    color: var(--text);
+    transition: color 0.4s;
+    user-select: none;
+  }
+}
+
+input:checked + .slider {
+  &:before {
+    transform: translateX(24px);
+  }
+}
