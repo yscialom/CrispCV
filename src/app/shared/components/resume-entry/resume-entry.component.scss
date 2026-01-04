@@ -18,7 +18,7 @@
     background-color 1000ms ease-in-out;
   border-left: 4px solid var(--accent);
 
-  &__anchor {
+  &-anchor {
     position: absolute;
     top: -13.375rem; // Increased negative offset from 11.375rem to fix overscroll
     left: 0;
@@ -65,7 +65,7 @@
   }
 
   // Target Highlight
-  &:target,
+  &:has(.resume-entry-anchor:target),
   &.is-highlighted {
     animation: highlight-fade 3s ease-in-out;
   }
@@ -115,11 +115,11 @@
 
 @keyframes highlight-fade {
   0% {
-    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 15%);
+    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 20%);
   }
 
   33% {
-    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 15%);
+    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 20%);
   }
 
   100% {
