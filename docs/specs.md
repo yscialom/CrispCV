@@ -429,12 +429,24 @@ _Key Features_:
 : `13`
 
 **Description**
-: To ensure privacy, security, and offline availability, all external assets (like Font Awesome) should be bundled locally instead of being loaded via CDN.
+: To ensure privacy, security, and offline availability, all external assets must be bundled locally. The application currently relies on CDN links for Font Awesome and the Lato font. These should be replaced by standard npm dependencies.
 
-_Proposed Solutions:_
+_Requirements:_
 
-- Install via npm (e.g., @fortawesome/fontawesome-free) and include in the build.
-- Download assets to src/assets and reference them locally.
+- **Add Dependencies:** Include `@fortawesome/fontawesome-free` and `@fontsource/lato` in `package.json`.
+- **Automatic Installation:** These packages must be installed automatically as part of the standard `npm install` process, which is already integrated into the `make start` and `make build` commands.
+- **Implementation:**
+  - Remove `<link>` tags for Font Awesome and Google Fonts from `index.html`.
+  - Import the styles (CSS/SCSS) from the installed `node_modules` directly into `src/styles.scss`.
+
+**Status**
+: `wip`
+
+**Branch**
+: `feature/13-remove-cdn`
+
+**PR**
+:
 
 **Release**
 :

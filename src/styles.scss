@@ -1,6 +1,9 @@
 @use 'sass:map';
 @use '../config/spacing' as spacing;
 @use '../config/_colors.scss' as colors;
+@import '@fontsource/lato/400.css';
+@import '@fontsource/lato/700.css';
+@import '@fortawesome/fontawesome-free/css/all.css';
 
 // Helper mixin to generate CSS vars from a map
 @mixin generate-theme-vars($palette) {
