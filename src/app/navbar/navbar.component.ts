@@ -6,6 +6,7 @@ import {
   OnDestroy,
   afterNextRender,
   PLATFORM_ID,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -18,6 +19,7 @@ import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
   imports: [RouterLink, RouterLinkActive, ThemeSwitchComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;
