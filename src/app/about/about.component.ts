@@ -1,5 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
 import { ResumeEntryComponent } from '../shared/components/resume-entry/resume-entry.component';
@@ -8,9 +7,10 @@ import { DurationPipe } from '../shared/pipes/duration.pipe';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, MarkdownPipe, ResumeEntryComponent, DurationPipe],
+  imports: [MarkdownPipe, ResumeEntryComponent, DurationPipe],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent {
   private resumeDataService = inject(ResumeDataService);
