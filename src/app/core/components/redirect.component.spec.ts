@@ -34,12 +34,11 @@ describe('RedirectComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(RedirectComponent);
-    component = fixture.componentInstance;
   });
 
   it('should redirect to correct route and fragment for valid ID', () => {
     mockPermalinkService.resolveId.mockReturnValue({ route: '/experience', fragment: 'google-42' });
-    
+
     fixture.detectChanges(); // triggers ngOnInit
 
     expect(mockPermalinkService.resolveId).toHaveBeenCalledWith(42);
@@ -48,7 +47,7 @@ describe('RedirectComponent', () => {
 
   it('should redirect to root for non-existent ID', () => {
     mockPermalinkService.resolveId.mockReturnValue(null);
-    
+
     fixture.detectChanges();
 
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
@@ -56,7 +55,7 @@ describe('RedirectComponent', () => {
 
   it('should redirect to root for invalid ID format', () => {
     mockActivatedRoute.snapshot.paramMap = convertToParamMap({ id: 'abc' });
-    
+
     fixture.detectChanges();
 
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
