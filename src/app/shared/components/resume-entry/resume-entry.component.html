@@ -8,8 +8,13 @@
   }
 
   @if (permalinkId()) {
-    <button class="resume-entry__permalink-btn" (click)="copyLink($event)" title="Copier le lien">
-      <i class="fas fa-link"></i>
+    <button
+      class="resume-entry__permalink-btn"
+      (click)="copyLink($event)"
+      title="Copier le lien permanent vers cet élément"
+      aria-label="Copier le lien permanent"
+    >
+      <i class="fas fa-link" aria-hidden="true"></i>
     </button>
   }
 

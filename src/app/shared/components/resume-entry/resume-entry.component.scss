@@ -20,12 +20,12 @@
 
   &-anchor {
     position: absolute;
-    top: -13.375rem; // Increased negative offset from 11.375rem to fix overscroll
+    top: calc(-1 * spacing.$scroll-offset-default);
     left: 0;
     visibility: hidden;
 
     &--first {
-      top: -19.5rem; // Increased from 17.5rem
+      top: calc(-1 * spacing.$scroll-offset-first);
     }
   }
 

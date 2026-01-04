@@ -81,24 +81,16 @@ export class PermalinkService {
     const projects = this.resumeData.profile().personalProjects || [];
     const volunteerings = this.resumeData.profile().volunteering || [];
 
-    const allItems: {
-      item: Experience | Education | Project | Volunteering;
-      type: EntryType;
-      date: string;
-    }[] = [];
-
-    experiences.forEach((e) => {
-      allItems.push({ item: e, type: 'experience', date: e.startDate });
-    });
-    educations.forEach((e) => {
-      allItems.push({ item: e, type: 'education', date: e.startDate });
-    });
-    projects.forEach((p) => {
-      allItems.push({ item: p, type: 'project', date: p.startDate || '0000-00-00' });
-    });
-    volunteerings.forEach((v) => {
-      allItems.push({ item: v, type: 'volunteering', date: v.startDate });
-    });
+    const allItems = [
+      ...experiences.map((e) => ({ item: e, type: 'experience' as const, date: e.startDate })),
+      ...educations.map((e) => ({ item: e, type: 'education' as const, date: e.startDate })),
+      ...projects.map((p) => ({
+        item: p,
+        type: 'project' as const,
+        date: p.startDate || '0000-00-00',
+      })),
+      ...volunteerings.map((v) => ({ item: v, type: 'volunteering' as const, date: v.startDate })),
+    ];
 
     // Sort chronologically (oldest first)
     allItems.sort((a, b) => {
