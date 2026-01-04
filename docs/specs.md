@@ -446,7 +446,7 @@ _Requirements:_
 : `feature/13-remove-cdn`
 
 **PR**
-:
+: [#14](https://github.com/yscialom/vibed-resume/pull/14)
 
 **Release**
 :
