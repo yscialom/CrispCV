@@ -440,7 +440,7 @@ _Requirements:_
   - Import the styles (CSS/SCSS) from the installed `node_modules` directly into `src/styles.scss`.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/13-remove-cdn`
