@@ -22,7 +22,9 @@ export class PermalinkService {
   private router = inject(Router);
 
   public readonly permalinkMap: Signal<Map<number, PermalinkEntry>>;
-  public readonly itemToEntryMap: Signal<Map<Experience | Education | Project | Volunteering, PermalinkEntry>>;
+  public readonly itemToEntryMap: Signal<
+    Map<Experience | Education | Project | Volunteering, PermalinkEntry>
+  >;
   public readonly activeFragment = signal<string | null>(null);
 
   constructor() {
@@ -36,14 +38,13 @@ export class PermalinkService {
     });
 
     // Track fragment changes
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      const tree = this.router.parseUrl(this.router.url);
-      this.activeFragment.set(tree.fragment);
-    });
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const tree = this.router.parseUrl(this.router.url);
+        this.activeFragment.set(tree.fragment);
+      });
   }
-
 
   public resolveId(id: number): { route: string; fragment: string } | null {
     const entry = this.permalinkMap().get(id);

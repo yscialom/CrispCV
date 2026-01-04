@@ -18,6 +18,17 @@
     background-color 1000ms ease-in-out;
   border-left: 4px solid var(--accent);
 
+  &__anchor {
+    position: absolute;
+    top: -13.375rem; // Increased negative offset from 11.375rem to fix overscroll
+    left: 0;
+    visibility: hidden;
+
+    &--first {
+      top: -19.5rem; // Increased from 17.5rem
+    }
+  }
+
   &:hover {
     box-shadow: spacing.$shadow-standard;
     transform: translateY(-2px);
@@ -57,7 +68,6 @@
   &:target,
   &.is-highlighted {
     animation: highlight-fade 3s ease-in-out;
-    scroll-margin-top: 11rem; // Account for sticky navbar height + buffer
   }
 
   &__header {
@@ -104,23 +114,15 @@
 }
 
 @keyframes highlight-fade {
-
   0% {
-
     background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 15%);
-
   }
 
   33% {
-
     background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 15%);
-
   }
 
   100% {
-
     background-color: var(--secondary-bg);
-
   }
-
 }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EducationComponent } from './education.component';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { Education } from '../core/models/resume.models';
-import { computed } from '@angular/core';
+import { computed, signal } from '@angular/core';
 import { PermalinkService } from '../core/services/permalink.service';
 
 describe('EducationComponent', () => {
@@ -32,6 +32,7 @@ describe('EducationComponent', () => {
 
   const mockPermalinkService = {
     getEntryByItem: () => ({ id: 1, fragment: 'test' }),
+    activeFragment: signal(null),
   };
 
   beforeEach(async () => {

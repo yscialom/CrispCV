@@ -1,8 +1,12 @@
-<article
-  class="resume-entry"
-  [id]="permalinkFragment() || null"
-  [class.is-highlighted]="isHighlighted()"
->
+<article class="resume-entry" [class.is-highlighted]="isHighlighted()">
+  @if (permalinkFragment(); as fragment) {
+    <div
+      [id]="fragment"
+      class="resume-entry__anchor"
+      [class.resume-entry__anchor--first]="isFirst()"
+    ></div>
+  }
+
   @if (permalinkId()) {
     <button class="resume-entry__permalink-btn" (click)="copyLink($event)" title="Copier le lien">
       <i class="fas fa-link"></i>

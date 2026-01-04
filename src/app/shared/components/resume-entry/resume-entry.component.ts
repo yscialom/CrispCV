@@ -19,6 +19,7 @@ export class ResumeEntryComponent {
 
   public readonly permalinkFragment = input<string>();
   public readonly permalinkId = input<number>();
+  public readonly isFirst = input<boolean>(false);
 
   private readonly toastService = inject(ToastService);
   private readonly document = inject(DOCUMENT);

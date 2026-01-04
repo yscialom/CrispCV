@@ -16,6 +16,7 @@ import { PermalinkService } from '../../../core/services/permalink.service';
 })
 export class ExperienceCardComponent {
   public readonly experience = input.required<Experience>();
+  public readonly isFirst = input<boolean>(false);
   private readonly durationPipe = inject(DurationPipe);
   private readonly permalinkService = inject(PermalinkService);
 

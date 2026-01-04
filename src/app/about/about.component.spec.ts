@@ -33,6 +33,7 @@ describe('AboutComponent', () => {
 
   const mockPermalinkService = {
     getEntryByItem: () => ({ id: 1, fragment: 'test' }),
+    activeFragment: signal(null),
   };
 
   beforeEach(async () => {

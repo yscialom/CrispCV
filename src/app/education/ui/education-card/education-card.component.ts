@@ -14,6 +14,7 @@ import { PermalinkService } from '../../../core/services/permalink.service';
 })
 export class EducationCardComponent {
   public readonly education = input.required<Education>();
+  public readonly isFirst = input<boolean>(false);
   private readonly permalinkService = inject(PermalinkService);
 
   public readonly permalink = computed(() => {

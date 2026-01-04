@@ -10,6 +10,7 @@
   "
   [permalinkFragment]="permalink()?.fragment"
   [permalinkId]="permalink()?.id"
+  [isFirst]="isFirst()"
 >
   @if (experience().keywords; as keywords) {
     <div entry-keywords class="resume-entry__keywords-container">
