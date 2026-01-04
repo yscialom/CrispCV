@@ -96,16 +96,23 @@
 }
 
 @keyframes highlight-fade {
+
   0% {
-    box-shadow: 0 0 0 4px var(--accent);
-    transform: translateY(-4px);
+
+    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 15%);
+
   }
+
   66% {
-    box-shadow: 0 0 0 4px var(--accent);
-    transform: translateY(-4px);
+
+    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 15%);
+
   }
+
   100% {
-    box-shadow: spacing.$shadow-standard;
-    transform: translateY(0);
+
+    background-color: var(--secondary-bg);
+
   }
+
 }
