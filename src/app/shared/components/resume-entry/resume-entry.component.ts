@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, inject, computed } from '@angular/core';
 import { ToastService } from '../../../core/services/toast.service';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
+import { PermalinkService } from '../../../core/services/permalink.service';
 
 @Component({
   selector: 'app-resume-entry',
@@ -22,6 +23,13 @@ export class ResumeEntryComponent {
   private readonly toastService = inject(ToastService);
   private readonly document = inject(DOCUMENT);
   private readonly router = inject(Router);
+  private readonly permalinkService = inject(PermalinkService);
+
+  public readonly isHighlighted = computed(() => {
+    const active = this.permalinkService.activeFragment();
+    const current = this.permalinkFragment();
+    return !!active && active === current;
+  });
 
   protected copyLink(event: MouseEvent) {
     event.preventDefault();

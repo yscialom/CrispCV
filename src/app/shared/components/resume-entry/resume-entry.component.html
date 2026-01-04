@@ -1,4 +1,8 @@
-<article class="resume-entry" [id]="permalinkFragment() || null">
+<article
+  class="resume-entry"
+  [id]="permalinkFragment() || null"
+  [class.is-highlighted]="isHighlighted()"
+>
   @if (permalinkId()) {
     <button class="resume-entry__permalink-btn" (click)="copyLink($event)" title="Copier le lien">
       <i class="fas fa-link"></i>

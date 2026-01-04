@@ -1,6 +1,8 @@
-import { Injectable, computed, Signal, inject } from '@angular/core';
+import { Injectable, computed, Signal, inject, signal } from '@angular/core';
 import { ResumeDataService } from './resume-data.service';
 import { Experience, Education, Project, Volunteering } from '../models/resume.models';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 export type EntryType = 'experience' | 'education' | 'project' | 'volunteering';
 
@@ -17,11 +19,11 @@ export interface PermalinkEntry {
 })
 export class PermalinkService {
   private resumeData = inject(ResumeDataService);
+  private router = inject(Router);
 
   public readonly permalinkMap: Signal<Map<number, PermalinkEntry>>;
-  public readonly itemToEntryMap: Signal<
-    Map<Experience | Education | Project | Volunteering, PermalinkEntry>
-  >;
+  public readonly itemToEntryMap: Signal<Map<Experience | Education | Project | Volunteering, PermalinkEntry>>;
+  public readonly activeFragment = signal<string | null>(null);
 
   constructor() {
     this.permalinkMap = computed(() => this.generatePermalinkMap());
@@ -32,7 +34,16 @@ export class PermalinkService {
       }
       return map;
     });
+
+    // Track fragment changes
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      const tree = this.router.parseUrl(this.router.url);
+      this.activeFragment.set(tree.fragment);
+    });
   }
+
 
   public resolveId(id: number): { route: string; fragment: string } | null {
     const entry = this.permalinkMap().get(id);
