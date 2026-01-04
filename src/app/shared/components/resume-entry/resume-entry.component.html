@@ -1,4 +1,23 @@
-<article class="resume-entry">
+<article class="resume-entry" [class.is-highlighted]="isHighlighted()">
+  @if (permalinkFragment(); as fragment) {
+    <div
+      [id]="fragment"
+      class="resume-entry-anchor"
+      [class.resume-entry-anchor--first]="isFirst()"
+    ></div>
+  }
+
+  @if (permalinkId()) {
+    <button
+      class="resume-entry__permalink-btn"
+      (click)="copyLink($event)"
+      title="Copier le lien permanent vers cet élément"
+      aria-label="Copier le lien permanent"
+    >
+      <i class="fas fa-link" aria-hidden="true"></i>
+    </button>
+  }
+
   <header class="resume-entry__header">
     <div class="resume-entry__row">
       <h3 class="resume-entry__title">{{ title() }}</h3>

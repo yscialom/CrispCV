@@ -17,7 +17,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
   - `idea`: A feature that has been proposed but not yet planned.
   - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented) and must always come from the user, do not suggest a value; if none given, only use `todo`.
   - `wip`: The feature is currently in progress.
-  - `done`: The feature has been completed, tested, and merged. **Note: A feature can only be set to `done` if explicitly asked by the user.**
+  - `done`: The feature has been completed, tested, and merged. **IMPORTANT: A feature MUST NOT be set to `done` until the user explicitly says it is done.**
 
 - **Branch**
   : The name of the git feature branch, formatted as `feature/<ID>-<short-description>` (e.g., `feature/42-make-coffee`).
@@ -167,16 +167,34 @@ _Key Features_:
 : `6`
 
 **Description**
-: Implement deep-linking for experiences. Clicking an experience card updates the URL with a unique permalink and automatically copies the full link to the clipboard. The application should handle these permalinks on load by scrolling to the relevant card.
+: Implement deep-linking for all card-based entries across the application (Experience, Education, About Me).
+
+_Global ID & Routing:_
+
+- **Global Counter:** Assign a unique, incremental integer (`<id>`) to every card entry across the entire application. The counter starts at 1 for the oldest entry (chronologically sorted across all Experience, Education, and About data).
+- **Anchor Format:**
+  - Experience: `#<company>-<start-date>-<id>`
+  - Education: `#<institution>-<degree>-<date>-<id>`
+  - About (Projects/Volunteering): `#<project>-<id>` or `#<institution>-<id>`
+    (Note: All strings are slugified: lowercase, hyphens instead of spaces/special chars).
+- **Short Links:** Implement a root-level route `/:id` (e.g., `https://resume.com/42`) that automatically redirects to the correct page and anchor (e.g., `/experience#google-2020-42`).
+
+_UI/UX:_
+
+- **Link Icon:** Add a specific "Link" icon (FontAwesome or Unicode) in the top-right corner of every card.
+- **Hover Effect:** The icon should be hidden by default and only visible when the user hovers over the card.
+- **Action:** Clicking the icon copies the **Short Link** (`domain.com/<id>`) to the clipboard.
+- **Feedback:** Display a small, non-intrusive "toast" notification confirming the copy action.
+- **Highlighting:** When navigating to a permalink, the target card should be visually highlighted (e.g., a temporary glow or flash) to orient the user.
 
 **Status**
-: `todo (priority: 3)`
+: `done`
 
 **Branch**
-:
+: `feature/6-experience-permalinks`
 
 **PR**
-:
+: [#15](https://github.com/yscialom/vibed-resume/pull/15)
 
 **Release**
 :

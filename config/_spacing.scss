@@ -8,3 +8,7 @@ $border-radius-standard: 8px;
 $shadow-standard:
   0 4px 6px -1px rgb(0 0 0 / 10%),
   0 2px 4px -2px rgb(0 0 0 / 10%);
+
+// Layout constants for anchor scrolling
+$scroll-offset-default: 13.375rem;
+$scroll-offset-first: 19.5rem;

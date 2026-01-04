@@ -1,8 +1,9 @@
 <section class="resume-section">
-  <h2>Expériences profesionnelles</h2>
+  <h2>Expérience</h2>
+
   <div class="resume-section__list">
-    @for (exp of experiences(); track exp.title) {
-      <app-experience-card [experience]="exp" />
+    @for (exp of experiences(); track exp.company + exp.startDate; let first = $first) {
+      <app-experience-card [experience]="exp" [isFirst]="first" />
     }
   </div>
 </section>

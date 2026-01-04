@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExperienceComponent } from './experience.component';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { Experience } from '../core/models/resume.models';
-import { computed } from '@angular/core';
+import { computed, signal } from '@angular/core';
+import { PermalinkService } from '../core/services/permalink.service';
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent;
@@ -23,10 +24,18 @@ describe('ExperienceComponent', () => {
     experiences: computed(() => mockExperiences),
   };
 
+  const mockPermalinkService = {
+    getEntryByItem: () => ({ id: 1, fragment: 'test' }),
+    activeFragment: signal(null),
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ExperienceComponent],
-      providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
+      providers: [
+        { provide: ResumeDataService, useValue: mockResumeDataService },
+        { provide: PermalinkService, useValue: mockPermalinkService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExperienceComponent);
