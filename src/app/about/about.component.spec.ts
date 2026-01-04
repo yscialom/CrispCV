@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AboutComponent } from './about.component';
 import { ResumeDataService } from '../core/services/resume-data.service';
+import { PermalinkService } from '../core/services/permalink.service';
 import { signal } from '@angular/core';
 import { Profile } from '../core/models/resume.models';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
@@ -30,10 +31,17 @@ describe('AboutComponent', () => {
     profile: signal(mockProfile),
   };
 
+  const mockPermalinkService = {
+    getEntryByItem: () => ({ id: 1, fragment: 'test' }),
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AboutComponent, MarkdownPipe, DurationPipe],
-      providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
+      providers: [
+        { provide: ResumeDataService, useValue: mockResumeDataService },
+        { provide: PermalinkService, useValue: mockPermalinkService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AboutComponent);

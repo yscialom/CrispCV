@@ -3,6 +3,7 @@ import { EducationComponent } from './education.component';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { Education } from '../core/models/resume.models';
 import { computed } from '@angular/core';
+import { PermalinkService } from '../core/services/permalink.service';
 
 describe('EducationComponent', () => {
   let component: EducationComponent;
@@ -29,10 +30,17 @@ describe('EducationComponent', () => {
     educations: computed(() => mockEducations),
   };
 
+  const mockPermalinkService = {
+    getEntryByItem: () => ({ id: 1, fragment: 'test' }),
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [EducationComponent],
-      providers: [{ provide: ResumeDataService, useValue: mockResumeDataService }],
+      providers: [
+        { provide: ResumeDataService, useValue: mockResumeDataService },
+        { provide: PermalinkService, useValue: mockPermalinkService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EducationComponent);
