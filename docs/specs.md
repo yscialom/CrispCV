@@ -17,7 +17,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
   - `idea`: A feature that has been proposed but not yet planned.
   - `todo (priority: X)`: A feature that is planned for development. `X` is a number from 0 (highest priority) to 10 (lowest priority, will likely not be implemented) and must always come from the user, do not suggest a value; if none given, only use `todo`.
   - `wip`: The feature is currently in progress.
-  - `done`: The feature has been completed, tested, and merged. **Note: A feature can only be set to `done` if explicitly asked by the user.**
+  - `done`: The feature has been completed, tested, and merged. **IMPORTANT: A feature MUST NOT be set to `done` until the user explicitly says it is done.**
 
 - **Branch**
   : The name of the git feature branch, formatted as `feature/<ID>-<short-description>` (e.g., `feature/42-make-coffee`).
