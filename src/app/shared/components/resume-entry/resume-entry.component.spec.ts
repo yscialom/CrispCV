@@ -82,9 +82,9 @@ describe('ResumeEntryComponent', () => {
 
       const btn = fixture.nativeElement.querySelector('.resume-entry__permalink-btn');
       btn.click();
-      
+
       // Wait for clipboard promise
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise((resolve) => setTimeout(resolve, 0));
 
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expect.stringContaining('/42'));
       expect(mockRouter.navigate).toHaveBeenCalledWith([], {
