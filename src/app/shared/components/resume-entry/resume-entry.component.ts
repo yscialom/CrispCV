@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, inject } from '@angular/core';
+import { ToastService } from '../../../core/services/toast.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-resume-entry',
@@ -12,4 +14,29 @@ export class ResumeEntryComponent {
   public readonly subtitle = input.required<string>();
   public readonly location = input.required<string>();
   public readonly dateRange = input.required<string>();
+
+  public readonly permalinkFragment = input<string>();
+  public readonly permalinkId = input<number>();
+
+  private readonly toastService = inject(ToastService);
+  private readonly document = inject(DOCUMENT);
+
+  protected copyLink(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const id = this.permalinkId();
+    if (!id) return;
+
+    const url = `${this.document.location.origin}/${id}`;
+
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        this.toastService.show('Lien copié !', 'success');
+      })
+      .catch(() => {
+        this.toastService.show('Erreur lors de la copie.', 'error');
+      });
+  }
 }

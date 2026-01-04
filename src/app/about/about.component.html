@@ -118,6 +118,8 @@
               (vol.startDate | duration: vol.endDate) +
               ')'
             "
+            [permalinkFragment]="getPermalink(vol)?.fragment"
+            [permalinkId]="getPermalink(vol)?.id"
           >
             @if (vol.description) {
               <p class="card-description">{{ vol.description }}</p>
@@ -143,6 +145,8 @@
               (proj.endDate ? ' - ' + proj.endDate : '') +
               (proj.startDate ? ' (' + (proj.startDate | duration: proj.endDate) + ')' : '')
             "
+            [permalinkFragment]="getPermalink(proj)?.fragment"
+            [permalinkId]="getPermalink(proj)?.id"
           >
             <!-- Keywords/Technologies injected into entry-keywords slot -->
             @if (proj.technologies; as techs) {

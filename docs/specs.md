@@ -170,15 +170,17 @@ _Key Features_:
 : Implement deep-linking for all card-based entries across the application (Experience, Education, About Me).
 
 _Global ID & Routing:_
+
 - **Global Counter:** Assign a unique, incremental integer (`<id>`) to every card entry across the entire application. The counter starts at 1 for the oldest entry (chronologically sorted across all Experience, Education, and About data).
 - **Anchor Format:**
   - Experience: `#<company>-<start-date>-<id>`
   - Education: `#<institution>-<degree>-<date>-<id>`
   - About (Projects/Volunteering): `#<project>-<id>` or `#<institution>-<id>`
-  (Note: All strings are slugified: lowercase, hyphens instead of spaces/special chars).
+    (Note: All strings are slugified: lowercase, hyphens instead of spaces/special chars).
 - **Short Links:** Implement a root-level route `/:id` (e.g., `https://resume.com/42`) that automatically redirects to the correct page and anchor (e.g., `/experience#google-2020-42`).
 
 _UI/UX:_
+
 - **Link Icon:** Add a specific "Link" icon (FontAwesome or Unicode) in the top-right corner of every card.
 - **Hover Effect:** The icon should be hidden by default and only visible when the user hovers over the card.
 - **Action:** Clicking the icon copies the **Short Link** (`domain.com/<id>`) to the clipboard.

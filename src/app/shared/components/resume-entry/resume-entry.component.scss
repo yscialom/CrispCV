@@ -7,6 +7,7 @@
 }
 
 .resume-entry {
+  position: relative;
   flex: 1;
   padding: spacing.$spacing-medium;
   background-color: var(--secondary-bg);
@@ -17,6 +18,37 @@
   &:hover {
     box-shadow: spacing.$shadow-standard;
     transform: translateY(-2px);
+  }
+
+  // Permalink Button
+  &__permalink-btn {
+    position: absolute;
+    top: spacing.$spacing-xx-small;
+    right: spacing.$spacing-xx-small;
+    background: transparent;
+    border: none;
+    color: var(--text-disabled);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: spacing.$spacing-xx-small;
+    opacity: 0;
+    transition:
+      opacity 0.2s,
+      color 0.2s;
+    z-index: 10;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  &:hover &__permalink-btn {
+    opacity: 1;
+  }
+
+  // Target Highlight
+  &:target {
+    animation: pulse-highlight 1s ease-out;
   }
 
   &__header {
@@ -58,5 +90,20 @@
     font-size: 0.875rem;
     color: var(--text);
     opacity: 0.8;
+  }
+}
+
+@keyframes pulse-highlight {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

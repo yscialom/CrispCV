@@ -2,13 +2,14 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { ToastComponent } from './shared/components/toast/toast.component';
 import { Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { AppConfigService } from './core/services/app-config.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, ToastComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

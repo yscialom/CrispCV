@@ -1,0 +1,5 @@
+@if (toastService.toast(); as toast) {
+  <div class="toast" [class]="'toast--' + toast.type">
+    {{ toast.text }}
+  </div>
+}

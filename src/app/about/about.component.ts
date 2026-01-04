@@ -3,6 +3,8 @@ import { ResumeDataService } from '../core/services/resume-data.service';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
 import { ResumeEntryComponent } from '../shared/components/resume-entry/resume-entry.component';
 import { DurationPipe } from '../shared/pipes/duration.pipe';
+import { PermalinkService } from '../core/services/permalink.service';
+import { Experience, Education, Project, Volunteering } from '../core/models/resume.models';
 
 @Component({
   selector: 'app-about',
@@ -14,6 +16,7 @@ import { DurationPipe } from '../shared/pipes/duration.pipe';
 })
 export class AboutComponent {
   private resumeDataService = inject(ResumeDataService);
+  private permalinkService = inject(PermalinkService);
 
   profile = this.resumeDataService.profile;
 
@@ -35,6 +38,10 @@ export class AboutComponent {
     }
     return age;
   });
+
+  getPermalink(item: Experience | Education | Project | Volunteering) {
+    return this.permalinkService.getEntryByItem(item);
+  }
 
   getLanguageLevelLabel(level: number): string {
     switch (level) {
