@@ -188,13 +188,13 @@ _UI/UX:_
 - **Highlighting:** When navigating to a permalink, the target card should be visually highlighted (e.g., a temporary glow or flash) to orient the user.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/6-experience-permalinks`
 
 **PR**
-:
+: [#15](https://github.com/yscialom/vibed-resume/pull/15)
 
 **Release**
 :
