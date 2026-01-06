@@ -339,10 +339,38 @@ _Features_:
 : `11`
 
 **Description**
-: add a github workflow to publish the app as github pages
+: Add a GitHub Actions workflow to publish the application to GitHub Pages.
+The workflow triggers on pushes to `main` or the orphan branch `pages`.
+It checks out the code from `main` but retrieves the specific `config/profile.ts` from the `pages` branch (if it exists) to allow for private configuration.
+It builds the application using `npm` and deploys the artifact to GitHub Pages.
 
 **Status**
-: `todo (priority: 4)`
+: `done`
+
+**Branch**
+: `feature/11-publish-to-github-pages`
+
+**PR**
+: [#16](https://github.com/yscialom/CrispCV/pull/16)
+
+**Release**
+:
+
+---
+
+## Additional CI/CD Workflows
+
+**ID**
+: `16`
+
+**Description**
+: Implement supplementary CI/CD workflows to ensure code quality and facilitate distribution.
+
+1. **Quality Check:** A workflow triggering on pushes to the `develop` branch (and/or Pull Requests) to run `make format` and `make lint`.
+2. **Docker Publish:** A workflow triggering on git tags to build the Docker image and publish it to a container registry (e.g., GitHub Container Registry).
+
+**Status**
+: `todo (priority: 3)`
 
 **Branch**
 :
@@ -482,7 +510,7 @@ _Requirements:_
 : Add a simple, discreet footer at the bottom of the application.
 
 - **Content:** "static résumé &mdash; Yankel Scialom &mdash; link 'for us on github'".
-- **Link:** The text "for us on github" should link to `https://github.com/yscialom/vibed-resume` and open in a new tab.
+- **Link:** The text "for us on github" should link to `https://github.com/yscialom/crispcv` and open in a new tab.
 - **Style:** Discreet, centered, consistent with the app's minimal aesthetic. Implementation ensures it stays at the bottom of the screen on short pages.
 
 **Status**

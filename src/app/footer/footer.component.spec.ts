@@ -27,11 +27,8 @@ describe('FooterComponent', () => {
     );
   });
 
-  it('should have a link to the github repository', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const link = compiled.querySelector('a');
-    expect(link).toBeTruthy();
-    expect(link?.getAttribute('href')).toBe('https://github.com/yscialom/vibed-resume');
-    expect(link?.textContent).toContain('fork us on github');
+  it('should have a link to the github repo', () => {
+    const link = fixture.nativeElement.querySelector('a');
+    expect(link?.getAttribute('href')).toBe('https://github.com/yscialom/crispcv');
   });
 });

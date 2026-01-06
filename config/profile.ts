@@ -62,7 +62,7 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
     {
       name: 'Vibed Resume',
       description: 'The project you are looking at right now!',
-      url: 'https://github.com/yscialom/vibed-resume',
+      url: 'https://github.com/yscialom/crispcv',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       startDate: '2025-11',
       endDate: 'Present',
