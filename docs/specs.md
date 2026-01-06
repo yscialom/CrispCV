@@ -351,7 +351,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : `feature/11-publish-to-github-pages`
 
 **PR**
-:
+: [#16](https://github.com/yscialom/CrispCV/pull/16)
 
 **Release**
 :
