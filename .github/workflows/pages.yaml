@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
       - pages
   workflow_dispatch:
 
@@ -20,10 +20,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout master
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: master
 
       - name: Checkout config from pages branch
         run: |
