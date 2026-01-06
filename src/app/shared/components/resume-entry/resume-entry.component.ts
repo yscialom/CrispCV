@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, inject, computed } from '@angular/core';
 import { ToastService } from '../../../core/services/toast.service';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, APP_BASE_HREF } from '@angular/common';
 import { Router } from '@angular/router';
 import { PermalinkService } from '../../../core/services/permalink.service';
 
@@ -25,6 +25,7 @@ export class ResumeEntryComponent {
   private readonly document = inject(DOCUMENT);
   private readonly router = inject(Router);
   private readonly permalinkService = inject(PermalinkService);
+  private readonly baseHref = inject(APP_BASE_HREF);
 
   public readonly isHighlighted = computed(() => {
     const active = this.permalinkService.activeFragment();
@@ -45,7 +46,8 @@ export class ResumeEntryComponent {
       this.router.navigate([], { fragment, replaceUrl: true });
     }
 
-    const url = `${this.document.location.origin}/${id}`;
+    const base = this.baseHref.endsWith('/') ? this.baseHref : this.baseHref + '/';
+    const url = `${this.document.location.origin}${base}${id}`;
 
     navigator.clipboard
       .writeText(url)

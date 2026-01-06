@@ -45,7 +45,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --configuration production --base-href /crispcv/
+        run: |
+          npm run build -- --configuration production --base-href /CrispCV/
+          cp dist/resume-app/browser/index.html dist/resume-app/browser/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
