@@ -365,6 +365,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 
 **Description**
 : Implement supplementary CI/CD workflows to ensure code quality and facilitate distribution.
+
 1. **Quality Check:** A workflow triggering on pushes to the `develop` branch (and/or Pull Requests) to run `make format` and `make lint`.
 2. **Docker Publish:** A workflow triggering on git tags to build the Docker image and publish it to a container registry (e.g., GitHub Container Registry).
 
