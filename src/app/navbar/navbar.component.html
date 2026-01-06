@@ -1,0 +1,44 @@
+<header class="navbar" [class.is-sticky]="isSticky()">
+  <div class="profile-picture">
+    <img [src]="profile().profilePicturePath" alt="Profile picture" />
+  </div>
+  <div class="profile-content">
+    <h1>{{ profile().name }}</h1>
+    <h2>{{ profile().title }}</h2>
+    <p class="profile-summary">{{ profile().summary }}</p>
+    <nav>
+      <ul>
+        <li>
+          <a
+            routerLink="/experience"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Expériences
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/education"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Études &amp; Diplômes
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/about"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            À propos
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="navbar-controls">
+    <app-theme-switch></app-theme-switch>
+  </div>
+</header>

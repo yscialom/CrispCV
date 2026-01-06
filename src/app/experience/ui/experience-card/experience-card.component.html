@@ -1,0 +1,38 @@
+<app-resume-entry
+  [title]="experience().title"
+  [subtitle]="experience().company"
+  [location]="experience().location"
+  [dateRange]="
+    experience().startDate +
+    ' - ' +
+    experience().endDate +
+    (duration() ? ' (' + duration() + ')' : '')
+  "
+  [permalinkFragment]="permalink()?.fragment"
+  [permalinkId]="permalink()?.id"
+  [isFirst]="isFirst()"
+>
+  @if (experience().keywords; as keywords) {
+    <div entry-keywords class="resume-entry__keywords-container">
+      <div class="resume-entry__keywords">
+        @for (keyword of keywords; track keyword) {
+          <span class="resume-entry__keyword">{{ keyword }}</span>
+        }
+      </div>
+    </div>
+  }
+
+  <hr class="experience-card__separator" />
+
+  <div class="experience-card__content">
+    @for (mission of experience().missions; track mission.title) {
+      <div class="experience-card__mission">
+        <h4 class="experience-card__mission-title">{{ mission.title }}</h4>
+        <div
+          class="experience-card__mission-description"
+          [innerHTML]="mission.description | markdown"
+        ></div>
+      </div>
+    }
+  </div>
+</app-resume-entry>

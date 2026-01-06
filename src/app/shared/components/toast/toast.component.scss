@@ -1,0 +1,37 @@
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  background-color: var(--secondary-bg);
+  color: var(--text);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 30%);
+  z-index: 9999;
+  animation: slide-in 0.3s ease-out;
+  border-left: 4px solid var(--accent);
+
+  &--success {
+    border-left-color: #28a745;
+  }
+
+  &--error {
+    border-left-color: #dc3545;
+  }
+
+  &--info {
+    border-left-color: var(--accent);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

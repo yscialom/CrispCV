@@ -1,0 +1,128 @@
+@use '../../../../../config/spacing' as spacing;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.resume-entry {
+  position: relative;
+  flex: 1;
+  padding: spacing.$spacing-medium;
+  background-color: var(--secondary-bg);
+  border-radius: spacing.$border-radius-standard;
+  transition:
+    transform 300ms ease-in-out,
+    box-shadow 300ms ease-in-out,
+    background-color 1000ms ease-in-out;
+  border-left: 4px solid var(--accent);
+
+  &-anchor {
+    position: absolute;
+    top: calc(-1 * spacing.$scroll-offset-default);
+    left: 0;
+    visibility: hidden;
+
+    &--first {
+      top: calc(-1 * spacing.$scroll-offset-first);
+    }
+  }
+
+  &:hover {
+    box-shadow: spacing.$shadow-standard;
+    transform: translateY(-2px);
+    transition:
+      transform 300ms ease-in-out,
+      box-shadow 300ms ease-in-out,
+      background-color 300ms ease-in-out;
+  }
+
+  // Permalink Button
+  &__permalink-btn {
+    position: absolute;
+    top: spacing.$spacing-xx-small;
+    right: spacing.$spacing-xx-small;
+    background: transparent;
+    border: none;
+    color: var(--text-disabled);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: spacing.$spacing-xx-small;
+    opacity: 0;
+    transition:
+      opacity 0.2s,
+      color 0.2s;
+    z-index: 10;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  &:hover &__permalink-btn {
+    opacity: 1;
+  }
+
+  // Target Highlight
+  &:has(.resume-entry-anchor:target),
+  &.is-highlighted {
+    animation: highlight-fade 3s ease-in-out;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacing-xx-small;
+    margin-bottom: spacing.$spacing-small;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: spacing.$spacing-small;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  &__location {
+    font-size: 0.875rem;
+    color: var(--text);
+    opacity: 0.8;
+    font-style: italic;
+    margin-top: 0.5em;
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  &__dates {
+    font-size: 0.875rem;
+    color: var(--text);
+    opacity: 0.8;
+  }
+}
+
+@keyframes highlight-fade {
+  0% {
+    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 20%);
+  }
+
+  33% {
+    background-color: color-mix(in srgb, var(--secondary-bg), var(--accent) 20%);
+  }
+
+  100% {
+    background-color: var(--secondary-bg);
+  }
+}

@@ -1,0 +1,110 @@
+@use 'sass:map';
+@use '../config/spacing' as spacing;
+@use '../config/_colors.scss' as colors;
+@import '@fontsource/lato/400.css';
+@import '@fontsource/lato/700.css';
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+// Helper mixin to generate CSS vars from a map
+@mixin generate-theme-vars($palette) {
+  @each $key, $value in $palette {
+    --#{$key}: #{$value};
+  }
+}
+
+// Apply themes based on body class
+body {
+  // Default (light theme)
+  @include generate-theme-vars(colors.$palette-light);
+
+  &.theme-light {
+    @include generate-theme-vars(colors.$palette-light);
+  }
+
+  &.theme-dark {
+    @include generate-theme-vars(colors.$palette-dark);
+  }
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Lato, Arial, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  margin-top: spacing.$spacing-medium;
+  margin-bottom: spacing.$spacing-small;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 0.875rem;
+}
+
+h5,
+h6 {
+  font-size: 0.875rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: spacing.$spacing-medium;
+}
+
+a {
+  color: var(--accent);
+}
+
+.resume-section {
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: spacing.$spacing-x-large;
+    margin-bottom: spacing.$spacing-large;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacing-x-large;
+  }
+}

@@ -1,0 +1,58 @@
+@use '../../../../../config/spacing' as spacing;
+@use '../../../../styles/resume-entry' as resume-entry;
+
+// Note: Core card styles are now in ResumeEntryComponent
+
+.experience-card {
+  &__separator {
+    border: 0;
+    height: 1px;
+    background-color: var(--text);
+    opacity: 0.1;
+    margin: 0 0 spacing.$spacing-medium 0;
+  }
+
+  &__content {
+    margin-bottom: 0;
+  }
+
+  &__mission {
+    margin-bottom: spacing.$spacing-medium;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__mission-title {
+    margin: 0 0 spacing.$spacing-xx-small 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  &__mission-description {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+
+    ::ng-deep p {
+      margin: 0;
+    }
+
+    ::ng-deep ul {
+      margin: spacing.$spacing-xx-small 0;
+      padding-left: spacing.$spacing-large;
+    }
+
+    ::ng-deep li {
+      margin-bottom: spacing.$spacing-xx-small;
+    }
+  }
+}
+
+.resume-entry {
+  @include resume-entry.resume-entry-keywords;
+}

@@ -1,0 +1,13 @@
+<app-resume-entry
+  [title]="education().degree"
+  [subtitle]="education().institution"
+  [location]="education().location"
+  [dateRange]="education().startDate + ' - ' + education().endDate"
+  [permalinkFragment]="permalink()?.fragment"
+  [permalinkId]="permalink()?.id"
+  [isFirst]="isFirst()"
+>
+  @if (education().description) {
+    <div class="education-card__description" [innerHTML]="education().description | markdown"></div>
+  }
+</app-resume-entry>
