@@ -43,15 +43,18 @@ Open your browser and navigate to `http://localhost:4200`.
 ## 🔄 Full Workflow
 
 ### 1. Development (Iteration)
+
 Work on the `develop` branch. Use `make start` to preview features and `make test`, `make lint`, `make format` to ensure code quality.
 
 ### 2. Configuration (Your Data)
+
 Manage your resume data on the `pages` branch. The deployment workflow always pulls `config/profile.ts` from this branch, allowing you to keep your personal data separate from the main codebase updates.
 
 ### 3. Deployment (Production)
+
 - **Code Updates**: Push or merge changes to the `main` branch.
 - **Data Updates**: Push changes to the `pages` branch.
-Either action will trigger the **Deploy to GitHub Pages** workflow.
+  Either action will trigger the **Deploy to GitHub Pages** workflow.
 
 ## ⚙️ Configuration
 
