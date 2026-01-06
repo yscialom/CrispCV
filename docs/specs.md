@@ -345,7 +345,7 @@ It checks out the code from `main` but retrieves the specific `config/profile.ts
 It builds the application using `npm` and deploys the artifact to GitHub Pages.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/11-publish-to-github-pages`
