@@ -1,0 +1,55 @@
+{
+  "NAVBAR": {
+    "EXPERIENCE": "Expériences",
+    "EDUCATION": "Études & Diplômes",
+    "ABOUT": "À propos"
+  },
+  "ABOUT": {
+    "TITLE": "À propos de moi",
+    "PERSONAL_INFO": "Informations Personnelles",
+    "BIRTH_DATE": "Date de naissance",
+    "AGE_SUFFIX": "ans",
+    "NATIONALITY": "Nationalité",
+    "LOCATION": "Localisation",
+    "PHONE": "Téléphone",
+    "EMAIL": "Email",
+    "LICENSE": "Permis",
+    "LANGUAGES": "Langues",
+    "HOBBIES": "Loisirs",
+    "SOCIAL_TITLE": "Retrouvez-moi sur",
+    "VOLUNTEERING": "Bénévolat",
+    "PROJECTS": "Projets personnels",
+    "VIEW_PROJECT": "Voir le projet"
+  },
+  "EXPERIENCE": {
+    "TITLE": "Expérience"
+  },
+  "EDUCATION": {
+    "TITLE": "Études & Diplômes"
+  },
+  "FOOTER": {
+    "STATIC_RESUME": "static résumé",
+    "FORK_US": "fork us on github"
+  },
+  "COMMON": {
+    "PRESENT": "Présent",
+    "ERROR": "Une erreur est survenue"
+  },
+  "DURATION": {
+    "YEAR_PLURAL": "ans",
+    "YEAR_SINGULAR": "an",
+    "MONTH": "mois"
+  },
+  "RESUME_ENTRY": {
+    "COPY_LINK_TITLE": "Copier le lien permanent vers cet élément",
+    "COPY_LINK_ARIA": "Copier le lien permanent",
+    "COPIED": "Lien copié !"
+  },
+  "LANGUAGE_LEVELS": {
+    "BEGINNER": "Débutant",
+    "INTERMEDIATE": "Intermédiaire",
+    "ADVANCED": "Avancé",
+    "FLUENT": "Courant",
+    "NATIVE": "Bilingue / Natif"
+  }
+}

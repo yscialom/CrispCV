@@ -14,7 +14,7 @@
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            Expériences
+            {{ 'NAVBAR.EXPERIENCE' | translate }}
           </a>
         </li>
         <li>
@@ -23,7 +23,7 @@
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            Études &amp; Diplômes
+            {{ 'NAVBAR.EDUCATION' | translate }}
           </a>
         </li>
         <li>
@@ -32,13 +32,14 @@
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            À propos
+            {{ 'NAVBAR.ABOUT' | translate }}
           </a>
         </li>
       </ul>
     </nav>
   </div>
   <div class="navbar-controls">
+    <app-language-switch></app-language-switch>
     <app-theme-switch></app-theme-switch>
   </div>
 </header>

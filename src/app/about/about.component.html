@@ -1,26 +1,28 @@
 <section class="resume-section">
-  <h2>À propos de moi</h2>
+  <h2>{{ 'ABOUT.TITLE' | translate }}</h2>
 
   <div class="about-grid">
     <!-- Left Column: Personal Info -->
     <div class="about-info">
-      <h3>Informations Personnelles</h3>
+      <h3>{{ 'ABOUT.PERSONAL_INFO' | translate }}</h3>
       <ul class="info-list">
         @if (profile().birthDate) {
           <li>
-            <strong>Date de naissance :</strong>
+            <strong>{{ 'ABOUT.BIRTH_DATE' | translate }} :</strong>
             {{ profile().birthDate }}
             @if (age()) {
-              ({{ age() }} ans)
+              ({{ age() }} {{ 'ABOUT.AGE_SUFFIX' | translate }})
             }
           </li>
         }
         @if (profile().nationality) {
-          <li><strong>Nationalité :</strong> {{ profile().nationality }}</li>
+          <li>
+            <strong>{{ 'ABOUT.NATIONALITY' | translate }} :</strong> {{ profile().nationality }}
+          </li>
         }
         @if (profile().location) {
           <li>
-            <strong>Localisation :</strong>
+            <strong>{{ 'ABOUT.LOCATION' | translate }} :</strong>
             <a
               class="info-link"
               [href]="'https://www.google.com/maps?q=' + profile().location"
@@ -32,26 +34,28 @@
         }
         @if (profile().phone) {
           <li>
-            <strong>Téléphone :</strong>
+            <strong>{{ 'ABOUT.PHONE' | translate }} :</strong>
             <a class="info-link" [href]="'tel:' + profile().phone">{{ profile().phone }}</a>
           </li>
         }
         @if (profile().email) {
           <li>
-            <strong>Email :</strong>
+            <strong>{{ 'ABOUT.EMAIL' | translate }} :</strong>
             <a class="info-link" [href]="'mailto:' + profile().email">{{ profile().email }}</a>
           </li>
         }
         @if (profile().drivingLicense) {
-          <li><strong>Permis :</strong> {{ profile().drivingLicense }}</li>
+          <li>
+            <strong>{{ 'ABOUT.LICENSE' | translate }} :</strong> {{ profile().drivingLicense }}
+          </li>
         }
       </ul>
 
       @if (languages().length > 0) {
-        <h3>Langues</h3>
+        <h3>{{ 'ABOUT.LANGUAGES' | translate }}</h3>
         <ul class="skills-list">
           @for (lang of languages(); track lang.name) {
-            <li [title]="getLanguageLevelLabel(lang.level)">
+            <li [title]="getLanguageLevelLabel(lang.level) | translate">
               <span class="skill-name">{{ lang.name }}</span>
               <!-- Simple visual representation of level -->
               <span class="skill-dots">
@@ -65,7 +69,7 @@
       }
 
       @if (hobbies().length > 0) {
-        <h3>Loisirs</h3>
+        <h3>{{ 'ABOUT.HOBBIES' | translate }}</h3>
         <div class="tags-container">
           @for (hobby of hobbies(); track hobby) {
             <span class="tag">{{ hobby }}</span>
@@ -82,7 +86,7 @@
 
       @if (socialLinks().length > 0) {
         <div class="social-links">
-          <h3>Retrouvez-moi sur</h3>
+          <h3>{{ 'ABOUT.SOCIAL_TITLE' | translate }}</h3>
           <div class="links-container">
             @for (link of socialLinks(); track link.platform) {
               <a [href]="link.url" target="_blank" class="social-btn">
@@ -104,7 +108,7 @@
   <!-- Full Width: Volunteering -->
   @if (volunteering().length > 0) {
     <div class="resume-section-group">
-      <h3 class="group-title">Bénévolat</h3>
+      <h3 class="group-title">{{ 'ABOUT.VOLUNTEERING' | translate }}</h3>
       <div class="cards-list">
         @for (vol of volunteering(); track vol.organization) {
           <app-resume-entry
@@ -113,7 +117,7 @@
             [location]="''"
             [dateRange]="
               vol.startDate +
-              (vol.endDate ? ' - ' + vol.endDate : ' - Présent') +
+              (vol.endDate ? ' - ' + vol.endDate : ' - ' + ('COMMON.PRESENT' | translate)) +
               ' (' +
               (vol.startDate | duration: vol.endDate) +
               ')'
@@ -133,7 +137,7 @@
   <!-- Full Width: Personal Projects -->
   @if (personalProjects().length > 0) {
     <div class="resume-section-group">
-      <h3 class="group-title">Projets personnels</h3>
+      <h3 class="group-title">{{ 'ABOUT.PROJECTS' | translate }}</h3>
       <div class="cards-list">
         @for (proj of personalProjects(); track proj.name) {
           <app-resume-entry
@@ -166,7 +170,7 @@
               @if (proj.url) {
                 <p class="project-link">
                   <a [href]="proj.url" target="_blank"
-                    >Voir le projet <i class="fas fa-external-link-alt"></i
+                    >{{ 'ABOUT.VIEW_PROJECT' | translate }} <i class="fas fa-external-link-alt"></i
                   ></a>
                 </p>
               }

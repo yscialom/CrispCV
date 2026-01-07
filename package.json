@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "generate-registry": "node tools/generate-profile-registry.js",
+    "start": "npm run generate-registry && ng serve",
+    "build": "npm run generate-registry && ng build",
+    "watch": "npm run generate-registry && ng build --watch --configuration development",
+    "test": "npm run generate-registry && ng test",
     "lint": "ng lint",
     "format": "prettier --write \"./**/*.{js,json,ts,css,scss,less,html,md}\" | grep -v \"(unchanged)\" || true && stylelint \"./**/*.scss\" --fix"
   },
@@ -33,6 +34,8 @@
     "@angular/router": "^21.0.0",
     "@fontsource/lato": "^5.0.0",
     "@fortawesome/fontawesome-free": "^6.5.1",
+    "@ngx-translate/core": "^16.0.0",
+    "@ngx-translate/http-loader": "^16.0.0",
     "marked": "^17.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"

@@ -3,10 +3,12 @@ import { ToastService } from '../../../core/services/toast.service';
 import { DOCUMENT, APP_BASE_HREF } from '@angular/common';
 import { Router } from '@angular/router';
 import { PermalinkService } from '../../../core/services/permalink.service';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-resume-entry',
   standalone: true,
+  imports: [TranslateModule],
   templateUrl: './resume-entry.component.html',
   styleUrl: './resume-entry.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +28,7 @@ export class ResumeEntryComponent {
   private readonly router = inject(Router);
   private readonly permalinkService = inject(PermalinkService);
   private readonly baseHref = inject(APP_BASE_HREF);
+  private readonly translate = inject(TranslateService);
 
   public readonly isHighlighted = computed(() => {
     const active = this.permalinkService.activeFragment();
@@ -52,10 +55,10 @@ export class ResumeEntryComponent {
     navigator.clipboard
       .writeText(url)
       .then(() => {
-        this.toastService.show('Lien copié !', 'success');
+        this.toastService.show(this.translate.instant('RESUME_ENTRY.COPIED'), 'success');
       })
       .catch(() => {
-        this.toastService.show('Erreur lors de la copie.', 'error');
+        this.toastService.show(this.translate.instant('COMMON.ERROR'), 'error');
       });
   }
 }
