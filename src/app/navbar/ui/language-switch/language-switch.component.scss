@@ -1,45 +1,69 @@
 @use 'colors';
 @use 'spacing';
 
+.current-lang {
+  display: flex;
+  align-items: center;
+  gap: spacing.$spacing-x-small;
+  padding: spacing.$spacing-x-small spacing.$spacing-small;
+  background: var(--secondary-bg);
+  border: 1px solid var(--accent);
+  border-radius: spacing.$border-radius-standard;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--accent);
+    color: var(--primary-bg);
+  }
+
+  .flag {
+    font-size: 1.2rem;
+  }
+
+  i {
+    font-size: 0.7rem;
+    margin-left: spacing.$spacing-x-small;
+    opacity: 0.7;
+  }
+}
+
 .lang-dropdown {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% - 2px); // Overlap slightly to fix hover jitter
   right: 0;
-  z-index: 1000;
-  min-width: 150px;
+  z-index: 1002;
+  min-width: 160px;
   padding: spacing.$spacing-x-small 0;
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  background: var(--secondary-bg);
+  border: 1px solid var(--accent);
+  border-radius: spacing.$border-radius-standard;
+  box-shadow: spacing.$shadow-standard;
   list-style: none;
-
-  // Bridge the gap between button and dropdown to maintain hover state
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0;
-    height: 10px;
-  }
+  margin: 0;
 
   li {
     display: flex;
     align-items: center;
     gap: spacing.$spacing-small;
-    padding: spacing.$spacing-x-small spacing.$spacing-medium;
+    padding: spacing.$spacing-small spacing.$spacing-medium;
     cursor: pointer;
-    transition: background 0.2s ease;
+    color: var(--text);
+    transition: all 0.2s ease;
 
     &:hover {
-      background: var(--hover-color);
+      background: var(--accent);
+      color: var(--primary-bg);
     }
 
     &.active {
-      color: var(--primary-color);
       font-weight: bold;
+      background: var(--primary-bg);
+      color: var(--accent);
     }
 
     .flag {
