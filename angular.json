@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "resume-app": {
+    "CrispCV": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "resume-app:build:production"
+              "buildTarget": "CrispCV:build:production"
             },
             "development": {
-              "buildTarget": "resume-app:build:development"
+              "buildTarget": "CrispCV:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -99,7 +99,7 @@ Access the app at `http://localhost:8080`.
 If you have an existing web server (Nginx, Apache, AWS S3, etc.):
 
 1.  Run `make build`.
-2.  Copy the contents of the `dist/resume-app/browser/` directory to your web server's root directory.
+2.  Copy the contents of the `dist/CrispCV/browser/` directory to your web server's root directory.
 
 ## 📚 Documentation
 

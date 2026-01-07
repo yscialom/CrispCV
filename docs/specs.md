@@ -49,7 +49,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : none
 
 **Release**
-:
+: v0.1.0
 
 ## Linting and Formatting Make Targets
 
@@ -69,7 +69,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : none
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -91,7 +91,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : [#1](https://github.com/yscialom/vibed-resume/pull/1)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -136,6 +136,9 @@ _Key Features_:
 
 **PR**
 : [#2](https://github.com/yscialom/vibed-resume/pull/2)
+
+**Release**
+: v0.1.0
 
 ---
 
@@ -197,7 +200,7 @@ _UI/UX:_
 : [#15](https://github.com/yscialom/vibed-resume/pull/15)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -225,7 +228,7 @@ _UI/UX:_
 : [#10](https://github.com/yscialom/vibed-resume/pull/10)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -267,7 +270,7 @@ _Key Features_:
 : [#4](https://github.com/yscialom/vibed-resume/pull/4)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -329,7 +332,7 @@ _Features_:
 : [#12](https://github.com/yscialom/vibed-resume/pull/12)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -354,7 +357,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#16](https://github.com/yscialom/CrispCV/pull/16)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -465,7 +468,7 @@ _Key Features_:
 : [#8](https://github.com/yscialom/vibed-resume/pull/8)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -495,7 +498,7 @@ _Requirements:_
 : [#14](https://github.com/yscialom/vibed-resume/pull/14)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -523,4 +526,4 @@ _Requirements:_
 : [#11](https://github.com/yscialom/vibed-resume/pull/11)
 
 **Release**
-:
+: v0.1.0
