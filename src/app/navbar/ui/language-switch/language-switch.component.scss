@@ -14,6 +14,8 @@
   font-family: inherit;
   font-size: 0.9rem;
   transition: all 0.2s ease;
+  position: relative;
+  z-index: 2;
 
   &:hover {
     background: var(--accent);
@@ -34,17 +36,25 @@
 .lang-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% - 2px); // Overlap slightly to fix hover jitter
+  top: 100%;
   right: 0;
   z-index: 1002;
   min-width: 160px;
-  padding: spacing.$spacing-x-small 0;
-  background: var(--secondary-bg);
-  border: 1px solid var(--accent);
-  border-radius: spacing.$border-radius-standard;
-  box-shadow: spacing.$shadow-standard;
+  // Use padding to create a visual gap while keeping the hit area contiguous
+  padding-top: 8px;
+  background: transparent;
   list-style: none;
   margin: 0;
+
+  // The actual visible menu
+  .dropdown-content {
+    background: var(--secondary-bg);
+    border: 1px solid var(--accent);
+    border-radius: spacing.$border-radius-standard;
+    box-shadow: spacing.$shadow-standard;
+    padding: spacing.$spacing-x-small 0;
+    overflow: hidden;
+  }
 
   li {
     display: flex;
@@ -81,9 +91,8 @@
   display: inline-block;
   z-index: 1001;
 
-  &:hover {
-    .lang-dropdown {
-      display: block;
-    }
+  &:hover .lang-dropdown,
+  &.is-open .lang-dropdown {
+    display: block;
   }
 }
