@@ -1,13 +1,27 @@
 import { TestBed } from '@angular/core/testing';
 import { ResumeDataService } from './resume-data.service';
-import { PROFILE_CONFIG } from '../../../../config/profile';
+import { PROFILE_CONFIG } from '../../../../config/profile.fr_FR';
 import { Resume } from '../../core/models/resume.models';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { EventEmitter } from '@angular/core';
 
 describe('ResumeDataService', () => {
   let service: ResumeDataService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
+      providers: [
+        ResumeDataService,
+        {
+          provide: TranslateService,
+          useValue: {
+            currentLang: 'fr_FR',
+            onLangChange: new EventEmitter(),
+          },
+        },
+      ],
+    });
     service = TestBed.inject(ResumeDataService);
   });
 

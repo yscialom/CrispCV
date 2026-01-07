@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ResumeDataService } from '../core/services/resume-data.service';
-import { EducationCardComponent } from './ui/education-card/education.component';
+import { EducationCardComponent } from './ui/education-card/education-card.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

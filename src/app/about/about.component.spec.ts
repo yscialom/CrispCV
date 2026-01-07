@@ -6,6 +6,8 @@ import { signal } from '@angular/core';
 import { Profile } from '../core/models/resume.models';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
 import { DurationPipe } from '../shared/pipes/duration.pipe';
+import { TranslateModule } from '@ngx-translate/core';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -38,10 +40,11 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutComponent, MarkdownPipe, DurationPipe],
+      imports: [AboutComponent, MarkdownPipe, DurationPipe, TranslateModule.forRoot()],
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
         { provide: PermalinkService, useValue: mockPermalinkService },
+        { provide: APP_BASE_HREF, useValue: '/' },
       ],
     }).compileComponents();
 

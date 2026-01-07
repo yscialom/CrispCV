@@ -1,16 +1,12 @@
 <div class="language-switch">
   <button class="current-lang" type="button" aria-haspopup="listbox">
-    <span class="flag">{{ getLangFlag(translate.currentLang) }}</span>
-    <span class="name">{{ getLangName(translate.currentLang) }}</span>
+    <span class="flag">{{ getLangFlag(currentLang()) }}</span>
+    <span class="name">{{ getLangName(currentLang()) }}</span>
     <i class="fas fa-chevron-down"></i>
   </button>
   <ul class="lang-dropdown" role="listbox">
     @for (lang of supportedLanguages; track lang) {
-      <li
-        (click)="switchLanguage(lang)"
-        [class.active]="lang === translate.currentLang"
-        role="option"
-      >
+      <li (click)="switchLanguage(lang)" [class.active]="lang === currentLang()" role="option">
         <span class="flag">{{ getLangFlag(lang) }}</span>
         <span class="name">{{ getLangName(lang) }}</span>
       </li>

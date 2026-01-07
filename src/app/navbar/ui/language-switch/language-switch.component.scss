@@ -8,19 +8,28 @@
   right: 0;
   z-index: 1000;
   min-width: 150px;
-  margin-top: spacing.$spacing-xs;
-  padding: spacing.$spacing-xs 0;
+  padding: spacing.$spacing-x-small 0;
   background: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
   list-style: none;
+
+  // Bridge the gap between button and dropdown to maintain hover state
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
 
   li {
     display: flex;
     align-items: center;
-    gap: spacing.$spacing-sm;
-    padding: spacing.$spacing-xs spacing.$spacing-md;
+    gap: spacing.$spacing-small;
+    padding: spacing.$spacing-x-small spacing.$spacing-medium;
     cursor: pointer;
     transition: background 0.2s ease;
 
@@ -46,6 +55,7 @@
 .language-switch {
   position: relative;
   display: inline-block;
+  z-index: 1001;
 
   &:hover {
     .lang-dropdown {

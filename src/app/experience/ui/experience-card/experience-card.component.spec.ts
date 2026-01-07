@@ -1,25 +1,47 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExperienceCardComponent } from './experience-card.component';
 import { Experience } from '../../../core/models/resume.models';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { vi } from 'vitest';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('ExperienceCardComponent', () => {
   let component: ExperienceCardComponent;
   let fixture: ComponentFixture<ExperienceCardComponent>;
+  let translate: TranslateService;
 
   const mockExperience: Experience = {
-    title: 'Test Title',
-    company: 'Test Company',
-    location: 'Test Location',
+    title: 'Software Engineer',
+    company: 'Tech Corp',
+    location: 'Silicon Valley',
     startDate: '2020-01',
-    endDate: '2021-02', // 14 months inclusive
-    missions: [{ title: 'Mission 1', description: 'Desc 1' }],
+    endDate: '2021-02', // 14 months -> 1 year
+    missions: [
+      {
+        title: 'Mission 1',
+        description: 'Desc 1',
+      },
+    ],
     keywords: ['Key1', 'Key2'],
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExperienceCardComponent],
+      imports: [ExperienceCardComponent, TranslateModule.forRoot()],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }).compileComponents();
+
+    translate = TestBed.inject(TranslateService);
+    translate.currentLang = 'fr_FR'; // Set locale for DurationPipe
+
+    // Mock translate to return localized strings
+    vi.spyOn(translate, 'instant').mockImplementation((key: string | string[]) => {
+      if (key === 'COMMON.PRESENT') return 'Present';
+      if (key === 'DURATION.YEAR_PLURAL') return 'ans';
+      if (key === 'DURATION.YEAR_SINGULAR') return 'an';
+      if (key === 'DURATION.MONTH') return 'mois';
+      return key as string;
+    });
 
     fixture = TestBed.createComponent(ExperienceCardComponent);
     component = fixture.componentInstance;

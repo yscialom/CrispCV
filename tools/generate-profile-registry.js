@@ -21,7 +21,7 @@ let profileMap = 'export const PROFILES: Record<string, Resume> = {\n';
 
 locales.forEach((locale) => {
   const variableName = locale.replace(/[^a-zA-Z0-9]/g, '_');
-  imports += `import { PROFILE_CONFIG as ${variableName} } from '../../../../config/profile.${locale}';\n`;
+  imports += `// @ts-expect-error - Profile files are outside src directory\nimport { PROFILE_CONFIG as ${variableName} } from '../../../config/profile.${locale}';\n`;
   profileMap += `  '${locale}': ${variableName},\n`;
 });
 

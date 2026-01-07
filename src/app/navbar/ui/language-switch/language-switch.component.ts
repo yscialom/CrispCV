@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ResumeDataService } from '../../../core/services/resume-data.service';
@@ -12,11 +12,11 @@ import { ResumeDataService } from '../../../core/services/resume-data.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSwitchComponent {
-  private translate = inject(TranslateService);
+  public translate = inject(TranslateService);
   private resumeDataService = inject(ResumeDataService);
 
   supportedLanguages = this.resumeDataService.getSupportedLanguages();
-  currentLang = computed(() => this.translate.currentLang || 'fr_FR');
+  currentLang = this.resumeDataService.currentLocale;
 
   languageDetails: Record<string, { name: string; flag: string }> = {
     fr_FR: { name: 'Français', flag: '🇫🇷' },
@@ -25,6 +25,7 @@ export class LanguageSwitchComponent {
   };
 
   switchLanguage(lang: string) {
+    console.log('Switching to language:', lang);
     this.translate.use(lang);
   }
 

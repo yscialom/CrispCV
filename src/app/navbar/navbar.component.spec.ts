@@ -6,6 +6,7 @@ import { ThemeService } from '../core/services/theme.service';
 import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { vi } from 'vitest';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
@@ -25,6 +26,7 @@ describe('NavbarComponent', () => {
 
   const mockResumeDataService = {
     profile: computed<Profile>(() => mockProfile()),
+    getSupportedLanguages: vi.fn().mockReturnValue(['fr_FR', 'en_US']),
   };
 
   const mockThemeService = {
@@ -48,7 +50,7 @@ describe('NavbarComponent', () => {
     /* eslint-enable @typescript-eslint/no-explicit-any */
 
     await TestBed.configureTestingModule({
-      imports: [NavbarComponent], // Import standalone component
+      imports: [NavbarComponent, TranslateModule.forRoot()], // Import standalone component
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
         { provide: ThemeService, useValue: mockThemeService },

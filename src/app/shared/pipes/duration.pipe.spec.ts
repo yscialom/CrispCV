@@ -1,10 +1,29 @@
 import { DurationPipe } from './duration.pipe';
+import { TestBed } from '@angular/core/testing';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { vi } from 'vitest';
 
 describe('DurationPipe', () => {
   let pipe: DurationPipe;
+  let translateService: TranslateService;
 
   beforeEach(() => {
-    pipe = new DurationPipe();
+    TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
+      providers: [DurationPipe],
+    });
+    pipe = TestBed.inject(DurationPipe);
+    translateService = TestBed.inject(TranslateService);
+    // Mock instant to return the key or simple value
+    vi.spyOn(translateService, 'instant').mockImplementation((key: string | string[]) => {
+      if (typeof key === 'string') {
+        if (key === 'COMMON.PRESENT') return 'Present';
+        if (key === 'DURATION.YEAR_PLURAL') return 'ans';
+        if (key === 'DURATION.YEAR_SINGULAR') return 'an';
+        if (key === 'DURATION.MONTH') return 'mois';
+      }
+      return key;
+    });
   });
 
   it('create an instance', () => {

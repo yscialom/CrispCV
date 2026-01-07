@@ -9,7 +9,9 @@ import { PROFILES, SUPPORTED_LANGUAGES } from '../profile.registry';
 export class ResumeDataService {
   private readonly translate = inject(TranslateService);
 
-  private readonly currentLocale = signal<string>(this.translate.currentLang);
+  public readonly currentLocale = signal<string>(
+    this.translate.currentLang || this.translate.defaultLang || 'fr_FR',
+  );
 
   constructor() {
     this.translate.onLangChange.subscribe((event) => {
