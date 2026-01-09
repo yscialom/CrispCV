@@ -24,6 +24,7 @@ describe('AppComponent', () => {
   const mockResumeDataService = {
     profile: computed<Profile>(() => mockProfile()),
     getSupportedLanguages: vi.fn().mockReturnValue(['fr_FR', 'en_US']),
+    currentLocale: signal('fr_FR'),
   };
 
   const mockThemeService = {

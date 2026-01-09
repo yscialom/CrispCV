@@ -24,8 +24,6 @@ export class LanguageSwitchComponent {
   private elementRef = inject(ElementRef);
 
   isOpen = signal(false);
-  private closeTimeout: ReturnType<typeof setTimeout> | undefined;
-
   supportedLanguages = this.resumeDataService.getSupportedLanguages();
   currentLang = this.resumeDataService.currentLocale;
 
@@ -47,25 +45,8 @@ export class LanguageSwitchComponent {
     this.isOpen.update((v) => !v);
   }
 
-  open() {
-    if (this.closeTimeout) {
-      clearTimeout(this.closeTimeout);
-    }
-    this.isOpen.set(true);
-  }
-
-  close() {
-    this.closeTimeout = setTimeout(() => {
-      this.isOpen.set(false);
-    }, 200); // 200ms grace period
-  }
-
   switchLanguage(event: MouseEvent, lang: string) {
     event.stopPropagation();
-    if (this.closeTimeout) {
-      clearTimeout(this.closeTimeout);
-    }
-    console.log('Switching to language:', lang);
     this.translate.use(lang);
     this.isOpen.set(false);
   }

@@ -36,12 +36,11 @@
 .lang-dropdown {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% - 5px); // Overlap by 5px to ensure no hover gap
   right: 0;
   z-index: 1002;
   min-width: 160px;
-  // Use padding to create a visual gap while keeping the hit area contiguous
-  padding-top: 8px;
+  padding-top: 10px; // Bridge the overlap and add visual space
   background: transparent;
   list-style: none;
   margin: 0;
@@ -91,6 +90,7 @@
   display: inline-block;
   z-index: 1001;
 
+  // CSS Hover is the primary mechanism for desktop
   &:hover .lang-dropdown,
   &.is-open .lang-dropdown {
     display: block;

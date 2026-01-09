@@ -15,7 +15,6 @@ export class ResumeDataService {
 
   constructor() {
     this.translate.onLangChange.subscribe((event) => {
-      console.log('ResumeDataService reacting to language change:', event.lang);
       this.currentLocale.set(event.lang);
     });
   }
