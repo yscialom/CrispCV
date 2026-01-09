@@ -1,10 +1,5 @@
 <div class="language-switch" [class.is-open]="isOpen()">
-  <button
-    class="current-lang"
-    type="button"
-    aria-haspopup="listbox"
-    (click)="toggle($event)"
-  >
+  <button class="current-lang" type="button" aria-haspopup="listbox" (click)="toggle($event)">
     <span class="flag">{{ getLangFlag(currentLang()) }}</span>
     <span class="name">{{ getLangName(currentLang()) }}</span>
     <i class="fas fa-chevron-down"></i>
