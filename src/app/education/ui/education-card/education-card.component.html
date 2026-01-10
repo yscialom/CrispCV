@@ -2,13 +2,8 @@
   [title]="education().degree"
   [subtitle]="education().institution"
   [location]="education().location"
-  [dateRange]="
-    education().startDate +
-    ' - ' +
-    (education().endDate === 'Present' || education().endDate === 'Présent' || !education().endDate
-      ? ('COMMON.PRESENT' | translate)
-      : education().endDate)
-  "
+  [startDate]="education().startDate"
+  [endDate]="education().endDate"
   [permalinkFragment]="permalink()?.fragment"
   [permalinkId]="permalink()?.id"
   [isFirst]="isFirst()"

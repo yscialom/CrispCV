@@ -26,9 +26,9 @@ export class DurationPipe implements PipeTransform {
     if (months < 1) return '';
 
     const years = months / 12;
-    // We'll use a simple format for now, as full localization is Feature 17
-    const locale = this.translate.currentLang === 'fr_FR' ? 'fr-FR' : 'en-US';
-    const numberFormat = new Intl.NumberFormat(locale);
+    const currentLang = this.translate.currentLang || 'en_US';
+    const locale = currentLang.replace('_', '-');
+    const numberFormat = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 
     if (years >= 10) {
       const roundedYears = Math.round(years);
@@ -70,6 +70,12 @@ export class DurationPipe implements PipeTransform {
     if (yyyy.test(dateStr)) {
       const year = parseInt(dateStr, 10);
       return new Date(year, 0, 1);
+    }
+
+    // Handle YYYY-MM-DD
+    const yyyyMmDd = /^\d{4}-\d{2}-\d{2}$/;
+    if (yyyyMmDd.test(dateStr)) {
+        return new Date(dateStr);
     }
 
     // Fallback

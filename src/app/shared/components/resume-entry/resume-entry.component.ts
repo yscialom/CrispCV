@@ -4,11 +4,13 @@ import { DOCUMENT, APP_BASE_HREF } from '@angular/common';
 import { Router } from '@angular/router';
 import { PermalinkService } from '../../../core/services/permalink.service';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { DateRangePipe } from '../../pipes/date-range.pipe';
+import { DurationPipe } from '../../pipes/duration.pipe';
 
 @Component({
   selector: 'app-resume-entry',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule, DateRangePipe, DurationPipe],
   templateUrl: './resume-entry.component.html',
   styleUrl: './resume-entry.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,7 +19,8 @@ export class ResumeEntryComponent {
   public readonly title = input.required<string>();
   public readonly subtitle = input.required<string>();
   public readonly location = input.required<string>();
-  public readonly dateRange = input.required<string>();
+  public readonly startDate = input.required<string>();
+  public readonly endDate = input<string>();
 
   public readonly permalinkFragment = input<string>();
   public readonly permalinkId = input<number>();
