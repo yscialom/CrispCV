@@ -14,35 +14,78 @@ export class LocalizedDatePipe implements PipeTransform {
     return this.formatDate(dateStr);
   }
 
-  private formatDate(dateStr: string): string {
-    const currentLang = this.translate.currentLang || 'en_US';
-    const locale = currentLang.replace('_', '-');
+      private formatDate(dateStr: string): string {
+
+        const currentLang = this.translate.currentLang || 'en_US';
+
+        const locale = currentLang.replace('_', '-');
+
+        
+
+        const date = String(dateStr).trim();
+
+        const parts = date.split(/\D+/).filter(p => p.length > 0);
+
     
-    const date = dateStr.trim();
 
-    // YYYY
-    if (/^\d{4}$/.test(date)) {
-      return date;
-    }
+        // YYYY
 
-    // YYYY-MM
-    if (/^\d{4}-\d{2}$/.test(date)) {
-      const [year, month] = date.split('-').map(Number);
-      const d = new Date(year, month - 1, 1);
-      return `${this.getMonthAbbr(d, locale)} ${year}`;
-    }
+        if (parts.length === 1 && /^\d{4}$/.test(parts[0])) {
 
-    // YYYY-MM-DD
-    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-      const [year, month, day] = date.split('-').map(Number);
-      const d = new Date(year, month - 1, day);
-      return `${day} ${this.getMonthAbbr(d, locale)} ${year}`;
-    }
+          return parts[0];
 
-    return dateStr;
-  }
+        }
 
-  private getMonthAbbr(date: Date, locale: string): string {
+    
+
+        // YYYY-MM
+
+        if (parts.length === 2) {
+
+          const year = Number(parts[0]);
+
+          const month = Number(parts[1]);
+
+          if (!isNaN(year) && !isNaN(month) && month >= 1 && month <= 12) {
+
+             const d = new Date(year, month - 1, 1);
+
+             return `${this.getMonthAbbr(d, locale)} ${year}`;
+
+          }
+
+        }
+
+    
+
+        // YYYY-MM-DD
+
+        if (parts.length === 3) {
+
+          const year = Number(parts[0]);
+
+          const month = Number(parts[1]);
+
+          const day = Number(parts[2]);
+
+           if (!isNaN(year) && !isNaN(month) && !isNaN(day) && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+
+              const d = new Date(year, month - 1, day);
+
+              return `${day} ${this.getMonthAbbr(d, locale)} ${year}`;
+
+           }
+
+        }
+
+    
+
+        return dateStr;
+
+      }
+
+    
+    private getMonthAbbr(date: Date, locale: string): string {
     const formatter = new Intl.DateTimeFormat(locale, { month: 'short' });
     const month = formatter.format(date);
 
