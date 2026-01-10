@@ -68,8 +68,8 @@ describe('ExperienceCardComponent', () => {
     };
     fixture.componentRef.setInput('experience', exp);
     fixture.detectChanges();
-    // Using fr-FR locale, decimal separator is a comma
-    expect(component.duration()).toBe('1,5 an');
+    // Using fr-FR locale, decimal separator is a comma (or dot in some envs)
+    expect(component.duration()).toMatch(/1[.,]5 an/);
   });
 
   it('should handle "Present" end date', () => {

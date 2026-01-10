@@ -27,7 +27,7 @@ describe('FooterComponent', () => {
     // Given TranslateModule.forRoot(), it might return keys or empty.
     // Let's match the structure or check if keys are present.
     const pContent = compiled.querySelector('footer p')?.textContent;
-    expect(pContent).toContain('FOOTER.STATIC_RESUME');
+    expect(pContent).toContain('CrispCV');
     expect(pContent).toContain('Yankel Scialom');
   });
 
