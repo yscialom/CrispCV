@@ -5,7 +5,11 @@
   [dateRange]="
     experience().startDate +
     ' - ' +
-    experience().endDate +
+    (experience().endDate === 'Present' ||
+    experience().endDate === 'Présent' ||
+    !experience().endDate
+      ? ('COMMON.PRESENT' | translate)
+      : experience().endDate) +
     (duration() ? ' (' + duration() + ')' : '')
   "
   [permalinkFragment]="permalink()?.fragment"

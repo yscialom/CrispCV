@@ -1,5 +1,5 @@
 <section class="resume-section">
-  <h2>Études &amp; Diplômes</h2>
+  <h2>{{ 'EDUCATION.TITLE' | translate }}</h2>
   <div class="resume-section__list">
     @for (edu of educations(); track edu.degree; let first = $first) {
       <app-education-card [education]="edu" [isFirst]="first" />

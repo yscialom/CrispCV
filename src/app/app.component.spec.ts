@@ -6,6 +6,7 @@ import { Profile } from './core/models/resume.models';
 import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { vi } from 'vitest';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
   // Mock ResumeDataService
@@ -22,7 +23,8 @@ describe('AppComponent', () => {
 
   const mockResumeDataService = {
     profile: computed<Profile>(() => mockProfile()),
-    // Add other mocked properties if App directly uses them
+    getSupportedLanguages: vi.fn().mockReturnValue(['fr_FR', 'en_US']),
+    currentLocale: signal('fr_FR'),
   };
 
   const mockThemeService = {
@@ -32,7 +34,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, TranslateModule.forRoot()],
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
         { provide: ThemeService, useValue: mockThemeService },

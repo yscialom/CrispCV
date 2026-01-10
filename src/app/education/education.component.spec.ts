@@ -4,6 +4,8 @@ import { ResumeDataService } from '../core/services/resume-data.service';
 import { Education } from '../core/models/resume.models';
 import { computed, signal } from '@angular/core';
 import { PermalinkService } from '../core/services/permalink.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('EducationComponent', () => {
   let component: EducationComponent;
@@ -37,10 +39,11 @@ describe('EducationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EducationComponent],
+      imports: [EducationComponent, TranslateModule.forRoot()],
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
         { provide: PermalinkService, useValue: mockPermalinkService },
+        { provide: APP_BASE_HREF, useValue: '/' },
       ],
     }).compileComponents();
 

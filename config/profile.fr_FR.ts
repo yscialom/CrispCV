@@ -15,7 +15,7 @@ export const PROFILE_CONFIG: Resume = {
   drivingLicense: 'Permis B',
   languages: [
     { name: 'Français', level: 5 },
-    { name: 'Anglais', level: 5 },
+    { name: 'Anglais', level: 4 },
     { name: 'Allemand', level: 1 },
   ],
   socialLinks: [
@@ -60,8 +60,8 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       endDate: 'Present',
     },
     {
-      name: 'Vibed Resume',
-      description: 'The project you are looking at right now!',
+      name: 'CrispCV',
+      description: 'Le projet que vous regardez en ce moment !',
       url: 'https://github.com/yscialom/crispcv',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       startDate: '2025-11',

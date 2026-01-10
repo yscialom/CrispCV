@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EducationCardComponent } from './education-card.component';
 import { Education } from '../../../core/models/resume.models';
+import { TranslateModule } from '@ngx-translate/core';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('EducationCardComponent', () => {
   let component: EducationCardComponent;
@@ -17,7 +19,8 @@ describe('EducationCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EducationCardComponent],
+      imports: [EducationCardComponent, TranslateModule.forRoot()],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EducationCardComponent);

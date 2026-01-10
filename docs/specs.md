@@ -49,7 +49,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : none
 
 **Release**
-:
+: v0.1.0
 
 ## Linting and Formatting Make Targets
 
@@ -69,7 +69,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : none
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -91,7 +91,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : [#1](https://github.com/yscialom/vibed-resume/pull/1)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -136,6 +136,9 @@ _Key Features_:
 
 **PR**
 : [#2](https://github.com/yscialom/vibed-resume/pull/2)
+
+**Release**
+: v0.1.0
 
 ---
 
@@ -197,7 +200,7 @@ _UI/UX:_
 : [#15](https://github.com/yscialom/vibed-resume/pull/15)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -225,7 +228,7 @@ _UI/UX:_
 : [#10](https://github.com/yscialom/vibed-resume/pull/10)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -267,7 +270,7 @@ _Key Features_:
 : [#4](https://github.com/yscialom/vibed-resume/pull/4)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -282,11 +285,43 @@ _Key Features_:
 
 _Technical considerations:_
 
-- **Date Parsing:** The `DurationPipe` currently has a `parseDate` method that handles English "Present" and French "Présent". This logic will need to be centralized and expanded to support all future languages.
-- **UI Strings:** Hardcoded strings in components (e.g., language level labels like "Débutant", "Intermédiaire" in `AboutComponent`) must be moved to a translation system or configuration map.
+- **Library:** Use `ngx-translate` for runtime translation and easy switching.
+- **UI Strings (Translation Software Compatible):** UI labels (e.g., "Experience", "Present") must be stored in standard JSON files (e.g., `assets/i18n/fr_FR.json`). This format is widely supported by translation management software (Lokalise, Crowdin, Weblate, etc.).
+- **Profile Data (Developer Friendly):** The resume content remains in TypeScript configuration files (e.g., `config/profile.fr_FR.ts`) to maintain type safety and developer ergonomics.
+- **Build-Time Registry:** A custom script (`tools/generate-profile-registry.ts`) will run before the build. It scans the `config/` directory and generates a strongly-typed registry file (`src/app/core/profile.registry.ts`).
+  - **Type Safety:** The registry must use the `Resume` interface (not `any`) to ensure type safety across all profiles: `export const PROFILES: Record<string, Resume> = { ... };`
+  - **Language List:** The supported languages list is derived automatically from the existing profile files.
+- **UI:** A dropdown in the navbar displaying the flag and language name.
+- **Fallback:** If a profile is available in a language the UI is not, the UI should fallback to English strings while displaying the localized profile content.
 
 **Status**
-: `todo (priority: 5)`
+: `done`
+
+**Branch**
+: `feature/9-multilingual-support`
+
+**PR**
+: [#18](https://github.com/yscialom/CrispCV/pull/18)
+
+**Release**
+:
+
+---
+
+## Localization of Dates and Numbers
+
+**ID**
+: `17`
+
+**Description**
+: Ensure dates and numbers are formatted according to the selected locale.
+
+- **Dates:** Display dates (months, days) in the target language (e.g., "Janvier" vs "January").
+- **Numbers:** Format numbers using the correct separators (e.g., `1 000` vs `1,000`).
+- **Present:** The "Present" / "Présent" string in date ranges should be handled via the translation system (ngx-translate).
+
+**Status**
+: `todo`
 
 **Branch**
 :
@@ -329,7 +364,7 @@ _Features_:
 : [#12](https://github.com/yscialom/vibed-resume/pull/12)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -341,7 +376,7 @@ _Features_:
 **Description**
 : Add a GitHub Actions workflow to publish the application to GitHub Pages.
 The workflow triggers on pushes to `main` or the orphan branch `pages`.
-It checks out the code from `main` but retrieves the specific `config/profile.ts` from the `pages` branch (if it exists) to allow for private configuration.
+It checks out the code from `main` but retrieves the specific `config/profile.*.ts` from the `pages` branch (if it exists) to allow for private configuration.
 It builds the application using `npm` and deploys the artifact to GitHub Pages.
 
 **Status**
@@ -354,7 +389,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#16](https://github.com/yscialom/CrispCV/pull/16)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -465,7 +500,7 @@ _Key Features_:
 : [#8](https://github.com/yscialom/vibed-resume/pull/8)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -495,7 +530,7 @@ _Requirements:_
 : [#14](https://github.com/yscialom/vibed-resume/pull/14)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -523,4 +558,4 @@ _Requirements:_
 : [#11](https://github.com/yscialom/vibed-resume/pull/11)
 
 **Release**
-:
+: v0.1.0

@@ -12,13 +12,21 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
+import { LanguageSwitchComponent } from './ui/language-switch/language-switch.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ThemeSwitchComponent],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    ThemeSwitchComponent,
+    LanguageSwitchComponent,
+    TranslateModule,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnDestroy {

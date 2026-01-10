@@ -11,8 +11,8 @@
     <button
       class="resume-entry__permalink-btn"
       (click)="copyLink($event)"
-      title="Copier le lien permanent vers cet élément"
-      aria-label="Copier le lien permanent"
+      [title]="'RESUME_ENTRY.COPY_LINK_TITLE' | translate"
+      [attr.aria-label]="'RESUME_ENTRY.COPY_LINK_ARIA' | translate"
     >
       <i class="fas fa-link" aria-hidden="true"></i>
     </button>

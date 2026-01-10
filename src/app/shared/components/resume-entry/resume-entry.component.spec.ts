@@ -4,6 +4,8 @@ import { ToastService } from '../../../core/services/toast.service';
 import { PermalinkService } from '../../../core/services/permalink.service';
 import { Router } from '@angular/router';
 import { signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('ResumeEntryComponent', () => {
   let component: ResumeEntryComponent;
@@ -33,11 +35,12 @@ describe('ResumeEntryComponent', () => {
     });
 
     await TestBed.configureTestingModule({
-      imports: [ResumeEntryComponent],
+      imports: [ResumeEntryComponent, TranslateModule.forRoot()],
       providers: [
         { provide: ToastService, useValue: mockToastService },
         { provide: PermalinkService, useValue: mockPermalinkService },
         { provide: Router, useValue: mockRouter },
+        { provide: APP_BASE_HREF, useValue: '/' },
       ],
     }).compileComponents();
 
