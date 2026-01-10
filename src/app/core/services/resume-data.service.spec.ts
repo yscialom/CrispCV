@@ -23,7 +23,9 @@ describe('ResumeDataService', () => {
   beforeEach(() => {
     // Mock LocalStorage
     localStorageMock = {};
-    vi.spyOn(Storage.prototype, 'getItem').mockImplementation((key) => localStorageMock[key] || null);
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(
+      (key) => localStorageMock[key] || null,
+    );
     vi.spyOn(Storage.prototype, 'setItem').mockImplementation((key, value) => {
       localStorageMock[key] = value;
     });
@@ -76,7 +78,7 @@ describe('ResumeDataService', () => {
       service = TestBed.inject(ResumeDataService);
 
       // Should try to match 'fr' -> 'fr_FR' (assuming fr_FR is supported)
-      expect(translateServiceMock.use).toHaveBeenCalledWith('fr_FR'); 
+      expect(translateServiceMock.use).toHaveBeenCalledWith('fr_FR');
     });
 
     it('should fallback to default language if no browser lang match', () => {
@@ -95,8 +97,8 @@ describe('ResumeDataService', () => {
     });
 
     it('should save language to localStorage on change', () => {
-      const expectedExpiry = mockDate + (3 * 30 * 24 * 60 * 60 * 1000); // 3 months
-      
+      const expectedExpiry = mockDate + 3 * 30 * 24 * 60 * 60 * 1000; // 3 months
+
       onLangChangeEmitter.emit({ lang: 'en_US', translations: {} });
 
       expect(localStorage.setItem).toHaveBeenCalledWith('app-lang', expect.any(String));

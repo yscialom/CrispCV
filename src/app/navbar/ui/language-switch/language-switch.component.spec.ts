@@ -18,9 +18,7 @@ describe('LanguageSwitchComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LanguageSwitchComponent, TranslateModule.forRoot()],
-      providers: [
-        { provide: ResumeDataService, useValue: resumeDataServiceMock },
-      ],
+      providers: [{ provide: ResumeDataService, useValue: resumeDataServiceMock }],
     }).compileComponents();
 
     translateService = TestBed.inject(TranslateService);
@@ -71,31 +69,31 @@ describe('LanguageSwitchComponent', () => {
 
   it('should close dropdown on document click outside', () => {
     component.isOpen.set(true);
-    
+
     // Simulate click on document body
     document.body.click();
-    
+
     expect(component.isOpen()).toBe(false);
   });
-  
+
   it('should NOT close dropdown on click inside', () => {
-      component.isOpen.set(true);
-      
-      // Simulate click on the component element
-      fixture.nativeElement.click();
-      
-      // The host listener is on 'document:click', but the component has stopPropagation in toggle()
-      // checking logic: The component uses elementRef.contains(event.target) in the HostListener.
-      // So if we click inside, the HostListener callback should fire, check contains(), and NOT set isOpen to false.
-      
-      // However, physically triggering a click in JSDOM that bubbles up to document is tricky to rely on elementRef.contains 
-      // without a full event dispatch. 
-      // Let's call the handler directly to test the logic.
-      
-      const mockEvent = { target: fixture.nativeElement } as unknown as MouseEvent;
-      component.onDocumentClick(mockEvent);
-      
-      // Since target is inside nativeElement, it should remain open
-      expect(component.isOpen()).toBe(true);
+    component.isOpen.set(true);
+
+    // Simulate click on the component element
+    fixture.nativeElement.click();
+
+    // The host listener is on 'document:click', but the component has stopPropagation in toggle()
+    // checking logic: The component uses elementRef.contains(event.target) in the HostListener.
+    // So if we click inside, the HostListener callback should fire, check contains(), and NOT set isOpen to false.
+
+    // However, physically triggering a click in JSDOM that bubbles up to document is tricky to rely on elementRef.contains
+    // without a full event dispatch.
+    // Let's call the handler directly to test the logic.
+
+    const mockEvent = { target: fixture.nativeElement } as unknown as MouseEvent;
+    component.onDocumentClick(mockEvent);
+
+    // Since target is inside nativeElement, it should remain open
+    expect(component.isOpen()).toBe(true);
   });
 });
