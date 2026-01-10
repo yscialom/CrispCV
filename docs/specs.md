@@ -376,7 +376,7 @@ _Features_:
 **Description**
 : Add a GitHub Actions workflow to publish the application to GitHub Pages.
 The workflow triggers on pushes to `main` or the orphan branch `pages`.
-It checks out the code from `main` but retrieves the specific `config/profile.ts` from the `pages` branch (if it exists) to allow for private configuration.
+It checks out the code from `main` but retrieves the specific `config/profile.*.ts` from the `pages` branch (if it exists) to allow for private configuration.
 It builds the application using `npm` and deploys the artifact to GitHub Pages.
 
 **Status**

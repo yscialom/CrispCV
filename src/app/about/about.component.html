@@ -8,7 +8,7 @@
       <ul class="info-list">
         @if (profile().birthDate) {
           <li>
-            <strong>{{ 'ABOUT.BIRTH_DATE' | translate }} :</strong>
+            <strong>{{ 'ABOUT.BIRTH_DATE' | translate }}</strong>
             {{ profile().birthDate }}
             @if (age()) {
               ({{ age() }} {{ 'ABOUT.AGE_SUFFIX' | translate }})
@@ -17,12 +17,12 @@
         }
         @if (profile().nationality) {
           <li>
-            <strong>{{ 'ABOUT.NATIONALITY' | translate }} :</strong> {{ profile().nationality }}
+            <strong>{{ 'ABOUT.NATIONALITY' | translate }}</strong> {{ profile().nationality }}
           </li>
         }
         @if (profile().location) {
           <li>
-            <strong>{{ 'ABOUT.LOCATION' | translate }} :</strong>
+            <strong>{{ 'ABOUT.LOCATION' | translate }}</strong>
             <a
               class="info-link"
               [href]="'https://www.google.com/maps?q=' + profile().location"
@@ -34,19 +34,19 @@
         }
         @if (profile().phone) {
           <li>
-            <strong>{{ 'ABOUT.PHONE' | translate }} :</strong>
+            <strong>{{ 'ABOUT.PHONE' | translate }}</strong>
             <a class="info-link" [href]="'tel:' + profile().phone">{{ profile().phone }}</a>
           </li>
         }
         @if (profile().email) {
           <li>
-            <strong>{{ 'ABOUT.EMAIL' | translate }} :</strong>
+            <strong>{{ 'ABOUT.EMAIL' | translate }}</strong>
             <a class="info-link" [href]="'mailto:' + profile().email">{{ profile().email }}</a>
           </li>
         }
         @if (profile().drivingLicense) {
           <li>
-            <strong>{{ 'ABOUT.LICENSE' | translate }} :</strong> {{ profile().drivingLicense }}
+            <strong>{{ 'ABOUT.LICENSE' | translate }}</strong> {{ profile().drivingLicense }}
           </li>
         }
       </ul>
