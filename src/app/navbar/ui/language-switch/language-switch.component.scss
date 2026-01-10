@@ -4,8 +4,9 @@
 .current-lang {
   display: flex;
   align-items: center;
+  height: 32px;
   gap: spacing.$spacing-x-small;
-  padding: spacing.$spacing-x-small spacing.$spacing-small;
+  padding: 0 spacing.$spacing-small;
   background: var(--secondary-bg);
   border: 1px solid var(--accent);
   border-radius: spacing.$border-radius-standard;

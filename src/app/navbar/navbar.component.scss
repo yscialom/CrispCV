@@ -130,6 +130,7 @@ $transition-theme: 0.3s ease;
   .navbar-controls {
     display: flex;
     align-items: flex-start;
+    gap: spacing.$spacing-medium;
     padding-top: spacing.$spacing-x-small;
     padding-left: spacing.$spacing-medium;
     flex-shrink: 0;

@@ -11,9 +11,9 @@
 
 .theme-switch {
   display: inline-block;
-  height: 26px;
+  height: 32px;
   position: relative;
-  width: 50px;
+  width: 60px;
 
   input {
     display: none;
@@ -31,15 +31,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5px;
+  padding: 0 8px;
 
   &::before {
     background-color: var(--accent);
-    bottom: 3px;
     content: '';
-    height: 18px;
-    width: 18px;
+    height: 24px;
+    width: 24px;
     left: 4px;
+    top: 4px;
     position: absolute;
     transition: 0.4s;
     border-radius: 50%;
@@ -58,6 +58,6 @@
 
 input:checked + .slider {
   &::before {
-    transform: translateX(24px);
+    transform: translateX(28px);
   }
 }
