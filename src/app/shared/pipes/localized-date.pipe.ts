@@ -17,24 +17,26 @@ export class LocalizedDatePipe implements PipeTransform {
   private formatDate(dateStr: string): string {
     const currentLang = this.translate.currentLang || 'en_US';
     const locale = currentLang.replace('_', '-');
+    
+    const date = dateStr.trim();
 
     // YYYY
-    if (/^\d{4}$/.test(dateStr)) {
-      return dateStr;
+    if (/^\d{4}$/.test(date)) {
+      return date;
     }
 
     // YYYY-MM
-    if (/^\d{4}-\d{2}$/.test(dateStr)) {
-      const [year, month] = dateStr.split('-').map(Number);
-      const date = new Date(year, month - 1, 1);
-      return `${this.getMonthAbbr(date, locale)} ${year}`;
+    if (/^\d{4}-\d{2}$/.test(date)) {
+      const [year, month] = date.split('-').map(Number);
+      const d = new Date(year, month - 1, 1);
+      return `${this.getMonthAbbr(d, locale)} ${year}`;
     }
 
     // YYYY-MM-DD
-    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
-      const [year, month, day] = dateStr.split('-').map(Number);
-      const date = new Date(year, month - 1, day);
-      return `${day} ${this.getMonthAbbr(date, locale)} ${year}`;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      const [year, month, day] = date.split('-').map(Number);
+      const d = new Date(year, month - 1, day);
+      return `${day} ${this.getMonthAbbr(d, locale)} ${year}`;
     }
 
     return dateStr;
@@ -45,11 +47,11 @@ export class LocalizedDatePipe implements PipeTransform {
     const month = formatter.format(date);
 
     if (locale.startsWith('en')) {
-       if (!month.endsWith('.')) {
-         return `${month}.`;
-       }
+      if (!month.endsWith('.')) {
+        return `${month}.`;
+      }
     }
-    
+
     return month;
   }
 }

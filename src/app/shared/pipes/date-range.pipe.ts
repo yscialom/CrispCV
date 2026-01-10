@@ -23,32 +23,34 @@ export class DateRangePipe implements PipeTransform {
     const locale = currentLang.replace('_', '-');
 
     if (!dateStr) return '';
+    const date = dateStr.trim();
+    
     // Handle "Present" strings if passed directly
     if (
-      dateStr === 'Present' ||
-      dateStr === 'Présent' ||
-      dateStr === this.translate.instant('COMMON.PRESENT')
+      date === 'Present' ||
+      date === 'Présent' ||
+      date === this.translate.instant('COMMON.PRESENT')
     ) {
       return this.translate.instant('COMMON.PRESENT');
     }
 
     // YYYY
-    if (/^\d{4}$/.test(dateStr)) {
-      return dateStr;
+    if (/^\d{4}$/.test(date)) {
+      return date;
     }
 
     // YYYY-MM
-    if (/^\d{4}-\d{2}$/.test(dateStr)) {
-      const [year, month] = dateStr.split('-').map(Number);
-      const date = new Date(year, month - 1, 1);
-      return `${this.getMonthAbbr(date, locale)} ${year}`;
+    if (/^\d{4}-\d{2}$/.test(date)) {
+      const [year, month] = date.split('-').map(Number);
+      const d = new Date(year, month - 1, 1);
+      return `${this.getMonthAbbr(d, locale)} ${year}`;
     }
 
     // YYYY-MM-DD
-    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
-      const [year, month, day] = dateStr.split('-').map(Number);
-      const date = new Date(year, month - 1, day);
-      return `${day} ${this.getMonthAbbr(date, locale)} ${year}`;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      const [year, month, day] = date.split('-').map(Number);
+      const d = new Date(year, month - 1, day);
+      return `${day} ${this.getMonthAbbr(d, locale)} ${year}`;
     }
 
     return dateStr;
@@ -62,16 +64,16 @@ export class DateRangePipe implements PipeTransform {
     // English 'short' usually returns "Jan", we want "Jan."
     // French 'short' usually returns "janv.", we keep it.
     // Full month names (May, Mai, Juin, etc.) usually don't get dots.
-    
+
     // Simple heuristic: if it doesn't end in a dot and length <= 4 (arbitrary check for abbr), add one?
     // Or strictly follow user example "feb." -> English needs dots.
-    
+
     if (locale.startsWith('en')) {
-       if (!month.endsWith('.')) {
-         return `${month}.`;
-       }
+      if (!month.endsWith('.')) {
+        return `${month}.`;
+      }
     }
-    
+
     return month;
   }
 }
