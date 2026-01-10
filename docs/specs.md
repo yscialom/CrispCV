@@ -295,7 +295,7 @@ _Technical considerations:_
 - **Fallback:** If a profile is available in a language the UI is not, the UI should fallback to English strings while displaying the localized profile content.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/9-multilingual-support`
