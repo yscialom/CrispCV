@@ -46,10 +46,10 @@
     "COPIED": "Link copied!"
   },
   "LANGUAGE_LEVELS": {
-    "BEGINNER": "Beginner",
-    "INTERMEDIATE": "Intermediate",
-    "ADVANCED": "Advanced",
-    "FLUENT": "Fluent",
+    "BEGINNER": "Beginner — A",
+    "INTERMEDIATE": "Intermediate — B",
+    "ADVANCED": "Advanced — C1",
+    "FLUENT": "Fluent — C2",
     "NATIVE": "Bilingual / Native"
   }
 }

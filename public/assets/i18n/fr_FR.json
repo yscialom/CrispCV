@@ -46,10 +46,10 @@
     "COPIED": "Lien copié !"
   },
   "LANGUAGE_LEVELS": {
-    "BEGINNER": "Débutant",
-    "INTERMEDIATE": "Intermédiaire",
-    "ADVANCED": "Avancé",
-    "FLUENT": "Courant",
+    "BEGINNER": "Débutant — A",
+    "INTERMEDIATE": "Intermédiaire — B",
+    "ADVANCED": "Avancé — C1",
+    "FLUENT": "Courant — C2",
     "NATIVE": "Bilingue / Natif"
   }
 }
