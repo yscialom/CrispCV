@@ -28,8 +28,7 @@
     "TITLE": "Études & Diplômes"
   },
   "FOOTER": {
-    "STATIC_RESUME": "static résumé",
-    "FORK_US": "fork us on github"
+    "FORK_US": "clonez-nous sur github"
   },
   "COMMON": {
     "PRESENT": "Présent",

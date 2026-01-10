@@ -109,8 +109,7 @@ Today, I thrive in team management and the improvement of development processes,
       endDate: '2025-03',
       missions: [
         {
-          title:
-            'Orchestrade Release Manager for CACIB and its related software and services.',
+          title: 'Orchestrade Release Manager for CACIB and its related software and services.',
           description: `
 - **Release strategy**: maximum quality & minimal time-to-market objective.
 - **Culture**: promoting accountability by involving everyone in decision-making.
@@ -187,7 +186,7 @@ Today, I thrive in team management and the improvement of development processes,
         {
           title: 'Context',
           description:
-            'I was mandated at Ingenico to support the department\'s technical and methodological transformation: agile kickoff & technological modernization.',
+            "I was mandated at Ingenico to support the department's technical and methodological transformation: agile kickoff & technological modernization.",
         },
         {
           title: 'Scrum Master',

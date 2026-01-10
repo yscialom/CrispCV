@@ -301,7 +301,7 @@ _Technical considerations:_
 : `feature/9-multilingual-support`
 
 **PR**
-:
+: [#18](https://github.com/yscialom/CrispCV/pull/18)
 
 **Release**
 :
