@@ -88,7 +88,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `feature/3-navbar`
 
 **PR**
-: [#1](https://github.com/yscialom/vibed-resume/pull/1)
+: [#1](https://github.com/yscialom/CrispCV/pull/1)
 
 **Release**
 : v0.1.0
@@ -135,7 +135,7 @@ _Key Features_:
 : `feature/4-experience-page`
 
 **PR**
-: [#2](https://github.com/yscialom/vibed-resume/pull/2)
+: [#2](https://github.com/yscialom/CrispCV/pull/2)
 
 **Release**
 : v0.1.0
@@ -197,7 +197,7 @@ _UI/UX:_
 : `feature/6-experience-permalinks`
 
 **PR**
-: [#15](https://github.com/yscialom/vibed-resume/pull/15)
+: [#15](https://github.com/yscialom/CrispCV/pull/15)
 
 **Release**
 : v0.1.0
@@ -225,7 +225,7 @@ _UI/UX:_
 : `feature/7-sticky-navbar`
 
 **PR**
-: [#10](https://github.com/yscialom/vibed-resume/pull/10)
+: [#10](https://github.com/yscialom/CrispCV/pull/10)
 
 **Release**
 : v0.1.0
@@ -267,7 +267,7 @@ _Key Features_:
 : `feature/8-education-page`
 
 **PR**
-: [#4](https://github.com/yscialom/vibed-resume/pull/4)
+: [#4](https://github.com/yscialom/CrispCV/pull/4)
 
 **Release**
 : v0.1.0
@@ -337,13 +337,13 @@ _Implementation Details:_
   - Internal locale identifiers (`en_US`, `fr_FR`) will be mapped to proper BCP 47 tags (e.g., `en-US`, `fr-FR`) for the `Intl` API.
 
 **Status**
-: `wip`
+: `done`
 
 **Branch**
 : `feature/17-localization-dates-numbers`
 
 **PR**
-:
+: [#20](https://github.com/yscialom/CrispCV/pull/20)
 
 **Release**
 :
@@ -377,7 +377,7 @@ _Features_:
 : `feature/10-dark-light-theme`
 
 **PR**
-: [#12](https://github.com/yscialom/vibed-resume/pull/12)
+: [#12](https://github.com/yscialom/CrispCV/pull/12)
 
 **Release**
 : v0.1.0
@@ -513,7 +513,7 @@ _Key Features_:
 : `feature/12-about-me-page`
 
 **PR**
-: [#8](https://github.com/yscialom/vibed-resume/pull/8)
+: [#8](https://github.com/yscialom/CrispCV/pull/8)
 
 **Release**
 : v0.1.0
@@ -543,7 +543,7 @@ _Requirements:_
 : `feature/13-remove-cdn`
 
 **PR**
-: [#14](https://github.com/yscialom/vibed-resume/pull/14)
+: [#14](https://github.com/yscialom/CrispCV/pull/14)
 
 **Release**
 : v0.1.0
@@ -571,7 +571,7 @@ _Requirements:_
 : `feature/15-footer`
 
 **PR**
-: [#11](https://github.com/yscialom/vibed-resume/pull/11)
+: [#11](https://github.com/yscialom/CrispCV/pull/11)
 
 **Release**
 : v0.1.0
