@@ -13,7 +13,7 @@ COPY public/ ./public/
 COPY config/ ./config/
 COPY tools/ ./tools/
 
-RUN APP_VERSION=$APP_VERSION npm run build
+RUN npm run build
 
 # Stage 2: Serve the application from a lightweight server
 FROM jitesoft/lighttpd:latest
