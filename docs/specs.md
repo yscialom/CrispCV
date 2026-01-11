@@ -451,10 +451,10 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : `feature/16-ci-cd-workflows`
 
 **PR**
-: #22
+: [#21](https://github.com/yscialom/CrispCV/pull/21)
 
 **Release**
-: v0.2.0
+:
 
 ---
 
