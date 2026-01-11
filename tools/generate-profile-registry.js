@@ -1,9 +1,19 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const configDir = path.join(__dirname, '../config');
 const outputDir = path.join(__dirname, '../src/app/core');
 const outputFile = path.join(outputDir, 'profile.registry.ts');
+
+let version = 'unknown';
+try {
+  version = execSync('git describe --tags --always', { stdio: ['ignore', 'pipe', 'ignore'] })
+    .toString()
+    .trim();
+} catch (e) {
+  version = process.env['APP_VERSION'] || 'v0.0.0';
+}
 
 const profileFiles = fs
   .readdirSync(configDir)
@@ -32,6 +42,7 @@ import { Resume } from './models/resume.models';
 ${imports}
 ${profileMap}
 export const SUPPORTED_LANGUAGES = [${locales.map((l) => `'${l}'`).join(', ')}];
+export const VERSION = '${version}';
 `;
 
 if (!fs.existsSync(outputDir)) {
