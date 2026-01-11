@@ -1,3 +1,5 @@
+![Pull Request Validation](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)
+
 # Angular Resume / Portfolio
 
 A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
@@ -100,6 +102,40 @@ If you have an existing web server (Nginx, Apache, AWS S3, etc.):
 
 1.  Run `make build`.
 2.  Copy the contents of the `dist/CrispCV/browser/` directory to your web server's root directory.
+
+## 🔄 CI/CD & Deployment
+
+This project includes a comprehensive suite of GitHub Actions workflows to automate testing, building, and deployment.
+
+### Automated Workflows
+
+1.  **Pull Request Validation**:
+    - Triggers on PRs to the `develop` branch.
+    - Runs unit tests (`make test`).
+    - Verifies the production Docker build (`make build-prod-image`).
+    - **Goal**: Ensure no broken code enters the main development branch.
+
+2.  **GitHub Pages Deployment**:
+    - Triggers on pushes to `main` (code updates) OR `pages` (config updates).
+    - Automatically builds the app, overlaying your personal config from `pages` onto the latest code from `main`.
+    - Deploys to GitHub Pages.
+
+3.  **Release & Publication**:
+    - Triggers when a git tag starting with `v*` is pushed (e.g., `v1.0.0`).
+    - Builds the production Docker image.
+    - Pushes the image to **GitHub Container Registry (GHCR)** and **Docker Hub**.
+    - Automatically manages tags (`latest`, `1`, `1.0`, `1.0.0`).
+
+### Secrets Configuration
+
+To use the **Release & Publication** workflow, you must define the following secrets in your repository settings (`Settings > Secrets and variables > Actions`):
+
+| Secret Name          | Description                                                |
+| :------------------- | :--------------------------------------------------------- |
+| `DOCKERHUB_USERNAME` | Your Docker Hub username.                                  |
+| `DOCKERHUB_TOKEN`    | A Docker Hub Access Token with `Read & Write` permissions. |
+
+_Note: The `GITHUB_TOKEN` for GHCR is handled automatically._
 
 ## 📚 Documentation
 

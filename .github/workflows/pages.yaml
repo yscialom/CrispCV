@@ -24,13 +24,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: master
+          fetch-depth: 0
 
       - name: Checkout config from pages branch
         run: |
-          git fetch origin pages || echo "pages branch not found"
-          if git rev-parse --verify origin/pages >/dev/null 2>&1; then
-            echo "Overwriting config/profile.ts from pages branch"
-            git checkout origin/pages -- config/profile.ts
+          git fetch origin pages --depth=1 || echo "pages branch not found"
+          if [ "${{ github.ref_name }}" = "pages" ] || git rev-parse --verify origin/pages >/dev/null 2>&1; then
+            echo "Overwriting config/profile.*.ts from pages branch"
+            git checkout origin/pages -- config/profile.*.ts || echo "No profile files found on pages branch"
           else
             echo "pages branch not present, using default config"
           fi
@@ -47,12 +48,12 @@ jobs:
       - name: Build
         run: |
           npm run build -- --configuration production --base-href /CrispCV/
-          cp dist/resume-app/browser/index.html dist/resume-app/browser/404.html
+          cp dist/CrispCV/browser/index.html dist/CrispCV/browser/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/resume-app/browser
+          path: dist/CrispCV/browser
 
   deploy:
     environment:

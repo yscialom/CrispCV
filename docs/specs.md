@@ -417,17 +417,41 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 **Description**
 : Implement supplementary CI/CD workflows to ensure code quality and facilitate distribution.
 
-1. **Quality Check:** A workflow triggering on pushes to the `develop` branch (and/or Pull Requests) to run `make format` and `make lint`.
-2. **Docker Publish:** A workflow triggering on git tags to build the Docker image and publish it to a container registry (e.g., GitHub Container Registry).
+1.  **GitHub Pages Deployment (Update):**
+    - **Trigger:** Pushes to `main` AND `pages`.
+    - **Behavior:**
+      - Checks out `main`.
+      - If the trigger was `pages` (or if `pages` exists), it checks out `config/profile.*.ts` from the `pages` branch overlaying the `main` branch's configuration.
+      - Builds and deploys to GitHub Pages.
+      - **Fix:** Ensure the workflow actually runs on pushes to `pages` (currently not triggering reliably).
+
+2.  **Pull Request Validation:**
+    - **Trigger:** Pull Requests targeting `develop`.
+    - **Actions:**
+      - Run Unit Tests (`make test`).
+      - Build the Docker image (`make build-prod-image`) to ensure buildability.
+    - **Policy:** The PR merge must be blocked if this workflow fails.
+
+3.  **Release & Publication:**
+    - **Trigger:** Pushing a git tag matching the pattern `v*` (e.g., `v1.2.3`).
+    - **Actions:**
+      - Build the production Docker image.
+      - **Registries:** Push to both:
+        - GitHub Container Registry (`ghcr.io/yscialom/crispcv`)
+        - Docker Hub (`yankelscialom/crispcv`)
+      - **Tagging Strategy:**
+        - For a tag `v1.2.3`:
+        - Push tags: `1.2.3`, `1.2`, `1`, and `latest`.
+        - This ensures major and minor version aliases are always up-to-date.
 
 **Status**
-: `todo (priority: 3)`
+: `done`
 
 **Branch**
-:
+: `feature/16-ci-cd-workflows`
 
 **PR**
-:
+: [#21](https://github.com/yscialom/CrispCV/pull/21)
 
 **Release**
 :

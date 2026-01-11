@@ -1,0 +1,27 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Unit Tests
+        run: make test
+
+  build-check:
+    name: Build Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Production Image
+        run: make build-prod-image
