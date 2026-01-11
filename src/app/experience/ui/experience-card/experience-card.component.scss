@@ -3,6 +3,15 @@
 
 // Note: Core card styles are now in ResumeEntryComponent
 
+:host {
+  display: block;
+  transition: opacity 0.3s ease;
+
+  &.experience-card--dimmed {
+    opacity: 0.3;
+  }
+}
+
 .experience-card {
   &__separator {
     border: 0;
@@ -55,4 +64,15 @@
 
 .resume-entry {
   @include resume-entry.resume-entry-keywords;
+
+  &__keyword {
+    cursor: pointer;
+
+    &--active {
+      background-color: var(--accent);
+      color: var(--primary-bg);
+      font-weight: 600;
+      box-shadow: 0 0 5px var(--accent);
+    }
+  }
 }
