@@ -1,0 +1,13 @@
+make the website better looking on smartphones
+add a comment at the top of /tools/generate-profile-registry.js explaining what this file is used for
+add a CONTRIBUTING.md file, explaining how to request features, do PR and add translations
+redo the doc to split the developers docs (existing doc) and the user docs (todo)
+add a defaultLanguage in /config/app.config.ts + accept it from the pages branch, make the default title not mention me
+check the lighttpd.conf: is it hardened for prod?
+Dockerfile: can it be lightened?
+add badges to README
+redo the README to prioritise doc for the user and then only for the dev
+/src/index.html: default title should be CrispCV
+default profile-picture should be in /src/assets with favicon
+if present, use the /config/profile-picture.png from the pages branch
+generate the docs for the dockerhub's page of CrispCV
