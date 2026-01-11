@@ -1,7 +1,7 @@
 # Makefile for managing the Dockerized Angular application
 
 # --- Variables ---
-APP_NAME := angular-resume
+APP_NAME := crispcv
 DEV_CONTAINER_NAME := $(APP_NAME)-dev
 PROD_IMAGE_NAME := $(APP_NAME)-prod
 PROD_CONTAINER_NAME := $(PROD_IMAGE_NAME)
