@@ -8,6 +8,7 @@
 
 # Compiled sources
 /src/app/core/profile.registry.ts
+/src/app/core/version.ts
 
 # Node
 /node_modules

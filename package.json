@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "generate-registry": "node tools/generate-profile-registry.js",
-    "start": "npm run generate-registry && ng serve",
-    "build": "npm run generate-registry && ng build",
-    "watch": "npm run generate-registry && ng build --watch --configuration development",
-    "test": "npm run generate-registry && ng test",
+    "generate-version": "node tools/generate-version.js",
+    "start": "npm run generate-registry && npm run generate-version && ng serve",
+    "build": "npm run generate-registry && npm run generate-version && ng build",
+    "watch": "npm run generate-registry && npm run generate-version && ng build --watch --configuration development",
+    "test": "npm run generate-registry && npm run generate-version && ng test",
     "lint": "ng lint",
     "format": "prettier --write \"./**/*.{js,json,ts,css,scss,less,html,md}\" | grep -v \"(unchanged)\" || true && stylelint \"./**/*.scss\" --fix"
   },

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { VERSION } from '../core/profile.registry';
+import { VERSION } from '../core/version';
 
 @Component({
   selector: 'app-footer',
