@@ -59,25 +59,26 @@ describe('DurationPipe', () => {
     expect(pipe.transform(startStr, 'Present')).toBeTruthy();
   });
 
-    it('should format decimals correctly based on locale', () => {
-      // 2.5 years = 30 months
-      // 2020-01 to 2022-06 (inclusive) = 30 months
-      const start = '2020-01';
-      const end = '2022-06';
-  
-      // en_US -> 2.5
-      translateService.currentLang = 'en_US';
-      expect(pipe.transform(start, end)).toBe('2.5 ans'); // Key mocked as 'ans'
-  
-      // fr_FR -> 2,5
-      translateService.currentLang = 'fr_FR';
-      // Note: Node's Intl implementation might vary, but standard is comma for fr
-      const res = pipe.transform(start, end);
-      // Use match to allow '2,5' or '2.5' if system locale is missing.
-      expect(res).toMatch(/2[,.]5 ans/); 
-      
-      if (Intl.NumberFormat.supportedLocalesOf(['fr-FR']).length > 0) {
-         // If fr-FR is strictly supported, it should be comma
-         // But we just want to ensure it runs without error
-      }
-    });});
+  it('should format decimals correctly based on locale', () => {
+    // 2.5 years = 30 months
+    // 2020-01 to 2022-06 (inclusive) = 30 months
+    const start = '2020-01';
+    const end = '2022-06';
+
+    // en_US -> 2.5
+    translateService.currentLang = 'en_US';
+    expect(pipe.transform(start, end)).toBe('2.5 ans'); // Key mocked as 'ans'
+
+    // fr_FR -> 2,5
+    translateService.currentLang = 'fr_FR';
+    // Note: Node's Intl implementation might vary, but standard is comma for fr
+    const res = pipe.transform(start, end);
+    // Use match to allow '2,5' or '2.5' if system locale is missing.
+    expect(res).toMatch(/2[,.]5 ans/);
+
+    if (Intl.NumberFormat.supportedLocalesOf(['fr-FR']).length > 0) {
+      // If fr-FR is strictly supported, it should be comma
+      // But we just want to ensure it runs without error
+    }
+  });
+});
