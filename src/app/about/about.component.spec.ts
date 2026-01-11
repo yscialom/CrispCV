@@ -31,6 +31,7 @@ describe('AboutComponent', () => {
 
   const mockResumeDataService = {
     profile: signal(mockProfile),
+    skills: signal([{ name: 'Angular', level: 5 }]),
   };
 
   const mockPermalinkService = {
@@ -66,6 +67,11 @@ describe('AboutComponent', () => {
   it('should display languages', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('English');
+  });
+
+  it('should display skills', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.textContent).toContain('Angular');
   });
 
   it('should display hobbies', () => {

@@ -61,13 +61,13 @@ describe('AppComponent', () => {
   it('should reset keyword filter on document click', () => {
     const fixture = TestBed.createComponent(AppComponent);
     keywordService = TestBed.inject(KeywordService);
-    
+
     keywordService.selectedKeyword.set('SomeKeyword');
     expect(keywordService.selectedKeyword()).toBe('SomeKeyword');
-    
+
     document.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     fixture.detectChanges();
-    
+
     expect(keywordService.selectedKeyword()).toBeNull();
   });
 });

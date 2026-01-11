@@ -70,7 +70,7 @@ describe('KeywordService', () => {
   it('should reset selected keyword on language change', () => {
     service.setKeyword('Angular');
     expect(service.selectedKeyword()).toBe('Angular');
-    
+
     translate.onLangChange.emit({ lang: 'fr_FR', translations: {} });
     expect(service.selectedKeyword()).toBeNull();
   });

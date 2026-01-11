@@ -75,22 +75,22 @@ describe('ExperienceCardComponent', () => {
     expect(keywordElements[1].textContent).toContain('Key2');
   });
 
-    it('should toggle keyword when clicked and stop propagation', () => {
-      const compiled = fixture.nativeElement as HTMLElement;
-      const firstKeyword = compiled.querySelector('.resume-entry__keyword') as HTMLElement;
-      
-      const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
-      vi.spyOn(clickEvent, 'stopPropagation');
-      
-      firstKeyword.dispatchEvent(clickEvent);
-      
-      expect(keywordService.selectedKeyword()).toBe('Key1');
-      expect(clickEvent.stopPropagation).toHaveBeenCalled();
-      
-      firstKeyword.dispatchEvent(clickEvent);
-      expect(keywordService.selectedKeyword()).toBeNull();
-    });
-    it('should set isDimmed when another keyword is selected', () => {
+  it('should toggle keyword when clicked and stop propagation', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const firstKeyword = compiled.querySelector('.resume-entry__keyword') as HTMLElement;
+
+    const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
+    vi.spyOn(clickEvent, 'stopPropagation');
+
+    firstKeyword.dispatchEvent(clickEvent);
+
+    expect(keywordService.selectedKeyword()).toBe('Key1');
+    expect(clickEvent.stopPropagation).toHaveBeenCalled();
+
+    firstKeyword.dispatchEvent(clickEvent);
+    expect(keywordService.selectedKeyword()).toBeNull();
+  });
+  it('should set isDimmed when another keyword is selected', () => {
     expect(component.isDimmed()).toBe(false);
 
     keywordService.setKeyword('Key3');
