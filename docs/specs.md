@@ -66,10 +66,10 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `feature/2-make-lint-format`
 
 **PR**
-: none
+: _none_
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -91,7 +91,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : [#1](https://github.com/yscialom/CrispCV/pull/1)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -138,7 +138,7 @@ _Key Features_:
 : [#2](https://github.com/yscialom/CrispCV/pull/2)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -200,7 +200,7 @@ _UI/UX:_
 : [#15](https://github.com/yscialom/CrispCV/pull/15)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -228,7 +228,7 @@ _UI/UX:_
 : [#10](https://github.com/yscialom/CrispCV/pull/10)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -270,7 +270,7 @@ _Key Features_:
 : [#4](https://github.com/yscialom/CrispCV/pull/4)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -303,6 +303,9 @@ _Technical considerations:_
 **PR**
 : [#18](https://github.com/yscialom/CrispCV/pull/18)
 
+**Release**
+: `v0.2.0`
+
 ---
 
 ## Localization of Dates and Numbers
@@ -343,7 +346,7 @@ _Implementation Details:_
 : [#20](https://github.com/yscialom/CrispCV/pull/20)
 
 **Release**
-: v0.2.0
+: `v0.2.0`
 
 ---
 
@@ -385,7 +388,7 @@ _Implementation Details:_
 : [#20](https://github.com/yscialom/CrispCV/pull/20)
 
 **Release**
-: v0.2.0
+: `v0.2.0`
 
 ---
 
@@ -419,7 +422,7 @@ _Features_:
 : [#12](https://github.com/yscialom/CrispCV/pull/12)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -444,7 +447,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#16](https://github.com/yscialom/CrispCV/pull/16)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -493,7 +496,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#21](https://github.com/yscialom/CrispCV/pull/21)
 
 **Release**
-: v0.2.0
+: `v0.2.0`
 
 ---
 
@@ -579,7 +582,7 @@ _Key Features_:
 : [#8](https://github.com/yscialom/CrispCV/pull/8)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -609,7 +612,7 @@ _Requirements:_
 : [#14](https://github.com/yscialom/CrispCV/pull/14)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -638,4 +641,4 @@ _Requirements:_
 
 **Release**
 
-: v0.1.0
+: `v0.1.0`

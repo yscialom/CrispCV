@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { ResumeDataService } from './resume-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DurationUtils } from '../../shared/utils/duration-utils';
@@ -12,10 +12,42 @@ export class KeywordService {
   private translateService = inject(TranslateService);
 
   public readonly selectedKeyword = signal<string | null>(null);
+  private readonly languageTrigger = signal<number>(0);
+
+  /**
+   * Precalculated statistics for all keywords.
+   * Key: keyword string, Value: formatted duration string.
+   */
+  private readonly keywordStats = computed(() => {
+    // Dependency on language trigger to recompute on language change
+    this.languageTrigger();
+
+    const experiences = this.resumeDataService.experiences();
+    const stats: Record<string, number> = {};
+
+    for (const exp of experiences) {
+      if (!exp.keywords) continue;
+      const months = DurationUtils.calculateMonths(
+        exp.startDate,
+        exp.endDate,
+        this.translateService,
+      );
+      for (const keyword of exp.keywords) {
+        stats[keyword] = (stats[keyword] || 0) + months;
+      }
+    }
+
+    const formattedStats: Record<string, string> = {};
+    for (const [keyword, months] of Object.entries(stats)) {
+      formattedStats[keyword] = DurationUtils.formatDuration(months, this.translateService);
+    }
+    return formattedStats;
+  });
 
   constructor() {
     this.translateService.onLangChange.pipe(takeUntilDestroyed()).subscribe(() => {
       this.selectedKeyword.set(null);
+      this.languageTrigger.update((n) => n + 1);
     });
   }
 
@@ -28,19 +60,6 @@ export class KeywordService {
   }
 
   public getStats(keyword: string): string {
-    const experiences = this.resumeDataService.experiences();
-    let totalMonths = 0;
-
-    for (const exp of experiences) {
-      if (exp.keywords?.includes(keyword)) {
-        totalMonths += DurationUtils.calculateMonths(
-          exp.startDate,
-          exp.endDate,
-          this.translateService,
-        );
-      }
-    }
-
-    return DurationUtils.formatDuration(totalMonths, this.translateService);
+    return this.keywordStats()[keyword] || '';
   }
 }
