@@ -6,8 +6,6 @@ import { PermalinkService } from '../../../core/services/permalink.service';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { DateRangePipe } from '../../pipes/date-range.pipe';
 import { DurationPipe } from '../../pipes/duration.pipe';
-import { DateFormatter } from '../../utils/date-formatter';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-resume-entry',
@@ -34,23 +32,6 @@ export class ResumeEntryComponent {
   private readonly permalinkService = inject(PermalinkService);
   private readonly baseHref = inject(APP_BASE_HREF);
   private readonly translate = inject(TranslateService);
-
-  private readonly langChange = toSignal(this.translate.onLangChange);
-
-  public readonly formattedDateRange = computed(() => {
-    // Trigger re-computation on language change
-    this.langChange();
-
-    const start = this.startDate();
-    const end = this.endDate();
-
-    const formattedStart = DateFormatter.format(start, this.translate);
-    const formattedEnd = end
-      ? DateFormatter.format(end, this.translate)
-      : this.translate.instant('COMMON.PRESENT');
-
-    return `${formattedStart} - ${formattedEnd}`;
-  });
 
   public readonly isHighlighted = computed(() => {
     const active = this.permalinkService.activeFragment();
