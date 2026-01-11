@@ -45,7 +45,7 @@ describe('EducationCardComponent', () => {
       mockEducation.location,
     );
     expect(compiled.querySelector('.resume-entry__dates')?.textContent).toContain(
-      `${mockEducation.startDate} - ${mockEducation.endDate}`,
+      `${mockEducation.startDate} – ${mockEducation.endDate}`,
     );
   });
 

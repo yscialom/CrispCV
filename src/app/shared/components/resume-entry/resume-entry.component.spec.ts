@@ -76,7 +76,7 @@ describe('ResumeEntryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const dates = compiled.querySelector('.resume-entry__dates')?.textContent;
 
-    // We expect "Jun. 2023 - Mar. 2025" (or localized equivalent if default is en_US)
+    // We expect "Jun. 2023 – Mar. 2025" (or localized equivalent if default is en_US)
     // The previous debug test confirmed 'Jun. 2023'.
     expect(dates).toContain('Jun. 2023');
     expect(dates).toContain('Mar. 2025');

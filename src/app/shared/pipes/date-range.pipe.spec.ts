@@ -47,7 +47,7 @@ describe('DateRangePipe', () => {
   it('formats YYYY-MM range', () => {
     translate.currentLang = 'en_US';
     const result = pipe.transform('2020-01', '2021-02');
-    expect(result).toBe('Jan. 2020 - Feb. 2021');
+    expect(result).toBe('Jan. 2020 – Feb. 2021');
   });
 
   it('formats range with Present', () => {
@@ -57,6 +57,6 @@ describe('DateRangePipe', () => {
       return key as string;
     });
     const result = pipe.transform('2023-06', 'Present');
-    expect(result).toBe('Jun. 2023 - Present');
+    expect(result).toBe('Jun. 2023 – Present');
   });
 });

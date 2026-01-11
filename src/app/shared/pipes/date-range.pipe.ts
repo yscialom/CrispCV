@@ -16,6 +16,6 @@ export class DateRangePipe implements PipeTransform {
       ? DateFormatter.format(endDate, this.translate)
       : this.translate.instant('COMMON.PRESENT');
 
-    return `${formattedStart} - ${formattedEnd}`;
+    return `${formattedStart} – ${formattedEnd}`;
   }
 }
