@@ -128,12 +128,12 @@ This project includes a comprehensive suite of GitHub Actions workflows to autom
 
 To use the **Release & Publication** workflow, you must define the following secrets in your repository settings (`Settings > Secrets and variables > Actions`):
 
-| Secret Name | Description |
-| :--- | :--- |
-| `DOCKERHUB_USERNAME` | Your Docker Hub username. |
-| `DOCKERHUB_TOKEN` | A Docker Hub Access Token with `Read & Write` permissions. |
+| Secret Name          | Description                                                |
+| :------------------- | :--------------------------------------------------------- |
+| `DOCKERHUB_USERNAME` | Your Docker Hub username.                                  |
+| `DOCKERHUB_TOKEN`    | A Docker Hub Access Token with `Read & Write` permissions. |
 
-*Note: The `GITHUB_TOKEN` for GHCR is handled automatically.*
+_Note: The `GITHUB_TOKEN` for GHCR is handled automatically._
 
 ## 📚 Documentation
 
