@@ -69,6 +69,19 @@ describe('ResumeEntryComponent', () => {
     expect(dates).toContain('2021');
   });
 
+  it('should format YYYY-MM dates correctly in the template', () => {
+    fixture.componentRef.setInput('startDate', '2023-06');
+    fixture.componentRef.setInput('endDate', '2025-03');
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const dates = compiled.querySelector('.resume-entry__dates')?.textContent;
+
+    // We expect "Jun. 2023 - Mar. 2025" (or localized equivalent if default is en_US)
+    // The previous debug test confirmed 'Jun. 2023'.
+    expect(dates).toContain('Jun. 2023');
+    expect(dates).toContain('Mar. 2025');
+  });
+
   describe('Permalink Interaction', () => {
     it('should NOT show link button if permalinkId is not provided', () => {
       const compiled = fixture.nativeElement as HTMLElement;

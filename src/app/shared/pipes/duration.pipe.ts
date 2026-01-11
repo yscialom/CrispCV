@@ -75,7 +75,7 @@ export class DurationPipe implements PipeTransform {
     // Handle YYYY-MM-DD
     const yyyyMmDd = /^\d{4}-\d{2}-\d{2}$/;
     if (yyyyMmDd.test(dateStr)) {
-        return new Date(dateStr);
+      return new Date(dateStr);
     }
 
     // Fallback

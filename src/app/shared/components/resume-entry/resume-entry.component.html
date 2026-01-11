@@ -30,7 +30,7 @@
         class="resume-entry__dates"
         [title]="startDate() + (endDate() ? ' - ' + endDate() : '')"
       >
-        {{ startDate() | dateRange: endDate() }}
+        {{ formattedDateRange() }}
         @if (startDate() | duration: endDate(); as dur) {
           ({{ dur }})
         }

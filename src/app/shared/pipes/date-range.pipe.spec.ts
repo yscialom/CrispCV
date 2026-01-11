@@ -14,7 +14,7 @@ describe('DateRangePipe', () => {
     });
     translate = TestBed.inject(TranslateService);
     pipe = TestBed.inject(DateRangePipe);
-    
+
     // Default mock behavior
     vi.spyOn(translate, 'instant').mockImplementation((k) => k);
   });
@@ -49,14 +49,14 @@ describe('DateRangePipe', () => {
     const result = pipe.transform('2020-01', '2021-02');
     expect(result).toBe('Jan. 2020 - Feb. 2021');
   });
-  
+
   it('formats range with Present', () => {
-      translate.currentLang = 'en_US';
-      vi.spyOn(translate, 'instant').mockImplementation((key) => {
-          if(key === 'COMMON.PRESENT') return 'Present';
-          return key as string;
-      });
-      const result = pipe.transform('2023-06', 'Present');
-      expect(result).toBe('Jun. 2023 - Present');
+    translate.currentLang = 'en_US';
+    vi.spyOn(translate, 'instant').mockImplementation((key) => {
+      if (key === 'COMMON.PRESENT') return 'Present';
+      return key as string;
+    });
+    const result = pipe.transform('2023-06', 'Present');
+    expect(result).toBe('Jun. 2023 - Present');
   });
 });
