@@ -2,16 +2,8 @@
   [title]="experience().title"
   [subtitle]="experience().company"
   [location]="experience().location"
-  [dateRange]="
-    experience().startDate +
-    ' - ' +
-    (experience().endDate === 'Present' ||
-    experience().endDate === 'Présent' ||
-    !experience().endDate
-      ? ('COMMON.PRESENT' | translate)
-      : experience().endDate) +
-    (duration() ? ' (' + duration() + ')' : '')
-  "
+  [startDate]="experience().startDate"
+  [endDate]="experience().endDate"
   [permalinkFragment]="permalink()?.fragment"
   [permalinkId]="permalink()?.id"
   [isFirst]="isFirst()"

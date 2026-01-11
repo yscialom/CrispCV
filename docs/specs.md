@@ -88,7 +88,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `feature/3-navbar`
 
 **PR**
-: [#1](https://github.com/yscialom/vibed-resume/pull/1)
+: [#1](https://github.com/yscialom/CrispCV/pull/1)
 
 **Release**
 : v0.1.0
@@ -135,7 +135,7 @@ _Key Features_:
 : `feature/4-experience-page`
 
 **PR**
-: [#2](https://github.com/yscialom/vibed-resume/pull/2)
+: [#2](https://github.com/yscialom/CrispCV/pull/2)
 
 **Release**
 : v0.1.0
@@ -197,7 +197,7 @@ _UI/UX:_
 : `feature/6-experience-permalinks`
 
 **PR**
-: [#15](https://github.com/yscialom/vibed-resume/pull/15)
+: [#15](https://github.com/yscialom/CrispCV/pull/15)
 
 **Release**
 : v0.1.0
@@ -225,7 +225,7 @@ _UI/UX:_
 : `feature/7-sticky-navbar`
 
 **PR**
-: [#10](https://github.com/yscialom/vibed-resume/pull/10)
+: [#10](https://github.com/yscialom/CrispCV/pull/10)
 
 **Release**
 : v0.1.0
@@ -267,7 +267,7 @@ _Key Features_:
 : `feature/8-education-page`
 
 **PR**
-: [#4](https://github.com/yscialom/vibed-resume/pull/4)
+: [#4](https://github.com/yscialom/CrispCV/pull/4)
 
 **Release**
 : v0.1.0
@@ -314,20 +314,36 @@ _Technical considerations:_
 : `17`
 
 **Description**
-: Ensure dates and numbers are formatted according to the selected locale.
+: Standardize and localize all date and number displays throughout the application using `ngx-translate` and the native `Intl` API, ensuring clarity and consistency across locales.
 
-- **Dates:** Display dates (months, days) in the target language (e.g., "Janvier" vs "January").
-- **Numbers:** Format numbers using the correct separators (e.g., `1 000` vs `1,000`).
-- **Present:** The "Present" / "Présent" string in date ranges should be handled via the translation system (ngx-translate).
+_Data Integrity & Formatting Rules:_
+
+- **Source Format:** All dates in `config/profile.*.ts` must strictly use ISO-8601 formats (`YYYY-MM-DD`, `YYYY-MM`, or `YYYY`).
+- **Display Format:**
+  - Full dates (`YYYY-MM-DD`) render as `DD mmm. YYYY` (e.g., "10 Jan. 2026" in English, "10 janv. 2026" in French).
+  - Partial dates (`YYYY-MM`) render as `mmm. YYYY` (e.g., "Jan. 2026").
+  - Year-only dates (`YYYY`) render as `YYYY`.
+- **Tooltips:** Any rendered date should include a tooltip showing the original `YYYY-MM-DD` format (when a full date is available) to avoid any ambiguity.
+- **Duration Pipe:**
+  - Maintain the "half-year" rounding logic (e.g., `1.5 years`).
+  - Ensure the decimal separator is localized (e.g., `1.5` for `en_US` vs `1,5` for `fr_FR`).
+
+_Implementation Details:_
+
+- **DateRangePipe:** A new pipe to handle the "Start - End (Duration)" logic centrally, replacing manual template concatenation.
+- **About Page:** The `birthDate` and `age` must be localized.
+- **Technical Integration:**
+  - All localization pipes must be reactive to language changes.
+  - Internal locale identifiers (`en_US`, `fr_FR`) will be mapped to proper BCP 47 tags (e.g., `en-US`, `fr-FR`) for the `Intl` API.
 
 **Status**
-: `todo`
+: `done`
 
 **Branch**
-:
+: `feature/17-localization-dates-numbers`
 
 **PR**
-:
+: [#20](https://github.com/yscialom/CrispCV/pull/20)
 
 **Release**
 :
@@ -361,7 +377,7 @@ _Features_:
 : `feature/10-dark-light-theme`
 
 **PR**
-: [#12](https://github.com/yscialom/vibed-resume/pull/12)
+: [#12](https://github.com/yscialom/CrispCV/pull/12)
 
 **Release**
 : v0.1.0
@@ -497,7 +513,7 @@ _Key Features_:
 : `feature/12-about-me-page`
 
 **PR**
-: [#8](https://github.com/yscialom/vibed-resume/pull/8)
+: [#8](https://github.com/yscialom/CrispCV/pull/8)
 
 **Release**
 : v0.1.0
@@ -527,7 +543,7 @@ _Requirements:_
 : `feature/13-remove-cdn`
 
 **PR**
-: [#14](https://github.com/yscialom/vibed-resume/pull/14)
+: [#14](https://github.com/yscialom/CrispCV/pull/14)
 
 **Release**
 : v0.1.0
@@ -555,7 +571,7 @@ _Requirements:_
 : `feature/15-footer`
 
 **PR**
-: [#11](https://github.com/yscialom/vibed-resume/pull/11)
+: [#11](https://github.com/yscialom/CrispCV/pull/11)
 
 **Release**
 : v0.1.0

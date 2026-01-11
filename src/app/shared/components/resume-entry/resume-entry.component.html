@@ -26,7 +26,15 @@
 
     <div class="resume-entry__row">
       <span class="resume-entry__subtitle">{{ subtitle() }}</span>
-      <span class="resume-entry__dates">{{ dateRange() }}</span>
+      <span
+        class="resume-entry__dates"
+        [title]="startDate() + (endDate() ? ' – ' + endDate() : '')"
+      >
+        {{ startDate() | dateRange: endDate() }}
+        @if (startDate() | duration: endDate(); as dur) {
+          ({{ dur }})
+        }
+      </span>
     </div>
   </header>
 
