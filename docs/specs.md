@@ -157,7 +157,7 @@ _Key Features_:
 : `feature/5-keyword-filtering-statistics`
 
 **PR**
-:
+: [#23](https://github.com/yscialom/CrispCV/pull/23)
 
 **Release**
 :
