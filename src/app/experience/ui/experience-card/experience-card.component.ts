@@ -4,6 +4,7 @@ import { MarkdownPipe } from '../../../shared/pipes/markdown.pipe';
 import { ResumeEntryComponent } from '../../../shared/components/resume-entry/resume-entry.component';
 import { PermalinkService } from '../../../core/services/permalink.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { KeywordService } from '../../../core/services/keyword.service';
 
 @Component({
   selector: 'app-experience-card',
@@ -12,13 +13,27 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './experience-card.component.html',
   styleUrl: './experience-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.experience-card--dimmed]': 'isDimmed()',
+  },
 })
 export class ExperienceCardComponent {
   public readonly experience = input.required<Experience>();
   public readonly isFirst = input<boolean>(false);
   private readonly permalinkService = inject(PermalinkService);
+  protected readonly keywordService = inject(KeywordService);
 
   public readonly permalink = computed(() => {
     return this.permalinkService.getEntryByItem(this.experience());
   });
+
+  public readonly isDimmed = computed(() => {
+    const selectedKeyword = this.keywordService.selectedKeyword();
+    if (!selectedKeyword) return false;
+    return !this.experience().keywords?.includes(selectedKeyword);
+  });
+
+  public toggleKeyword(keyword: string): void {
+    this.keywordService.setKeyword(keyword);
+  }
 }

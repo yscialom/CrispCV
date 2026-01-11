@@ -12,7 +12,14 @@
     <div entry-keywords class="resume-entry__keywords-container">
       <div class="resume-entry__keywords">
         @for (keyword of keywords; track keyword) {
-          <span class="resume-entry__keyword">{{ keyword }}</span>
+          <span
+            class="resume-entry__keyword"
+            [class.resume-entry__keyword--active]="keyword === keywordService.selectedKeyword()"
+            (click)="toggleKeyword(keyword)"
+            [title]="keywordService.getStats(keyword)"
+          >
+            {{ keyword }}
+          </span>
         }
       </div>
     </div>

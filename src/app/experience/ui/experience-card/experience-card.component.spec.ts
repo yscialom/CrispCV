@@ -2,13 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExperienceCardComponent } from './experience-card.component';
 import { Experience } from '../../../core/models/resume.models';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { vi } from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { APP_BASE_HREF } from '@angular/common';
+import { KeywordService } from '../../../core/services/keyword.service';
 
 describe('ExperienceCardComponent', () => {
   let component: ExperienceCardComponent;
   let fixture: ComponentFixture<ExperienceCardComponent>;
   let translate: TranslateService;
+  let keywordService: KeywordService;
 
   const mockExperience: Experience = {
     title: 'Software Engineer',
@@ -32,6 +34,8 @@ describe('ExperienceCardComponent', () => {
     }).compileComponents();
 
     translate = TestBed.inject(TranslateService);
+    keywordService = TestBed.inject(KeywordService);
+    
     // Mock translate to return localized strings
     vi.spyOn(translate, 'instant').mockImplementation((key: string | string[]) => {
       if (key === 'COMMON.PRESENT') return 'Present';
@@ -69,6 +73,46 @@ describe('ExperienceCardComponent', () => {
     expect(keywordElements.length).toBe(2);
     expect(keywordElements[0].textContent).toContain('Key1');
     expect(keywordElements[1].textContent).toContain('Key2');
+  });
+
+  it('should toggle keyword when clicked', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const firstKeyword = compiled.querySelector('.resume-entry__keyword') as HTMLElement;
+    firstKeyword.click();
+    expect(keywordService.selectedKeyword()).toBe('Key1');
+    
+    firstKeyword.click();
+    expect(keywordService.selectedKeyword()).toBeNull();
+  });
+
+  it('should set isDimmed when another keyword is selected', () => {
+    expect(component.isDimmed()).toBe(false);
+    
+    keywordService.setKeyword('Key3');
+    fixture.detectChanges();
+    
+    expect(component.isDimmed()).toBe(true);
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.classList.contains('experience-card--dimmed')).toBe(true);
+  });
+
+  it('should not be dimmed if its keyword is selected', () => {
+    keywordService.setKeyword('Key1');
+    fixture.detectChanges();
+    
+    expect(component.isDimmed()).toBe(false);
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.classList.contains('experience-card--dimmed')).toBe(false);
+  });
+
+  it('should add active class to selected keyword', () => {
+    keywordService.setKeyword('Key1');
+    fixture.detectChanges();
+    
+    const compiled = fixture.nativeElement as HTMLElement;
+    const keywords = compiled.querySelectorAll('.resume-entry__keyword');
+    expect(keywords[0].classList.contains('resume-entry__keyword--active')).toBe(true);
+    expect(keywords[1].classList.contains('resume-entry__keyword--active')).toBe(false);
   });
 
   it('should not render keywords section if no keywords provided', () => {

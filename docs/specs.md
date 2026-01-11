@@ -151,10 +151,10 @@ _Key Features_:
 : Enhance keyword interactivity. Clicking a keyword highlights all experience cards sharing that keyword. Hovering over a keyword reveals a tooltip showing the total accumulated duration of experience for that specific skill across all positions.
 
 **Status**
-: `todo (priority: 6)`
+: `wip`
 
 **Branch**
-:
+: `feature/5-keyword-filtering-statistics`
 
 **PR**
 :
