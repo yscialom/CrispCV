@@ -304,7 +304,7 @@ _Technical considerations:_
 : [#18](https://github.com/yscialom/CrispCV/pull/18)
 
 **Release**
-:
+: v0.2.0
 
 ---
 
@@ -346,7 +346,7 @@ _Implementation Details:_
 : [#20](https://github.com/yscialom/CrispCV/pull/20)
 
 **Release**
-:
+: v0.2.0
 
 ---
 
@@ -454,7 +454,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#21](https://github.com/yscialom/CrispCV/pull/21)
 
 **Release**
-:
+: v0.2.0
 
 ---
 
