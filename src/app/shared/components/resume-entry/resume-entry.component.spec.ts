@@ -4,6 +4,8 @@ import { ToastService } from '../../../core/services/toast.service';
 import { PermalinkService } from '../../../core/services/permalink.service';
 import { Router } from '@angular/router';
 import { signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('ResumeEntryComponent', () => {
   let component: ResumeEntryComponent;
@@ -33,11 +35,12 @@ describe('ResumeEntryComponent', () => {
     });
 
     await TestBed.configureTestingModule({
-      imports: [ResumeEntryComponent],
+      imports: [ResumeEntryComponent, TranslateModule.forRoot()],
       providers: [
         { provide: ToastService, useValue: mockToastService },
         { provide: PermalinkService, useValue: mockPermalinkService },
         { provide: Router, useValue: mockRouter },
+        { provide: APP_BASE_HREF, useValue: '/' },
       ],
     }).compileComponents();
 
@@ -46,7 +49,8 @@ describe('ResumeEntryComponent', () => {
     fixture.componentRef.setInput('title', 'Test Title');
     fixture.componentRef.setInput('subtitle', 'Test Subtitle');
     fixture.componentRef.setInput('location', 'Test Location');
-    fixture.componentRef.setInput('dateRange', '2020 - 2021');
+    fixture.componentRef.setInput('startDate', '2020');
+    fixture.componentRef.setInput('endDate', '2021');
     fixture.detectChanges();
   });
 
@@ -60,6 +64,22 @@ describe('ResumeEntryComponent', () => {
     expect(compiled.querySelector('.resume-entry__subtitle')?.textContent).toContain(
       'Test Subtitle',
     );
+    const dates = compiled.querySelector('.resume-entry__dates')?.textContent;
+    expect(dates).toContain('2020');
+    expect(dates).toContain('2021');
+  });
+
+  it('should format YYYY-MM dates correctly in the template', () => {
+    fixture.componentRef.setInput('startDate', '2023-06');
+    fixture.componentRef.setInput('endDate', '2025-03');
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const dates = compiled.querySelector('.resume-entry__dates')?.textContent;
+
+    // We expect "Jun. 2023 – Mar. 2025" (or localized equivalent if default is en_US)
+    // The previous debug test confirmed 'Jun. 2023'.
+    expect(dates).toContain('Jun. 2023');
+    expect(dates).toContain('Mar. 2025');
   });
 
   describe('Permalink Interaction', () => {

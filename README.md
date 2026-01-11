@@ -1,3 +1,5 @@
+![Pull Request Validation](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)
+
 # Angular Resume / Portfolio
 
 A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
@@ -22,8 +24,8 @@ A professional, customizable, and high-performance single-page application (SPA)
     ```bash
     git checkout --orphan pages
     git rm -rf .
-    # Copy your customized config/profile.ts here
-    git add config/profile.ts
+    # Copy your customized config/profile.en_US.ts here
+    git add config/profile.en_US.ts
     git commit -m "feat: add personal resume data"
     git push origin pages
     ```
@@ -48,7 +50,7 @@ Work on the `develop` branch. Use `make start` to preview features and `make tes
 
 ### 2. Configuration (Your Data)
 
-Manage your resume data on the `pages` branch. The deployment workflow always pulls `config/profile.ts` from this branch, allowing you to keep your personal data separate from the main codebase updates.
+Manage your resume data on the `pages` branch. The deployment workflow always pulls `config/profile.*.ts` from this branch, allowing you to keep your personal data separate from the main codebase updates.
 
 ### 3. Deployment (Production)
 
@@ -60,7 +62,7 @@ Manage your resume data on the `pages` branch. The deployment workflow always pu
 
 The application is designed to be easily customized.
 
-1.  **Content**: Edit `config/profile.ts` to update your profile, experience, and education.
+1.  **Content**: Edit `config/profile.<locale>.ts` to update your profile, experience, and education.
 2.  **Theme Colors**: Edit `config/_colors.scss` to change the primary, secondary, and accent colors for light and dark modes.
 3.  **Layout/Spacing**: Edit `src/app/config/_spacing.scss` for global spacing adjustments.
 
@@ -99,7 +101,41 @@ Access the app at `http://localhost:8080`.
 If you have an existing web server (Nginx, Apache, AWS S3, etc.):
 
 1.  Run `make build`.
-2.  Copy the contents of the `dist/resume-app/browser/` directory to your web server's root directory.
+2.  Copy the contents of the `dist/CrispCV/browser/` directory to your web server's root directory.
+
+## 🔄 CI/CD & Deployment
+
+This project includes a comprehensive suite of GitHub Actions workflows to automate testing, building, and deployment.
+
+### Automated Workflows
+
+1.  **Pull Request Validation**:
+    - Triggers on PRs to the `develop` branch.
+    - Runs unit tests (`make test`).
+    - Verifies the production Docker build (`make build-prod-image`).
+    - **Goal**: Ensure no broken code enters the main development branch.
+
+2.  **GitHub Pages Deployment**:
+    - Triggers on pushes to `main` (code updates) OR `pages` (config updates).
+    - Automatically builds the app, overlaying your personal config from `pages` onto the latest code from `main`.
+    - Deploys to GitHub Pages.
+
+3.  **Release & Publication**:
+    - Triggers when a git tag starting with `v*` is pushed (e.g., `v1.0.0`).
+    - Builds the production Docker image.
+    - Pushes the image to **GitHub Container Registry (GHCR)** and **Docker Hub**.
+    - Automatically manages tags (`latest`, `1`, `1.0`, `1.0.0`).
+
+### Secrets Configuration
+
+To use the **Release & Publication** workflow, you must define the following secrets in your repository settings (`Settings > Secrets and variables > Actions`):
+
+| Secret Name          | Description                                                |
+| :------------------- | :--------------------------------------------------------- |
+| `DOCKERHUB_USERNAME` | Your Docker Hub username.                                  |
+| `DOCKERHUB_TOKEN`    | A Docker Hub Access Token with `Read & Write` permissions. |
+
+_Note: The `GITHUB_TOKEN` for GHCR is handled automatically._
 
 ## 📚 Documentation
 

@@ -1,0 +1,54 @@
+{
+  "NAVBAR": {
+    "EXPERIENCE": "Experience",
+    "EDUCATION": "Education",
+    "ABOUT": "About"
+  },
+  "ABOUT": {
+    "TITLE": "About Me",
+    "PERSONAL_INFO": "Personal Info",
+    "BIRTH_DATE": "Date of birth:",
+    "AGE_SUFFIX": "years old",
+    "NATIONALITY": "Nationality:",
+    "LOCATION": "Location:",
+    "PHONE": "Phone:",
+    "EMAIL": "Email:",
+    "LICENSE": "License:",
+    "LANGUAGES": "Languages",
+    "HOBBIES": "Hobbies",
+    "SOCIAL_TITLE": "Find me on",
+    "VOLUNTEERING": "Volunteering",
+    "PROJECTS": "Personal projects",
+    "VIEW_PROJECT": "View project"
+  },
+  "EXPERIENCE": {
+    "TITLE": "Experience"
+  },
+  "EDUCATION": {
+    "TITLE": "Education"
+  },
+  "FOOTER": {
+    "FORK_US": "fork us on github"
+  },
+  "COMMON": {
+    "PRESENT": "Present",
+    "ERROR": "An error occurred"
+  },
+  "DURATION": {
+    "YEAR_PLURAL": "years",
+    "YEAR_SINGULAR": "year",
+    "MONTH": "months"
+  },
+  "RESUME_ENTRY": {
+    "COPY_LINK_TITLE": "Copy permalink to this item",
+    "COPY_LINK_ARIA": "Copy permalink",
+    "COPIED": "Link copied!"
+  },
+  "LANGUAGE_LEVELS": {
+    "BEGINNER": "Beginner — A",
+    "INTERMEDIATE": "Intermediate — B",
+    "ADVANCED": "Advanced — C1",
+    "FLUENT": "Fluent — C2",
+    "NATIVE": "Bilingual / Native"
+  }
+}

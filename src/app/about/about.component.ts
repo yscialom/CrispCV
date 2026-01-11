@@ -2,14 +2,15 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
 import { ResumeEntryComponent } from '../shared/components/resume-entry/resume-entry.component';
-import { DurationPipe } from '../shared/pipes/duration.pipe';
+import { LocalizedDatePipe } from '../shared/pipes/localized-date.pipe';
 import { PermalinkService } from '../core/services/permalink.service';
 import { Experience, Education, Project, Volunteering } from '../core/models/resume.models';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [MarkdownPipe, ResumeEntryComponent, DurationPipe],
+  imports: [MarkdownPipe, ResumeEntryComponent, LocalizedDatePipe, TranslateModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +18,7 @@ import { Experience, Education, Project, Volunteering } from '../core/models/res
 export class AboutComponent {
   private resumeDataService = inject(ResumeDataService);
   private permalinkService = inject(PermalinkService);
+  private translate = inject(TranslateService);
 
   profile = this.resumeDataService.profile;
 
@@ -39,6 +41,14 @@ export class AboutComponent {
     return age;
   });
 
+  ageDisplay = computed(() => {
+    const a = this.age();
+    if (a === null) return '';
+    const currentLang = this.translate.currentLang || 'en_US';
+    const locale = currentLang.replace('_', '-');
+    return new Intl.NumberFormat(locale).format(a);
+  });
+
   getPermalink(item: Experience | Education | Project | Volunteering) {
     return this.permalinkService.getEntryByItem(item);
   }
@@ -46,15 +56,15 @@ export class AboutComponent {
   getLanguageLevelLabel(level: number): string {
     switch (level) {
       case 1:
-        return 'Débutant';
+        return 'LANGUAGE_LEVELS.BEGINNER';
       case 2:
-        return 'Intermédiaire';
+        return 'LANGUAGE_LEVELS.INTERMEDIATE';
       case 3:
-        return 'Avancé';
+        return 'LANGUAGE_LEVELS.ADVANCED';
       case 4:
-        return 'Courant';
+        return 'LANGUAGE_LEVELS.FLUENT';
       case 5:
-        return 'Bilingue / Natif';
+        return 'LANGUAGE_LEVELS.NATIVE';
       default:
         return '';
     }

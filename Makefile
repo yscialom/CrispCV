@@ -41,19 +41,19 @@ usage:
 # Run unit tests
 test:
 	@echo "Running unit tests (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng test --watch=false"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng test --watch=false"
 
 
 
 # Build the application artifacts on the host by running a temporary container
 build:
 	@echo "Building application artifacts in ./dist ..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run build"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run build"
 
 # Start the Angular development server (ng serve)
 start:
 	@echo "Starting development container '$(DEV_CONTAINER_NAME)' on http://localhost:4200 ..."
-	@docker run --rm -d -p 4200:4200 --name $(DEV_CONTAINER_NAME) -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng serve --host 0.0.0.0"
+	@docker run --rm -d -p 4200:4200 --name $(DEV_CONTAINER_NAME) -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng serve --host 0.0.0.0"
 
 # Stop the development server
 stop:
@@ -66,11 +66,11 @@ stop:
 
 lint:
 	@echo "Running ESLint (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run lint --silent"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run lint --silent"
 
 format:
 	@echo "Running Prettier (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run format --silent"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run format --silent"
 
 
 # Clean intermediary build files

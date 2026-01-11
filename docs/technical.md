@@ -24,7 +24,7 @@ A **Hexagonal Architecture (Ports and Adapters)** approach is used to isolate th
 - **Ports:** Abstract interfaces defining how the application interacts with the outside world. In TypeScript, these are represented by `abstract class` or `InjectionToken` constructs.
 - **Adapters (Outside):**
   - **Primary/Driving Adapters:** The Angular components that render the UI. They are the entry point for user interaction.
-  - **Secondary/Driven Adapters:** The mechanism that provides the résumé data. This is currently a TypeScript file (`config/profile.ts`) that exports the data, but the hexagonal approach ensures this could be swapped for an HTTP client or any other data source with minimal changes to the core application.
+  - **Secondary/Driven Adapters:** The mechanism that provides the résumé data. This is currently a set of TypeScript files (`config/profile.<locale>.ts`) that export the data, but the hexagonal approach ensures this could be swapped for an HTTP client or any other data source with minimal changes to the core application.
 
 ### Folder Structure
 
@@ -32,7 +32,7 @@ A **Hexagonal Architecture (Ports and Adapters)** approach is used to isolate th
 .
 ├── config/               # Global configuration (Colors, Spacing, Profile)
 ├── docs/                 # Project documentation
-├── public/               # Public assets (images, favicon)
+├── public/               # Public assets (images, favicon, translations)
 ├── src/                  # Application source code
 │   ├── app/              # Core application logic and components
 │   ├── index.html        # Entry HTML file
@@ -46,8 +46,8 @@ A **Hexagonal Architecture (Ports and Adapters)** approach is used to isolate th
 
 ## 3. Data & State Management
 
-- **Data Source:** All résumé data is sourced from a single TypeScript file: `config/profile.ts`. This file exports the data structure as a constant, ensuring it's loaded at runtime.
-- **State Service:** A singleton service, `ResumeDataService`, is the single source of truth for application state. It imports the data from `config/profile.ts` and stores it in **Signals**.
+- **Data Source:** All résumé data is sourced from TypeScript files: `config/profile.<locale>.ts`. These files export the data structure as a constant.
+- **State Service:** A singleton service, `ResumeDataService`, is the single source of truth for application state. It reactively imports the data from the appropriate profile based on the current language and stores it in **Signals**.
 - **Data Flow:** Components access data exclusively through one of two mechanisms:
   1.  `inject()`: For direct access to the `ResumeDataService` within a component's constructor context.
   2.  `input()`: For parent components to pass slices of data down to child components using Angular's new input signal function.

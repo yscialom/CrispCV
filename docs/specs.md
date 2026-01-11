@@ -49,7 +49,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : none
 
 **Release**
-:
+: v0.1.0
 
 ## Linting and Formatting Make Targets
 
@@ -69,7 +69,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : none
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -88,10 +88,10 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `feature/3-navbar`
 
 **PR**
-: [#1](https://github.com/yscialom/vibed-resume/pull/1)
+: [#1](https://github.com/yscialom/CrispCV/pull/1)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -135,7 +135,10 @@ _Key Features_:
 : `feature/4-experience-page`
 
 **PR**
-: [#2](https://github.com/yscialom/vibed-resume/pull/2)
+: [#2](https://github.com/yscialom/CrispCV/pull/2)
+
+**Release**
+: v0.1.0
 
 ---
 
@@ -194,10 +197,10 @@ _UI/UX:_
 : `feature/6-experience-permalinks`
 
 **PR**
-: [#15](https://github.com/yscialom/vibed-resume/pull/15)
+: [#15](https://github.com/yscialom/CrispCV/pull/15)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -222,10 +225,10 @@ _UI/UX:_
 : `feature/7-sticky-navbar`
 
 **PR**
-: [#10](https://github.com/yscialom/vibed-resume/pull/10)
+: [#10](https://github.com/yscialom/CrispCV/pull/10)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -264,10 +267,10 @@ _Key Features_:
 : `feature/8-education-page`
 
 **PR**
-: [#4](https://github.com/yscialom/vibed-resume/pull/4)
+: [#4](https://github.com/yscialom/CrispCV/pull/4)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -282,20 +285,68 @@ _Key Features_:
 
 _Technical considerations:_
 
-- **Date Parsing:** The `DurationPipe` currently has a `parseDate` method that handles English "Present" and French "Présent". This logic will need to be centralized and expanded to support all future languages.
-- **UI Strings:** Hardcoded strings in components (e.g., language level labels like "Débutant", "Intermédiaire" in `AboutComponent`) must be moved to a translation system or configuration map.
+- **Library:** Use `ngx-translate` for runtime translation and easy switching.
+- **UI Strings (Translation Software Compatible):** UI labels (e.g., "Experience", "Present") must be stored in standard JSON files (e.g., `assets/i18n/fr_FR.json`). This format is widely supported by translation management software (Lokalise, Crowdin, Weblate, etc.).
+- **Profile Data (Developer Friendly):** The resume content remains in TypeScript configuration files (e.g., `config/profile.fr_FR.ts`) to maintain type safety and developer ergonomics.
+- **Build-Time Registry:** A custom script (`tools/generate-profile-registry.ts`) will run before the build. It scans the `config/` directory and generates a strongly-typed registry file (`src/app/core/profile.registry.ts`).
+  - **Type Safety:** The registry must use the `Resume` interface (not `any`) to ensure type safety across all profiles: `export const PROFILES: Record<string, Resume> = { ... };`
+  - **Language List:** The supported languages list is derived automatically from the existing profile files.
+- **UI:** A dropdown in the navbar displaying the flag and language name.
+- **Fallback:** If a profile is available in a language the UI is not, the UI should fallback to English strings while displaying the localized profile content.
 
 **Status**
-: `todo (priority: 5)`
+: `done`
 
 **Branch**
-:
+: `feature/9-multilingual-support`
 
 **PR**
-:
+: [#18](https://github.com/yscialom/CrispCV/pull/18)
 
 **Release**
-:
+: v0.2.0
+
+---
+
+## Localization of Dates and Numbers
+
+**ID**
+: `17`
+
+**Description**
+: Standardize and localize all date and number displays throughout the application using `ngx-translate` and the native `Intl` API, ensuring clarity and consistency across locales.
+
+_Data Integrity & Formatting Rules:_
+
+- **Source Format:** All dates in `config/profile.*.ts` must strictly use ISO-8601 formats (`YYYY-MM-DD`, `YYYY-MM`, or `YYYY`).
+- **Display Format:**
+  - Full dates (`YYYY-MM-DD`) render as `DD mmm. YYYY` (e.g., "10 Jan. 2026" in English, "10 janv. 2026" in French).
+  - Partial dates (`YYYY-MM`) render as `mmm. YYYY` (e.g., "Jan. 2026").
+  - Year-only dates (`YYYY`) render as `YYYY`.
+- **Tooltips:** Any rendered date should include a tooltip showing the original `YYYY-MM-DD` format (when a full date is available) to avoid any ambiguity.
+- **Duration Pipe:**
+  - Maintain the "half-year" rounding logic (e.g., `1.5 years`).
+  - Ensure the decimal separator is localized (e.g., `1.5` for `en_US` vs `1,5` for `fr_FR`).
+
+_Implementation Details:_
+
+- **DateRangePipe:** A new pipe to handle the "Start - End (Duration)" logic centrally, replacing manual template concatenation.
+- **About Page:** The `birthDate` and `age` must be localized.
+- **Technical Integration:**
+  - All localization pipes must be reactive to language changes.
+  - Internal locale identifiers (`en_US`, `fr_FR`) will be mapped to proper BCP 47 tags (e.g., `en-US`, `fr-FR`) for the `Intl` API.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/17-localization-dates-numbers`
+
+**PR**
+: [#20](https://github.com/yscialom/CrispCV/pull/20)
+
+**Release**
+: v0.2.0
 
 ---
 
@@ -326,10 +377,10 @@ _Features_:
 : `feature/10-dark-light-theme`
 
 **PR**
-: [#12](https://github.com/yscialom/vibed-resume/pull/12)
+: [#12](https://github.com/yscialom/CrispCV/pull/12)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -341,7 +392,7 @@ _Features_:
 **Description**
 : Add a GitHub Actions workflow to publish the application to GitHub Pages.
 The workflow triggers on pushes to `main` or the orphan branch `pages`.
-It checks out the code from `main` but retrieves the specific `config/profile.ts` from the `pages` branch (if it exists) to allow for private configuration.
+It checks out the code from `main` but retrieves the specific `config/profile.*.ts` from the `pages` branch (if it exists) to allow for private configuration.
 It builds the application using `npm` and deploys the artifact to GitHub Pages.
 
 **Status**
@@ -354,7 +405,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#16](https://github.com/yscialom/CrispCV/pull/16)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -366,20 +417,44 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 **Description**
 : Implement supplementary CI/CD workflows to ensure code quality and facilitate distribution.
 
-1. **Quality Check:** A workflow triggering on pushes to the `develop` branch (and/or Pull Requests) to run `make format` and `make lint`.
-2. **Docker Publish:** A workflow triggering on git tags to build the Docker image and publish it to a container registry (e.g., GitHub Container Registry).
+1.  **GitHub Pages Deployment (Update):**
+    - **Trigger:** Pushes to `main` AND `pages`.
+    - **Behavior:**
+      - Checks out `main`.
+      - If the trigger was `pages` (or if `pages` exists), it checks out `config/profile.*.ts` from the `pages` branch overlaying the `main` branch's configuration.
+      - Builds and deploys to GitHub Pages.
+      - **Fix:** Ensure the workflow actually runs on pushes to `pages` (currently not triggering reliably).
+
+2.  **Pull Request Validation:**
+    - **Trigger:** Pull Requests targeting `develop`.
+    - **Actions:**
+      - Run Unit Tests (`make test`).
+      - Build the Docker image (`make build-prod-image`) to ensure buildability.
+    - **Policy:** The PR merge must be blocked if this workflow fails.
+
+3.  **Release & Publication:**
+    - **Trigger:** Pushing a git tag matching the pattern `v*` (e.g., `v1.2.3`).
+    - **Actions:**
+      - Build the production Docker image.
+      - **Registries:** Push to both:
+        - GitHub Container Registry (`ghcr.io/yscialom/crispcv`)
+        - Docker Hub (`yankelscialom/crispcv`)
+      - **Tagging Strategy:**
+        - For a tag `v1.2.3`:
+        - Push tags: `1.2.3`, `1.2`, `1`, and `latest`.
+        - This ensures major and minor version aliases are always up-to-date.
 
 **Status**
-: `todo (priority: 3)`
+: `done`
 
 **Branch**
-:
+: `feature/16-ci-cd-workflows`
 
 **PR**
-:
+: [#21](https://github.com/yscialom/CrispCV/pull/21)
 
 **Release**
-:
+: v0.2.0
 
 ---
 
@@ -462,10 +537,10 @@ _Key Features_:
 : `feature/12-about-me-page`
 
 **PR**
-: [#8](https://github.com/yscialom/vibed-resume/pull/8)
+: [#8](https://github.com/yscialom/CrispCV/pull/8)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -492,10 +567,10 @@ _Requirements:_
 : `feature/13-remove-cdn`
 
 **PR**
-: [#14](https://github.com/yscialom/vibed-resume/pull/14)
+: [#14](https://github.com/yscialom/CrispCV/pull/14)
 
 **Release**
-:
+: v0.1.0
 
 ---
 
@@ -520,7 +595,7 @@ _Requirements:_
 : `feature/15-footer`
 
 **PR**
-: [#11](https://github.com/yscialom/vibed-resume/pull/11)
+: [#11](https://github.com/yscialom/CrispCV/pull/11)
 
 **Release**
-:
+: v0.1.0

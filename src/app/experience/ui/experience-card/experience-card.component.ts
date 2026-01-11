@@ -2,14 +2,13 @@ import { ChangeDetectionStrategy, Component, computed, inject, input } from '@an
 import { Experience } from '../../../core/models/resume.models';
 import { MarkdownPipe } from '../../../shared/pipes/markdown.pipe';
 import { ResumeEntryComponent } from '../../../shared/components/resume-entry/resume-entry.component';
-import { DurationPipe } from '../../../shared/pipes/duration.pipe';
 import { PermalinkService } from '../../../core/services/permalink.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-experience-card',
   standalone: true,
-  imports: [MarkdownPipe, ResumeEntryComponent],
-  providers: [DurationPipe],
+  imports: [MarkdownPipe, ResumeEntryComponent, TranslateModule],
   templateUrl: './experience-card.component.html',
   styleUrl: './experience-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,13 +16,7 @@ import { PermalinkService } from '../../../core/services/permalink.service';
 export class ExperienceCardComponent {
   public readonly experience = input.required<Experience>();
   public readonly isFirst = input<boolean>(false);
-  private readonly durationPipe = inject(DurationPipe);
   private readonly permalinkService = inject(PermalinkService);
-
-  public readonly duration = computed(() => {
-    const exp = this.experience();
-    return this.durationPipe.transform(exp.startDate, exp.endDate);
-  });
 
   public readonly permalink = computed(() => {
     return this.permalinkService.getEntryByItem(this.experience());

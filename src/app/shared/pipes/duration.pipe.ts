@@ -1,13 +1,17 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
   name: 'duration',
   standalone: true,
+  pure: false,
 })
 export class DurationPipe implements PipeTransform {
+  private translate = inject(TranslateService);
+
   transform(startDateStr: string, endDateStr?: string | null): string {
     if (!startDateStr) return '';
-    const endStr = endDateStr || 'Present';
+    const endStr = endDateStr || this.translate.instant('COMMON.PRESENT');
     return this.calculateDuration(startDateStr, endStr);
   }
 
@@ -22,24 +26,35 @@ export class DurationPipe implements PipeTransform {
     if (months < 1) return '';
 
     const years = months / 12;
-    const numberFormat = new Intl.NumberFormat('fr-FR');
+    const currentLang = this.translate.currentLang || 'en_US';
+    const locale = currentLang.replace('_', '-');
+    const numberFormat = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 
     if (years >= 10) {
       const roundedYears = Math.round(years);
-      return `${numberFormat.format(roundedYears)} ans`;
+      return `${numberFormat.format(roundedYears)} ${this.translate.instant('DURATION.YEAR_PLURAL')}`;
     }
 
     if (years >= 1) {
       const roundedHalfYears = Math.round(years * 2) / 2;
-      const unit = roundedHalfYears >= 2 ? 'ans' : 'an';
-      return `${numberFormat.format(roundedHalfYears)} ${unit}`;
+      const unitKey = roundedHalfYears >= 2 ? 'DURATION.YEAR_PLURAL' : 'DURATION.YEAR_SINGULAR';
+      return `${numberFormat.format(roundedHalfYears)} ${this.translate.instant(unitKey)}`;
     }
 
-    return `${months} mois`;
+    return `${months} ${this.translate.instant('DURATION.MONTH')}`;
   }
 
   private parseDate(dateStr: string): Date {
-    if (!dateStr || dateStr.toLowerCase() === 'present' || dateStr.toLowerCase() === 'présent') {
+    const presentFrench = 'présent';
+    const presentEnglish = 'present';
+    const currentPresent = this.translate.instant('COMMON.PRESENT').toLowerCase();
+
+    if (
+      !dateStr ||
+      dateStr.toLowerCase() === presentFrench ||
+      dateStr.toLowerCase() === presentEnglish ||
+      dateStr.toLowerCase() === currentPresent
+    ) {
       return new Date();
     }
 
@@ -55,6 +70,12 @@ export class DurationPipe implements PipeTransform {
     if (yyyy.test(dateStr)) {
       const year = parseInt(dateStr, 10);
       return new Date(year, 0, 1);
+    }
+
+    // Handle YYYY-MM-DD
+    const yyyyMmDd = /^\d{4}-\d{2}-\d{2}$/;
+    if (yyyyMmDd.test(dateStr)) {
+      return new Date(dateStr);
     }
 
     // Fallback

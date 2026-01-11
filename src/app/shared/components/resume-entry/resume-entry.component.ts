@@ -3,10 +3,14 @@ import { ToastService } from '../../../core/services/toast.service';
 import { DOCUMENT, APP_BASE_HREF } from '@angular/common';
 import { Router } from '@angular/router';
 import { PermalinkService } from '../../../core/services/permalink.service';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { DateRangePipe } from '../../pipes/date-range.pipe';
+import { DurationPipe } from '../../pipes/duration.pipe';
 
 @Component({
   selector: 'app-resume-entry',
   standalone: true,
+  imports: [TranslateModule, DateRangePipe, DurationPipe],
   templateUrl: './resume-entry.component.html',
   styleUrl: './resume-entry.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,7 +19,8 @@ export class ResumeEntryComponent {
   public readonly title = input.required<string>();
   public readonly subtitle = input.required<string>();
   public readonly location = input.required<string>();
-  public readonly dateRange = input.required<string>();
+  public readonly startDate = input.required<string>();
+  public readonly endDate = input<string>();
 
   public readonly permalinkFragment = input<string>();
   public readonly permalinkId = input<number>();
@@ -26,6 +31,7 @@ export class ResumeEntryComponent {
   private readonly router = inject(Router);
   private readonly permalinkService = inject(PermalinkService);
   private readonly baseHref = inject(APP_BASE_HREF);
+  private readonly translate = inject(TranslateService);
 
   public readonly isHighlighted = computed(() => {
     const active = this.permalinkService.activeFragment();
@@ -52,10 +58,10 @@ export class ResumeEntryComponent {
     navigator.clipboard
       .writeText(url)
       .then(() => {
-        this.toastService.show('Lien copié !', 'success');
+        this.toastService.show(this.translate.instant('RESUME_ENTRY.COPIED'), 'success');
       })
       .catch(() => {
-        this.toastService.show('Erreur lors de la copie.', 'error');
+        this.toastService.show(this.translate.instant('COMMON.ERROR'), 'error');
       });
   }
 }

@@ -40,3 +40,4 @@ Thumbs.db
 
 .gemini/
 gha-creds-*.json
+src/app/core/profile.registry.ts

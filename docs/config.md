@@ -24,10 +24,10 @@ Variables for consistent spacing, sizing, and common layout values are defined i
 
 The application allows users to easily configure the profile picture displayed in the navbar.
 
-- **File:** `config/profile.ts`
+- **File:** `config/profile.<locale>.ts` (e.g., `config/profile.en_US.ts`)
 - **Purpose:** Specify the path to the profile picture image.
 - **Structure:** A TypeScript constant `PROFILE_CONFIG` exports an object with a `profilePicturePath` property.
 - **Usage:**
-  1.  Place your desired profile picture image (e.g., `profile-picture.jpg`) into the `src/assets/` directory.
-  2.  Update the `profilePicturePath` value in `config/profile.ts` to reflect the path to your image (e.g., `'assets/my-new-profile.png'`).
+  1.  Place your desired profile picture image (e.g., `profile-picture.jpg`) into the `public/` directory (or a subdirectory).
+  2.  Update the `profilePicturePath` value in `config/profile.<locale>.ts` to reflect the path to your image (e.g., `'profile-picture.png'`).
   3.  Rebuild the application for changes to take effect.

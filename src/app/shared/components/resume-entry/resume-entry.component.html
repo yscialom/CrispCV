@@ -11,8 +11,8 @@
     <button
       class="resume-entry__permalink-btn"
       (click)="copyLink($event)"
-      title="Copier le lien permanent vers cet élément"
-      aria-label="Copier le lien permanent"
+      [title]="'RESUME_ENTRY.COPY_LINK_TITLE' | translate"
+      [attr.aria-label]="'RESUME_ENTRY.COPY_LINK_ARIA' | translate"
     >
       <i class="fas fa-link" aria-hidden="true"></i>
     </button>
@@ -26,7 +26,15 @@
 
     <div class="resume-entry__row">
       <span class="resume-entry__subtitle">{{ subtitle() }}</span>
-      <span class="resume-entry__dates">{{ dateRange() }}</span>
+      <span
+        class="resume-entry__dates"
+        [title]="startDate() + (endDate() ? ' – ' + endDate() : '')"
+      >
+        {{ startDate() | dateRange: endDate() }}
+        @if (startDate() | duration: endDate(); as dur) {
+          ({{ dur }})
+        }
+      </span>
     </div>
   </header>
 
