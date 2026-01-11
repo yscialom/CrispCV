@@ -1,4 +1,5 @@
 make the website better looking on smartphones
+add certifications
 add a comment at the top of /tools/generate-profile-registry.js explaining what this file is used for
 add a CONTRIBUTING.md file, explaining how to request features, do PR and add translations
 redo the doc to split the developers docs (existing doc) and the user docs (todo)
