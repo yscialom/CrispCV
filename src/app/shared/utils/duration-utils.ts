@@ -78,7 +78,9 @@ export class DurationUtils {
     }
 
     // Fallback
-    console.warn(`[DurationUtils] Could not parse date string: "${dateStr}". Falling back to today.`);
+    console.warn(
+      `[DurationUtils] Could not parse date string: "${dateStr}". Falling back to today.`,
+    );
     return new Date();
   }
 }
