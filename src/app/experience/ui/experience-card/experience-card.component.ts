@@ -33,7 +33,8 @@ export class ExperienceCardComponent {
     return !this.experience().keywords?.includes(selectedKeyword);
   });
 
-  public toggleKeyword(keyword: string): void {
+  public toggleKeyword(keyword: string, event: MouseEvent): void {
+    event.stopPropagation();
     this.keywordService.setKeyword(keyword);
   }
 }

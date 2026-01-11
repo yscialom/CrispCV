@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { ResumeDataService } from './resume-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DurationUtils } from '../../shared/utils/duration-utils';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,12 @@ export class KeywordService {
   private translateService = inject(TranslateService);
 
   public readonly selectedKeyword = signal<string | null>(null);
+
+  constructor() {
+    this.translateService.onLangChange.pipe(takeUntilDestroyed()).subscribe(() => {
+      this.selectedKeyword.set(null);
+    });
+  }
 
   public setKeyword(keyword: string | null): void {
     if (this.selectedKeyword() === keyword) {

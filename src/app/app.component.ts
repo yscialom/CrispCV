@@ -8,6 +8,7 @@ import { DOCUMENT } from '@angular/common';
 import { AppConfigService } from './core/services/app-config.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SUPPORTED_LANGUAGES } from './core/profile.registry';
+import { KeywordService } from './core/services/keyword.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,16 @@ import { SUPPORTED_LANGUAGES } from './core/profile.registry';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(document:click)': 'resetKeywordFilter()',
+  },
 })
 export class AppComponent {
   private readonly titleService = inject(Title);
   private readonly appConfigService = inject(AppConfigService);
   private readonly document = inject(DOCUMENT);
   private readonly translate = inject(TranslateService);
+  private readonly keywordService = inject(KeywordService);
 
   constructor() {
     this.titleService.setTitle(this.appConfigService.appConfig.appTitle);
@@ -33,5 +38,9 @@ export class AppComponent {
     const browserLang = this.translate.getBrowserLang();
     const matchingLang = SUPPORTED_LANGUAGES.find((l) => l.startsWith(browserLang || ''));
     this.translate.use(matchingLang || 'fr_FR');
+  }
+
+  protected resetKeywordFilter(): void {
+    this.keywordService.selectedKeyword.set(null);
   }
 }

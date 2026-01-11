@@ -65,18 +65,18 @@ describe('DurationUtils', () => {
     });
 
     it('should format correctly in French', () => {
-        translate.currentLang = 'fr_FR';
-        vi.spyOn(translate, 'instant').mockImplementation((key: string | string[]) => {
-            if (typeof key !== 'string') return key;
-            const translations: Record<string, string> = {
-              'DURATION.YEAR_PLURAL': 'ans',
-              'DURATION.YEAR_SINGULAR': 'an',
-              'DURATION.MONTH': 'mois',
-            };
-            return translations[key] || key;
-          });
-        // 1.5 in FR uses comma
-        expect(DurationUtils.formatDuration(18, translate)).toBe('1,5 ans');
+      translate.currentLang = 'fr_FR';
+      vi.spyOn(translate, 'instant').mockImplementation((key: string | string[]) => {
+        if (typeof key !== 'string') return key;
+        const translations: Record<string, string> = {
+          'DURATION.YEAR_PLURAL': 'ans',
+          'DURATION.YEAR_SINGULAR': 'an',
+          'DURATION.MONTH': 'mois',
+        };
+        return translations[key] || key;
+      });
+      // 1.5 in FR uses comma
+      expect(DurationUtils.formatDuration(18, translate)).toBe('1,5 ans');
     });
   });
 });

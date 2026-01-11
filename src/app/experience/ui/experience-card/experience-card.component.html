@@ -15,7 +15,7 @@
           <span
             class="resume-entry__keyword"
             [class.resume-entry__keyword--active]="keyword === keywordService.selectedKeyword()"
-            (click)="toggleKeyword(keyword)"
+            (click)="toggleKeyword(keyword, $event)"
             [title]="keywordService.getStats(keyword)"
           >
             {{ keyword }}

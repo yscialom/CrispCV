@@ -7,8 +7,10 @@ import { signal, computed } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { vi } from 'vitest';
 import { TranslateModule } from '@ngx-translate/core';
+import { KeywordService } from './core/services/keyword.service';
 
 describe('AppComponent', () => {
+  let keywordService: KeywordService;
   // Mock ResumeDataService
   const mockProfile = signal<Profile>({
     name: 'Mock John Doe',
@@ -54,5 +56,18 @@ describe('AppComponent', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Mock John Doe');
+  });
+
+  it('should reset keyword filter on document click', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    keywordService = TestBed.inject(KeywordService);
+    
+    keywordService.selectedKeyword.set('SomeKeyword');
+    expect(keywordService.selectedKeyword()).toBe('SomeKeyword');
+    
+    document.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    fixture.detectChanges();
+    
+    expect(keywordService.selectedKeyword()).toBeNull();
   });
 });
