@@ -9,6 +9,7 @@ COPY angular.json tsconfig.json tsconfig.app.json ./
 COPY src/ ./src/
 COPY public/ ./public/
 COPY config/ ./config/
+COPY tools/ ./tools/
 
 RUN npm run build
 
