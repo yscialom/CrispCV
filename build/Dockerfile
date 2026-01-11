@@ -2,6 +2,8 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
+ARG APP_VERSION=v0.0.0
+
 COPY package.json package-lock.json* ./
 RUN npm install
 
@@ -11,7 +13,7 @@ COPY public/ ./public/
 COPY config/ ./config/
 COPY tools/ ./tools/
 
-RUN npm run build
+RUN APP_VERSION=$APP_VERSION npm run build
 
 # Stage 2: Serve the application from a lightweight server
 FROM jitesoft/lighttpd:latest
