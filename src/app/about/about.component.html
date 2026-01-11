@@ -51,22 +51,6 @@
         }
       </ul>
 
-      @if (skills().length > 0) {
-        <h3>{{ 'ABOUT.SKILLS' | translate }}</h3>
-        <ul class="skills-list">
-          @for (skill of skills(); track skill.name) {
-            <li [title]="getLanguageLevelLabel(skill.level) | translate">
-              <span class="skill-name">{{ skill.name }}</span>
-              <span class="skill-dots">
-                @for (i of [1, 2, 3, 4, 5]; track i) {
-                  <span class="dot" [class.filled]="i <= skill.level"></span>
-                }
-              </span>
-            </li>
-          }
-        </ul>
-      }
-
       @if (languages().length > 0) {
         <h3>{{ 'ABOUT.LANGUAGES' | translate }}</h3>
         <ul class="skills-list">

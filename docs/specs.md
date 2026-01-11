@@ -637,33 +637,7 @@ _Requirements:_
 : [#11](https://github.com/yscialom/CrispCV/pull/11)
 
 **Release**
+
 : v0.1.0
 
----
 
-## Skills Section on 'About Me' Page
-
-**ID**
-: `18`
-
-**Description**
-: Implement a "Skills" section on the "About Me" page to display general technical skills. This section complements the existing "Languages" section and uses the same visual style.
-
-_Key Features_:
-
-- **Data Source:** Pulls data from the `skills` array in the `Resume` configuration.
-- **Visual Representation:** Each skill is displayed with its name and a visual "dots" indicator (1-5) representing the proficiency level.
-- **Interactivity:** Hovering over the dots displays a localized tooltip with the text equivalent of the level (e.g., "Intermediate", "Expert").
-- **Layout:** Positioned prominently on the "About Me" page, ensuring consistent typography and spacing.
-
-**Status**
-: `done`
-
-**Branch**
-: `feature/18-about-skills-section`
-
-**PR**
-:
-
-**Release**
-:

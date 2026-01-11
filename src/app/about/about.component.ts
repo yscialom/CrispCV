@@ -22,7 +22,6 @@ export class AboutComponent {
 
   profile = this.resumeDataService.profile;
 
-  skills = computed(() => this.resumeDataService.skills() || []);
   languages = computed(() => this.profile().languages || []);
   socialLinks = computed(() => this.profile().socialLinks || []);
   volunteering = computed(() => this.profile().volunteering || []);
