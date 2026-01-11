@@ -1,3 +1,5 @@
+![Pull Request Validation](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)
+
 # Angular Resume / Portfolio
 
 A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
