@@ -1,0 +1,13 @@
+$mobile-width: 768px;
+
+@mixin down($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include down($mobile-width) {
+    @content;
+  }
+}
