@@ -1,0 +1,39 @@
+# Mobile Hamburger Menu Implementation Plan
+
+## Goal
+Implement a collapsible hamburger menu for the top navbar on mobile devices to handle varying navigation link lengths and improve the UI on narrow screens.
+
+## Design Specification
+
+### 1. Desktop (Unchanged)
+- **Behavior:** Keep the current horizontal tabs layout.
+- **Visuals:** Items are styled as interactive buttons/tabs in a row.
+
+### 2. Mobile (New Pattern)
+- **Initial State (Collapsed):**
+  - Navigation items (`<ul>`) are hidden.
+  - A new toggle button appears below the profile summary.
+  - Button text: "Menu" (localized) with a hamburger icon (☰).
+- **Expanded State:**
+  - The navigation items appear in a vertical stack (column).
+  - Each item is full-width for better touch accessibility.
+  - The toggle button icon changes to "Close" (✖).
+- **Transition:** Use a smooth animation for expanding/collapsing the menu.
+
+## Technical Tasks
+1.  **State Management:** Add a `isMenuOpen` Signal to `NavbarComponent`.
+2.  **HTML Structure:**
+    - Add a `<button>` for the menu toggle, visible only on mobile.
+    - Conditionally apply a class (e.g., `is-open`) to the `nav` or `ul` based on `isMenuOpen()`.
+3.  **SCSS Styling:**
+    - Define mobile-only styles for the hamburger button.
+    - Style the `nav` to be hidden/collapsed by default on mobile.
+    - Implement the vertical stack and expansion logic (e.g., using `max-height` and `overflow: hidden` for animation).
+    - **CRITICAL:** Ensure all changes are wrapped in `@include breakpoints.mobile` or similar to prevent affecting the desktop view.
+4.  **Localization:** Add "NAVBAR.MENU" and "NAVBAR.CLOSE" keys to translation files.
+
+## Progress
+- [ ] Implement toggle logic and button.
+- [ ] Style vertical menu for mobile.
+- [ ] Add animations.
+- [ ] Verify desktop layout remains intact.
