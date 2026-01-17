@@ -1,23 +1,18 @@
-![Pull Request Validation](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)
+# CrispCV - Simple & Elegant Developer Résumé
 
-# Angular Resume / Portfolio
+[![Pull Request Validation](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml)
+[![GitHub Pages](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
 
-## 🚀 Features
+---
 
-- **Modern Stack**: Angular 21+, Standalone Components, Signals for state management.
-- **Clean Design**: "Showcase Quality Code" philosophy, responsive layout, dark/light theme support.
-- **Configurable**: Easily customize colors, content, and layout without touching core logic.
-- **Auto-Deploy**: Built-in GitHub Actions workflow for seamless deployment to GitHub Pages.
-- **Dockerized**: Zero-dependency development environment – just bring Docker and Make.
+## 🚀 For Users: Build Your Own Résumé
 
-## 🛠 Prerequisites
+CrispCV is designed to be easily forked and customized with your own data and style.
 
-- **Docker**: For running the development environment and building the application.
-- **Make**: For executing project commands.
-
-## 🏃 Quick Start (Live in 5 Minutes)
+### Quick Start (Live in 5 Minutes)
 
 1.  **Fork this repository** to your own GitHub account.
 2.  **Create a `pages` branch** (preferably an orphan branch) to store your personal configuration:
@@ -30,116 +25,56 @@ A professional, customizable, and high-performance single-page application (SPA)
     git push origin pages
     ```
 3.  **Enable GitHub Pages**: In your repository settings, go to **Settings > Pages** and set the source to **GitHub Actions**.
-4.  **Success!**: Your resume will be automatically built and deployed to `https://<your-username>.github.io/crispcv/`.
+4.  **Success!**: Your resume will be automatically built and deployed to `https://<your-username>.github.io/CrispCV/`.
 
-## 💻 Local Development
+### Customization
 
-To start the development server with live reload:
+- **Content**: Edit `config/profile.<locale>.ts` to update your profile, experience, and education.
+- **Theme Colors**: Edit `config/_colors.scss` to change the primary, secondary, and accent colors.
+- **Detailed Guide**: See [Configuration Guide](docs/user/config.md).
 
-```bash
-make start
-```
+### Self-Hosting with Docker
 
-Open your browser and navigate to `http://localhost:4200`.
+1.  **Build the image**: `make build-prod-image`
+2.  **Run the container**: `make start-prod`
+    Access the app at `http://localhost:8080`.
 
-## 🔄 Full Workflow
+See [Docker & Installation](docs/user/docker.md) for more details.
 
-### 1. Development (Iteration)
+---
 
-Work on the `develop` branch. Use `make start` to preview features and `make test`, `make lint`, `make format` to ensure code quality.
+## 🛠 For Developers: Contribute & Extend
 
-### 2. Configuration (Your Data)
+CrispCV is built on a "Showcase Quality Code" philosophy, making it a great playground for modern Angular.
 
-Manage your resume data on the `pages` branch. The deployment workflow always pulls `config/profile.*.ts` from this branch, allowing you to keep your personal data separate from the main codebase updates.
+### Local Development
 
-### 3. Deployment (Production)
+1.  Ensure you have **Docker** and **Make** installed.
+2.  Start the dev server: `make start`
+3.  Navigate to `http://localhost:4200`.
 
-- **Code Updates**: Push or merge changes to the `main` branch.
-- **Data Updates**: Push changes to the `pages` branch.
-  Either action will trigger the **Deploy to GitHub Pages** workflow.
+### Workflow & Quality
 
-## ⚙️ Configuration
+- **Linting**: `make lint`
+- **Formatting**: `make format`
+- **Testing**: `make test`
 
-The application is designed to be easily customized.
+### Documentation for Developers
 
-1.  **Content**: Edit `config/profile.<locale>.ts` to update your profile, experience, and education.
-2.  **Theme Colors**: Edit `config/_colors.scss` to change the primary, secondary, and accent colors for light and dark modes.
-3.  **Layout/Spacing**: Edit `src/app/config/_spacing.scss` for global spacing adjustments.
+- [Technical Architecture](docs/dev/technical.md)
+- [Code Guidelines](docs/dev/code-guidelines.md)
+- [Style Guide](docs/dev/style.md)
+- [Feature Specifications](docs/dev/specs.md)
+- [Contributing Guide](CONTRIBUTING.md)
 
-For more details, see [docs/config.md](docs/config.md).
+---
 
-## 🏗 Building
+## 🔄 CI/CD
 
-To build the application artifacts (HTML, CSS, JS) for production:
+This project includes a comprehensive suite of GitHub Actions workflows for automated testing, building, and multi-registry deployment (GitHub Container Registry & Docker Hub).
 
-```bash
-make build
-```
+For details on secrets and workflow triggers, see the [Technical Architecture](docs/dev/technical.md).
 
-The output will be generated in the `dist/` directory on your host machine.
+## 📄 License
 
-## 🚀 Alternative Deployment Options
-
-### Option 1: Docker (Recommended for Self-Hosting)
-
-You can build and run a production-ready Docker image that serves the app using a lightweight web server (lighttpd).
-
-1.  **Build the image**:
-    ```bash
-    make build-prod-image
-    ```
-2.  **Run the container**:
-    ```bash
-    make start-prod
-    ```
-    (Or manually: `docker run -d -p 8080:80 angular-resume-prod`)
-
-Access the app at `http://localhost:8080`.
-
-### Option 2: Static Web Server
-
-If you have an existing web server (Nginx, Apache, AWS S3, etc.):
-
-1.  Run `make build`.
-2.  Copy the contents of the `dist/CrispCV/browser/` directory to your web server's root directory.
-
-## 🔄 CI/CD & Deployment
-
-This project includes a comprehensive suite of GitHub Actions workflows to automate testing, building, and deployment.
-
-### Automated Workflows
-
-1.  **Pull Request Validation**:
-    - Triggers on PRs to the `develop` branch.
-    - Runs unit tests (`make test`).
-    - Verifies the production Docker build (`make build-prod-image`).
-    - **Goal**: Ensure no broken code enters the main development branch.
-
-2.  **GitHub Pages Deployment**:
-    - Triggers on pushes to `main` (code updates) OR `pages` (config updates).
-    - Automatically builds the app, overlaying your personal config from `pages` onto the latest code from `main`.
-    - Deploys to GitHub Pages.
-
-3.  **Release & Publication**:
-    - Triggers when a git tag starting with `v*` is pushed (e.g., `v1.0.0`).
-    - Builds the production Docker image.
-    - Pushes the image to **GitHub Container Registry (GHCR)** and **Docker Hub**.
-    - Automatically manages tags (`latest`, `1`, `1.0`, `1.0.0`).
-
-### Secrets Configuration
-
-To use the **Release & Publication** workflow, you must define the following secrets in your repository settings (`Settings > Secrets and variables > Actions`):
-
-| Secret Name          | Description                                                |
-| :------------------- | :--------------------------------------------------------- |
-| `DOCKERHUB_USERNAME` | Your Docker Hub username.                                  |
-| `DOCKERHUB_TOKEN`    | A Docker Hub Access Token with `Read & Write` permissions. |
-
-_Note: The `GITHUB_TOKEN` for GHCR is handled automatically._
-
-## 📚 Documentation
-
-- [Features & Specs](docs/specs.md)
-- [Technical Guidelines](docs/technical.md)
-- [Style Guide](docs/style.md)
-- [Docker Setup](docs/docker.md)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

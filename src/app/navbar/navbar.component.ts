@@ -7,6 +7,8 @@ import {
   afterNextRender,
   PLATFORM_ID,
   ChangeDetectionStrategy,
+  effect,
+  untracked,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
@@ -31,7 +33,8 @@ import { filter } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnDestroy {
-  protected readonly profile = inject(ResumeDataService).profile;
+  protected readonly resumeDataService = inject(ResumeDataService);
+  protected readonly profile = this.resumeDataService.profile;
   private readonly platformId = inject(PLATFORM_ID);
   private readonly router = inject(Router);
 
@@ -53,6 +56,12 @@ export class NavbarComponent implements OnDestroy {
   private scrollListener: (() => void) | undefined;
 
   constructor() {
+    effect(() => {
+      // Close menu when language changes
+      this.resumeDataService.currentLocale();
+      untracked(() => this.isMenuOpen.set(false));
+    });
+
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event) => {

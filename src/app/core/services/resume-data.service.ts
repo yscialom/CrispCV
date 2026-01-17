@@ -1,6 +1,7 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { APP_CONFIG } from '../../../../config/app.config';
 import {
   Resume,
   Profile,
@@ -26,7 +27,7 @@ export class ResumeDataService {
   private readonly EXPIRY_MS = 3 * 30 * 24 * 60 * 60 * 1000; // ~3 months
 
   public readonly currentLocale = signal<string>(
-    this.translate.currentLang || this.translate.defaultLang || 'fr_FR',
+    this.translate.currentLang || this.translate.defaultLang || APP_CONFIG.defaultLanguage,
   );
 
   constructor() {
@@ -68,7 +69,7 @@ export class ResumeDataService {
       if (match) return match;
     }
 
-    return this.translate.defaultLang || 'fr_FR';
+    return this.translate.defaultLang || APP_CONFIG.defaultLanguage;
   }
 
   private saveLang(lang: string): void {
