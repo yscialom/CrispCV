@@ -1,7 +1,7 @@
 # CrispCV - Simple & Elegant Developer Résumé
 
-[![Pull Request Validation](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml)
-[![GitHub Pages](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml)
+[![Continuous Integration](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml)
+[![Continuous Deployment](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
@@ -19,8 +19,11 @@ CrispCV is designed to be easily forked and customized with your own data and st
     ```bash
     git checkout --orphan pages
     git rm -rf .
-    # Copy your customized config/profile.en_US.ts here
-    git add config/profile.en_US.ts
+    git checkout master -- config/profile.en_US.ts
+    # optional: rename the profile file to reflect your language
+    # optional: create as many file as languages you want to display your résumé in
+    # edit your profile file(s)
+    git add config/profile.*.ts
     git commit -m "feat: add personal resume data"
     git push origin pages
     ```
@@ -49,7 +52,7 @@ CrispCV is built on a "Showcase Quality Code" philosophy, making it a great play
 
 ### Local Development
 
-1.  Ensure you have **Docker** and **Make** installed.
+1.  Ensure you have **Docker** and **GNUMake** installed.
 2.  Start the dev server: `make start`
 3.  Navigate to `http://localhost:4200`.
 
