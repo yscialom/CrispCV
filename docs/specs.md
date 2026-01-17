@@ -627,7 +627,7 @@ _Requirements:_
 : `feature/18-mobile-hamburger-menu`
 
 **PR**
-: 
+:
 
 **Release**
-: 
+:
