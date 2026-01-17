@@ -10,15 +10,41 @@ Implement a collapsible hamburger menu for the top navbar on mobile devices to h
 - **Visuals:** Items are styled as interactive buttons/tabs in a row.
 
 ### 2. Mobile (New Pattern)
-- **Initial State (Collapsed):**
-  - Navigation items (`<ul>`) are hidden.
-  - A new toggle button appears below the profile summary.
-  - Button text: "Menu" (localized) with a hamburger icon (☰).
-- **Expanded State:**
-  - The navigation items appear in a vertical stack (column).
-  - Each item is full-width for better touch accessibility.
-  - The toggle button icon changes to "Close" (✖).
-- **Transition:** Use a smooth animation for expanding/collapsing the menu.
+
+#### Collapsed State (Default)
+The navigation links are hidden. A simple "Menu" button appears below the profile information.
+```text
++---------------------------------------+
+| 🇺🇸 (Left)                  ☀️ (Right) |
+|                                       |
+|             [  Photo  ]               |
+|                                       |
+|           Yankel Scialom              |
+|          Delivery Manager             |
+|                                       |
+|           [  ☰  Menu  ]               | <--- Toggle Button
++---------------------------------------+
+```
+
+#### Expanded State
+Clicking the button slides open the navigation list. Each item is a full-width block for easy tapping.
+```text
++---------------------------------------+
+| 🇺🇸                         ☀️         |
+|                                       |
+|             [  Photo  ]               |
+|                                       |
+|           Yankel Scialom              |
+|                                       |
+|           [  ✖  Close ]               |
+|        -------------------            |
+|            Experience                 |
+|        -------------------            |
+|             Education                 |
+|        -------------------            |
+|               About                   |
++---------------------------------------+
+```
 
 ## Technical Tasks
 1.  **State Management:** Add a `isMenuOpen` Signal to `NavbarComponent`.

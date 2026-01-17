@@ -2,7 +2,9 @@
   "NAVBAR": {
     "EXPERIENCE": "Experience",
     "EDUCATION": "Education",
-    "ABOUT": "About"
+    "ABOUT": "About",
+    "MENU": "Menu",
+    "CLOSE": "Close"
   },
   "ABOUT": {
     "TITLE": "About Me",

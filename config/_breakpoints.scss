@@ -11,3 +11,9 @@ $mobile-width: 768px;
     @content;
   }
 }
+
+@mixin desktop {
+  @media screen and (min-width: #{$mobile-width + 1px}) {
+    @content;
+  }
+}

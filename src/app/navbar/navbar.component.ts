@@ -9,11 +9,12 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { ResumeDataService } from '../core/services/resume-data.service';
 import { ThemeSwitchComponent } from './ui/theme-switch/theme-switch.component';
 import { LanguageSwitchComponent } from './ui/language-switch/language-switch.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -32,16 +33,32 @@ import { TranslateModule } from '@ngx-translate/core';
 export class NavbarComponent implements OnDestroy {
   protected readonly profile = inject(ResumeDataService).profile;
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly router = inject(Router);
 
   private readonly isScrolled = signal(false);
   private readonly isPageTallEnough = signal(true);
+  private readonly currentUrl = signal(this.router.url);
 
   protected readonly isSticky = computed(() => this.isScrolled() && this.isPageTallEnough());
+  protected readonly isMenuOpen = signal(false);
+
+  protected readonly currentPageLabel = computed(() => {
+    const url = this.currentUrl();
+    if (url.includes('/education')) return 'NAVBAR.EDUCATION';
+    if (url.includes('/about')) return 'NAVBAR.ABOUT';
+    return 'NAVBAR.EXPERIENCE';
+  });
 
   private resizeObserver: ResizeObserver | undefined;
   private scrollListener: (() => void) | undefined;
 
   constructor() {
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        this.currentUrl.set(event.urlAfterRedirects);
+      });
+
     afterNextRender(() => {
       this.scrollListener = () => {
         const y = window.scrollY;
@@ -66,6 +83,14 @@ export class NavbarComponent implements OnDestroy {
         this.checkPageHeight();
       }
     });
+  }
+
+  protected toggleMenu(): void {
+    this.isMenuOpen.update((v) => !v);
+  }
+
+  protected closeMenu(): void {
+    this.isMenuOpen.set(false);
   }
 
   private checkPageHeight(): void {

@@ -6,13 +6,30 @@
     <h1>{{ profile().name }}</h1>
     <h2>{{ profile().title }}</h2>
     <p class="profile-summary">{{ profile().summary }}</p>
-    <nav>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      (click)="toggleMenu()"
+      [attr.aria-label]="(isMenuOpen() ? 'NAVBAR.CLOSE' : 'NAVBAR.MENU') | translate"
+    >
+      <i
+        class="fas"
+        [class.fa-chevron-down]="!isMenuOpen()"
+        [class.fa-times]="isMenuOpen()"
+        [class.rotate]="isMenuOpen()"
+      ></i>
+      <span>{{ (isMenuOpen() ? 'NAVBAR.CLOSE' : currentPageLabel()) | translate }}</span>
+    </button>
+
+    <nav [class.is-open]="isMenuOpen()">
       <ul>
         <li>
           <a
             routerLink="/experience"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
           >
             {{ 'NAVBAR.EXPERIENCE' | translate }}
           </a>
@@ -22,6 +39,7 @@
             routerLink="/education"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
           >
             {{ 'NAVBAR.EDUCATION' | translate }}
           </a>
@@ -31,6 +49,7 @@
             routerLink="/about"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
           >
             {{ 'NAVBAR.ABOUT' | translate }}
           </a>

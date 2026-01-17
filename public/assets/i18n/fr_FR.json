@@ -2,7 +2,9 @@
   "NAVBAR": {
     "EXPERIENCE": "Expériences",
     "EDUCATION": "Études & Diplômes",
-    "ABOUT": "À propos"
+    "ABOUT": "À propos",
+    "MENU": "Menu",
+    "CLOSE": "Fermer"
   },
   "ABOUT": {
     "TITLE": "À propos de moi",

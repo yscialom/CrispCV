@@ -621,7 +621,7 @@ _Requirements:_
 - **Smoothness**: The expansion and collapse should be animated for a polished feel.
 
 **Status**
-: `todo`
+: `done`
 
 **Branch**
 : `feature/18-mobile-hamburger-menu`

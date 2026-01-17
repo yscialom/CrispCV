@@ -122,8 +122,58 @@ $transition-theme: 0.3s ease;
       opacity: 1;
     }
 
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: spacing.$spacing-small;
+      background-color: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: spacing.$spacing-x-small spacing.$spacing-medium;
+      border-radius: spacing.$border-radius-standard;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+
+      @include breakpoints.mobile {
+        display: flex;
+        width: 100%; // Make it wide enough to be easily tappable
+      }
+
+      &:hover {
+        background-color: var(--accent);
+        color: var(--primary-bg);
+      }
+
+      i {
+        transition: transform 0.3s ease;
+
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
     nav {
       width: 100%;
+
+      @include breakpoints.mobile {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height $transition-layout,
+          opacity $transition-layout,
+          margin-top $transition-layout;
+
+        &.is-open {
+          max-height: 25rem; // Enough to fit all links
+          opacity: 1;
+          margin-top: spacing.$spacing-small;
+        }
+      }
 
       ul {
         display: flex;
@@ -134,8 +184,10 @@ $transition-theme: 0.3s ease;
         gap: spacing.$spacing-medium;
 
         @include breakpoints.mobile {
-          justify-content: center;
-          flex-wrap: wrap;
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          gap: spacing.$spacing-small;
         }
       }
 
@@ -150,6 +202,11 @@ $transition-theme: 0.3s ease;
           background-color $transition-theme,
           color $transition-theme,
           border-color $transition-theme;
+
+        @include breakpoints.mobile {
+          display: block;
+          text-align: center;
+        }
 
         &.active {
           background-color: var(--accent);
