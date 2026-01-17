@@ -1,6 +1,7 @@
 export interface Resume extends Profile {
   experiences: Experience[];
   educations: Education[];
+  certifications?: Certification[];
   skills: Skill[];
 }
 
@@ -71,6 +72,15 @@ export interface Education {
   startDate: string;
   endDate: string;
   description?: string;
+}
+
+export interface Certification {
+  name: string;
+  organization: string;
+  location?: string;
+  date: string;
+  description?: string;
+  verificationUrl?: string;
 }
 
 export interface Skill {

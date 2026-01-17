@@ -29,6 +29,10 @@
   "EDUCATION": {
     "TITLE": "Études & Diplômes"
   },
+  "CERTIFICATIONS": {
+    "TITLE": "Certifications",
+    "VIEW_CERTIFICATE": "Voir le certificat"
+  },
   "FOOTER": {
     "FORK_US": "clonez-nous sur github"
   },

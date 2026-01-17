@@ -6,3 +6,14 @@
     }
   </div>
 </section>
+
+@if (certifications().length > 0) {
+  <section class="resume-section">
+    <h2>{{ 'CERTIFICATIONS.TITLE' | translate }}</h2>
+    <div class="resume-section__list">
+      @for (cert of certifications(); track cert.name; let first = $first) {
+        <app-certification-card [certification]="cert" [isFirst]="first" />
+      }
+    </div>
+  </section>
+}

@@ -30,6 +30,7 @@ describe('EducationComponent', () => {
 
   const mockResumeDataService = {
     educations: computed(() => mockEducations),
+    certifications: computed(() => []),
   };
 
   const mockPermalinkService = {

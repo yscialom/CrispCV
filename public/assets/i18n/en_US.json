@@ -29,6 +29,10 @@
   "EDUCATION": {
     "TITLE": "Education"
   },
+  "CERTIFICATIONS": {
+    "TITLE": "Certifications",
+    "VIEW_CERTIFICATE": "View certificate"
+  },
   "FOOTER": {
     "FORK_US": "fork us on github"
   },

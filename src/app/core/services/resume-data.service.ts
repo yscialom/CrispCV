@@ -1,7 +1,14 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-import { Resume, Profile, Experience, Education, Skill } from '../../core/models/resume.models';
+import {
+  Resume,
+  Profile,
+  Experience,
+  Education,
+  Certification,
+  Skill,
+} from '../../core/models/resume.models';
 import { PROFILES, SUPPORTED_LANGUAGES } from '../profile.registry';
 
 interface PersistedLang {
@@ -80,6 +87,9 @@ export class ResumeDataService {
   public readonly profile = computed<Profile>(() => this.resumeConfig() as Profile);
   public readonly experiences = computed<Experience[]>(() => this.resumeConfig().experiences);
   public readonly educations = computed<Education[]>(() => this.resumeConfig().educations);
+  public readonly certifications = computed<Certification[]>(
+    () => this.resumeConfig().certifications || [],
+  );
   public readonly skills = computed<Skill[]>(() => this.resumeConfig().skills);
 
   public getSupportedLanguages(): string[] {

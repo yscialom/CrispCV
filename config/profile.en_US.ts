@@ -352,6 +352,20 @@ Today, I thrive in team management and the improvement of development processes,
       endDate: '2013',
     },
   ],
+  certifications: [
+    {
+      name: 'Certified ScrumMaster (CSM)',
+      organization: 'Scrum Alliance',
+      date: '2019',
+      verificationUrl: 'https://bcert.me/example',
+    },
+    {
+      name: 'AWS Certified Solutions Architect – Associate',
+      organization: 'Amazon Web Services (AWS)',
+      date: '2023',
+      verificationUrl: 'https://www.credly.com/example',
+    },
+  ],
   skills: [
     { name: 'French', level: 5 },
     { name: 'English', level: 5 },

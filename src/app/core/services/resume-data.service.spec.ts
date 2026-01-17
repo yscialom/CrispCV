@@ -116,5 +116,10 @@ describe('ResumeDataService', () => {
       const experiences = service.experiences();
       expect(experiences).toEqual((PROFILE_CONFIG as Resume).experiences);
     });
+
+    it('should return certifications data from configuration', () => {
+      const certifications = service.certifications();
+      expect(certifications).toEqual((PROFILE_CONFIG as Resume).certifications || []);
+    });
   });
 });

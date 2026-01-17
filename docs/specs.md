@@ -631,3 +631,30 @@ _Requirements:_
 
 **Release**
 :
+
+---
+
+## Certifications
+
+**ID**
+: `19`
+
+**Description**
+: Add a new "Certifications" section to the Education page. This section displays professional certifications from the configuration file, following the same visual style as education and experience cards.
+
+- **Data Model:** Includes certification name, organization, date, optional location, description, and an optional verification link.
+- **Layout:** Displayed below the Education section on the `/education` page. If a verification link is provided, it is displayed as "View certificate" with an external link icon, matching the style of project links.
+- **Permalinks:** Each certification entry has its own unique ID and permalink fragment (e.g., `#scrum-alliance-certified-scrummaster-csm-2019-19`).
+- **Consistency:** Uses the `app-resume-entry` component for a uniform look and feel.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/19-certifications`
+
+**PR**
+:
+
+**Release**
+:
