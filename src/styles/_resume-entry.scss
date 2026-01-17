@@ -1,10 +1,15 @@
 @use 'spacing' as spacing;
+@use 'breakpoints' as breakpoints;
 
 @mixin resume-entry-keywords {
   &__keywords-container {
     display: flex;
     justify-content: flex-end;
     margin-bottom: spacing.$spacing-small;
+
+    @include breakpoints.mobile {
+      justify-content: flex-start;
+    }
   }
 
   &__keywords {
@@ -12,6 +17,10 @@
     flex-wrap: wrap;
     gap: spacing.$spacing-x-small;
     justify-content: flex-end;
+
+    @include breakpoints.mobile {
+      justify-content: flex-start;
+    }
   }
 
   &__keyword {
