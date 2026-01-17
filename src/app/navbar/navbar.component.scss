@@ -8,7 +8,7 @@ $transition-theme: 0.3s ease;
 
 :host {
   display: block;
-  position: -webkit-sticky;
+  position: sticky;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -235,6 +235,7 @@ $transition-theme: 0.3s ease;
 
       h1 {
         font-size: spacing.$spacing-large;
+
         @include breakpoints.mobile {
           font-size: spacing.$spacing-medium;
         }
@@ -242,6 +243,7 @@ $transition-theme: 0.3s ease;
 
       h2 {
         font-size: spacing.$spacing-medium;
+
         @include breakpoints.mobile {
           max-height: 0;
           opacity: 0;
