@@ -44,12 +44,18 @@ export class NavbarComponent implements OnDestroy {
   constructor() {
     afterNextRender(() => {
       this.scrollListener = () => {
-        this.isScrolled.set(window.scrollY > 0);
+        const y = window.scrollY;
+        // Hysteresis: prevent flickering at the boundary
+        if (this.isScrolled()) {
+          if (y < 5) this.isScrolled.set(false);
+        } else {
+          if (y > 20) this.isScrolled.set(true);
+        }
       };
       window.addEventListener('scroll', this.scrollListener, { passive: true });
 
       // Initial check
-      this.isScrolled.set(window.scrollY > 0);
+      this.isScrolled.set(window.scrollY > 20);
 
       if (typeof ResizeObserver !== 'undefined') {
         this.resizeObserver = new ResizeObserver(() => {
@@ -65,8 +71,9 @@ export class NavbarComponent implements OnDestroy {
   private checkPageHeight(): void {
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
-    // Threshold to prevent loop: must be > viewport + navbar shrink amount (approx 66px)
-    const threshold = 100;
+    // Ensure we have enough scrollable content to justify shrinking.
+    // Navbar shrinks by ~100px. Safety buffer prevents loops.
+    const threshold = 150;
     this.isPageTallEnough.set(scrollHeight > clientHeight + threshold);
   }
 

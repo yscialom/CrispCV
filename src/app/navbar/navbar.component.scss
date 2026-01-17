@@ -7,19 +7,22 @@ $transition-layout: 500ms ease-in-out;
 $transition-theme: 0.3s ease;
 
 :host {
-  display: contents;
-}
-
-.navbar {
+  display: block;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
+}
+
+.navbar {
   display: flex;
   align-items: stretch;
   padding: spacing.$spacing-medium;
   background-color: var(--primary-bg);
   color: var(--text);
   min-height: $navbar-height-default;
+  box-sizing: border-box;
   transition:
     min-height $transition-layout,
     padding $transition-layout,
@@ -45,6 +48,7 @@ $transition-theme: 0.3s ease;
     @include breakpoints.mobile {
       margin-right: 0;
       margin-bottom: spacing.$spacing-medium;
+      transition: margin-bottom $transition-layout;
     }
 
     img {
@@ -109,6 +113,8 @@ $transition-theme: 0.3s ease;
       font-size: spacing.$spacing-large;
       color: var(--text);
       line-height: 1.2;
+      max-height: 3rem;
+      opacity: 1;
     }
 
     .profile-summary {
@@ -171,10 +177,28 @@ $transition-theme: 0.3s ease;
     flex-shrink: 0;
 
     @include breakpoints.mobile {
-      position: absolute;
-      top: spacing.$spacing-x-small;
-      right: spacing.$spacing-x-small;
+      position: static; // Reset container position
       padding: 0;
+      width: 100%;
+    }
+
+    // Target the components directly for mobile positioning
+    app-language-switch {
+      @include breakpoints.mobile {
+        position: absolute;
+        top: spacing.$spacing-x-small;
+        left: spacing.$spacing-x-small;
+        z-index: 1003;
+      }
+    }
+
+    app-theme-switch {
+      @include breakpoints.mobile {
+        position: absolute;
+        top: spacing.$spacing-x-small;
+        right: spacing.$spacing-x-small;
+        z-index: 1003;
+      }
     }
   }
 
@@ -185,15 +209,14 @@ $transition-theme: 0.3s ease;
     box-shadow: spacing.$shadow-standard;
 
     @include breakpoints.mobile {
-      flex-direction: row; // Revert to row for sticky/compact mode to save space
-      padding-top: spacing.$spacing-xx-small;
-      padding-bottom: spacing.$spacing-xx-small;
+      flex-direction: column;
+      padding-bottom: spacing.$spacing-x-small;
     }
 
     .profile-picture {
       @include breakpoints.mobile {
-        margin-right: spacing.$spacing-medium;
-        margin-bottom: 0;
+        margin-right: 0;
+        margin-bottom: spacing.$spacing-x-small;
       }
 
       img {
@@ -205,22 +228,24 @@ $transition-theme: 0.3s ease;
       gap: spacing.$spacing-x-small;
 
       @include breakpoints.mobile {
-        align-items: flex-start; // Left align in sticky mode
+        align-items: center;
         padding-left: 0;
-        width: auto;
+        gap: spacing.$spacing-xx-small;
       }
 
       h1 {
         font-size: spacing.$spacing-large;
         @include breakpoints.mobile {
-          font-size: spacing.$spacing-medium; // Smaller text on sticky mobile
+          font-size: spacing.$spacing-medium;
         }
       }
 
       h2 {
         font-size: spacing.$spacing-medium;
         @include breakpoints.mobile {
-          display: none; // Hide title on sticky mobile to save space
+          max-height: 0;
+          opacity: 0;
+          margin: 0;
         }
       }
 
@@ -233,30 +258,11 @@ $transition-theme: 0.3s ease;
 
       nav {
         @include breakpoints.mobile {
-          display: none; // Hide nav on sticky mobile? Or keep it?
-          // Strategy: The sticky header usually just shows identity.
-          // Since the user is scrolling down, they are reading.
-          // To navigate, they scroll up or we need a hamburger menu.
-          // For now, let's keep the nav visible but compact if possible,
-          // OR hide it as "scrolled past".
-          // Let's hide it to keep the sticky header strictly for "Identity" context
-          // as per "Dynamic Shrinking" description.
-          // HOWEVER, if we hide the nav, the user can't switch sections easily.
-          // Let's try keeping it but allowing it to scroll horizontally or wrap.
-          display: block; // Restore display
+          ul {
+            gap: spacing.$spacing-small;
+          }
         }
       }
     }
-
-    // Special override for sticky mobile:
-    // We want a very compact bar.
-    // [Pic] [Name] [Controls]
-    // And maybe nav?
-    // Let's refine the "sticky mobile" plan:
-    // When sticky on mobile, it should look like the desktop sticky:
-    // Row layout, small picture, name, controls.
-    // Nav might be too wide.
-    // Let's try hiding the Nav in sticky mode on mobile for now to save extreme space
-    // or keep it if it fits.
   }
 }
