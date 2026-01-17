@@ -627,7 +627,7 @@ _Requirements:_
 : `feature/18-mobile-hamburger-menu`
 
 **PR**
-:
+: [#24](https://github.com/yscialom/CrispCV/pull/24)
 
 **Release**
 :
@@ -654,7 +654,7 @@ _Requirements:_
 : `feature/19-certifications`
 
 **PR**
-:
+: [#24](https://github.com/yscialom/CrispCV/pull/24)
 
 **Release**
 :
