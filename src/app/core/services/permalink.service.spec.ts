@@ -49,6 +49,13 @@ describe('PermalinkService', () => {
         endDate: '2018-01-01',
       },
     ],
+    certifications: [
+      {
+        name: 'Safe Practitioner',
+        organization: 'Scaled Agile',
+        date: '2021-06-01',
+      },
+    ],
     skills: [],
     personalProjects: [
       {
@@ -64,6 +71,7 @@ describe('PermalinkService', () => {
       resumeConfig: signal(mockResumeData),
       experiences: signal(mockResumeData.experiences),
       educations: signal(mockResumeData.educations),
+      certifications: signal(mockResumeData.certifications || []),
       profile: signal(mockResumeData),
     };
 
@@ -87,18 +95,23 @@ describe('PermalinkService', () => {
       // 2. Experience (Amazon or Startup) - 2018 (Stable sort check)
       // 3. Experience (Amazon or Startup) - 2018
       // 4. Experience (Google) - 2020
-      // 5. Project (MyProject) - 2022
+      // 5. Certification (Scaled Agile) - 2021
+      // 6. Project (MyProject) - 2022
 
       const map = service.getPermalinkMap();
-      expect(map.size).toBe(5);
+      expect(map.size).toBe(6);
 
       const educationEntry = Array.from(map.values()).find((e) => e.type === 'education');
       expect(educationEntry?.id).toBe(1);
       expect(educationEntry?.fragment).toBe('mit-master-2016-01-01-1');
 
+      const certEntry = Array.from(map.values()).find((e) => e.type === 'certification');
+      expect(certEntry?.id).toBe(5);
+      expect(certEntry?.fragment).toBe('scaled-agile-safe-practitioner-2021-06-01-5');
+
       const projectEntry = Array.from(map.values()).find((e) => e.type === 'project');
-      expect(projectEntry?.id).toBe(5);
-      expect(projectEntry?.fragment).toBe('myproject-5');
+      expect(projectEntry?.id).toBe(6);
+      expect(projectEntry?.fragment).toBe('myproject-6');
     });
 
     it('should generate correct fragments for different types', () => {
@@ -137,11 +150,11 @@ describe('PermalinkService', () => {
     });
 
     it('should resolve project ID to /about', () => {
-      // MyProject is ID 5
-      const result = service.resolveId(5);
+      // MyProject is ID 6
+      const result = service.resolveId(6);
       expect(result).toEqual({
         route: '/about',
-        fragment: 'myproject-5',
+        fragment: 'myproject-6',
       });
     });
   });
@@ -156,6 +169,7 @@ describe('PermalinkService', () => {
       });
       mockResumeDataService.experiences.set([]);
       mockResumeDataService.educations.set([]);
+      mockResumeDataService.certifications.set([]);
       mockResumeDataService.profile.set({ ...mockResumeData, personalProjects: [] });
 
       // Re-inject or re-initialize logic if it's computed in constructor/init

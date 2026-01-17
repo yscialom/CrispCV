@@ -1,4 +1,5 @@
 @use '../../../config/spacing' as spacing;
+@use '../../../config/breakpoints' as breakpoints;
 
 $navbar-height-default: 9.375rem; // 150px
 $navbar-img-height-sticky: 3.75rem; // 60px
@@ -6,19 +7,21 @@ $transition-layout: 500ms ease-in-out;
 $transition-theme: 0.3s ease;
 
 :host {
-  display: contents;
-}
-
-.navbar {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
+}
+
+.navbar {
   display: flex;
   align-items: stretch;
   padding: spacing.$spacing-medium;
   background-color: var(--primary-bg);
   color: var(--text);
   min-height: $navbar-height-default;
+  box-sizing: border-box;
   transition:
     min-height $transition-layout,
     padding $transition-layout,
@@ -26,12 +29,26 @@ $transition-theme: 0.3s ease;
     background-color $transition-theme,
     color $transition-theme;
 
+  @include breakpoints.mobile {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: auto;
+    padding-top: spacing.$spacing-medium;
+  }
+
   .profile-picture {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: spacing.$spacing-medium;
     flex-shrink: 0;
+
+    @include breakpoints.mobile {
+      margin-right: 0;
+      margin-bottom: spacing.$spacing-medium;
+      transition: margin-bottom $transition-layout;
+    }
 
     img {
       width: auto;
@@ -42,6 +59,10 @@ $transition-theme: 0.3s ease;
       transition:
         height $transition-layout,
         border-color $transition-theme;
+
+      @include breakpoints.mobile {
+        height: 6rem; // Smaller initial height on mobile
+      }
     }
   }
 
@@ -56,6 +77,14 @@ $transition-theme: 0.3s ease;
       gap $transition-layout,
       padding-left $transition-layout;
 
+    @include breakpoints.mobile {
+      padding-left: 0;
+      align-items: center;
+      text-align: center;
+      gap: spacing.$spacing-medium;
+      width: 100%;
+    }
+
     h1,
     h2,
     .profile-summary {
@@ -69,6 +98,10 @@ $transition-theme: 0.3s ease;
         margin $transition-layout,
         color $transition-theme;
       overflow: hidden;
+
+      @include breakpoints.mobile {
+        text-align: center;
+      }
     }
 
     h1 {
@@ -79,6 +112,8 @@ $transition-theme: 0.3s ease;
       font-size: spacing.$spacing-large;
       color: var(--text);
       line-height: 1.2;
+      max-height: 3rem;
+      opacity: 1;
     }
 
     .profile-summary {
@@ -87,8 +122,58 @@ $transition-theme: 0.3s ease;
       opacity: 1;
     }
 
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: spacing.$spacing-small;
+      background-color: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: spacing.$spacing-x-small spacing.$spacing-medium;
+      border-radius: spacing.$border-radius-standard;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+
+      @include breakpoints.mobile {
+        display: flex;
+        width: 100%; // Make it wide enough to be easily tappable
+      }
+
+      &:hover {
+        background-color: var(--accent);
+        color: var(--primary-bg);
+      }
+
+      i {
+        transition: transform 0.3s ease;
+
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
     nav {
       width: 100%;
+
+      @include breakpoints.mobile {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height $transition-layout,
+          opacity $transition-layout,
+          margin-top $transition-layout;
+
+        &.is-open {
+          max-height: 25rem; // Enough to fit all links
+          opacity: 1;
+          margin-top: spacing.$spacing-small;
+        }
+      }
 
       ul {
         display: flex;
@@ -97,6 +182,13 @@ $transition-theme: 0.3s ease;
         padding: 0;
         justify-content: flex-start;
         gap: spacing.$spacing-medium;
+
+        @include breakpoints.mobile {
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          gap: spacing.$spacing-small;
+        }
       }
 
       a {
@@ -110,6 +202,11 @@ $transition-theme: 0.3s ease;
           background-color $transition-theme,
           color $transition-theme,
           border-color $transition-theme;
+
+        @include breakpoints.mobile {
+          display: block;
+          text-align: center;
+        }
 
         &.active {
           background-color: var(--accent);
@@ -134,6 +231,31 @@ $transition-theme: 0.3s ease;
     padding-top: spacing.$spacing-x-small;
     padding-left: spacing.$spacing-medium;
     flex-shrink: 0;
+
+    @include breakpoints.mobile {
+      position: static; // Reset container position
+      padding: 0;
+      width: 100%;
+    }
+
+    // Target the components directly for mobile positioning
+    app-language-switch {
+      @include breakpoints.mobile {
+        position: absolute;
+        top: spacing.$spacing-x-small;
+        left: spacing.$spacing-x-small;
+        z-index: 1003;
+      }
+    }
+
+    app-theme-switch {
+      @include breakpoints.mobile {
+        position: absolute;
+        top: spacing.$spacing-x-small;
+        right: spacing.$spacing-x-small;
+        z-index: 1003;
+      }
+    }
   }
 
   &.is-sticky {
@@ -142,19 +264,47 @@ $transition-theme: 0.3s ease;
     padding-bottom: spacing.$spacing-medium;
     box-shadow: spacing.$shadow-standard;
 
-    .profile-picture img {
-      height: $navbar-img-height-sticky;
+    @include breakpoints.mobile {
+      flex-direction: column;
+      padding-bottom: spacing.$spacing-x-small;
+    }
+
+    .profile-picture {
+      @include breakpoints.mobile {
+        margin-right: 0;
+        margin-bottom: spacing.$spacing-x-small;
+      }
+
+      img {
+        height: $navbar-img-height-sticky;
+      }
     }
 
     .profile-content {
       gap: spacing.$spacing-x-small;
 
+      @include breakpoints.mobile {
+        align-items: center;
+        padding-left: 0;
+        gap: spacing.$spacing-xx-small;
+      }
+
       h1 {
         font-size: spacing.$spacing-large;
+
+        @include breakpoints.mobile {
+          font-size: spacing.$spacing-medium;
+        }
       }
 
       h2 {
         font-size: spacing.$spacing-medium;
+
+        @include breakpoints.mobile {
+          max-height: 0;
+          opacity: 0;
+          margin: 0;
+        }
       }
 
       .profile-summary {
@@ -162,6 +312,14 @@ $transition-theme: 0.3s ease;
         opacity: 0;
         margin: 0;
         padding: 0;
+      }
+
+      nav {
+        @include breakpoints.mobile {
+          ul {
+            gap: spacing.$spacing-small;
+          }
+        }
       }
     }
   }

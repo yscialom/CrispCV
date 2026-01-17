@@ -1,7 +1,15 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-import { Resume, Profile, Experience, Education, Skill } from '../../core/models/resume.models';
+import { APP_CONFIG } from '../../../../config/app.config';
+import {
+  Resume,
+  Profile,
+  Experience,
+  Education,
+  Certification,
+  Skill,
+} from '../../core/models/resume.models';
 import { PROFILES, SUPPORTED_LANGUAGES } from '../profile.registry';
 
 interface PersistedLang {
@@ -19,7 +27,7 @@ export class ResumeDataService {
   private readonly EXPIRY_MS = 3 * 30 * 24 * 60 * 60 * 1000; // ~3 months
 
   public readonly currentLocale = signal<string>(
-    this.translate.currentLang || this.translate.defaultLang || 'fr_FR',
+    this.translate.currentLang || this.translate.defaultLang || APP_CONFIG.defaultLanguage,
   );
 
   constructor() {
@@ -61,7 +69,7 @@ export class ResumeDataService {
       if (match) return match;
     }
 
-    return this.translate.defaultLang || 'fr_FR';
+    return this.translate.defaultLang || APP_CONFIG.defaultLanguage;
   }
 
   private saveLang(lang: string): void {
@@ -80,6 +88,9 @@ export class ResumeDataService {
   public readonly profile = computed<Profile>(() => this.resumeConfig() as Profile);
   public readonly experiences = computed<Experience[]>(() => this.resumeConfig().experiences);
   public readonly educations = computed<Education[]>(() => this.resumeConfig().educations);
+  public readonly certifications = computed<Certification[]>(
+    () => this.resumeConfig().certifications || [],
+  );
   public readonly skills = computed<Skill[]>(() => this.resumeConfig().skills);
 
   public getSupportedLanguages(): string[] {

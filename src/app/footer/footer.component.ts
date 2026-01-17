@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { VERSION } from '../core/version';
 
 @Component({
   selector: 'app-footer',
@@ -9,4 +10,6 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {}
+export class FooterComponent {
+  public readonly version = VERSION;
+}

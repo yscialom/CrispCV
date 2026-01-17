@@ -1,4 +1,5 @@
 @use '../../../config/spacing' as spacing;
+@use '../../../config/breakpoints' as breakpoints;
 @use '../../styles/resume-entry' as resume-entry;
 
 .resume-section {
@@ -17,7 +18,7 @@
   grid-template-columns: 1fr;
   gap: spacing.$spacing-x-large;
 
-  @media (width >= 768px) {
+  @include breakpoints.desktop {
     grid-template-columns: 1fr 2fr;
   }
 }
@@ -138,7 +139,7 @@
   grid-template-columns: 1fr;
   gap: spacing.$spacing-medium;
 
-  @media (width >= 768px) {
+  @include breakpoints.desktop {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
   }
 }

@@ -1,3 +1,11 @@
+/**
+ * This script automatically scans the /config directory for profile configuration files
+ * (matching profile.*.ts) and generates a registry file in /src/app/core/profile.registry.ts.
+ * This allows the application to dynamically discover and import all available language profiles
+ * without manual registration.
+ *
+ * It is executed during the build process (pre-build) or during development.
+ */
 const fs = require('fs');
 const path = require('path');
 

@@ -30,7 +30,7 @@
                 "input": "public"
               },
               {
-                "glob": "favicon.ico",
+                "glob": "{favicon.ico,profile-picture.png}",
                 "input": "src/assets",
                 "output": "/"
               }
@@ -50,8 +50,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "6kB",
+                  "maximumError": "10kB"
                 }
               ],
               "outputHashing": "all"

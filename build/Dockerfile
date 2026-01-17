@@ -1,17 +1,19 @@
 # Stage 1: Build the Angular application
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install
+ARG APP_VERSION=v0.0.0
 
-COPY angular.json tsconfig.json tsconfig.app.json ./
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+COPY angular.json tsconfig.json tsconfig.app.json tsconfig.spec.json ./
 COPY src/ ./src/
 COPY public/ ./public/
 COPY config/ ./config/
 COPY tools/ ./tools/
 
-RUN npm run build
+RUN npm run generate-version -- --version=$APP_VERSION && npm run build -- --configuration production
 
 # Stage 2: Serve the application from a lightweight server
 FROM jitesoft/lighttpd:latest

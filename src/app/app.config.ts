@@ -8,6 +8,7 @@ import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { APP_CONFIG } from '../../config/app.config';
 
 import { routes } from './app.routes';
 
@@ -33,7 +34,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(
       TranslateModule.forRoot({
-        defaultLanguage: 'fr_FR',
+        defaultLanguage: APP_CONFIG.defaultLanguage,
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,

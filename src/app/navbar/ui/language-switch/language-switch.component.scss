@@ -1,5 +1,6 @@
 @use 'colors';
 @use 'spacing';
+@use 'breakpoints';
 
 .current-lang {
   display: flex;
@@ -27,6 +28,12 @@
     font-size: 1.2rem;
   }
 
+  .name {
+    @include breakpoints.mobile {
+      display: none;
+    }
+  }
+
   i {
     font-size: 0.7rem;
     margin-left: spacing.$spacing-x-small;
@@ -41,6 +48,12 @@
   right: 0;
   z-index: 1002;
   min-width: 160px;
+
+  @include breakpoints.mobile {
+    right: auto;
+    left: 0;
+  }
+
   padding-top: 10px; // Bridge the overlap and add visual space
   background: transparent;
   list-style: none;
@@ -91,8 +104,6 @@
   display: inline-block;
   z-index: 1001;
 
-  // CSS Hover is the primary mechanism for desktop
-  &:hover .lang-dropdown,
   &.is-open .lang-dropdown {
     display: block;
   }
