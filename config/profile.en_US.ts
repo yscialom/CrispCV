@@ -156,7 +156,7 @@ Today, I thrive in team management and the improvement of development processes,
           description: `
 - **Release Management**: planning, monitoring, communication.
 - **Infrastructure creation and evolution**: prioritization, planning & monitoring of developments.
-- Management of **schedules**, **risques**, and **program alerts**.
+- Management of **schedules**, **risks**, and **program alerts**.
 - Implementation of a **new distributed grid calculation technology** at Natixis: GridGain.
 - **Synchronization** of the Pricing Services team with: infrastructure teams, operations teams, security teams, architecture teams, etc.
 - **Management and planning of evolutions** related to data security, software, and infrastructure elements: DMZ, Illumio, Disaster Recovery Plan, awareness training & control of developers regarding source code security vulnerabilities...`,

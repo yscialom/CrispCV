@@ -76,9 +76,11 @@ format:
 
 # Clean intermediary build files
 clean:
-	@echo "Cleaning intermediary files (node_modules, .angular)..."
+	@echo "Cleaning intermediary files (node_modules, .angular, generated source files)..."
 	@rm -rf node_modules
 	@rm -rf .angular
+	@rm -f src/app/core/profile.registry.ts
+	@rm -f src/app/core/version.ts
 
 # Clean all produced files (dist) and intermediary files
 dist-clean: clean

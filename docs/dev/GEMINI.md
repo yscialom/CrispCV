@@ -4,7 +4,7 @@ If you havn't read all document referenced in this one yet, please do before any
 
 ## Project description
 
-This project is a simple single page application displaying a developpers résumé. It present in a simple
+This project is a simple single page application displaying a developers résumé. It present in a simple
 and nice looking page the professional experience, the education and miscalenous information about the profile.
 
 ## Style guidelines
@@ -19,7 +19,7 @@ See [style.md](./style.md) for more information.
 
 ### Source code
 
-The application use angular 21 with the latest guideline in minde: zoneless, signals for everything, simple router,
+The application use angular 21 with the latest guideline in mind: zoneless, signals for everything, simple router,
 all data comes from a simple TypeScript configuration file and the code base must be crisp and comprehensible by a junior
 developpeer.
 
