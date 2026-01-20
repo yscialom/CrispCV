@@ -54,15 +54,17 @@ export class DateFormatter {
   }
 
   private static getMonthAbbr(date: Date, locale: string): string {
-    const formatter = new Intl.DateTimeFormat(locale, { month: 'short' });
-    const month = formatter.format(date);
+    const formatterShort = new Intl.DateTimeFormat(locale, { month: 'short' });
+    const formatterLong = new Intl.DateTimeFormat(locale, { month: 'long' });
 
-    if (locale.startsWith('en')) {
-      if (!month.endsWith('.')) {
-        return `${month}.`;
-      }
+    const short = formatterShort.format(date);
+    const long = formatterLong.format(date);
+
+    // Only add dot if it's an actual abbreviation and doesn't already have one
+    if (short !== long && !short.endsWith('.')) {
+      return `${short}.`;
     }
 
-    return month;
+    return short;
   }
 }

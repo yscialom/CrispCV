@@ -48,7 +48,8 @@
   "RESUME_ENTRY": {
     "COPY_LINK_TITLE": "Copier le lien permanent vers cet élément",
     "COPY_LINK_ARIA": "Copier le lien permanent",
-    "COPIED": "Lien copié !"
+    "COPIED": "Lien copié !",
+    "CLIPBOARD_ERROR": "Presse-papiers indisponible (contexte non sécurisé ?)"
   },
   "LANGUAGE_LEVELS": {
     "BEGINNER": "Débutant — A",

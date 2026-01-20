@@ -64,10 +64,10 @@ export class ResumeEntryComponent {
           this.toastService.show(this.translate.instant('RESUME_ENTRY.COPIED'), 'success');
         })
         .catch(() => {
-          this.toastService.show(this.translate.instant('COMMON.ERROR'), 'error');
+          this.toastService.show(this.translate.instant('RESUME_ENTRY.CLIPBOARD_ERROR'), 'error');
         });
     } else {
-      this.toastService.show(this.translate.instant('COMMON.ERROR'), 'error');
+      this.toastService.show(this.translate.instant('RESUME_ENTRY.CLIPBOARD_ERROR'), 'error');
     }
   }
 }
