@@ -9,11 +9,12 @@ import { AppConfigService } from './core/services/app-config.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SUPPORTED_LANGUAGES } from './core/profile.registry';
 import { KeywordService } from './core/services/keyword.service';
+import { PrintLayoutComponent } from './core/components/print-layout/print-layout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, ToastComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, ToastComponent, PrintLayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

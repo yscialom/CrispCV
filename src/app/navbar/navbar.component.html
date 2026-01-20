@@ -60,5 +60,13 @@
   <div class="navbar-controls">
     <app-language-switch></app-language-switch>
     <app-theme-switch></app-theme-switch>
+    <button
+      class="print-button"
+      type="button"
+      [attr.aria-label]="'NAVBAR.PRINT' | translate"
+      (click)="print()"
+    >
+      <i class="fas fa-print"></i>
+    </button>
   </div>
 </header>

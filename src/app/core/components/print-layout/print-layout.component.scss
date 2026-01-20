@@ -1,0 +1,317 @@
+@use '../../../../../config/spacing' as spacing;
+
+/* stylelint-disable no-descending-specificity */
+
+:host {
+  display: none;
+}
+
+@media print {
+  :host {
+    display: block;
+    width: 100%;
+  }
+
+  .printable-document {
+    display: block;
+    font-size: 8.5pt;
+    color: #000;
+    background: #fff;
+    width: 100%;
+    margin: 0;
+    line-height: 1.15;
+    position: relative;
+  }
+
+  .print-layout-container {
+    display: block; // Changed from grid to block to allow floating
+    width: 100%;
+  }
+
+  .print-sidebar {
+    float: left;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 12pt;
+    border-right: 1px solid #ddd;
+    padding-right: 10pt;
+    margin-right: 15pt;
+    margin-bottom: 10pt;
+  }
+
+  .print-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 6pt;
+    text-align: left;
+
+    img {
+      width: 70px;
+      height: auto;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .print-names {
+      h1 {
+        margin: 0;
+        font-size: 13pt;
+        line-height: 1.1;
+        color: #000;
+        font-weight: 700;
+      }
+
+      h2 {
+        margin: 2pt 0;
+        font-size: 9pt;
+        color: #333;
+        font-weight: 600;
+      }
+
+      .print-summary {
+        margin: 2pt 0 0;
+        font-size: 7.5pt;
+        color: #444;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .print-personal-info {
+    ::ng-deep {
+      .about-info {
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+
+        h3 {
+          font-size: 9pt;
+          margin-bottom: 4pt;
+          margin-top: 10pt;
+          border-bottom: 1px solid #000;
+          color: #000;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      .info-list {
+        li {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 2pt;
+          margin-top: 6pt;
+
+          strong {
+            font-size: 7pt;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .skills-list {
+        display: block;
+        margin-top: 8pt;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2pt;
+          font-size: 7.5pt;
+        }
+
+        .dot {
+          border: 1px solid #000;
+          background: transparent;
+          
+          &.filled {
+            background: #000;
+          }
+        }
+      }
+
+      .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2pt;
+        margin-top: 8pt;
+
+        .tag {
+          font-size: 7pt;
+          padding: 1pt 4pt;
+          border: 1px solid #000;
+          background: transparent;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+
+  .print-about-description {
+    font-size: 7.5pt;
+    line-height: 1.2;
+    margin-top: 8pt;
+
+    ::ng-deep {
+      .about-description {
+        margin-bottom: 0 !important;
+      }
+
+      .social-links {
+        display: none;
+      }
+    }
+  }
+
+  .print-main-content {
+    display: block;
+  }
+
+  ::ng-deep {
+    .experience-card,
+    .education-card,
+    .resume-entry,
+    .about-info {
+      box-shadow: none !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    ul,
+    ol {
+      margin-top: 0 !important;
+      margin-bottom: 2pt !important;
+      padding-left: 1em !important;
+    }
+
+    li {
+      margin-bottom: 1pt !important;
+      font-size: 8pt !important;
+    }
+
+    p {
+      margin-bottom: 3pt !important;
+      font-size: 8pt !important;
+    }
+
+    .fa-external-link-alt,
+    .fa-link {
+      display: none !important;
+    }
+
+    .project-link,
+    .certification-card__link {
+      display: none !important;
+    }
+
+    a {
+      color: #000 !important;
+      text-decoration: underline;
+    }
+
+    app-experience,
+    app-education {
+      display: block;
+      margin-bottom: 8pt;
+      page-break-inside: auto;
+
+      h2 {
+        font-size: 12pt;
+        border-bottom: 1px solid #000;
+        margin-bottom: 4pt;
+        color: #000;
+        margin-top: 6pt;
+        padding-bottom: 1pt;
+      }
+
+      .resume-section {
+        padding: 0;
+        max-width: none;
+        margin: 0;
+      }
+
+      .cards-list {
+        display: block;
+        gap: 0;
+      }
+    }
+
+    .print-only-bottom {
+      display: block;
+      page-break-inside: auto;
+
+      .resume-section {
+        padding: 0;
+        max-width: none;
+        margin: 0;
+      }
+
+      .about-grid {
+        display: none !important;
+      }
+
+      > .resume-section > h2 {
+        display: none !important;
+      }
+
+      .resume-section-group {
+        margin-top: 6pt;
+        page-break-inside: avoid;
+
+        .group-title {
+          font-size: 11pt;
+          color: #000;
+          border-bottom: 1px solid #ccc;
+          margin-bottom: 4pt;
+          margin-top: 4pt;
+        }
+      }
+    }
+
+    .resume-entry {
+      margin-top: 8pt !important;
+      margin-bottom: 4pt !important;
+      padding-top: 0 !important;
+      padding-left: 8pt !important;
+      border-left: 3pt solid #000 !important;
+      border-top: none !important;
+      page-break-inside: auto;
+      orphans: 4;
+      widows: 4;
+
+      &__header {
+        margin-bottom: 2pt !important;
+      }
+
+      &__title {
+        font-size: 11pt !important;
+      }
+
+      &__subtitle {
+        font-size: 10pt !important;
+      }
+
+      &__location,
+      &__dates {
+        font-size: 8.5pt !important;
+      }
+
+      .resume-entry__keywords-container {
+        margin-top: 1pt !important;
+        margin-bottom: 2pt !important;
+      }
+
+      .resume-entry__keyword {
+        font-size: 7.5pt !important;
+        padding: 1pt 4pt !important;
+        border-radius: 2pt !important;
+      }
+    }
+  }
+}

@@ -102,6 +102,10 @@ export class NavbarComponent implements OnDestroy {
     this.isMenuOpen.set(false);
   }
 
+  protected print(): void {
+    window.print();
+  }
+
   private checkPageHeight(): void {
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;

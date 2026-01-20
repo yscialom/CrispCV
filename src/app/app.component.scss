@@ -1,4 +1,24 @@
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 main {
-  padding: 2rem;
   flex: 1;
+}
+
+@media print {
+  :host {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  app-navbar,
+  main,
+  app-footer,
+  app-toast {
+    display: none !important;
+  }
 }

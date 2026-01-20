@@ -658,3 +658,48 @@ _Requirements:_
 
 **Release**
 :
+
+---
+
+## Print Layout & Button
+
+**ID**
+: `20`
+
+**Description**
+: Enhance the application with a dedicated print mode to produce a clean, professional PDF or paper copy of the resume.
+
+_Features_:
+
+- **Print Button:** A dedicated "print" icon in the navbar (right of the theme selector) that triggers the browser's print dialog (`window.print()`).
+- **Print Layout (`@media print`):**
+  - **Global Cleanup:** Hides all dynamic/interactive elements: navbar links, theme/language toggles, hamburger menu, "View project/certificate" links, and the footer.
+  - **Layout Structure:**
+    - **Float-based Sidebar:** A Left Sidebar (25% width) floated to the left.
+    - **Dynamic Flow:** Content (Experience, Education) flows next to the sidebar on the first page and automatically expands to 100% width on subsequent pages (or once the sidebar ends).
+    - **Left Sidebar Content:**
+      1.  **Identity:** Profile picture, Name, Title, and Summary (from Navbar).
+      2.  **Personal Info:** Date of birth, contact details, etc. (with added vertical spacing between items).
+      3.  **About Me:** The detailed description from the "About" page.
+    - **Main Content Content:**
+      1.  **Experience:** Full list of experience cards.
+      2.  **Education:** Academic background.
+      3.  **Certifications:** Professional certifications.
+      4.  **Volunteering & Projects:** Additional sections.
+  - **Styling:**
+    - Removes box shadows and background colors that waste ink.
+    - Adjusts margins and font sizes for A4/Letter readability.
+    - Prevents awkward page breaks inside cards.
+    - Adds visual vertical separators for resume entries (3pt black left border).
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/20-print-layout`
+
+**PR**
+: none
+
+**Release**
+:

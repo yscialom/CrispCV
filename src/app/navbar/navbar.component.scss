@@ -256,6 +256,40 @@ $transition-theme: 0.3s ease;
         z-index: 1003;
       }
     }
+
+    .print-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px; // Fixed width like icon-only button, or auto if text? Icon only per spec "icon in navbar"
+      // Wait, language selector has padding. Theme selector is toggle.
+      // Language selector: height 32px, padding 0 12px.
+      // Let's make print button look like language selector but square-ish or just same style.
+
+      background: var(--secondary-bg);
+      border: 1px solid var(--accent);
+      border-radius: spacing.$border-radius-standard;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      padding: 0; // Icon only
+
+      &:hover {
+        background: var(--accent);
+        color: var(--primary-bg);
+      }
+
+      @include breakpoints.mobile {
+        display: none; // Maybe hide on mobile as printing is rare? Or absolute position?
+        // Spec didn't say. Let's keep it visible or hide if cluttered.
+        // "navbar links are hidden by default...".
+        // Controls are usually visible.
+        // Let's keep it but position it?
+        // Or just let it sit in flow.
+      }
+    }
   }
 
   &.is-sticky {

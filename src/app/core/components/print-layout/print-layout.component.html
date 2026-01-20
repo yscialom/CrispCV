@@ -1,0 +1,28 @@
+<div class="printable-document">
+  <div class="print-layout-container">
+    <aside class="print-sidebar">
+      <div class="print-identity">
+        <img [src]="profile().profilePicturePath" alt="Profile" />
+        <div class="print-names">
+          <h1>{{ profile().name }}</h1>
+          <h2>{{ profile().title }}</h2>
+          <p class="print-summary">{{ profile().summary }}</p>
+        </div>
+      </div>
+
+      <div class="print-personal-info">
+        <app-about-personal-info></app-about-personal-info>
+      </div>
+
+      <div class="print-about-description">
+        <app-about-description></app-about-description>
+      </div>
+    </aside>
+
+    <main class="print-main-content">
+      <app-experience></app-experience>
+      <app-education></app-education>
+      <app-about class="print-only-bottom"></app-about>
+    </main>
+  </div>
+</div>

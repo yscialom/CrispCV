@@ -1,0 +1,97 @@
+@use '../../../../../config/spacing' as spacing;
+
+:host {
+  display: block;
+}
+
+.about-content {
+  .about-description {
+    margin-bottom: spacing.$spacing-x-large;
+    line-height: 1.6;
+
+    @media print {
+      margin-bottom: spacing.$spacing-medium;
+    }
+  }
+}
+
+.social-links {
+  margin-top: spacing.$spacing-large;
+
+  @media print {
+    margin-top: spacing.$spacing-medium;
+  }
+
+  h3 {
+    @media print {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .links-container {
+    display: flex;
+    gap: spacing.$spacing-medium;
+    flex-wrap: wrap;
+
+    @media print {
+      flex-direction: column; // Or wrap with commas? Spec says "underlined text instead of icons"
+      // Let's list them.
+      gap: 0;
+    }
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: spacing.$spacing-small;
+    padding: spacing.$spacing-small spacing.$spacing-medium;
+    background-color: var(--secondary-bg);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+
+    @media print {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin-right: spacing.$spacing-medium;
+      display: inline; // Make it text flow?
+      color: #000;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+
+      @media print {
+        background-color: transparent;
+        transform: none;
+      }
+    }
+
+    i,
+    .default-icon {
+      font-size: 1rem;
+      width: 1rem;
+      text-align: center;
+
+      @media print {
+        display: none; // Hide icons in print
+      }
+    }
+
+    .link-url-print {
+      display: none;
+
+      @media print {
+        display: inline; // Show URL in print
+        text-decoration: none;
+        font-size: 0.9em;
+      }
+    }
+  }
+}
