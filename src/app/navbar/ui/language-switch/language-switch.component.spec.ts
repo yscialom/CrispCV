@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LanguageSwitchComponent } from './language-switch.component';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ResumeDataService } from '../../../core/services/resume-data.service';
 import { signal } from '@angular/core';
 
 describe('LanguageSwitchComponent', () => {
   let component: LanguageSwitchComponent;
   let fixture: ComponentFixture<LanguageSwitchComponent>;
-  let translateService: TranslateService;
 
   // Mock ResumeDataService
   const resumeDataServiceMock = {
     getSupportedLanguages: () => ['en_US', 'fr_FR'],
     currentLocale: signal('en_US'),
+    useLanguage: vi.fn(),
   };
 
   beforeEach(async () => {
@@ -21,7 +21,6 @@ describe('LanguageSwitchComponent', () => {
       providers: [{ provide: ResumeDataService, useValue: resumeDataServiceMock }],
     }).compileComponents();
 
-    translateService = TestBed.inject(TranslateService);
     fixture = TestBed.createComponent(LanguageSwitchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -48,7 +47,6 @@ describe('LanguageSwitchComponent', () => {
   it('should switch language', () => {
     const event = new MouseEvent('click');
     vi.spyOn(event, 'stopPropagation');
-    const useSpy = vi.spyOn(translateService, 'use');
 
     // Open first
     component.isOpen.set(true);
@@ -56,7 +54,7 @@ describe('LanguageSwitchComponent', () => {
     component.switchLanguage(event, 'fr_FR');
 
     expect(event.stopPropagation).toHaveBeenCalled();
-    expect(useSpy).toHaveBeenCalledWith('fr_FR');
+    expect(resumeDataServiceMock.useLanguage).toHaveBeenCalledWith('fr_FR');
     expect(component.isOpen()).toBe(false);
   });
 

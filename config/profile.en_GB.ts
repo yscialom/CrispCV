@@ -5,16 +5,16 @@ export const PROFILE_CONFIG: Resume = {
   name: 'Yankel Scialom',
   title: 'Delivery Manager',
   summary: `
-    Engineer passionate about technology, coding, and math, but also about
+    Engineer passionate about technology, coding, and maths, but also about
     the performance of the human approach: "how to efficiently build a valued
-    and useful solution as an organization, a team, or an individual?"`,
+    and useful solution as an organisation, a team, or an individual?"`,
   email: 'yankel-pro@scialom.org',
   phone: '+336 87 63 83 13',
   website: 'scialom.org/cv',
   location: 'Châtillon, Île-de-France, France',
   birthDate: '1987-04-24',
   nationality: 'French',
-  drivingLicense: "Driver's License (Class B)",
+  drivingLicense: 'Driving Licence (Class B)',
   languages: [
     { name: 'French', level: 5 },
     { name: 'English', level: 4 },
@@ -40,11 +40,11 @@ export const PROFILE_CONFIG: Resume = {
 # About Me
 
 Passionate about computer science from a very young age, I have always sought
-    to understand how things work. My career has led me to work on critical and
-    complex systems, where rigor and method are paramount.
+to understand how things work. My career has led me to work on critical and
+complex systems, where rigour and method are paramount.
 
-Today, I thrive in the management of organizations and the improvement of
-    development processes, while keeping a foot in the technical side.`,
+Today, I thrive in the management of organisations and the improvement of
+development processes, while keeping a foot in the technical side.`,
   personalProjects: [
     {
       name: 'PinaNas',
@@ -118,8 +118,8 @@ Today, I thrive in the management of organizations and the improvement of
 - **Release strategy**: goal of maximum quality & minimal time-to-market.
 - **Culture**: promoting accountability by involving everyone in decision-making.
 - **Process**: from development to deployment in accordance with our strategy and culture.
-- **Coordination**: synchronization and support of 16 development teams.
-- **Prioritization**: stability vs. urgency vs. special cases and projects.`,
+- **Coordination**: synchronisation and support of 16 development teams.
+- **Prioritisation**: stability vs. urgency vs. special cases and projects.`,
         },
       ],
       keywords: ['Release Management', 'Orchestrade', 'Management', 'Transformation', 'Strategy'],
@@ -134,7 +134,7 @@ Today, I thrive in the management of organizations and the improvement of
         {
           title: 'SOC Strategy Transformation',
           description: `
-Program Director for projects arising from the redefinition of
+Programme Director for projects arising from the redefinition of
 Société Générale's SOC strategy.
 - Opportunity studies.
 - Scoping, launching, monitoring, and closing of transformation projects.
@@ -164,12 +164,12 @@ component, which I joined.`,
           title: 'Technical Project Manager',
           description: `
 - **Release Management**: planning, monitoring, communication.
-- **Infrastructure creation and evolution**: prioritization, planning & monitoring of
+- **Infrastructure creation and evolution**: prioritisation, planning & monitoring of
     developments.
-- Management of **schedules**, **risks**, and escalation of **program alerts**.
+- Management of **schedules**, **risks**, and escalation of **programme alerts**.
 - Implementation of a **new distributed computing grid technology** at Natixis:
     GridGain.
-- **Synchronization** of the Pricing Services team with: infrastructure, operations,
+- **Synchronisation** of the Pricing Services team with: infrastructure, operations,
     security, and architecture teams...
 - **Management and planning of developments** related to data, software, and
     infrastructure security: DMZ, Illumio, Disaster Recovery Plan, awareness
@@ -201,7 +201,7 @@ component, which I joined.`,
           title: 'Context',
           description: `
 I was commissioned at Ingenico to support the department's technical and
-methodological transformation: agile kickoff & technological modernization.`,
+methodological transformation: agile kickoff & technological modernisation.`,
         },
         {
           title: 'Scrum Master',
@@ -213,7 +213,7 @@ methodological transformation: agile kickoff & technological modernization.`,
         {
           title: 'Tech Lead',
           description: `
-- Tool modernization:
+- Tool modernisation:
   - svn to git,
   - C++98 to C++14,
   - Redhat 5 to 7.
@@ -268,7 +268,7 @@ methodological transformation: agile kickoff & technological modernization.`,
         {
           title: 'Developer',
           description: `
-- Sophis Toolkit: reverse-engineering, optimization, new columns.
+- Sophis Toolkit: reverse-engineering, optimisation, new columns.
 - Sophis: import/export, scripting language, performance attribution.
 - Satellite developments (reconciliation, automation, reports).`,
         },
@@ -289,7 +289,7 @@ methodological transformation: agile kickoff & technological modernization.`,
 - Implementation of multi-platform testing procedures. Technical issue tracking.`,
         },
         {
-          title: 'Service Center Manager',
+          title: 'Service Centre Manager',
           description:
             'Assistant to the Project Director. Technical management of quotes and client billing.',
         },
@@ -311,7 +311,7 @@ methodological transformation: agile kickoff & technological modernization.`,
         {
           title: 'Real-time OS',
           description:
-            'Design & development of a real-time OS: scheduler, memory emulation, I/O virtualization.',
+            'Design & development of a real-time OS: scheduler, memory emulation, I/O virtualisation.',
         },
         {
           title: 'Porting',
@@ -360,7 +360,7 @@ methodological transformation: agile kickoff & technological modernization.`,
       location: 'Sevran, Seine-Saint-Denis, France',
       startDate: '2005',
       endDate: '2005',
-      description: '_with honors_',
+      description: '_with honours_',
     },
     {
       degree: 'Physics (Continuing Studies)',

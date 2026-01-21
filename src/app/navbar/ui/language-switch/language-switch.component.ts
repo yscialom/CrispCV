@@ -57,7 +57,7 @@ export class LanguageSwitchComponent {
 
   switchLanguage(event: MouseEvent, lang: string) {
     event.stopPropagation();
-    this.translate.use(lang);
+    this.resumeDataService.useLanguage(lang);
     this.isOpen.set(false);
   }
 

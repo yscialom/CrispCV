@@ -30,17 +30,24 @@ export class ResumeDataService {
     this.translate.currentLang || this.translate.defaultLang || APP_CONFIG.defaultLanguage,
   );
 
+  private readonly AVAILABLE_APP_LANGS = ['en_US', 'fr_FR'];
+
   constructor() {
     if (isPlatformBrowser(this.platformId)) {
       const initialLang = this.getInitialLang();
-      this.translate.use(initialLang);
+      this.useLanguage(initialLang);
+    }
+  }
+
+  public useLanguage(lang: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.saveLang(lang);
     }
 
-    this.translate.onLangChange.subscribe((event) => {
-      this.currentLocale.set(event.lang);
-      if (isPlatformBrowser(this.platformId)) {
-        this.saveLang(event.lang);
-      }
+    const appLang = this.AVAILABLE_APP_LANGS.includes(lang) ? lang : 'en_US';
+
+    this.translate.use(appLang).subscribe(() => {
+      this.currentLocale.set(lang);
     });
   }
 

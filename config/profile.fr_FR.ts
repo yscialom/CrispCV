@@ -5,9 +5,9 @@ export const PROFILE_CONFIG: Resume = {
   name: 'Yankel Scialom',
   title: 'Delivery Manager',
   summary: `
-    Ingénieur passioné par la technique, le code, les maths mais aussi par
+    Ingénieur passionné par la technique, le code, les maths mais aussi par
     la performance de l'approche humaine : « comment construire efficacement
-    en tant qu'organisaiton, qu'équipe ou qu'individu une solution apprciée
+    en tant qu'organisation, qu'équipe ou qu'individu une solution appréciée
     et utile ? »`,
   email: 'yankel-pro@scialom.org',
   phone: '+336 87 63 83 13',
@@ -36,7 +36,7 @@ export const PROFILE_CONFIG: Resume = {
     },
   ],
   volunteering: [],
-  hobbies: ['Veille technique', 'Parapente', 'Badmington', 'Randonnée'],
+  hobbies: ['Veille technique', 'Parapente', 'Badminton', 'Randonnée'],
   aboutDescription: `
 # À propos de moi
 
@@ -76,10 +76,10 @@ processus de développement, tout en gardant un pied dans la technique.`,
           title: 'Practice Leader Software Engineering',
           description: `
 - Garant de l'**expertise dev** au sein de l'entreprise.
-- Direction des projets interne.
+- Direction des projets internes.
 - Garant de l'évaluation & de l'exigence au recrutement, **construction d'un processus
     de recrutement** basé sur l'évaluation objective des candidats sur leurs compétences
-    technique ou fonctionnelles, sur leur posture consultant et sur leur savoir-être.
+    techniques ou fonctionnelles, sur leur posture consultant et sur leur savoir-être.
 - Animation de communautés d'experts.
 - Formation de consultants & accompagnement de carrière.`,
         },
@@ -137,7 +137,7 @@ processus de développement, tout en gardant un pied dans la technique.`,
         {
           title: 'Transformation Stratégie SOC',
           description: `
-Directeur de programe des projets issues de la redéfinition de
+Directeur de programme des projets issus de la redéfinition de
 la stratégie SOC de la Société Générale.
 - Études d'opportunités.
 - Cadrage, lancement, suivi et clôture des projets de transformation.
@@ -176,7 +176,7 @@ j'ai intégré l'équipe.`,
     d'exploitation, équipes sécurité, équipes architecture, …
 - **Management et planification des évolutions** liées à la sécurité des données, des
     logiciels et des éléments d'infrastructure : DMZ, Illumio, Disaster Recovery Plan,
-    sensibilisation formation & contrôle des développeurs faces aux failles de
+    sensibilisation formation & contrôle des développeurs face aux failles de
     sécurité de notre code source …`,
         },
         {
@@ -334,7 +334,7 @@ et méthodologique du département : kickoff agile & modernisation technologique
         {
           title: 'Développement IHM',
           description:
-            'Ajout de fonctionnalités pour gestion de drones (multi-lingue, vidéo, cartographie). Refonte ergonomique.',
+            'Ajout de fonctionnalités pour gestion de drones (multilingue, vidéo, cartographie). Refonte ergonomique.',
         },
         {
           title: 'Bibliothèque MNT',
@@ -386,12 +386,12 @@ et méthodologique du département : kickoff agile & modernisation technologique
       date: '2022',
     },
     {
-      name: 'Profesional Scrum Product Owner',
+      name: 'Professional Scrum Product Owner',
       organization: 'Scrum',
       date: '2022',
     },
     {
-      name: 'PRINCE2 Practitioneer - Gestion de projets agile',
+      name: 'PRINCE2 Practitioner - Gestion de projets agile',
       organization: 'PRINCE2',
       date: '2021',
     },
@@ -401,7 +401,7 @@ et méthodologique du département : kickoff agile & modernisation technologique
       date: '2020',
     },
     {
-      name: 'Communication bienvenillante',
+      name: 'Communication bienveillante',
       organization: 'Capfi',
       date: '2020',
     },
