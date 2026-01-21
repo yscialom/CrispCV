@@ -98,7 +98,14 @@ processus de développement, tout en gardant un pied dans la technique.`,
 - Projets internes d'outillage IT.`,
         },
       ],
-      keywords: ['Expertise Dev', 'Chef de Projet', 'Management', 'Recrutement', 'Transformation', 'Stratégie'],
+      keywords: [
+        'Expertise Dev',
+        'Chef de Projet',
+        'Management',
+        'Recrutement',
+        'Transformation',
+        'Stratégie',
+      ],
     },
     {
       title: 'Release Manager',
@@ -108,7 +115,8 @@ processus de développement, tout en gardant un pied dans la technique.`,
       endDate: '2025-03',
       missions: [
         {
-          title: "Release Manager d'Orchestrade pour CACIB ainsi que de ses logiciels et services annexes.",
+          title:
+            "Release Manager d'Orchestrade pour CACIB ainsi que de ses logiciels et services annexes.",
           description: `
 - **Stratégie de release** : objectif qualité maximale & time-to-market minimal.
 - **Culture** : promotion de la responsabilisation par l'implication de tous aux prises de décisions.
