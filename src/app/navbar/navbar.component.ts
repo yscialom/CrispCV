@@ -112,7 +112,11 @@ export class NavbarComponent implements OnDestroy {
     // Ensure we have enough scrollable content to justify shrinking.
     // Navbar shrinks by ~100px. Safety buffer prevents loops.
     const threshold = 150;
-    this.isPageTallEnough.set(scrollHeight > clientHeight + threshold);
+
+    // If currently sticky, the navbar is shrunk. We need to account for that to avoid flapping.
+    const effectiveScrollHeight = this.isSticky() ? scrollHeight + threshold : scrollHeight;
+
+    this.isPageTallEnough.set(effectiveScrollHeight > clientHeight + threshold);
   }
 
   ngOnDestroy(): void {
