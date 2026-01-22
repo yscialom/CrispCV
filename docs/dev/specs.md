@@ -703,3 +703,25 @@ _Features_:
 
 **Release**
 :
+
+---
+
+## Dynamic Page Title
+
+**ID**
+: `21`
+
+**Description**
+: Dynamically update the application's HTML title (`<title>`) based on the profile name and the selected language. The title should follow the format "CV of [Name]" (English) or "CV de [Name]" (French). This ensures the browser tab and search results correctly reflect the resume's owner and language context.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/21-dynamic-page-title`
+
+**PR**
+: _none_
+
+**Release**
+:

@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ToastComponent } from './shared/components/toast/toast.component';
 import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from './core/services/app-config.service';
 import { KeywordService } from './core/services/keyword.service';
 import { PrintLayoutComponent } from './core/components/print-layout/print-layout.component';
@@ -23,6 +24,7 @@ import { ThemeService } from './core/services/theme.service';
 })
 export class AppComponent {
   private readonly titleService = inject(Title);
+  private readonly translate = inject(TranslateService);
   private readonly appConfigService = inject(AppConfigService);
   private readonly keywordService = inject(KeywordService);
   // Inject services to ensure they are initialized
@@ -30,7 +32,12 @@ export class AppComponent {
   private readonly themeService = inject(ThemeService);
 
   constructor() {
-    this.titleService.setTitle(this.appConfigService.appConfig.appTitle);
+    effect(() => {
+      const profile = this.resumeDataService.profile();
+      this.translate.get('COMMON.PAGE_TITLE', { name: profile.name }).subscribe((title: string) => {
+        this.titleService.setTitle(title);
+      });
+    });
   }
 
   protected resetKeywordFilter(): void {

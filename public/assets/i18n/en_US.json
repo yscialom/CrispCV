@@ -39,7 +39,8 @@
   },
   "COMMON": {
     "PRESENT": "Present",
-    "ERROR": "An error occurred"
+    "ERROR": "An error occurred",
+    "PAGE_TITLE": "CV of {{name}}"
   },
   "DURATION": {
     "YEAR_PLURAL": "years",
