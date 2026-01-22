@@ -41,6 +41,7 @@ export class LanguageSwitchComponent {
     fr_FR: { name: 'Français', flag: '🇫🇷' },
     en_US: { name: 'English (US)', flag: '🇺🇸' },
     en_GB: { name: 'English (UK)', flag: '🇬🇧' },
+    de_DE: { name: 'Deutsch', flag: '🇩🇪' },
   };
 
   @HostListener('document:click', ['$event'])

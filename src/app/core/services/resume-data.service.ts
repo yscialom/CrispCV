@@ -30,7 +30,7 @@ export class ResumeDataService {
     this.translate.currentLang || this.translate.defaultLang || APP_CONFIG.defaultLanguage,
   );
 
-  private readonly AVAILABLE_APP_LANGS = ['en_US', 'fr_FR'];
+  private readonly AVAILABLE_APP_LANGS = ['en_US', 'fr_FR', 'de_DE'];
 
   constructor() {
     if (isPlatformBrowser(this.platformId)) {
