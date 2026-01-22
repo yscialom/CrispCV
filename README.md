@@ -70,6 +70,10 @@ CrispCV is built on a "Showcase Quality Code" philosophy, making it a great play
 - [Feature Specifications](docs/dev/specs.md)
 - [Contributing Guide](CONTRIBUTING.md)
 
+### Documentation for Testers
+
+- [UAT](docs/test/uat.md)
+
 ---
 
 ## 🔄 CI/CD
