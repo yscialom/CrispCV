@@ -50,6 +50,7 @@ test:
 build:
 	@echo "Building application artifacts in ./dist ..."
 	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp -e APP_VERSION=$(APP_VERSION) --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install && npm run build"
+	@mv dist/CrispCV/browser/dot-htaccess dist/CrispCV/browser/.htaccess
 
 # Start the Angular development server (ng serve)
 start:
