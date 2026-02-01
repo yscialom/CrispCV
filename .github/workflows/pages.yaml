@@ -31,11 +31,29 @@ jobs:
           git fetch origin pages --depth=1 || echo "pages branch not found"
           if [ "${{ github.ref_name }}" = "pages" ] || git rev-parse --verify origin/pages >/dev/null 2>&1; then
             echo "Overwriting config files from pages branch"
-            git checkout origin/pages -- config/profile.*.ts || echo "No profile files found on pages branch"
-            # Overwrite profile-picture if present in config/ on pages branch (any extension)
-            git checkout origin/pages -- 'config/profile-picture.*' 2>/dev/null || echo "No profile picture found on pages branch"
-            # Also check for app.config.ts on pages branch
-            git checkout origin/pages -- config/app.config.ts || echo "Using default app.config.ts"
+
+            # Profile Configs
+            if git ls-tree -r --name-only origin/pages | grep -q "config/profile\..*\.ts"; then
+               git checkout origin/pages -- config/profile.*.ts
+            else
+               echo "No profile files found on pages branch"
+            fi
+
+            # Profile Picture
+            if git ls-tree -r --name-only origin/pages | grep -q "config/profile-picture\."; then
+               echo "Found profile picture on pages branch. Overwriting..."
+               rm config/profile-picture.* 2>/dev/null || true
+               git checkout origin/pages -- "config/profile-picture.*"
+            else
+               echo "No profile picture on pages branch. Keeping master version."
+            fi
+
+            # App Config
+            if git ls-tree -r --name-only origin/pages | grep -q "config/app\.config\.ts"; then
+               git checkout origin/pages -- config/app.config.ts
+            else
+               echo "Using default app.config.ts"
+            fi
           else
             echo "pages branch not present, using default config"
           fi
