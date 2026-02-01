@@ -108,3 +108,16 @@ a {
     gap: spacing.$spacing-x-large;
   }
 }
+
+@media print {
+  app-navbar,
+  app-toast,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+}

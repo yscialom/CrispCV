@@ -1,0 +1,26 @@
+<app-resume-entry
+  [title]="certification().name"
+  [subtitle]="certification().organization"
+  [location]="certification().location || 'Online'"
+  [startDate]="certification().date"
+  [permalinkFragment]="permalink()?.fragment"
+  [permalinkId]="permalink()?.id"
+  [isFirst]="isFirst()"
+>
+  <div class="certification-card__content">
+    @if (certification().description) {
+      <div
+        class="certification-card__description"
+        [innerHTML]="certification().description | markdown"
+      ></div>
+    }
+    @if (certification().verificationUrl) {
+      <p class="certification-card__link">
+        <a [href]="certification().verificationUrl" target="_blank">
+          {{ 'CERTIFICATIONS.VIEW_CERTIFICATE' | translate }}
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </p>
+    }
+  </div>
+</app-resume-entry>

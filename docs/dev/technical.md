@@ -66,7 +66,7 @@ To maintain a "crisp and comprehensible" codebase, the following tools and stand
 
 ### 5.1 Code Guidelines
 
-Detailed coding standards, formatting rules, and best practices are outlined in [docs/code-guidelines.md](./code-guidelines.md). All developers are expected to adhere to these guidelines.
+Detailed coding standards, formatting rules, and best practices are outlined in [Code Guidelines](./code-guidelines.md). All developers are expected to adhere to these guidelines.
 
 - **Linter (ESLint):** A strict ESLint configuration is used, incorporating `eslint-plugin-angular` and other plugins to enforce modern Angular best practices.
 - **Formatter (Prettier):** Prettier is configured to automatically format all code, ensuring a consistent style across the entire project. No code that fails Prettier's checks will be accepted.
@@ -162,7 +162,7 @@ All styling is written in SCSS to leverage its advanced features and promote mai
 - **BEM Naming Convention:** Adhere to the Block, Element, Modifier (BEM) methodology for naming CSS classes (e.g., `.resume-card__title--highlighted`). This creates a clear, hierarchical, and conflict-free styling system.
 - **SCSS Features:** Leverage SCSS variables, nesting, and mixins to write DRY (Don't Repeat Yourself) code.
 - **Units:** Use `rem` for scalable properties like `font-size`, `margin`, and `padding`. Use `px` only for properties that must remain fixed, suchs as `border-width`.
-- **No Magic Numbers:** All colors, font families, font sizes, and spacing units must be sourced from a central SCSS variables file that reflects the design tokens in `docs/style.md`.
+- **No Magic Numbers:** All colors, font families, font sizes, and spacing units must be sourced from a central SCSS variables file that reflects the design tokens in the [Style Guide](./style.md).
 
 ## 9. Configuration Files
 

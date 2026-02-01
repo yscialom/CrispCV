@@ -3,8 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="darkreader-lock" />
-    <title>My Résumé</title>
-    <base href="/" />
+    <title>CrispCV</title>
+    <script>
+      // Dynamically set base href to support deployment in sub-directories
+      (function () {
+        var pathname = window.location.pathname;
+        var routes = ['experience', 'education', 'about'];
+        var baseHref = pathname;
+
+        // If the path ends with a known route, strip it to find the app root
+        for (var i = 0; i < routes.length; i++) {
+          var route = routes[i];
+          if (pathname.endsWith('/' + route) || pathname.endsWith('/' + route + '/')) {
+            baseHref = pathname.substring(0, pathname.lastIndexOf(route));
+            break;
+          }
+        }
+
+        // Handle the redirect route :id (numeric)
+        var segments = pathname.split('/');
+        var lastSegment = segments.pop() || segments.pop(); // handle trailing slash
+        if (lastSegment && /^\d+$/.test(lastSegment)) {
+          baseHref = pathname.substring(0, pathname.lastIndexOf(lastSegment));
+        }
+
+        if (!baseHref.endsWith('/')) {
+          baseHref += '/';
+        }
+
+        document.write('<base href="' + baseHref + '" />');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>

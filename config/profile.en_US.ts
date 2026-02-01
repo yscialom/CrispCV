@@ -4,15 +4,17 @@ export const PROFILE_CONFIG: Resume = {
   profilePicturePath: 'profile-picture.png',
   name: 'Yankel Scialom',
   title: 'Delivery Manager',
-  summary:
-    "Engineer passionate about technology, code, mathematics, and the performance of the human approach: 'how to efficiently build a valued and useful solution as an organization, a team, and an individual?'",
+  summary: `
+    Engineer passionate about technology, coding, and math, but also about
+    the performance of the human approach: "how to efficiently build a valued
+    and useful solution as an organization, a team, or an individual?"`,
   email: 'yankel-pro@scialom.org',
   phone: '+336 87 63 83 13',
   website: 'scialom.org/cv',
   location: 'Châtillon, Île-de-France, France',
-  birthDate: '1987-09-21',
+  birthDate: '1987-04-24',
   nationality: 'French',
-  drivingLicense: 'Driving License (B)',
+  drivingLicense: "Driver's License (Class B)",
   languages: [
     { name: 'French', level: 5 },
     { name: 'English', level: 4 },
@@ -32,24 +34,17 @@ export const PROFILE_CONFIG: Resume = {
       icon: 'fab fa-github',
     },
   ],
-  volunteering: [
-    {
-      organization: 'Example Org',
-      role: 'Volunteer',
-      startDate: '2020',
-      endDate: 'Present',
-      description: 'Helping out with things.',
-    },
-  ],
-  hobbies: ['Coding', 'Reading', 'Running', 'Piano'],
+  volunteering: [],
+  hobbies: ['Technical Watch', 'Paragliding', 'Badminton', 'Hiking'],
   aboutDescription: `
 # About Me
 
-Passionate about computer science from a very young age, I have always sought to understand how things work.
-My career has led me to work on critical and complex systems, where rigor and method are paramount.
+Passionate about computer science from a very young age, I have always sought
+    to understand how things work. My career has led me to work on critical and
+    complex systems, where rigor and method are paramount.
 
-Today, I thrive in team management and the improvement of development processes, while keeping a foot in the technical side.
-`,
+Today, I thrive in the management of organizations and the improvement of
+    development processes, while keeping a foot in the technical side.`,
   personalProjects: [
     {
       name: 'PinaNas',
@@ -57,7 +52,6 @@ Today, I thrive in team management and the improvement of development processes,
       url: 'https://github.com/yscialom/pinanas',
       technologies: ['Homelab', 'Ansible', 'Docker'],
       startDate: '2020-04',
-      endDate: 'Present',
     },
     {
       name: 'CrispCV',
@@ -65,13 +59,12 @@ Today, I thrive in team management and the improvement of development processes,
       url: 'https://github.com/yscialom/crispcv',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       startDate: '2025-11',
-      endDate: 'Present',
     },
   ],
 
   experiences: [
     {
-      title: 'Practice Leader Dev & Lead Delivery',
+      title: 'Practice Leader Dev & Delivery Manager',
       company: 'Capfi',
       location: 'Paris, France',
       startDate: '2023-05',
@@ -80,26 +73,37 @@ Today, I thrive in team management and the improvement of development processes,
         {
           title: 'Practice Leader Software Engineering',
           description: `
-- Responsible for **dev expertise** within the company.
-- Responsible for evaluation & recruitment requirements, **building a recruitment process** based on objective assessment of candidates on their technical or functional skills, their consultant posture, and their soft skills.
-- Animation of expert communities.
-- Training of consultants & career support.`,
+- Guarantor of **development expertise** within the company.
+- Steering of internal projects.
+- Guarantor of recruitment evaluation & requirements, **building a recruitment process**
+    based on objective assessment of candidates' technical or functional skills,
+    consultant posture, and soft skills.
+- Coordination of expert communities.
+- Consultant training & career support.`,
         },
         {
           title: 'Management',
           description: `
-- Animation of the manager community.
+- Coordination of the manager community.
 - Management of consultants and consultant-managers.`,
         },
         {
           title: 'Transformation Support',
           description: `
 - Internal merger of Capfi entities.
-- Transparent communication and value-creating collaboration between experts, managers, recruitment, and business.
+- Transparent communication and value-creating collaboration between experts,
+    managers, recruitment, and sales.
 - Internal IT tooling projects.`,
         },
       ],
-      keywords: ['Dev Expertise', 'Management', 'Recruitment', 'Transformation'],
+      keywords: [
+        'Dev Expertise',
+        'Project Manager',
+        'Management',
+        'Recruitment',
+        'Transformation',
+        'Strategy',
+      ],
     },
     {
       title: 'Release Manager',
@@ -111,33 +115,35 @@ Today, I thrive in team management and the improvement of development processes,
         {
           title: 'Orchestrade Release Manager for CACIB and its related software and services.',
           description: `
-- **Release strategy**: maximum quality & minimal time-to-market objective.
+- **Release strategy**: goal of maximum quality & minimal time-to-market.
 - **Culture**: promoting accountability by involving everyone in decision-making.
-- **Process**: from development to deployment in alignment with our strategy and culture.
+- **Process**: from development to deployment in accordance with our strategy and culture.
 - **Coordination**: synchronization and support of 16 development teams.
-- **Prioritization**: stability vs urgency vs special cases and projects.`,
+- **Prioritization**: stability vs. urgency vs. special cases and projects.`,
         },
       ],
-      keywords: ['Release Management', 'Orchestrade', 'Strategy', 'Culture', 'Process'],
+      keywords: ['Release Management', 'Orchestrade', 'Management', 'Transformation', 'Strategy'],
     },
     {
       title: 'Project Manager',
       company: 'Société Générale',
-      location: 'Paris area, France',
+      location: 'Paris area',
       startDate: '2022-05',
       endDate: '2023-05',
       missions: [
         {
           title: 'SOC Strategy Transformation',
-          description: `Project Manager for projects resulting from the redefinition of Société Générale's SOC strategy.
+          description: `
+Program Director for projects arising from the redefinition of
+Société Générale's SOC strategy.
 - Opportunity studies.
-- Scoping, launching, monitoring, and closing transformation projects.
+- Scoping, launching, monitoring, and closing of transformation projects.
 - Tenders / RFPs.
-- Transverse team management.
+- Cross-functional team management.
 - Budget management (millions of euros for 2023).`,
         },
       ],
-      keywords: ['Project Management', 'SOC', 'Strategy', 'Budget', 'Cybersecurity'],
+      keywords: ['Project Manager', 'SOC', 'Strategy', 'Budget', 'Cybersecurity'],
     },
     {
       title: 'Project Manager, Agile Master',
@@ -148,33 +154,41 @@ Today, I thrive in team management and the improvement of development processes,
       missions: [
         {
           title: 'Context',
-          description:
-            'As part of the FRTB regulatory project, Natixis Global Markets is revamping its pricing services and breaking down existing silos. The SUNRISE project is a front-to-risk platform (stress tests, VAR, US FED needs), with the _Pricing Services_ component—which I joined—at its core.',
+          description: `
+As part of the FRTB regulatory project, Natixis Global Markets is revamping its pricing
+services and breaking down existing silos. The SUNRISE project is a front-to-risk
+platform (stress tests, VAR, US Fed requirements) whose core is the _Pricing Services_
+component, which I joined.`,
         },
         {
           title: 'Technical Project Manager',
           description: `
 - **Release Management**: planning, monitoring, communication.
-- **Infrastructure creation and evolution**: prioritization, planning & monitoring of developments.
-- Management of **schedules**, **risques**, and **program alerts**.
-- Implementation of a **new distributed grid calculation technology** at Natixis: GridGain.
-- **Synchronization** of the Pricing Services team with: infrastructure teams, operations teams, security teams, architecture teams, etc.
-- **Management and planning of evolutions** related to data security, software, and infrastructure elements: DMZ, Illumio, Disaster Recovery Plan, awareness training & control of developers regarding source code security vulnerabilities...`,
+- **Infrastructure creation and evolution**: prioritization, planning & monitoring of
+    developments.
+- Management of **schedules**, **risks**, and escalation of **program alerts**.
+- Implementation of a **new distributed computing grid technology** at Natixis:
+    GridGain.
+- **Synchronization** of the Pricing Services team with: infrastructure, operations,
+    security, and architecture teams...
+- **Management and planning of developments** related to data, software, and
+    infrastructure security: DMZ, Illumio, Disaster Recovery Plan, awareness
+    training, and monitoring of developers regarding source code vulnerabilities...`,
         },
         {
           title: 'DevOps Engineer',
           description:
-            'Construction of a complete analysis, build, deployment, operation, and monitoring chain.',
+            'Building a complete analysis, build, deployment, operation, and monitoring pipeline.',
         },
         {
           title: 'Scrum Master',
           description: `
-- Compliance with SAFe and Scrum: PI Planning, Sprint planning, retrospective.
-- Onboarding and mentoring of new members.
+- Compliance with SAFe and Scrum: PI Planning, Sprint planning, retrospectives.
+- Onboarding and follow-up of new members.
 - Planning and steering of demos.`,
         },
       ],
-      keywords: ['SAFe', 'Scrum', 'DevOps'],
+      keywords: ['Project Manager', 'SAFe', 'Scrum', 'DevOps', 'Capital Markets'],
     },
     {
       title: 'Tech Lead, Scrum Master',
@@ -185,15 +199,16 @@ Today, I thrive in team management and the improvement of development processes,
       missions: [
         {
           title: 'Context',
-          description:
-            "I was mandated at Ingenico to support the department's technical and methodological transformation: agile kickoff & technological modernization.",
+          description: `
+I was commissioned at Ingenico to support the department's technical and
+methodological transformation: agile kickoff & technological modernization.`,
         },
         {
           title: 'Scrum Master',
           description: `
 - **Team Scrum Kickoff**.
-- Awareness and monitoring of members, the PO, and management.
-- Supporting the PO in slicing and documentation.`,
+- Awareness and follow-up of members, PO, and management.
+- Supporting the PO with story slicing and documentation.`,
         },
         {
           title: 'Tech Lead',
@@ -208,7 +223,7 @@ Today, I thrive in team management and the improvement of development processes,
 - Definition of acceptance criteria for code reviews and functional tests.
 - Training teams in C++14.
 - Continuous integration & continuous deployment of applications.
-- Adoption of Docker to facilitate tests, their automation & their reproducibility.`,
+- Adoption of Docker to facilitate testing, automation, and reproducibility.`,
         },
       ],
       keywords: ['Scrum', 'DevOps', 'C++', 'PostgreSQL', 'Docker'],
@@ -216,14 +231,14 @@ Today, I thrive in team management and the improvement of development processes,
     {
       title: 'Industrial C++ Developer, Paylib / Wero project',
       company: 'STET',
-      location: 'Puteaux, La Défense, France',
+      location: 'Puteaux, La Défense',
       startDate: '2015-01',
       endDate: '2018-02',
       missions: [
         {
           title: 'Apple Pay & Paylib / Wero',
           description:
-            'Solutions designed from scratch. 99.999% SLA. Hot version upgrades. PCI-DSS security.',
+            'Solutions designed from scratch. 99.999% SLA. Hot-swappable version upgrades. PCI-DSS security.',
         },
         {
           title: 'Design & Development',
@@ -232,16 +247,16 @@ Today, I thrive in team management and the improvement of development processes,
 - Technical design.
 - C++98 development of the TSP (Secure Coding, robustness, TCP, multithreading).
 - Profiling (performance, memory leaks).
-- End-to-end tests.
+- End-to-end testing.
 - Support and training.`,
         },
       ],
-      keywords: ['C++', 'PostgreSQL', 'TCP', 'Multithreading', 'Secure Coding', 'Redhat Linux'],
+      keywords: ['C++', 'PostgreSQL', 'TCP', 'Multithreading', 'Secure Coding', 'Linux'],
     },
     {
       title: 'Sophis Software Engineer',
       company: 'Tikehau Capital',
-      location: 'Paris VIII, France',
+      location: 'Paris VIII',
       startDate: '2014-07',
       endDate: '2015-01',
       missions: [
@@ -252,36 +267,39 @@ Today, I thrive in team management and the improvement of development processes,
         },
         {
           title: 'Developer',
-          description:
-            'Sophis Toolkit: reverse-engineering, optimization, new columns. Sophis: import/export, scripting language, performance attribution. Satellite developments (reconciliation, automation, reports).',
+          description: `
+- Sophis Toolkit: reverse-engineering, optimization, new columns.
+- Sophis: import/export, scripting language, performance attribution.
+- Satellite developments (reconciliation, automation, reports).`,
         },
       ],
-      keywords: ['Redhat Linux', 'C++', 'C99', 'PostgreSQL', 'Sophis', 'Lua', 'Finance'],
+      keywords: ['Linux', 'C++', 'C', 'PostgreSQL', 'Sophis', 'Lua', 'Capital Markets'],
     },
     {
       title: 'Software Design Engineer',
       company: 'Thales Raytheon Systems',
-      location: 'Massy, France',
+      location: 'Massy',
       startDate: '2013-05',
       endDate: '2014-07',
       missions: [
         {
           title: 'C++ & Java Software Developer',
-          description:
-            'Design, development, and integration of HMI and communication functionalities. Implementation of multi-platform test procedures. Technical fact tracking.',
+          description: `
+- Design, development, and integration of HMI and communication functionalities.
+- Implementation of multi-platform testing procedures. Technical issue tracking.`,
         },
         {
           title: 'Service Center Manager',
           description:
-            'Assistant to the Project Director. Technical management of quotes & client billing.',
+            'Assistant to the Project Director. Technical management of quotes and client billing.',
         },
       ],
-      keywords: ['C++', 'Java', 'CMake'],
+      keywords: ['C++', 'Java', 'Linux', 'LPM', 'HMI'],
     },
     {
       title: 'Embedded Systems Engineer Intern',
       company: 'SYSNAV',
-      location: 'Île-de-France, France',
+      location: 'Vernon, Eure',
       startDate: '2012-01',
       endDate: '2012-08',
       missions: [
@@ -300,7 +318,7 @@ Today, I thrive in team management and the improvement of development processes,
           description: 'Porting the API to Windows and Linux. Documentation.',
         },
       ],
-      keywords: ['C ANSI', 'Embedded', 'Real-time'],
+      keywords: ['C', 'Embedded', 'Real-time'],
     },
     {
       title: 'Software Developer Intern',
@@ -312,12 +330,12 @@ Today, I thrive in team management and the improvement of development processes,
         {
           title: 'HMI Development',
           description:
-            'Feature addition for drone management (multi-language, video, mapping). Ergonomic redesign.',
+            'Adding features for drone management (multilingual, video, mapping). Ergonomic redesign.',
         },
         {
           title: 'DTM Library',
           description:
-            'Management of Digital Terrain Models (SRTM, DTED). Shared storage. 3D calculation.',
+            'Digital Terrain Model management (SRTM, DTED). Shared storage. 3D calculation.',
         },
         {
           title: 'Miscellaneous',
@@ -352,19 +370,41 @@ Today, I thrive in team management and the improvement of development processes,
       endDate: '2013',
     },
   ],
+  certifications: [
+    {
+      name: 'Microsoft Azure - AZ204',
+      organization: 'Microsoft',
+      date: '2024',
+    },
+    {
+      name: 'SAFe Scrum Master',
+      organization: 'SAFe',
+      date: '2022',
+    },
+    {
+      name: 'Professional Scrum Product Owner',
+      organization: 'Scrum',
+      date: '2022',
+    },
+    {
+      name: 'PRINCE2 Practitioner - Agile Project Management',
+      organization: 'PRINCE2',
+      date: '2021',
+    },
+    {
+      name: 'TOSCANE Path - Support for team transformation',
+      organization: 'Toscane',
+      date: '2020',
+    },
+    {
+      name: 'Benevolent Communication',
+      organization: 'Capfi',
+      date: '2020',
+    },
+  ],
   skills: [
     { name: 'French', level: 5 },
     { name: 'English', level: 5 },
     { name: 'German', level: 2 },
-    { name: 'C++', level: 5 },
-    { name: 'Java', level: 4 },
-    { name: 'Python', level: 4 },
-    { name: 'Docker', level: 4 },
-    { name: 'Kubernetes', level: 3 },
-    { name: 'CI/CD', level: 4 },
-    { name: 'Agile/Scrum', level: 5 },
-    { name: 'SAFe', level: 4 },
-    { name: 'SQL', level: 4 },
-    { name: 'Linux', level: 4 },
   ],
 };

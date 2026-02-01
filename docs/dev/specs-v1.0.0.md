@@ -66,10 +66,10 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : `feature/2-make-lint-format`
 
 **PR**
-: none
+: _none_
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -91,7 +91,7 @@ Each feature is documented in its own section. A feature section is a level-2 he
 : [#1](https://github.com/yscialom/CrispCV/pull/1)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -138,7 +138,7 @@ _Key Features_:
 : [#2](https://github.com/yscialom/CrispCV/pull/2)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -151,13 +151,13 @@ _Key Features_:
 : Enhance keyword interactivity. Clicking a keyword highlights all experience cards sharing that keyword. Hovering over a keyword reveals a tooltip showing the total accumulated duration of experience for that specific skill across all positions.
 
 **Status**
-: `todo (priority: 6)`
+: `done`
 
 **Branch**
-:
+: `feature/5-keyword-filtering-statistics`
 
 **PR**
-:
+: [#23](https://github.com/yscialom/CrispCV/pull/23)
 
 **Release**
 :
@@ -200,7 +200,7 @@ _UI/UX:_
 : [#15](https://github.com/yscialom/CrispCV/pull/15)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -228,7 +228,7 @@ _UI/UX:_
 : [#10](https://github.com/yscialom/CrispCV/pull/10)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -270,7 +270,7 @@ _Key Features_:
 : [#4](https://github.com/yscialom/CrispCV/pull/4)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -304,7 +304,7 @@ _Technical considerations:_
 : [#18](https://github.com/yscialom/CrispCV/pull/18)
 
 **Release**
-: v0.2.0
+: `v0.2.0`
 
 ---
 
@@ -346,7 +346,7 @@ _Implementation Details:_
 : [#20](https://github.com/yscialom/CrispCV/pull/20)
 
 **Release**
-: v0.2.0
+: `v0.2.0`
 
 ---
 
@@ -380,7 +380,7 @@ _Features_:
 : [#12](https://github.com/yscialom/CrispCV/pull/12)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -405,7 +405,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#16](https://github.com/yscialom/CrispCV/pull/16)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -454,7 +454,7 @@ It builds the application using `npm` and deploys the artifact to GitHub Pages.
 : [#21](https://github.com/yscialom/CrispCV/pull/21)
 
 **Release**
-: v0.2.0
+: `v0.2.0`
 
 ---
 
@@ -540,7 +540,7 @@ _Key Features_:
 : [#8](https://github.com/yscialom/CrispCV/pull/8)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -570,7 +570,7 @@ _Requirements:_
 : [#14](https://github.com/yscialom/CrispCV/pull/14)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
 
 ---
 
@@ -598,4 +598,129 @@ _Requirements:_
 : [#11](https://github.com/yscialom/CrispCV/pull/11)
 
 **Release**
-: v0.1.0
+: `v0.1.0`
+
+---
+
+## Mobile Hamburger Menu
+
+**ID**
+: `18`
+
+**Description**
+: Implement a collapsible hamburger menu for the top navbar on mobile devices to handle varying navigation link lengths across different languages and screen sizes.
+
+- **Mobile Behavior**:
+  - Navigation links are hidden by default in a collapsed state.
+  - A "Menu" toggle button (with a hamburger icon ☰) appears below the profile identity.
+  - Clicking the toggle expands a full-width vertical navigation list.
+  - The menu can be closed via the same toggle (switched to a close icon ✖).
+- **Desktop Behavior**:
+  - The layout MUST remain unchanged (horizontal tabs).
+- **Smoothness**: The expansion and collapse should be animated for a polished feel.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/18-mobile-hamburger-menu`
+
+**PR**
+: [#24](https://github.com/yscialom/CrispCV/pull/24)
+
+**Release**
+: `v1.0.0`
+
+---
+
+## Certifications
+
+**ID**
+: `19`
+
+**Description**
+: Add a new "Certifications" section to the Education page. This section displays professional certifications from the configuration file, following the same visual style as education and experience cards.
+
+- **Data Model:** Includes certification name, organization, date, optional location, description, and an optional verification link.
+- **Layout:** Displayed below the Education section on the `/education` page. If a verification link is provided, it is displayed as "View certificate" with an external link icon, matching the style of project links.
+- **Permalinks:** Each certification entry has its own unique ID and permalink fragment (e.g., `#scrum-alliance-certified-scrummaster-csm-2019-19`).
+- **Consistency:** Uses the `app-resume-entry` component for a uniform look and feel.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/19-certifications`
+
+**PR**
+: [#24](https://github.com/yscialom/CrispCV/pull/24)
+
+**Release**
+: `v1.0.0`
+
+---
+
+## Print Layout & Button
+
+**ID**
+: `20`
+
+**Description**
+: Enhance the application with a dedicated print mode to produce a clean, professional PDF or paper copy of the resume.
+
+_Features_:
+
+- **Print Button:** A dedicated "print" icon in the navbar (right of the theme selector) that triggers the browser's print dialog (`window.print()`).
+- **Print Layout (`@media print`):**
+  - **Global Cleanup:** Hides all dynamic/interactive elements: navbar links, theme/language toggles, hamburger menu, "View project/certificate" links, and the footer.
+  - **Layout Structure:**
+    - **Float-based Sidebar:** A Left Sidebar (25% width) floated to the left.
+    - **Dynamic Flow:** Content (Experience, Education) flows next to the sidebar on the first page and automatically expands to 100% width on subsequent pages (or once the sidebar ends).
+    - **Left Sidebar Content:**
+      1.  **Identity:** Profile picture, Name, Title, and Summary (from Navbar).
+      2.  **Personal Info:** Date of birth, contact details, etc. (with added vertical spacing between items).
+      3.  **About Me:** The detailed description from the "About" page.
+    - **Main Content Content:**
+      1.  **Experience:** Full list of experience cards.
+      2.  **Education:** Academic background.
+      3.  **Certifications:** Professional certifications.
+      4.  **Volunteering & Projects:** Additional sections.
+  - **Styling:**
+    - Removes box shadows and background colors that waste ink.
+    - Adjusts margins and font sizes for A4/Letter readability.
+    - Prevents awkward page breaks inside cards.
+    - Adds visual vertical separators for resume entries (3pt black left border).
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/20-print-layout`
+
+**PR**
+: none
+
+**Release**
+: `v1.0.0`
+
+---
+
+## Dynamic Page Title
+
+**ID**
+: `21`
+
+**Description**
+: Dynamically update the application's HTML title (`<title>`) based on the profile name and the selected language. The title should follow the format "CV of [Name]" (English) or "CV de [Name]" (French). This ensures the browser tab and search results correctly reflect the resume's owner and language context.
+
+**Status**
+: `done`
+
+**Branch**
+: `feature/21-dynamic-page-title`
+
+**PR**
+: _none_
+
+**Release**
+: `v1.0.0`

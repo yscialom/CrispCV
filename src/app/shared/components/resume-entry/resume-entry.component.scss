@@ -1,4 +1,5 @@
 @use '../../../../../config/spacing' as spacing;
+@use '../../../../../config/breakpoints' as breakpoints;
 
 :host {
   display: flex;
@@ -83,6 +84,11 @@
     align-items: baseline;
     flex-wrap: wrap;
     gap: spacing.$spacing-small;
+
+    @include breakpoints.mobile {
+      flex-direction: column;
+      gap: 0;
+    }
   }
 
   &__title {
@@ -98,6 +104,11 @@
     opacity: 0.8;
     font-style: italic;
     margin-top: 0.5em;
+
+    @include breakpoints.mobile {
+      margin-top: 0;
+      margin-bottom: spacing.$spacing-xx-small;
+    }
   }
 
   &__subtitle {

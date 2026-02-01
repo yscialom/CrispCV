@@ -5,6 +5,8 @@ import {
   signal,
   HostListener,
   ElementRef,
+  effect,
+  untracked,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -27,10 +29,19 @@ export class LanguageSwitchComponent {
   supportedLanguages = this.resumeDataService.getSupportedLanguages();
   currentLang = this.resumeDataService.currentLocale;
 
+  constructor() {
+    effect(() => {
+      // Whenever the language changes, close the dropdown
+      this.currentLang();
+      untracked(() => this.isOpen.set(false));
+    });
+  }
+
   languageDetails: Record<string, { name: string; flag: string }> = {
     fr_FR: { name: 'Français', flag: '🇫🇷' },
     en_US: { name: 'English (US)', flag: '🇺🇸' },
     en_GB: { name: 'English (UK)', flag: '🇬🇧' },
+    de_DE: { name: 'Deutsch', flag: '🇩🇪' },
   };
 
   @HostListener('document:click', ['$event'])
@@ -47,7 +58,7 @@ export class LanguageSwitchComponent {
 
   switchLanguage(event: MouseEvent, lang: string) {
     event.stopPropagation();
-    this.translate.use(lang);
+    this.resumeDataService.useLanguage(lang);
     this.isOpen.set(false);
   }
 

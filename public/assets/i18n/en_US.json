@@ -2,10 +2,13 @@
   "NAVBAR": {
     "EXPERIENCE": "Experience",
     "EDUCATION": "Education",
-    "ABOUT": "About"
+    "ABOUT": "About",
+    "MENU": "Menu",
+    "CLOSE": "Close",
+    "PRINT": "Print"
   },
   "ABOUT": {
-    "TITLE": "About Me",
+    "TITLE": "Additional information",
     "PERSONAL_INFO": "Personal Info",
     "BIRTH_DATE": "Date of birth:",
     "AGE_SUFFIX": "years old",
@@ -27,12 +30,17 @@
   "EDUCATION": {
     "TITLE": "Education"
   },
+  "CERTIFICATIONS": {
+    "TITLE": "Certifications",
+    "VIEW_CERTIFICATE": "View certificate"
+  },
   "FOOTER": {
     "FORK_US": "fork us on github"
   },
   "COMMON": {
     "PRESENT": "Present",
-    "ERROR": "An error occurred"
+    "ERROR": "An error occurred",
+    "PAGE_TITLE": "CV of {{name}}"
   },
   "DURATION": {
     "YEAR_PLURAL": "years",
@@ -42,7 +50,8 @@
   "RESUME_ENTRY": {
     "COPY_LINK_TITLE": "Copy permalink to this item",
     "COPY_LINK_ARIA": "Copy permalink",
-    "COPIED": "Link copied!"
+    "COPIED": "Link copied!",
+    "CLIPBOARD_ERROR": "Clipboard unavailable (insecure context?)"
   },
   "LANGUAGE_LEVELS": {
     "BEGINNER": "Beginner — A",

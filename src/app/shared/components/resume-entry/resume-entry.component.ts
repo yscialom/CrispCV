@@ -55,13 +55,19 @@ export class ResumeEntryComponent {
     const base = this.baseHref.endsWith('/') ? this.baseHref : this.baseHref + '/';
     const url = `${this.document.location.origin}${base}${id}`;
 
-    navigator.clipboard
-      .writeText(url)
-      .then(() => {
-        this.toastService.show(this.translate.instant('RESUME_ENTRY.COPIED'), 'success');
-      })
-      .catch(() => {
-        this.toastService.show(this.translate.instant('COMMON.ERROR'), 'error');
-      });
+    // Clipboard API is only available in secure contexts (HTTPS) or localhost.
+    // In non-secure contexts (e.g. HTTP), navigator.clipboard might be undefined.
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(url)
+        .then(() => {
+          this.toastService.show(this.translate.instant('RESUME_ENTRY.COPIED'), 'success');
+        })
+        .catch(() => {
+          this.toastService.show(this.translate.instant('RESUME_ENTRY.CLIPBOARD_ERROR'), 'error');
+        });
+    } else {
+      this.toastService.show(this.translate.instant('RESUME_ENTRY.CLIPBOARD_ERROR'), 'error');
+    }
   }
 }

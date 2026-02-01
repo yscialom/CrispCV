@@ -1,0 +1,63 @@
+{
+  "NAVBAR": {
+    "EXPERIENCE": "Berufserfahrung",
+    "EDUCATION": "Ausbildung",
+    "ABOUT": "Über mich",
+    "MENU": "Menü",
+    "CLOSE": "Schließen",
+    "PRINT": "Drucken"
+  },
+  "ABOUT": {
+    "TITLE": "Zusätzliche Informationen",
+    "PERSONAL_INFO": "Persönliche Informationen",
+    "BIRTH_DATE": "Geburtsdatum:",
+    "AGE_SUFFIX": "Jahre",
+    "NATIONALITY": "Nationalität:",
+    "LOCATION": "Standort:",
+    "PHONE": "Telefon:",
+    "EMAIL": "E-Mail:",
+    "LICENSE": "Führerschein:",
+    "LANGUAGES": "Sprachen",
+    "HOBBIES": "Hobbys",
+    "SOCIAL_TITLE": "Finde mich auf",
+    "VOLUNTEERING": "Ehrenamtliche Tätigkeit",
+    "PROJECTS": "Persönliche Projekte",
+    "VIEW_PROJECT": "Projekt ansehen"
+  },
+  "EXPERIENCE": {
+    "TITLE": "Berufserfahrung"
+  },
+  "EDUCATION": {
+    "TITLE": "Ausbildung"
+  },
+  "CERTIFICATIONS": {
+    "TITLE": "Zertifizierungen",
+    "VIEW_CERTIFICATE": "Zertifikat ansehen"
+  },
+  "FOOTER": {
+    "FORK_US": "Fork uns auf GitHub"
+  },
+  "COMMON": {
+    "PRESENT": "Heute",
+    "ERROR": "Ein Fehler ist aufgetreten",
+    "PAGE_TITLE": "Lebenslauf von {{name}}"
+  },
+  "DURATION": {
+    "YEAR_PLURAL": "Jahre",
+    "YEAR_SINGULAR": "Jahr",
+    "MONTH": "Monate"
+  },
+  "RESUME_ENTRY": {
+    "COPY_LINK_TITLE": "Permalink zu diesem Element kopieren",
+    "COPY_LINK_ARIA": "Permalink kopieren",
+    "COPIED": "Link kopiert!",
+    "CLIPBOARD_ERROR": "Zwischenablage nicht verfügbar (unsicherer Kontext?)"
+  },
+  "LANGUAGE_LEVELS": {
+    "BEGINNER": "Anfänger — A",
+    "INTERMEDIATE": "Mittelstufe — B",
+    "ADVANCED": "Fortgeschritten — C1",
+    "FLUENT": "Fließend — C2",
+    "NATIVE": "Zweisprachig / Muttersprache"
+  }
+}

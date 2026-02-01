@@ -1,0 +1,34 @@
+@use '../../../../../config/spacing' as spacing;
+
+.certification-card {
+  &__description {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+
+    ::ng-deep p {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    margin-top: spacing.$spacing-small;
+    font-size: 0.9rem;
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      i {
+        margin-left: 4px;
+        font-size: 0.8em;
+      }
+    }
+  }
+}

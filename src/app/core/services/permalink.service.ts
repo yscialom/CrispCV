@@ -1,17 +1,23 @@
 import { Injectable, computed, Signal, inject, signal } from '@angular/core';
 import { ResumeDataService } from './resume-data.service';
-import { Experience, Education, Project, Volunteering } from '../models/resume.models';
+import {
+  Experience,
+  Education,
+  Certification,
+  Project,
+  Volunteering,
+} from '../models/resume.models';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-export type EntryType = 'experience' | 'education' | 'project' | 'volunteering';
+export type EntryType = 'experience' | 'education' | 'certification' | 'project' | 'volunteering';
 
 export interface PermalinkEntry {
   id: number;
   type: EntryType;
   fragment: string;
   route: string;
-  originalItem: Experience | Education | Project | Volunteering;
+  originalItem: Experience | Education | Certification | Project | Volunteering;
 }
 
 @Injectable({
@@ -23,14 +29,17 @@ export class PermalinkService {
 
   public readonly permalinkMap: Signal<Map<number, PermalinkEntry>>;
   public readonly itemToEntryMap: Signal<
-    Map<Experience | Education | Project | Volunteering, PermalinkEntry>
+    Map<Experience | Education | Certification | Project | Volunteering, PermalinkEntry>
   >;
   public readonly activeFragment = signal<string | null>(null);
 
   constructor() {
     this.permalinkMap = computed(() => this.generatePermalinkMap());
     this.itemToEntryMap = computed(() => {
-      const map = new Map<Experience | Education | Project | Volunteering, PermalinkEntry>();
+      const map = new Map<
+        Experience | Education | Certification | Project | Volunteering,
+        PermalinkEntry
+      >();
       for (const entry of this.permalinkMap().values()) {
         map.set(entry.originalItem, entry);
       }
@@ -57,7 +66,7 @@ export class PermalinkService {
   }
 
   public getEntryByItem(
-    item: Experience | Education | Project | Volunteering,
+    item: Experience | Education | Certification | Project | Volunteering,
   ): PermalinkEntry | undefined {
     return this.itemToEntryMap().get(item);
   }
@@ -78,12 +87,14 @@ export class PermalinkService {
   private generatePermalinkMap(): Map<number, PermalinkEntry> {
     const experiences = this.resumeData.experiences() || [];
     const educations = this.resumeData.educations() || [];
+    const certifications = this.resumeData.certifications() || [];
     const projects = this.resumeData.profile().personalProjects || [];
     const volunteerings = this.resumeData.profile().volunteering || [];
 
     const allItems = [
       ...experiences.map((e) => ({ item: e, type: 'experience' as const, date: e.startDate })),
       ...educations.map((e) => ({ item: e, type: 'education' as const, date: e.startDate })),
+      ...certifications.map((c) => ({ item: c, type: 'certification' as const, date: c.date })),
       ...projects.map((p) => ({
         item: p,
         type: 'project' as const,
@@ -119,7 +130,7 @@ export class PermalinkService {
   }
 
   private generateFragment(
-    item: Experience | Education | Project | Volunteering,
+    item: Experience | Education | Certification | Project | Volunteering,
     type: EntryType,
     id: number,
   ): string {
@@ -131,6 +142,9 @@ export class PermalinkService {
     } else if (type === 'education') {
       const edu = item as Education;
       rawString = `${edu.institution}-${edu.degree}-${edu.startDate}-${id}`;
+    } else if (type === 'certification') {
+      const cert = item as Certification;
+      rawString = `${cert.organization}-${cert.name}-${cert.date}-${id}`;
     } else if (type === 'project') {
       const proj = item as Project;
       rawString = `${proj.name}-${id}`;
@@ -147,6 +161,7 @@ export class PermalinkService {
       case 'experience':
         return '/experience';
       case 'education':
+      case 'certification':
         return '/education';
       case 'project':
       case 'volunteering':

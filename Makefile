@@ -1,12 +1,13 @@
 # Makefile for managing the Dockerized Angular application
 
 # --- Variables ---
-APP_NAME := angular-resume
+APP_NAME := crispcv
 DEV_CONTAINER_NAME := $(APP_NAME)-dev
 PROD_IMAGE_NAME := $(APP_NAME)-prod
 PROD_CONTAINER_NAME := $(PROD_IMAGE_NAME)
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
+APP_VERSION := $(shell git describe --tags --always 2>/dev/null || echo "v0.0.0")
 
 .PHONY: all help usage build build-app start stop test clean dist-clean build-prod-image start-prod stop-prod lint format
 
@@ -41,19 +42,20 @@ usage:
 # Run unit tests
 test:
 	@echo "Running unit tests (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng test --watch=false"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp -e APP_VERSION=$(APP_VERSION) --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install && npm test -- --watch=false"
 
 
 
 # Build the application artifacts on the host by running a temporary container
 build:
 	@echo "Building application artifacts in ./dist ..."
-	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npm run build"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp -e APP_VERSION=$(APP_VERSION) --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install && npm run build"
+	@mv dist/CrispCV/browser/dot-htaccess dist/CrispCV/browser/.htaccess
 
 # Start the Angular development server (ng serve)
 start:
 	@echo "Starting development container '$(DEV_CONTAINER_NAME)' on http://localhost:4200 ..."
-	@docker run --rm -d -p 4200:4200 --name $(DEV_CONTAINER_NAME) -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install && npx ng serve --host 0.0.0.0"
+	@docker run --rm -d -p 4200:4200 --name $(DEV_CONTAINER_NAME) -v $(CURDIR):/app -w /app -e HOME=/tmp -e APP_VERSION=$(APP_VERSION) --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install && npm start -- --host 0.0.0.0"
 
 # Stop the development server
 stop:
@@ -66,18 +68,20 @@ stop:
 
 lint:
 	@echo "Running ESLint (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run lint --silent"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install --silent && npm run lint --silent"
 
 format:
 	@echo "Running Prettier (via Docker)..."
-	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:20-alpine sh -c "npm install --silent && npm run format --silent"
+	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install --silent && npm run format --silent"
 
 
 # Clean intermediary build files
 clean:
-	@echo "Cleaning intermediary files (node_modules, .angular)..."
+	@echo "Cleaning intermediary files (node_modules, .angular, generated source files)..."
 	@rm -rf node_modules
 	@rm -rf .angular
+	@rm -f src/app/core/profile.registry.ts
+	@rm -f src/app/core/version.ts
 
 # Clean all produced files (dist) and intermediary files
 dist-clean: clean
@@ -89,7 +93,7 @@ dist-clean: clean
 # Build the production Docker image using the Dockerfile
 build-prod-image:
 	@echo "Building production Docker image '$(PROD_IMAGE_NAME)'..."
-	@docker build -t $(PROD_IMAGE_NAME) -f build/Dockerfile .
+	@docker build -t $(PROD_IMAGE_NAME) --build-arg APP_VERSION=$(APP_VERSION) -f build/Dockerfile .
 
 # Run the production image as a container
 start-prod:

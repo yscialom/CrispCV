@@ -93,7 +93,7 @@ describe('NavbarComponent', () => {
 
     // Scroll down
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).scrollY = 10;
+    (window as any).scrollY = 30;
     window.dispatchEvent(new Event('scroll'));
     fixture.detectChanges();
 
@@ -130,5 +130,80 @@ describe('NavbarComponent', () => {
     expect(component['isSticky']()).toBe(false);
     const header = fixture.nativeElement.querySelector('header');
     expect(header.classList.contains('is-sticky')).toBe(false);
+  });
+
+  describe('Mobile Menu', () => {
+    it('should have default menu state closed', () => {
+      expect(component['isMenuOpen']()).toBe(false);
+    });
+
+    it('should toggle menu state', () => {
+      component['toggleMenu']();
+      expect(component['isMenuOpen']()).toBe(true);
+
+      component['toggleMenu']();
+      expect(component['isMenuOpen']()).toBe(false);
+    });
+
+    it('should close menu', () => {
+      component['isMenuOpen'].set(true);
+      component['closeMenu']();
+      expect(component['isMenuOpen']()).toBe(false);
+    });
+
+    it('should toggle menu when button is clicked', () => {
+      const button = fixture.nativeElement.querySelector('.menu-toggle');
+      button.click();
+      fixture.detectChanges();
+      expect(component['isMenuOpen']()).toBe(true);
+
+      button.click();
+      fixture.detectChanges();
+      expect(component['isMenuOpen']()).toBe(false);
+    });
+
+    it('should close menu when a link is clicked', () => {
+      component['isMenuOpen'].set(true);
+      fixture.detectChanges();
+
+      const link = fixture.nativeElement.querySelector('nav ul li a');
+      link.click();
+      fixture.detectChanges();
+
+      expect(component['isMenuOpen']()).toBe(false);
+    });
+
+    it('should display the current page label when menu is closed', () => {
+      // Default route is experience
+      fixture.detectChanges();
+      const span = fixture.nativeElement.querySelector('.menu-toggle span');
+      expect(span.textContent).toContain('NAVBAR.EXPERIENCE');
+
+      // Change route to education
+      component['currentUrl'].set('/education');
+      fixture.detectChanges();
+      expect(span.textContent).toContain('NAVBAR.EDUCATION');
+
+      // Change route to about
+      component['currentUrl'].set('/about');
+      fixture.detectChanges();
+      expect(span.textContent).toContain('NAVBAR.ABOUT');
+    });
+
+    it('should display Close when menu is open', () => {
+      component['isMenuOpen'].set(true);
+      fixture.detectChanges();
+      const span = fixture.nativeElement.querySelector('.menu-toggle span');
+      expect(span.textContent).toContain('NAVBAR.CLOSE');
+    });
+
+    it('should use chevron-down icon when closed and times icon when open', () => {
+      const icon = fixture.nativeElement.querySelector('.menu-toggle i');
+      expect(icon.classList.contains('fa-chevron-down')).toBe(true);
+
+      component['isMenuOpen'].set(true);
+      fixture.detectChanges();
+      expect(icon.classList.contains('fa-times')).toBe(true);
+    });
   });
 });

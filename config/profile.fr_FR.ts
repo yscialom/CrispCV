@@ -4,13 +4,16 @@ export const PROFILE_CONFIG: Resume = {
   profilePicturePath: 'profile-picture.png',
   name: 'Yankel Scialom',
   title: 'Delivery Manager',
-  summary:
-    "Ingénieur passioné par la technique, le code, les maths mais aussi par la performance de l'approche humaine : « comment construire efficacement en tant qu'organisaiton, qu'équipe, qu'individu une solution apprciée et utile ? »",
+  summary: `
+    Ingénieur passionné par la technique, le code, les maths mais aussi par
+    la performance de l'approche humaine : « comment construire efficacement
+    en tant qu'organisation, qu'équipe ou qu'individu une solution appréciée
+    et utile ? »`,
   email: 'yankel-pro@scialom.org',
   phone: '+336 87 63 83 13',
   website: 'scialom.org/cv',
   location: 'Châtillon, Île-de-France, France',
-  birthDate: '1987-09-21',
+  birthDate: '1987-04-24',
   nationality: 'Française',
   drivingLicense: 'Permis B',
   languages: [
@@ -32,24 +35,18 @@ export const PROFILE_CONFIG: Resume = {
       icon: 'fab fa-github',
     },
   ],
-  volunteering: [
-    {
-      organization: 'Example Org',
-      role: 'Volunteer',
-      startDate: '2020',
-      endDate: 'Present',
-      description: 'Helping out with things.',
-    },
-  ],
-  hobbies: ['Coding', 'Reading', 'Running', 'Piano'],
+  volunteering: [],
+  hobbies: ['Veille technique', 'Parapente', 'Badminton', 'Randonnée'],
   aboutDescription: `
 # À propos de moi
 
-Passionné par l'informatique depuis mon plus jeune âge, j'ai toujours cherché à comprendre comment fonctionnent les choses. 
-Mon parcours m'a amené à travailler sur des systèmes critiques et complexes, où la rigueur et la méthode sont primordiales.
+Passionné par l'informatique depuis mon plus jeune âge, j'ai toujours cherché
+à comprendre comment fonctionnent les choses. Mon parcours m'a amené à
+travailler sur des systèmes critiques et complexes, où la rigueur et la
+méthode sont primordiales.
 
-Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des processus de développement, tout en gardant un pied dans la technique.
-`,
+Aujourd'hui, je m'épanouis dans le management d'organisations et l'amélioration des
+processus de développement, tout en gardant un pied dans la technique.`,
   personalProjects: [
     {
       name: 'PinaNas',
@@ -57,7 +54,6 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       url: 'https://github.com/yscialom/pinanas',
       technologies: ['Homelab', 'Ansible', 'Docker'],
       startDate: '2020-04',
-      endDate: 'Present',
     },
     {
       name: 'CrispCV',
@@ -65,13 +61,12 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       url: 'https://github.com/yscialom/crispcv',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       startDate: '2025-11',
-      endDate: 'Present',
     },
   ],
 
   experiences: [
     {
-      title: 'Practice Leader Dev & Lead Delivery',
+      title: 'Practice Leader Dev & Delivery Manager',
       company: 'Capfi',
       location: 'Paris, France',
       startDate: '2023-05',
@@ -81,7 +76,10 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
           title: 'Practice Leader Software Engineering',
           description: `
 - Garant de l'**expertise dev** au sein de l'entreprise.
-- Garant de l'évaluation & de l'exigence au recrutement, **construction d'un processus de recrutement** basé sur l'évaluation objective des candidats sur leurs compétences technique ou fonctionnelles, sur leur posture consultant et sur leur savoir-être.
+- Direction des projets internes.
+- Garant de l'évaluation & de l'exigence au recrutement, **construction d'un processus
+    de recrutement** basé sur l'évaluation objective des candidats sur leurs compétences
+    techniques ou fonctionnelles, sur leur posture consultant et sur leur savoir-être.
 - Animation de communautés d'experts.
 - Formation de consultants & accompagnement de carrière.`,
         },
@@ -89,17 +87,25 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
           title: 'Management',
           description: `
 - Animation de la communauté des managers.
-- Management de consultants et consultants-managers.`,
+- Management de consultants et de consultants-managers.`,
         },
         {
           title: 'Accompagnement de la transformation',
           description: `
 - Fusion interne des entités de Capfi.
-- Communication transparente et collaboration créatrice de valeur entre les experts, les managers, le recrutement et le commerce.
+- Communication transparente et collaboration créatrice de valeur entre les experts,
+    les managers, le recrutement et le commerce.
 - Projets internes d'outillage IT.`,
         },
       ],
-      keywords: ['Expertise Dev', 'Management', 'Recrutement', 'Transformation'],
+      keywords: [
+        'Expertise Dev',
+        'Chef de Projet',
+        'Management',
+        'Recrutement',
+        'Transformation',
+        'Stratégie',
+      ],
     },
     {
       title: 'Release Manager',
@@ -119,7 +125,7 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
 - **Priorisation** : stabilité vs urgence vs cas et projets particuliers.`,
         },
       ],
-      keywords: ['Release Management', 'Orchestrade', 'Stratégie', 'Culture', 'Processus'],
+      keywords: ['Release Management', 'Orchestrade', 'Management', 'Transformation', 'Stratégie'],
     },
     {
       title: 'Chef de projet',
@@ -130,7 +136,9 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       missions: [
         {
           title: 'Transformation Stratégie SOC',
-          description: `Project Manager des projets issues de la redéfinition de la stratégie SOC de la Société Générale.
+          description: `
+Directeur de programme des projets issus de la redéfinition de
+la stratégie SOC de la Société Générale.
 - Études d'opportunités.
 - Cadrage, lancement, suivi et clôture des projets de transformation.
 - Appels d'offre.
@@ -138,7 +146,7 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
 - Gestion des budgets (millions d'euros pour 2023).`,
         },
       ],
-      keywords: ['Project Management', 'SOC', 'Stratégie', 'Budget', 'Cybersécurité'],
+      keywords: ['Chef de Projet', 'SOC', 'Stratégie', 'Budget', 'Cybersécurité'],
     },
     {
       title: 'Chef de projets, Agile Master',
@@ -149,18 +157,27 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       missions: [
         {
           title: 'Contexte',
-          description:
-            "Dans le cadre du projet règlementaire FRTB, Natixis Global Markets refond ses services de pricing et casse les silos existants. Le projet SUNRISE est une plateforme front-to-risk (stress tests, VAR, besoins FED US) dont le cœur est le composant _Pricing Services_ dont j'ai intégré l'équipe.",
+          description: `
+Dans le cadre du projet règlementaire FRTB, Natixis Global Markets refond ses services
+de pricing et casse les silos existants. Le projet SUNRISE est une plateforme front-to-risk
+(stress tests, VAR, besoins FED US) dont le cœur est le composant _Pricing Services_ dont
+j'ai intégré l'équipe.`,
         },
         {
           title: 'Chef de projets techniques',
           description: `
 - **Release Management** : planification, suivi, communication
-- **Création et évolutions d’infrastructures** : priorisation, planification & suivi des développements
+- **Création et évolutions d'infrastructures** : priorisation, planification & suivi des
+    développements
 - Gestion des **plannings**, **risques** et remontée d'**alertes** au programme
-- Mise en place d’une **nouvelle technologie de grille** de calcul distribué chez Natixis : GridGain
-- **Synchronisation** de l’équipe Pricing Services avec : équipes infrastructure, équipes d’exploitation, équipes sécurité, équipes architecture, …
-- **Management et planification des évolutions** liées à la sécurité des données, des logiciels et des éléments d’infrastructure : DMZ, Illumio, Disaster Recovery Plan, sensibilisation formation & contrôle des développeurs faces aux failles de sécurité de notre code source …`,
+- Mise en place d'une **nouvelle technologie de grille** de calcul distribué chez Natixis
+    : GridGain
+- **Synchronisation** de l'équipe Pricing Services avec : équipes infrastructure, équipes
+    d'exploitation, équipes sécurité, équipes architecture, …
+- **Management et planification des évolutions** liées à la sécurité des données, des
+    logiciels et des éléments d'infrastructure : DMZ, Illumio, Disaster Recovery Plan,
+    sensibilisation formation & contrôle des développeurs face aux failles de
+    sécurité de notre code source …`,
         },
         {
           title: 'Ingénieur DevOps',
@@ -175,7 +192,7 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
 - Planification et pilotage des démos.`,
         },
       ],
-      keywords: ['SAFe', 'Scrum', 'DevOps'],
+      keywords: ['Chef de projet', 'SAFe', 'Scrum', 'DevOps', 'Finance de marché'],
     },
     {
       title: 'Tech lead, Scrum Master',
@@ -186,13 +203,14 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       missions: [
         {
           title: 'Contexte',
-          description:
-            'J’ai été mandaté chez Ingénico pour accompagner à la transformation technique et méthodologique du département : kickoff agile & modernisation technologique.',
+          description: `
+J'ai été mandaté chez Ingénico pour accompagner à la transformation technique
+et méthodologique du département : kickoff agile & modernisation technologique.`,
         },
         {
           title: 'Scrum Master',
           description: `
-- **Kickoff Scrum** de l’équipe.
+- **Kickoff Scrum** de l'équipe.
 - Sensibilisation et suivi des membres, du PO et du management.
 - Accompagnement du PO pour le découpage et la documentation.`,
         },
@@ -205,11 +223,11 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
   - Redhat 5 vers 7.
 - Mise en place CI/CD (GitLab & CMake).
 - Tests automatiques (behave).
-- Définition du workflow de la création d’une user story à sa mise en production.
-- Définition de critères d’acceptance pour les revues de code et les tests fonctionnels.
+- Définition du workflow de la création d'une user story à sa mise en production.
+- Définition de critères d'acceptance pour les revues de code et les tests fonctionnels.
 - Formation des équipes au C++14.
-— Intégration continue & déploiement continu des applications.
-— Adoption de Docker pour faciliter les tests, leur automatisation & leur rejouabilité.`,
+- Intégration continue & déploiement continu des applications.
+- Adoption de Docker pour faciliter les tests, leur automatisation & leur rejouabilité.`,
         },
       ],
       keywords: ['Scrum', 'DevOps', 'C++', 'PostgreSQL', 'Docker'],
@@ -229,7 +247,7 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
         {
           title: 'Conception & Développement',
           description: `
-- Intégration d’Apple Pay dans le système français Carte Bancaire.
+- Intégration d'Apple Pay dans le système français Carte Bancaire.
 - Conception technique.
 - Développement C++98 du TSP (Secure Coding, robustesse, TCP, multithreading).
 - Profiling (performance, memory leaks).
@@ -237,7 +255,7 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
 - Support et formation.`,
         },
       ],
-      keywords: ['C++', 'PostgreSQL', 'TCP', 'Multithreading', 'Secure Coding', 'Redhat Linux'],
+      keywords: ['C++', 'PostgreSQL', 'TCP', 'Multithreading', 'Secure Coding', 'Linux'],
     },
     {
       title: 'Ingénieur logiciel Sophis',
@@ -253,11 +271,13 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
         },
         {
           title: 'Développeur',
-          description:
-            'Toolkit Sophis : reverse-engineering, optimisation, nouvelles colonnes. Sophis : import/export, langage de script, attribution de performance. Développements satellites (réconciliation, automatisation, rapports).',
+          description: `
+- Toolkit Sophis : reverse-engineering, optimisation, nouvelles colonnes.
+- Sophis : import/export, langage de script, attribution de performance.
+- Développements satellites (réconciliation, automatisation, rapports).`,
         },
       ],
-      keywords: ['Redhat Linux', 'C++', 'C99', 'PostgreSQL', 'Sophis', 'Lua', 'Finance'],
+      keywords: ['Linux', 'C++', 'C', 'PostgreSQL', 'Sophis', 'Lua', 'Finance de marché'],
     },
     {
       title: 'Ingénieur conception logicielle',
@@ -268,8 +288,9 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       missions: [
         {
           title: 'Développeur logiciel C++ & Java',
-          description:
-            'Conception, développement et intégration de fonctionnalités IHM et communication. Mise en place de procédures de tests multi-plateforme. Suivi de fait technique.',
+          description: `
+- Conception, développement et intégration de fonctionnalités IHM et communication.
+- Mise en place de procédures de tests multi-plateforme. Suivi de fait technique.`,
         },
         {
           title: 'Manager de centre de service',
@@ -277,12 +298,12 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
             'Assistant au directeur de projet. Gestion technique des devis & facturations client.',
         },
       ],
-      keywords: ['C++', 'Java', 'CMake'],
+      keywords: ['C++', 'Java', 'Linux', 'LPM', 'IHM'],
     },
     {
       title: 'Stagiaire ingénieur systèmes embarqués',
       company: 'SYSNAV',
-      location: 'Île-de-France',
+      location: 'Vernon, Eure',
       startDate: '2012-01',
       endDate: '2012-08',
       missions: [
@@ -301,19 +322,19 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
           description: "Portage de l'API sur Windows et Linux. Documentation.",
         },
       ],
-      keywords: ['C ANSI', 'Embarqué', 'Temps-réel'],
+      keywords: ['C', 'Embarqué', 'Temps-réel'],
     },
     {
       title: 'Stagiaire Développeur informatique',
       company: 'Thales Optronique SA',
-      location: 'Élancourt',
+      location: 'Élancourt, Île-de-France',
       startDate: '2009-07',
       endDate: '2010-02',
       missions: [
         {
           title: 'Développement IHM',
           description:
-            'Ajout de fonctionnalités pour gestion de drones (multi-lingue, vidéo, cartographie). Refonte ergonomique.',
+            'Ajout de fonctionnalités pour gestion de drones (multilingue, vidéo, cartographie). Refonte ergonomique.',
         },
         {
           title: 'Bibliothèque MNT',
@@ -353,19 +374,41 @@ Aujourd'hui, je m'épanouis dans le management d'équipe et l'amélioration des 
       endDate: '2013',
     },
   ],
+  certifications: [
+    {
+      name: 'Microsoft Azure - AZ204',
+      organization: 'Microsoft',
+      date: '2024',
+    },
+    {
+      name: 'SAFe Scrum Master',
+      organization: 'SAFe',
+      date: '2022',
+    },
+    {
+      name: 'Professional Scrum Product Owner',
+      organization: 'Scrum',
+      date: '2022',
+    },
+    {
+      name: 'PRINCE2 Practitioner - Gestion de projets agile',
+      organization: 'PRINCE2',
+      date: '2021',
+    },
+    {
+      name: "Parcours TOSCANE - Accompagnement à la transformation d'équipe",
+      organization: 'Toscane',
+      date: '2020',
+    },
+    {
+      name: 'Communication bienveillante',
+      organization: 'Capfi',
+      date: '2020',
+    },
+  ],
   skills: [
     { name: 'Français', level: 5 },
     { name: 'Anglais', level: 5 },
     { name: 'Allemand', level: 2 },
-    { name: 'C++', level: 5 },
-    { name: 'Java', level: 4 },
-    { name: 'Python', level: 4 },
-    { name: 'Docker', level: 4 },
-    { name: 'Kubernetes', level: 3 },
-    { name: 'CI/CD', level: 4 },
-    { name: 'Agile/Scrum', level: 5 },
-    { name: 'SAFe', level: 4 },
-    { name: 'SQL', level: 4 },
-    { name: 'Linux', level: 4 },
   ],
 };

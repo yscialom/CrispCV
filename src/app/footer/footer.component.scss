@@ -14,6 +14,15 @@ footer {
     margin: 0;
   }
 
+  code {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background-color: var(--secondary-bg);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    color: var(--text-disabled);
+  }
+
   a {
     color: var(--text-disabled);
     text-decoration: none;
