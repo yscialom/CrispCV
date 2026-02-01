@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+      - pages
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Checkout config from pages branch
+        run: |
+          git fetch origin pages --depth=1 || echo "pages branch not found"
+          if [ "${{ github.ref_name }}" = "pages" ] || git rev-parse --verify origin/pages >/dev/null 2>&1; then
+            echo "Overwriting config files from pages branch"
+            git checkout origin/pages -- config/profile.*.ts || echo "No profile files found on pages branch"
+            # Overwrite profile-picture if present in config/ on pages branch
+            if git checkout origin/pages -- config/profile-picture.png 2>/dev/null; then
+              echo "Overwriting profile-picture.png with config/profile-picture.png from pages branch"
+              mv config/profile-picture.png public/profile-picture.png
+            fi
+            # Also check for app.config.ts on pages branch
+            git checkout origin/pages -- config/app.config.ts || echo "Using default app.config.ts"
+          else
+            echo "pages branch not present, using default config"
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: |
+          npm run build -- --configuration production --base-href /CrispCV/
+          cp dist/CrispCV/browser/index.html dist/CrispCV/browser/404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/CrispCV/browser
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
