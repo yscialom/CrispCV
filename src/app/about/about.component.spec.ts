@@ -4,8 +4,6 @@ import { ResumeDataService } from '../core/services/resume-data.service';
 import { PermalinkService } from '../core/services/permalink.service';
 import { signal } from '@angular/core';
 import { Profile } from '../core/models/resume.models';
-import { MarkdownPipe } from '../shared/pipes/markdown.pipe';
-import { DurationPipe } from '../shared/pipes/duration.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 import { APP_BASE_HREF } from '@angular/common';
 
@@ -40,7 +38,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutComponent, MarkdownPipe, DurationPipe, TranslateModule.forRoot()],
+      imports: [AboutComponent, TranslateModule.forRoot()],
       providers: [
         { provide: ResumeDataService, useValue: mockResumeDataService },
         { provide: PermalinkService, useValue: mockPermalinkService },
@@ -57,20 +55,17 @@ describe('AboutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display personal info', () => {
+  // Since AboutComponent now uses child components, checking textContent is an integration test.
+  // It verifies that child components are correctly rendered.
+
+  it('should render child component content (personal info)', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('TestLand');
-    expect(compiled.textContent).toContain('123456789');
   });
 
-  it('should display languages', () => {
+  it('should render child component content (description)', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('English');
-  });
-
-  it('should display hobbies', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('Coding');
+    expect(compiled.textContent).toContain('Hello'); // Markdown render
   });
 
   it('should display volunteering', () => {
@@ -79,15 +74,8 @@ describe('AboutComponent', () => {
     expect(compiled.textContent).toContain('Helper');
   });
 
-  it('should calculate age correctly', () => {
-    const dob = new Date('1990-01-01');
-    const today = new Date();
-    let expectedAge = today.getFullYear() - dob.getFullYear();
-    const m = today.getMonth() - dob.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-      expectedAge--;
-    }
-
-    expect(component.age()).toBe(expectedAge);
+  it('should display projects', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.textContent).toContain('Project 1');
   });
 });

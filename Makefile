@@ -50,6 +50,7 @@ test:
 build:
 	@echo "Building application artifacts in ./dist ..."
 	@docker run --rm -v $(CURDIR):/app -w /app -e HOME=/tmp -e APP_VERSION=$(APP_VERSION) --user $(CURRENT_UID):$(CURRENT_GID) node:22-alpine sh -c "npm install && npm run build"
+	@mv dist/CrispCV/browser/dot-htaccess dist/CrispCV/browser/.htaccess
 
 # Start the Angular development server (ng serve)
 start:
@@ -76,9 +77,11 @@ format:
 
 # Clean intermediary build files
 clean:
-	@echo "Cleaning intermediary files (node_modules, .angular)..."
+	@echo "Cleaning intermediary files (node_modules, .angular, generated source files)..."
 	@rm -rf node_modules
 	@rm -rf .angular
+	@rm -f src/app/core/profile.registry.ts
+	@rm -f src/app/core/version.ts
 
 # Clean all produced files (dist) and intermediary files
 dist-clean: clean

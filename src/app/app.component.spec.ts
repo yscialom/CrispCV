@@ -25,6 +25,9 @@ describe('AppComponent', () => {
 
   const mockResumeDataService = {
     profile: computed<Profile>(() => mockProfile()),
+    experiences: signal([]),
+    educations: signal([]),
+    certifications: signal([]),
     getSupportedLanguages: vi.fn().mockReturnValue(['fr_FR', 'en_US']),
     currentLocale: signal('fr_FR'),
   };

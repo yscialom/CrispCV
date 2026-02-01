@@ -42,4 +42,4 @@ For detailed information on configuration, deployment, and development, visit th
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU General Public License v2.0.

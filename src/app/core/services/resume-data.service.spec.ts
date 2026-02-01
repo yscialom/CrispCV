@@ -5,6 +5,7 @@ import { Resume } from '../../core/models/resume.models';
 import { TranslateService, TranslateModule, LangChangeEvent } from '@ngx-translate/core';
 import { EventEmitter, PLATFORM_ID } from '@angular/core';
 import { vi } from 'vitest';
+import { of } from 'rxjs';
 
 describe('ResumeDataService', () => {
   let service: ResumeDataService;
@@ -38,7 +39,7 @@ describe('ResumeDataService', () => {
       currentLang: 'fr_FR',
       defaultLang: 'fr_FR',
       onLangChange: onLangChangeEmitter,
-      use: vi.fn(),
+      use: vi.fn().mockReturnValue(of('fr_FR')),
       getBrowserLang: vi.fn().mockReturnValue('fr'),
     };
 
@@ -99,7 +100,7 @@ describe('ResumeDataService', () => {
     it('should save language to localStorage on change', () => {
       const expectedExpiry = mockDate + 3 * 30 * 24 * 60 * 60 * 1000; // 3 months
 
-      onLangChangeEmitter.emit({ lang: 'en_US', translations: {} });
+      service.useLanguage('en_US');
 
       expect(localStorage.setItem).toHaveBeenCalledWith('app-lang', expect.any(String));
       const saved = JSON.parse(localStorageMock['app-lang']);

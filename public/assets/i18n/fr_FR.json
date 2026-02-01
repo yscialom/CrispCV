@@ -4,10 +4,11 @@
     "EDUCATION": "Études & Diplômes",
     "ABOUT": "À propos",
     "MENU": "Menu",
-    "CLOSE": "Fermer"
+    "CLOSE": "Fermer",
+    "PRINT": "Imprimer"
   },
   "ABOUT": {
-    "TITLE": "À propos de moi",
+    "TITLE": "Informations supplémentaires",
     "PERSONAL_INFO": "Informations Personnelles",
     "BIRTH_DATE": "Date de naissance :",
     "AGE_SUFFIX": "ans",
@@ -38,7 +39,8 @@
   },
   "COMMON": {
     "PRESENT": "Présent",
-    "ERROR": "Une erreur est survenue"
+    "ERROR": "Une erreur est survenue",
+    "PAGE_TITLE": "CV de {{name}}"
   },
   "DURATION": {
     "YEAR_PLURAL": "ans",
@@ -48,7 +50,8 @@
   "RESUME_ENTRY": {
     "COPY_LINK_TITLE": "Copier le lien permanent vers cet élément",
     "COPY_LINK_ARIA": "Copier le lien permanent",
-    "COPIED": "Lien copié !"
+    "COPIED": "Lien copié !",
+    "CLIPBOARD_ERROR": "Presse-papiers indisponible (contexte non sécurisé ?)"
   },
   "LANGUAGE_LEVELS": {
     "BEGINNER": "Débutant — A",

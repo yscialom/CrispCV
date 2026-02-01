@@ -4,10 +4,11 @@
     "EDUCATION": "Education",
     "ABOUT": "About",
     "MENU": "Menu",
-    "CLOSE": "Close"
+    "CLOSE": "Close",
+    "PRINT": "Print"
   },
   "ABOUT": {
-    "TITLE": "About Me",
+    "TITLE": "Additional information",
     "PERSONAL_INFO": "Personal Info",
     "BIRTH_DATE": "Date of birth:",
     "AGE_SUFFIX": "years old",
@@ -38,7 +39,8 @@
   },
   "COMMON": {
     "PRESENT": "Present",
-    "ERROR": "An error occurred"
+    "ERROR": "An error occurred",
+    "PAGE_TITLE": "CV of {{name}}"
   },
   "DURATION": {
     "YEAR_PLURAL": "years",
@@ -48,7 +50,8 @@
   "RESUME_ENTRY": {
     "COPY_LINK_TITLE": "Copy permalink to this item",
     "COPY_LINK_ARIA": "Copy permalink",
-    "COPIED": "Link copied!"
+    "COPIED": "Link copied!",
+    "CLIPBOARD_ERROR": "Clipboard unavailable (insecure context?)"
   },
   "LANGUAGE_LEVELS": {
     "BEGINNER": "Beginner — A",
