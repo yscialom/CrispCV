@@ -54,6 +54,14 @@ jobs:
             else
                echo "Using default app.config.ts"
             fi
+
+            # Update profile config to match the actual picture filename
+            PICTURE_FILE=$(find config -maxdepth 1 -name "profile-picture.*" -not -name "*.ts" | head -n 1)
+            if [ -n "$PICTURE_FILE" ]; then
+              BASENAME=$(basename "$PICTURE_FILE")
+              echo "Detected profile picture: $BASENAME. Updating config files..."
+              sed -i "s/profilePicturePath: '.*'/profilePicturePath: '$BASENAME'/g" config/profile.*.ts
+            fi
           else
             echo "pages branch not present, using default config"
           fi
