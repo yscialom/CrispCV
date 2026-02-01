@@ -2,7 +2,7 @@
 
 [![Continuous Integration](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pr-validation.yaml)
 [![Continuous Deployment](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml/badge.svg)](https://github.com/yscialom/CrispCV/actions/workflows/pages.yaml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 
 A professional, customizable, and high-performance single-page application (SPA) designed to showcase a developer's profile, experience, and skills. Built with modern Angular (Signals, Zoneless), SCSS, and Docker.
 
@@ -84,4 +84,4 @@ For details on secrets and workflow triggers, see the [Technical Architecture](d
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU General Public License v2.0 - see the [LICENSE](LICENSE) file for details.
