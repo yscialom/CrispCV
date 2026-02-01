@@ -30,8 +30,13 @@
                 "input": "public"
               },
               {
-                "glob": "{favicon.ico,profile-picture.png}",
+                "glob": "favicon.ico",
                 "input": "src/assets",
+                "output": "/"
+              },
+              {
+                "glob": "profile-picture.*",
+                "input": "config",
                 "output": "/"
               }
             ],

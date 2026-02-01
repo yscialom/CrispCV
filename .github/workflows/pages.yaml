@@ -32,11 +32,8 @@ jobs:
           if [ "${{ github.ref_name }}" = "pages" ] || git rev-parse --verify origin/pages >/dev/null 2>&1; then
             echo "Overwriting config files from pages branch"
             git checkout origin/pages -- config/profile.*.ts || echo "No profile files found on pages branch"
-            # Overwrite profile-picture if present in config/ on pages branch
-            if git checkout origin/pages -- config/profile-picture.png 2>/dev/null; then
-              echo "Overwriting profile-picture.png with config/profile-picture.png from pages branch"
-              mv config/profile-picture.png public/profile-picture.png
-            fi
+            # Overwrite profile-picture if present in config/ on pages branch (any extension)
+            git checkout origin/pages -- 'config/profile-picture.*' 2>/dev/null || echo "No profile picture found on pages branch"
             # Also check for app.config.ts on pages branch
             git checkout origin/pages -- config/app.config.ts || echo "Using default app.config.ts"
           else

@@ -26,8 +26,9 @@ The application allows users to easily configure the profile picture displayed i
 
 - **File:** `config/profile.<locale>.ts` (e.g., `config/profile.en_US.ts`)
 - **Purpose:** Specify the path to the profile picture image.
-- **Structure:** A TypeScript constant `PROFILE_CONFIG` exports an object with a `profilePicturePath` property.
+- **Structure:** A TypeScript constant `PROFILE_CONFIG` exports an object (matching the `Resume` interface) which contains a `profilePicturePath` property.
 - **Usage:**
-  1.  Place your desired profile picture image (e.g., `profile-picture.jpg`) into the `public/` directory (or a subdirectory).
-  2.  Update the `profilePicturePath` value in `config/profile.<locale>.ts` to reflect the path to your image (e.g., `'profile-picture.png'`).
-  3.  Rebuild the application for changes to take effect.
+  1.  Place your desired profile picture image (e.g., `my-face.webp`) into the `config/` directory.
+  2.  If you name it `profile-picture.<ext>` (e.g., `profile-picture.png`, `profile-picture.jpg`), it will be automatically handled by the build system.
+  3.  Update the `profilePicturePath` value in `config/profile.<locale>.ts` to reflect the path to your image (e.g., `'profile-picture.png'`).
+  4.  Rebuild the application for changes to take effect.
