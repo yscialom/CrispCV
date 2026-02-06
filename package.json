@@ -1,6 +1,6 @@
 {
   "name": "crispcv",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "ng": "ng",
     "generate-registry": "node tools/generate-profile-registry.js",

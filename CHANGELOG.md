@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-02-06
+
+### Changed
+
+- **UI**: Improved card contrast on light theme for better readability.
+
+## [1.0.3] - 2026-02-01
+
+### Fixed
+
+- **Configuration**: Fixed an issue where profile pictures with certain filenames were not correctly recognized in the `config/` directory.
+
 ## [1.0.0] - 2026-02-01
 
 ### Added
