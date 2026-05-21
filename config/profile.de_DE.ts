@@ -59,6 +59,15 @@ Heute gehe ich in der Leitung von Organisationen und der Verbesserung von
       url: 'https://github.com/yscialom/crispcv',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       startDate: '2025-11',
+      endDate: '2026-01',
+    },
+    {
+      name: 'ysc::matrix',
+      description: 'Eine Header-only-C++20-Template-Bibliothek, die einen universellen mehrdimensionalen Container mit statischen Dimensionen bereitstellt.',
+      url: 'https://github.com/yscialom/matrix',
+      technologies: ['C++', 'C++20'],
+      startDate: '2026-03',
+      endDate: '2026-06',
     },
   ],
 

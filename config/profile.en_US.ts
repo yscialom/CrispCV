@@ -59,6 +59,15 @@ Today, I thrive in the management of organizations and the improvement of
       url: 'https://github.com/yscialom/crispcv',
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       startDate: '2025-11',
+      endDate: '2026-01',
+    },
+    {
+      name: 'ysc::matrix',
+      description: 'A header-only C++20 template library providing a general-purpose multi-dimensional container with static dimensions.',
+      url: 'https://github.com/yscialom/matrix',
+      technologies: ['C++', 'C++20'],
+      startDate: '2026-03',
+      endDate: '2026-06',
     },
   ],
 
